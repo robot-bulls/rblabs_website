@@ -339,7 +339,7 @@
                                                 </div>
                                                 <p>You have an IT affinity and want to help shape the future? You are fascinated by the start-up spirit and want to gain valuable practical experience? Then apply!</p> <br>
                                                 <div class="text-box accordion-box">
-                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2">Apply now</a>
+                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2" onclick="setJobPosition('App Developper')">Apply now</a>
                                                     <!--                                                <p>Application Last Date - 31 December, 2020</p>-->
                                                 </div>
                                             </div><!-- .accordion-body -->
@@ -390,7 +390,7 @@
                                                 </div>
                                                 <p>You have an IT affinity and want to help shape the future? You are fascinated by the start-up spirit and want to gain valuable practical experience? Then apply!</p> <br>
                                                 <div class="text-box accordion-box">
-                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2">Apply now</a>
+                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2" onclick="setJobPosition('Web designer/SEO Specialist')">Apply now</a>
                                                     <!--                                                <p>Application Last Date - 31 December, 2020</p>-->
                                                 </div>
                                             </div><!-- .accordion-body -->
@@ -462,7 +462,7 @@
                                             </div>
 -->
                                                 <div class="text-box accordion-box">
-                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2">Apply now</a>
+                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2" onclick="setJobPosition('Financial Analyst')">Apply now</a>
                                                     <!--                                                <p>Application Last Date - 31 December, 2020</p>-->
                                                 </div>
                                             </div><!-- .accordion-body -->
@@ -504,7 +504,7 @@
                                                 </div>
 
                                                 <div class="text-box accordion-box">
-                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2">Apply now</a>
+                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2" onclick="setJobPosition('Video Editor')">Apply now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -552,7 +552,7 @@
                                                 <p>If you would like to join our team, please send a detailed resume in English with a current photo.</p>
 
                                                 <div class="text-box accordion-box">
-                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2">Apply now</a>
+                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2" onclick="setJobPosition('Personal Assistant')">Apply now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -613,7 +613,7 @@
                                                 <p>If you would like to join our team, please send a detailed resume in English with a current photo.</p>
 
                                                 <div class="text-box accordion-box">
-                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2">Apply now</a>
+                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2" onclick="setJobPosition('Graphic Designer')">Apply now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -696,7 +696,7 @@
                                                 <p>If you would like to join our team, please send a detailed resume in English with a current photo.</p>
 
                                                 <div class="text-box accordion-box">
-                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2">Apply now</a>
+                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2" onclick="setJobPosition('Junior AI Developer (Python)')">Apply now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -796,7 +796,7 @@
                                                 <p>If you would like to join our team, please send a detailed resume in English with a current photo.</p>
 
                                                 <div class="text-box accordion-box">
-                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2">Apply now</a>
+                                                    <a href="#internship-popup" class="content-popup btn btn-outline btn-primary btn-md mb-2" onclick="setJobPosition('Customer Relationship Assistant')">Apply now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -929,7 +929,7 @@
                                                 </div>
 
                                                 <div class="text-box accordion-box">
-                                                    <a href="#internship-popup" class="content-popup btn btn-primary mb-2">Apply now</a>
+                                                    <a href="#internship-popup" class="content-popup btn btn-primary mb-2" onclick="setJobPosition('Human Resource/Personnal Assistant')">Apply now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1098,7 +1098,34 @@
     </script>
     
     <script>
-        document.querySelector('.nk-form-submit').addEventListener('submit', function(e) {
+        function setJobPosition(position) {
+            localStorage.setItem('jobPosition', position);
+        }
+
+        let formData = {
+            name: '',
+            email: '',
+            phone: '',
+            message: '',
+            file: null,
+            fileName: '',
+            fileType: ''
+        };
+
+        document.querySelector('input[name="contact-files"]').addEventListener('change',  function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    formData.file = reader.result.split(",")[1];
+                    formData.fileName = file.name;
+                    formData.fileType = file.type;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.querySelector('.nk-form-submit').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             if (localStorage.getItem("career")) {
@@ -1107,40 +1134,32 @@
                 return;
             }
 
-            var formData = new FormData();
-            formData.append('contact-name', document.querySelector('input[name="contact-name"]').value);
-            formData.append('contact-email', document.querySelector('input[name="contact-email"]').value);
-            formData.append('contact-tel', document.querySelector('input[name="contact-tel"]').value);
-            formData.append('contact-message', document.querySelector('textarea[name="contact-message"]').value);
-            formData.append('submission-date', new Date());
+            const url = 'https://script.google.com/macros/s/AKfycbwXCn0w_xkLLoXgjNNWpMGYuRVsLdD7YKf3Fb6ugYgPcEqM_Colzndd_8cf4xd9r9TV2g/exec';
 
-            var files = document.querySelector('input[name="contact-files"]').files;
-            for (var i = 0; i < files.length; i++) {
-                formData.append('contact-files-' + i, files[i]);
-            }
+            formData.position = localStorage.getItem('jobPosition', "");
+            formData.name = document.querySelector('input[name="contact-name"]').value;
+            formData.email = document.querySelector('input[name="contact-email"]').value;
+            formData.phone = document.querySelector('input[name="contact-tel"]').value;
+            formData.message = document.querySelector('textarea[name="contact-message"]').value;
+            formData.created_at = new Date().toISOString();
 
-            fetch('https://script.google.com/macros/s/AKfycbwzPllwYu7_jYuJT8SG_dMxudCfpjOR-ZuxgJSKBuClhU5sgB2uzDsSuTveRn20y2V9/exec', {
+            const options = {
                 method: 'POST',
-                body: formData
-            }).then(response => response.json())
-              .then(data => {
-                  if(data.result === "success") {
-                      localStorage.setItem("career", true);
-                      document.getElementById("career_submit").disabled = true;
-                      alert("Your request has been sent and will be processed shortly.");
-                      document.querySelector(".apply_button_loader").style.display = "none";
-                      document.querySelector('.form-results').innerHTML = "<h3 style='text-align:center; font-size:30px;padding: 30px 20px;'>Thank you for your request! If your request is relevant, we will get back to you within 1-2 business days!</h3>";
-                  } else {
-                      alert("There was an error processing your request. Please try again.");
-                  }
-              }).catch(error => {
-                  console.error('Error:', error);
-                  alert("An error occurred. Please try again.");
-              });
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: JSON.stringify(formData)
+            };
+
+            const response = await fetch(url, options);
+            localStorage.setItem("career", true);
+            document.getElementById("career_submit").disabled = true;
+            alert("Your request has been sent and will be processed shortly.");
+            document.querySelector(".apply_button_loader").style.display = "none";
+            document.querySelector('.form-results').innerHTML = "<h3 style='text-align:center; font-size:30px;padding: 30px 20px;'>Thank you for your request! If your request is relevant, we will get back to you within 1-2 business days!</h3>";
         });
     </script>
-
-
     
     <script>
         document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
