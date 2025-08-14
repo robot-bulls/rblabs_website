@@ -3421,6 +3421,10 @@ EOF < /dev/null
         text-align: center !important;
     }
     
+    .social-icons {
+        justify-content: center !important;
+    }
+    
     .llms-features {
         justify-items: center !important;
     }
@@ -3533,6 +3537,10 @@ EOF < /dev/null
     .contact-details,
     .contact-item {
         text-align: center !important;
+    }
+    
+    .social-icons {
+        justify-content: center !important;
     }
     
     .llms-features {
