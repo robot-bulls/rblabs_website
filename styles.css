@@ -2091,6 +2091,10 @@ body {
 
 
 /* What We Do Section */
+.llms-section {
+    padding: 100px 0;
+}
+
 .what-we-do-section {
     padding: 100px 0;
     background-color: #ffffff;
@@ -3068,6 +3072,14 @@ body {
     }
 }
 
+/* Desktop - ensure proper section padding */
+@media (min-width: 1025px) {
+    .llms-section {
+        padding-top: 120px !important;
+        padding-bottom: 120px !important;
+    }
+}
+
 /* Large Desktop */
 @media (min-width: 1440px) {
     .container {
@@ -3133,7 +3145,6 @@ body {
 EOF < /dev/null
 /* LLMs Section */
 .llms-section {
-    padding: 100px 0;
     position: relative;
     background: #f8f9fa;
     z-index: 10;
