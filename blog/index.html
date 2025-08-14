@@ -1,527 +1,536 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Blog - RB Labs</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon.ico">
-    <!-- CSS
-	============================================ -->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/plugins/slick.css">
-    <link rel="stylesheet" href="../assets/css/plugins/font-awesome.css">
-    <link rel="stylesheet" href="../assets/css/plugins/icomoon.css">
-    <link rel="stylesheet" href="../assets/css/plugins/plugins.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    
-    <link rel="apple-touch-icon-precomposed" href="/assets/images/logo/logo.png">
-    <meta name="msapplication-TileImage" content="/assets/images/logo/logo.png">
-    
-    <meta name="author" content="Robin Krambröckers">
-    <meta name="description" content="Get our latest podcasts, updates, tech tips, news and much more. - We are specializing in Decentralized Application (DApp) development, AI model deployment on Blockchain, and AI model decentralization consulting.">
-    
-    <meta property="og:title" content="RB Labs">
-    <meta property="og:description" content="Get our latest podcasts, updates, tech tips, news and much more. - We are specializing in Decentralized Application (DApp) development, AI model deployment on Blockchain, and AI model decentralization consulting.">
-    <meta property="og:url" content="https://www.rblabs.ai/blog/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="RB Labs Blog - Latest insights and developments in AI, blockchain, and financial technology">
+    <meta name="keywords" content="AI blog, machine learning articles, blockchain news, fintech insights, RB Labs blog">
+    <meta property="og:title" content="Blog - RB Labs">
+    <meta property="og:description" content="Stay updated with the latest developments in AI and financial technology">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Blog - RB Labs">
-    <link rel="canonical" href="https://www.rblabs.ai/blog/" />
-    
+    <meta property="og:url" content="https://rblabs.ai/blog">
+    <title>Blog - RB Labs</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../hero-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-    <div class="main-content">
-        
-        <header class="ax-header haeder-default light-logo-version header-transparent axil-header-sticky">
-            <div class="header-wrapper">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-8">
-                            <div class="logo">
-                                <a href="/">
-                                    <img height="60px" alt="RB Labs" src="../assets/images/logo/logo.png">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-6 col-sm-6 col-4">
-                            <div class="mainmenu-wrapepr">
-                                <!-- Start Mainmanu Nav -->
-                                <nav class="mainmenu-nav d-none d-lg-block">
-                                    <ul class="mainmenu">
-                                        <li><a href="/">Home</a></li>
-                                        <li><a href="/services/">Services</a></li>
-                                        <li><a href="/about/">About Us</a></li>
-                                        <li><a href="/internships/">Career</a></li>
-                                        <li><a href="/blog/">Blog</a></li>
-                                        <li><a href="/contact/">Contact</a></li>
-
-                                    </ul>
-                                </nav>
-                                <!-- End Mainmanu Nav -->
-                                <!-- Start Hamburger -->
-                                <div class="ax-header-button ml--40 ml_lg--10 d-none d-sm-block">
-                                    <a class="axil-button btn-solid btn-extra07-color" href="/appointment/"><span class="button-text">Let's Talk</span><span class="button-icon"></span></a>
-                                </div>
-                                <!-- End Hamburger -->
-
-                                <!-- Start Menu Bar  -->
-                                <div class="ax-menubar popup-navigation-activation d-block d-lg-none ml_sm--20 ml_md--20">
-                                    <div>
-                                        <i></i>
-                                    </div>
-                                </div>
-                                <!-- End Menu Bar  -->
-                            </div>
-                        </div>
-                    </div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <img src="../images/logo/logo.png" alt="RB Labs Logo" height="50">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/career/" class="nav-link">Career</a>
+                    <a href="/blog/" class="nav-link active">Blog</a>
                 </div>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-        </header>
-        <!-- Start Popup Mobile Menu -->
-        <div class="popup-mobile-manu">
-            <div class="inner">
-                <div class="mobileheader">
-                    <div class="logo">
-                        <a href="/">
-                            <img src="../assets/images/logo/logo.png" alt="RB Labs" height="60px">
-                        </a>
-                    </div>
-                    <a class="close-menu" href="#"></a>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <style>
+        .blog-header {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+            padding: 140px 0 60px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .blog-header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .blog-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        .blog-header-subtitle {
+            font-size: 20px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+    </style>
+    <section class="blog-header">
+        <div class="container">
+            <div class="blog-header-content">
+                <h1>Insights & Research</h1>
+                <p class="blog-header-subtitle">
+                    Explore the latest developments in AI, blockchain, and financial technology from our expert team and thought leaders.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <style>
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        .featured-post {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .featured-post-image {
+            position: relative;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+        .featured-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .featured-post:hover .featured-post-image img {
+            transform: scale(1.05);
+        }
+        .featured-label {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: #06438c;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .featured-post-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        .post-meta-divider {
+            width: 4px;
+            height: 4px;
+            background: #d1d5db;
+            border-radius: 50%;
+        }
+        .featured-post h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .featured-post p {
+            font-size: 18px;
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #06438c;
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+        .read-more-btn:hover {
+            gap: 12px;
+        }
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .post-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .post-card-image {
+            position: relative;
+            padding-top: 60%;
+            background: #f3f4f6;
+            overflow: hidden;
+        }
+        .post-card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .post-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: white;
+            color: #06438c;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .post-card-content {
+            padding: 25px;
+        }
+        .post-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .post-card p {
+            font-size: 15px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .post-card .post-meta {
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 1024px) {
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            .featured-post-image {
+                height: 300px;
+            }
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .featured-post-content {
+                padding: 30px;
+            }
+            .featured-post h2 {
+                font-size: 24px;
+            }
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            .blog-header h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+    <section>
+        <div class="blog-container">
+            <!-- Featured Post -->
+            <article class="featured-post">
+                <div class="featured-post-image">
+                    <img src="https://robert.finance/assets/robert_the_robot.jpeg" alt="Robert in Entrepreneur Magazine">
+                    <span class="featured-label">FEATURED</span>
                 </div>
-                <div class="menu-item">
-                    <ul class="mainmenu-item">
+                <div class="featured-post-content">
+                    <div class="post-meta">
+                        <span>July 2025</span>
+                        <span class="post-meta-divider"></span>
+                        <span>Entrepreneur Magazine</span>
+                        <span class="post-meta-divider"></span>
+                        <span>3 min read</span>
+                    </div>
+                    <h2>Meet Robert the Robot - Entrepreneur Magazine</h2>
+                    <p>The revolutionary AI financial advisor transforming wealth management across the globe. Robert combines cutting-edge artificial intelligence with Swiss banking expertise to deliver personalized investment strategies.</p>
+                    <a href="https://www.entrepreneur.com/en-ae/technology/meet-robert-the-robot-by-rb-labs-the-man-who-stole/494517" target="_blank" class="read-more-btn">
+                        Read Full Article
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Posts Grid -->
+            <div class="posts-grid">
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="https://robert.finance/assets/robert_swiss_tv.jpeg" alt="Robert on TV">
+                        <span class="post-category">TELEVISION</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>July 2025</span>
+                            <span class="post-meta-divider"></span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3>Robert on Parlons Économie - Carac TV</h3>
+                        <p>Robert discusses the future of AI in finance on Swiss television, showcasing revolutionary financial advisory capabilities.</p>
+                        <a href="https://carac.tv/replay/parlons-economie/3021" target="_blank" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="https://robert.finance/assets/robert%20in%20the%20journal.jpeg" alt="Robert at Palexpo">
+                        <span class="post-category">PRESS</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>July 2025</span>
+                            <span class="post-meta-divider"></span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3>Robots humanoïdes et intelligence artificielle</h3>
+                        <p>Featured at Palexpo - Le Dauphiné Libéré covers Robert as the future of financial advisory technology.</p>
+                        <a href="https://www.ledauphine.com/science-et-technologie/2025/07/08/robots-humanoides-et-ia-jusqu-a-vendredi-a-geneve-au-salon-ai-for-good" target="_blank" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="decentralizing-trading-robots/main_image.jpg" alt="Decentralizing Trading Robots">
+                        <span class="post-category">TECHNOLOGY</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>December 20, 2024</span>
+                            <span class="post-meta-divider"></span>
+                            <span>8 min read</span>
+                        </div>
+                        <h3>Decentralizing Trading Robots</h3>
+                        <p>RB Labs is introducing a new approach to algorithmic trading by decentralizing the development and deployment of trading robots on ICP.</p>
+                        <a href="/blog/decentralizing-trading-robots/" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="../images/featured/featured-image-01.jpg" alt="Decentralized AI">
+                        <span class="post-category">RESEARCH</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>December 1, 2024</span>
+                            <span class="post-meta-divider"></span>
+                            <span>7 min read</span>
+                        </div>
+                        <h3>The Future of Decentralized AI in Finance</h3>
+                        <p>Blockchain technology is revolutionizing financial AI deployment with transparency and security.</p>
+                        <a href="/blog/decentralized-ai-finance/" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="wiw3ch-japan/main_image.jpg" alt="WiW3CH Event">
+                        <span class="post-category">EVENTS</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>August 18, 2024</span>
+                            <span class="post-meta-divider"></span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3>Women in Web3 Switzerland Event at Swiss Embassy</h3>
+                        <p>RB Labs participates in the prestigious WiW3CH event in Japan, supporting women in technology.</p>
+                        <a href="/blog/wiw3ch-japan/" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="rblabs-tesla-event/main_image.jpg" alt="Tesla Event">
+                        <span class="post-category">PARTNERSHIP</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>May 30, 2024</span>
+                            <span class="post-meta-divider"></span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3>RB Labs and Tesla Collaborate for Landmark Event</h3>
+                        <p>Exclusive Geneva event showcases RB Labs' innovative blockchain solutions in collaboration with Tesla.</p>
+                        <a href="/blog/rblabs-tesla-event/" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <style>
+        .newsletter-section {
+            background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+            padding: 80px 0;
+            margin-top: 40px;
+        }
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .newsletter-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .newsletter-description {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .newsletter-input:focus {
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+        }
+        .newsletter-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        .newsletter-submit {
+            padding: 14px 32px;
+            background: white;
+            color: #06438c;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .newsletter-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        @media (max-width: 640px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+            .newsletter-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Stay at the Forefront of AI Innovation</h2>
+                <p class="newsletter-description">
+                    Get exclusive insights, research findings, and product updates delivered directly to your inbox.
+                </p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">RB Labs</h4>
+                    <p class="footer-description">
+                        Leading the transformation of financial services through advanced artificial intelligence and machine learning technologies.
+                    </p>
+                    <p class="footer-description" style="margin-top: 1rem;">
+                        Headquarters: Geneva, Switzerland
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
                         <li><a href="/">Home</a></li>
-                                        <li><a href="/services/">Services</a></li>
-                                        <li><a href="/about/">About Us</a></li>
-                                        <li><a href="/internships/">Career</a></li>
-                                        <li><a href="/blog/">Blog</a></li>
-                                        <li><a href="/contact/">Contact</a></li>
+                        <li><a href="/career/">Career</a></li>
+                        <li><a href="/blog/">Blog</a></li>
                     </ul>
                 </div>
-
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#contact">Contact</a></li>
+                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/company/rblabs-ai/" target="_blank" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M4.98 3.5C4.98 4.881 3.87 6 2.5 6S.02 4.881.02 3.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM5 8H0v12h5V8zm7.982 0H8.014v12h4.969v-6.28c0-4.67 6.029-5.052 6.029 0V20H24V12.869c0-7.88-8.922-7.593-11.018-3.714V8z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/robotbulls/" target="_blank" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M18.94 4.46c-.49.217-1.016.363-1.567.429.563-.338.996-.872 1.2-1.51-.527.313-1.11.54-1.732.663-.498-.53-1.206-.862-1.99-.862-1.507 0-2.73 1.223-2.73 2.73 0 .214.024.423.07.623-2.27-.114-4.28-1.2-5.625-2.853-.235.403-.37.872-.37 1.372 0 .947.482 1.782 1.214 2.272-.447-.014-.868-.137-1.236-.341v.034c0 1.323.94 2.426 2.19 2.677-.23.062-.47.096-.72.096-.176 0-.346-.017-.513-.05.347 1.084 1.355 1.873 2.55 1.895-.933.73-2.11 1.166-3.388 1.166-.22 0-.437-.013-.65-.038 1.208.774 2.64 1.226 4.182 1.226 5.018 0 7.76-4.156 7.76-7.76 0-.118-.002-.236-.008-.353.533-.385.996-.866 1.362-1.413z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/robot-bulls/" target="_blank" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.607.069-.607 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836a9.578 9.578 0 012.5.337c1.91-1.294 2.75-1.025 2.75-1.025.544 1.376.201 2.394.099 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.679.919.679 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.417 20 10c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RB Labs AG. All rights reserved. | Switzerland</p>
             </div>
         </div>
-        <!-- End Popup Mobile Menu -->
-        
-        <!-- Start Breadcrumb Area -->
-        <div class="axil-breadcrumb-area breadcrumb-style-default pt--170 pb--70 theme-gradient">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="inner">
-                            <ul class="axil-breadcrumb liststyle d-flex">
-                                <li class="axil-breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="axil-breadcrumb-item active" aria-current="page">Blog</li>
-                            </ul>
-                            <h1 class="axil-page-title">Blog</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="shape-images">
-                <i class="shape shape-1 icon icon-bcm-01"></i>
-                <i class="shape shape-2 icon icon-bcm-02"></i>
-            </div>
-        </div>
-        <!-- End Breadcrumb Area -->
-        <!-- Start Page Wrapper -->
-        <main class="page-wrappper">
-            
-            <!-- Start Blog Area  -->
-            <div class="axil-blog-area ax-section-gap bg-color-white">
-                <div class="container">
-                    <div class="row row--40">
-                        <div class="col-lg-8 col-md-12 col-12">
-                            
-                            <div class="axil-blog-list wow move-up">
-                                <div class="blog-top">
-                                    <h3 class="title"><a href="wiw3ch/">RB Labs Invited to Japan for Women in Web3 Switzerland (WiW3CH) Event at the Swiss Embassy</a></h3>
-                                    <div class="author">
-                                        <div class="author-thumb">
-                                            <img src="../assets/images/blog/author-01.jpg" alt="RB Labs">
-                                        </div>
-                                        <div class="info">
-                                            <h6>RB Labs</h6>
-                                            <ul class="blog-meta">
-                                                <li>Aug 18, 2024</li>
-                                                <li>4 min to read</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="thumbnail">
-                                    <a href="wiw3ch/">
-                                        <img class="w-100" src="wiw3ch/main_image.jpg" alt="RB Labs Blog ">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <p>In July 2024, RB Labs had the honor of being invited to Japan to participate in the Women in Web3 Switzerland (WiW3CH) event, hosted at the Swiss Embassy. This prestigious event brought together leaders and innovators in the Web3 space to discuss the future of blockchain technology and the role of women in...</p>
-                                    <a class="axil-button btn-large btn-transparent" href="wiw3ch/"><span
-                                            class="button-text">Read More</span><span class="button-icon"></span></a>
-                                </div>
-                            </div>
-                            
-                            <!-- Start Single Blog  -->
-                            <div class="axil-blog-list wow move-up mt--80 mt_md--30 mt_sm--30 mt_lg--50">
-                                <div class="blog-top">
-                                    <h3 class="title"><a href="decentralizing-trading-robots/">RB Labs: Decentralizing Trading Robots on the Internet Computer Protocol</a></h3>
-                                    <div class="author">
-                                        <div class="author-thumb">
-                                            <img src="../assets/images/blog/author-01.jpg" alt="RB Labs">
-                                        </div>
-                                        <div class="info">
-                                            <h6>RB Labs</h6>
-                                            <ul class="blog-meta">
-                                                <li>Aug 18, 2024</li>
-                                                <li>4 min to read</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="thumbnail">
-                                    <a href="decentralizing-trading-robots/">
-                                        <img class="w-100" src="decentralizing-trading-robots/main_image.jpg" alt="RB Labs Blog ">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <p>RB Labs is introducing a new approach to algorithmic trading by decentralizing the development and deployment of trading robots on the Internet Computer Protocol (ICP). This project enables anyone to train AI models and propose them for decentralized hosting. If a trading robot passes the necessary backtesting requirements, it becomes available for use by others, even if they didn’t create it...</p>
-                                    <a class="axil-button btn-large btn-transparent" href="decentralizing-trading-robots/"><span
-                                            class="button-text">Read More</span><span class="button-icon"></span></a>
-                                </div>
-                            </div>
-                            <!-- End Single Blog  -->
-                            
-                            <!-- Start Single Blog  -->
-                            <div class="axil-blog-list wow move-up mt--80 mt_md--30 mt_sm--30 mt_lg--50">
-                                <div class="blog-top">
-                                    <h3 class="title"><a href="rblabs-at-tesla/">RB Labs and Tesla Collaborate for a Landmark Event Showcasing Blockchain Solutions</a></h3>
-                                    <div class="author">
-                                        <div class="author-thumb">
-                                            <img src="../assets/images/blog/author-01.jpg" alt="RB Labs">
-                                        </div>
-                                        <div class="info">
-                                            <h6>RB Labs</h6>
-                                            <ul class="blog-meta">
-                                                <li>Aug 18, 2024</li>
-                                                <li>4 min to read</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="thumbnail">
-                                    <a href="rblabs-at-tesla/">
-                                        <img class="w-100" src="rblabs-at-tesla/main_image.jpg" alt="RB Labs Blog ">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <p>In May 2024, RB Labs held an exclusive event in Geneva, in collaboration with Tesla, to present their latest advancements in blockchain technology. The event, held at a prestigious venue in the heart of the city, was a showcase of RB Labs’ innovative blockchain solutions designed to address some of the most pressing challenges...</p>
-                                    <a class="axil-button btn-large btn-transparent" href="rblabs-at-tesla/"><span
-                                            class="button-text">Read More</span><span class="button-icon"></span></a>
-                                </div>
-                            </div>
-                            <!-- End Single Blog  -->
-                            
-                        </div>
-                        <div class="col-lg-4 col-md-12 col-12 mt_md--40 mt_sm--40">
-                            <!-- Start Blog Sidebar  -->
-                            <div class="axil-blog-sidebar">
+    </footer>
 
-                                <!-- Start Single Widget  -->
-                                <div class="axil-single-widget share mt--80 mt_sm--30 mt_md--30 mt_lg--40">
-                                    <div class="inner">
-                                        <div class="blog-share d-flex flex-wrap">
-                                            <span>Follow:</span>
-                                            <ul class="social-list d-flex">
-                                                <li><a target="_blank" href="https://www.linkedin.com/company/rblabs-ai/"><i class="fab fa-linkedin-in"></i></a></li>
-                                                <li><a target="_blank" href="https://www.twitter.com/robotbulls/"><i class="fab fa-twitter"></i></a></li>
-                                                <li><a target="_blank" href="https://www.github.com/robot-bulls/"><i class="fab fa-github"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Widget  -->
-
-
-                                <!-- Start Single Widget  -->
-                                <div class="axil-single-widget small-post-wrapper mt--80 mt_sm--30 mt_md--30 mt_lg--40">
-                                    <h4 class="title mb--30">Recent</h4>
-                                    <div class="inner">
-                                        <!-- Start Related Post  -->
-                                        <div class="small-post">
-                                            <div class="thumbnail">
-                                                <a href="wiw3ch/">
-                                                    <img src="wiw3ch/main_image.jpg" alt="RB Labs: Decentralizing Trading Robots on the Internet Computer Protocol">
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                                                <h6><a href="wiw3ch/">
-                                                        RB Labs: Decentralizing Trading Robots on the Internet Computer Protocol
-                                                    </a></h6>
-                                                <ul class="blog-meta">
-                                                    <li>Aug 18, 2024</li>
-                                                <li>4 min to read</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- End Related Post  -->
-                                        <!-- Start Related Post  -->
-                                        <div class="small-post">
-                                            <div class="thumbnail">
-                                                <a href="decentralizing-trading-robots/">
-                                                    <img src="decentralizing-trading-robots/main_image.jpg" alt="Decentralizing Trading Robots on the Internet Computer Protocol">
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                                                <h6><a href="decentralizing-trading-robots/">
-                                                        RB Labs: Decentralizing Trading Robots on the Internet Computer Protocol
-                                                    </a></h6>
-                                                <ul class="blog-meta">
-                                                    <li>Aug 18, 2024</li>
-                                                    <li>4 min to read</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- End Related Post  -->
-                                        <!-- Start Related Post  -->
-                                        <div class="small-post">
-                                            <div class="thumbnail">
-                                                <a href="rblabs-at-tesla/">
-                                                    <img src="rblabs-at-tesla/main_image.jpg" alt="RB Labs and Tesla Collaborate for a Landmark Event Showcasing Blockchain Solutions">
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                                                <h6><a href="rblabs-at-tesla/">
-                                                        RB Labs and Tesla Collaborate for a Landmark Event Showcasing Blockchain Solutions
-                                                    </a></h6>
-                                                <ul class="blog-meta">
-                                                    <li>May 30, 2024</li>
-                                                    <li>4 min to read</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- End Related Post  -->
-                                    </div>
-                                </div>
-                                <!-- End Single Widget  -->
-
-                            </div>
-                            <!-- End Blog Sidebar  -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Blog Area  -->
-            
-            <!-- Start Blog Area  -->
-            
-<!--            </div>-->
-            <!-- End Blog Area  -->
-
-            <!-- Start Call To Action -->
-            <div class="axil-call-to-action-area shape-position ax-section-gap theme-gradient">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="axil-call-to-action">
-                                <div class="section-title text-center">
-                                    <span class="sub-title extra07-color wow" data-splitting>Let's work together</span>
-                                    <h2 class="title wow" data-splitting>Are you interested?</h2>
-                                    <a class="axil-button btn-large btn-transparent" href="/appointment/"><span
-                                class="button-text">Get in touch now</span><span class="button-icon"></span></a>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="shape-group">
-                    <div class="shape shape-01">
-                        <i class="icon icon-shape-14"></i>
-                    </div>
-                    <div class="shape shape-02">
-                        <i class="icon icon-shape-09"></i>
-                    </div>
-                    <div class="shape shape-03">
-                        <i class="icon icon-shape-10"></i>
-                    </div>
-                    <div class="shape shape-04">
-                        <i class="icon icon-shape-11"></i>
-                    </div>
-                </div>
-            </div>
-            <!-- End Call To Action -->
-
-        </main>
-        <!-- End Page Wrapper -->
-        <footer class="axil-footer footer-default theme-gradient-2">
-            <div class="bg_image--2">
-                <!-- Start Social Icon -->
-                <div class="ft-social-icon-wrapper ax-section-gapTop">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <ul class="ft-social-share d-flex justify-content-center liststyle flex-wrap">
-                                    <li><a target="_blank" href="https://www.linkedin.com/company/rblabs-ai/"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a target="_blank" href="https://www.twitter.com/robotbulls/"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a target="_blank" href="https://www.github.com/robot-bulls/"><i class="fab fa-github"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Social Icon -->
-                <!-- Start Footer Top Area -->
-                <div class="footer-top ax-section-gap">
-                    <div class="container">
-                        <div class="row">
-                            <!-- Start Single Widget -->
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="footer-widget-item axil-border-right">
-                                    <h2>Get in touch!</h2>
-                                    <p>Sign up for our newsletter to receive the latest marketing <br> updates and fascinating event offers!</p>
-                                        <div class="axil-newsletter">
-                                            <form class="newsletter-form" method="POST" action="/form/subscribe.php">
-                                                <input name="contact-email" type="email" placeholder="Email">
-                                                
-<!--                                                <a class="axil-button btn-transparent" href="#"><span class="button-text">Subscribe</span><span class="button-icon"></span></a>-->
-                                                
-<!--                                                <div class="form-group">-->
-                                                    <button class="axil-button btn-transparent" id="newsletter_button" type="submit" value="Subscribe"><span class="button-text">Subscribe</span><span class="button-icon"></span></button>
-<!--                                                </div>-->
-                                            </form>
-                                        </div>
-                                </div>
-                            </div>
-                            <!-- End Single Widget -->
-
-                            <!-- Start Single Widget -->
-                            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 mt_lg--30 mt_md--30 mt_sm--30">
-                                <div class="footer-widget-item">
-                                    <h6 class="title">Resourses</h6>
-                                    <div class="footer-menu-container">
-                                        <ul class="ft-menu liststyle link-hover">
-                                            <li><a href="/blog/">Blog</a></li>
-                                            <li><a href="/internships/">Career</a></li>
-                                            <li><a href="/services/">Services</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Widget -->
-
-                            <!-- Start Single Widget -->
-                            <div class="col-xl-1 col-lg-6 col-md-6 col-sm-6 col-12 mt_lg--30 mt_md--30 mt_sm--30">
-                                <div class="footer-widget-item widget-support">
-                                    <h6 class="title">Support</h6>
-                                    <div class="footer-menu-container">
-                                        <ul class="ft-menu liststyle link-hover">
-                                            <li><a href="/contact/">Contact</a></li>
-                                            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
-                    </div>
-                </div>
-                <!-- End Footer Top Area -->
-                <!-- Start Copyright -->
-                <div class="copyright copyright-default">
-                    <div class="container">
-                        <div class="row row--0 ptb--20 axil-basic-thine-line">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="inner text-center text-md-left">
-                                    <p><span style="color: #a9a9a9; font-size: 14px;">Copyright © <script>
-                                            document.write(new Date().getFullYear());
-
-                                        </script> RB Labs. All Rights Reserved</span></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="quick-contact">
-                                    <ul class="link-hover d-flex justify-content-center justify-content-md-end liststyle">
-                                        <li><a data-hover="Privacy Policy" href="/privacy-policy/">Privacy Policy</a></li>
-                                        <li><a href="/terms-of-use/">Terms of Use</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Copyright -->
-            </div>
-        </footer>
-        
-    </div>
-    <!-- JS
-============================================ -->
-
-    <!-- Modernizer JS -->
-    <script src="../assets/js/vendor/modernizr.min.js"></script>
-    <!-- jQuery JS -->
-    <script src="../assets/js/vendor/jquery.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="../assets/js/vendor/bootstrap.min.js"></script>
-    <script src="../assets/js/waypoints.min.js"></script>
-    <script src="../assets/js/wow.js"></script>
-    <script src="../assets/js/counterup.js"></script>
-    <script src="../assets/js/imagesloaded.js"></script>
-    <script src="../assets/js/isotope.js"></script>
-    <script src="../assets/js/tilt.js"></script>
-    <script src="../assets/js/anime.js"></script>
-    <script src="../assets/js/tweenmax.js"></script>
-    <script src="../assets/js/slipting.js"></script>
-    <script src="../assets/js/scrollmagic.js"></script>
-    <script src="../assets/js/addindicators.js"></script>
-    <script src="../assets/js/slick.js"></script>
-    <script src="../assets/js/youtube.js"></script>
-    <script src="../assets/js/countdown.js"></script>
-    <script src="../assets/js/scrollup.js"></script>
-    <script src="../assets/js/stickysidebar.js"></script>
-    <script src="../assets/js/js.cookie.js"></script>
-    <script src="../assets/js/jquery.style.switcher.js"></script>
-    <script src="../assets/js/contactform.js"></script>
-    <!-- Plugins JS -->
-    <script src="../assets/js/plugins/plugins.min.js"></script>
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
-
-    <script>
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (localStorage.getItem("newsletter")) {
-                document.getElementsByClassName('form-messege').outerHTML = "<h3 style='text-align:center; font-size:30px;padding: 30px 20px;'>You have already submitted the form.</h3>";
-                alert('You have already submitted the form.');
-                return;
-            }
-            
-            var email = document.querySelector('input[name="contact-email"]').value;
-            var date = new Date();
-
-            fetch('https://script.google.com/macros/s/AKfycby4ep7Rj0ourMQZgCeHNCTwBN6_yDvpvAVUO7EyBxkaez2c0F_XUW1MtplTVawZAxSK/exec', {
-                method: 'POST',
-                mode: 'no-cors',
-                cache: 'no-cache',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({inputname1: email, inputname2: date, inputname3: "", inputname4: "", inputname5: ""})
-            }).then(response => {
-                console.log(response)
-                    localStorage.setItem("newsletter", true);
-                    document.getElementById("newsletter_button").disabled = true;
-                    alert("Thank you for subscribing to our Newsletter!")
-					document.getElementsByClassName('form-messege').outerHTML = "<h3 style='text-align:center; font-size:30px;padding: 30px 20px;'>Thank you for your request! If your request is relevant we will get back to you within 1-2 business days!</h3>";
-            });
-        });
-    </script>
-    
+    <script src="../script.js"></script>
 </body>
-
 </html>
