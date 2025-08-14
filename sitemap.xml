@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://rblabs.ai/</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Career Page -->
+  <url>
+    <loc>https://rblabs.ai/career/</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog Main Page -->
+  <url>
+    <loc>https://rblabs.ai/blog/</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://rblabs.ai/privacy-policy/</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Individual Blog Articles -->
+  <url>
+    <loc>https://rblabs.ai/blog/the-future-of-ai-in-finance/</loc>
+    <lastmod>2024-12-15</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rblabs.ai/blog/blockchain-meets-artificial-intelligence/</loc>
+    <lastmod>2024-08-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rblabs.ai/blog/robert-the-revolutionary-ai-banker/</loc>
+    <lastmod>2024-05-10</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rblabs.ai/blog/decentralized-ai-the-next-frontier/</loc>
+    <lastmod>2025-07-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rblabs.ai/blog/sustainable-ai-development/</loc>
+    <lastmod>2025-07-25</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
