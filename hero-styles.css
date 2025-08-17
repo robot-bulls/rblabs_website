@@ -18,7 +18,7 @@
     width: 60%;
     height: 100%;
     z-index: -1;
-    opacity: 0.2;
+    opacity: 0.15;
     object-fit: cover;
     object-position: right center;
     filter: brightness(1.2);
@@ -59,7 +59,7 @@
     .hero-sphere {
         width: 70%;
         right: -15%;
-        opacity: 0.2;
+        opacity: 0.12;
     }
     
     .hero-background::before {
