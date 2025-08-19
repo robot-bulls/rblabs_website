@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="RB Labs News - Latest insights and developments in AI, blockchain, and financial technology">
+    <meta name="keywords" content="AI news, machine learning articles, blockchain news, fintech insights, RB Labs news">
+    <meta property="og:title" content="News - RB Labs">
+    <meta property="og:description" content="Stay updated with the latest developments in AI and financial technology">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rblabs.ai/blog/">
+    <title>News - RB Labs</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon.ico">
+    
+    <!-- Apple Web App Configuration -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="RB Labs News">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/logo/logo.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/logo/logo.png">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../hero-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <img src="../images/logo/logo.png" alt="RB Labs Logo" height="50">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about/" class="nav-link">About</a>
+                    <a href="/career/" class="nav-link">Career</a>
+                    <a href="/news/" class="nav-link active">News</a>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- News Header -->
+    <style>
+        .blog-header {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+            padding: 140px 0 60px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .blog-header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .blog-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        .blog-header-subtitle {
+            font-size: 20px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+    </style>
+    <section class="blog-header">
+        <div class="container">
+            <div class="blog-header-content">
+                <h1>Insights & Research</h1>
+                <p class="blog-header-subtitle">
+                    Explore the latest developments in AI, blockchain, and financial technology from our expert team and thought leaders.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <style>
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        .featured-post {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .featured-post-image {
+            position: relative;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+        .featured-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .featured-post:hover .featured-post-image img {
+            transform: scale(1.05);
+        }
+        .featured-label {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: #06438c;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .featured-post-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        .post-meta-divider {
+            width: 4px;
+            height: 4px;
+            background: #d1d5db;
+            border-radius: 50%;
+        }
+        .featured-post h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .featured-post p {
+            font-size: 18px;
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #06438c;
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+        .read-more-btn:hover {
+            gap: 12px;
+        }
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .post-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .post-card-image {
+            position: relative;
+            padding-top: 60%;
+            background: #f3f4f6;
+            overflow: hidden;
+        }
+        .post-card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .post-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: white;
+            color: #06438c;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .post-card-content {
+            padding: 25px;
+        }
+        .post-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .post-card p {
+            font-size: 15px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .post-card .post-meta {
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 1024px) {
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            .featured-post-image {
+                height: 300px;
+            }
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .featured-post-content {
+                padding: 30px;
+            }
+            .featured-post h2 {
+                font-size: 24px;
+            }
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            .blog-header h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+    <section>
+        <div class="blog-container">
+            <!-- Featured Post -->
+            <article class="featured-post">
+                <div class="featured-post-image">
+                    <img src="https://robert.finance/assets/robert_the_robot.jpeg" alt="Robert in Entrepreneur Magazine">
+                    <span class="featured-label">FEATURED</span>
+                </div>
+                <div class="featured-post-content">
+                    <div class="post-meta">
+                        <span>July 2025</span>
+                        <span class="post-meta-divider"></span>
+                        <span>Entrepreneur Magazine</span>
+                        <span class="post-meta-divider"></span>
+                        <span>3 min read</span>
+                    </div>
+                    <h2>Meet Robert the Robot - Entrepreneur Magazine</h2>
+                    <p>The revolutionary AI financial advisor transforming wealth management across the globe. Robert combines cutting-edge artificial intelligence with Swiss banking expertise to deliver personalized investment strategies.</p>
+                    <a href="https://www.entrepreneur.com/en-ae/technology/meet-robert-the-robot-by-rb-labs-the-man-who-stole/494517" target="_blank" class="read-more-btn">
+                        Read Full Article
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Posts Grid -->
+            <div class="posts-grid">
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="https://robert.finance/assets/robert_swiss_tv.jpeg" alt="Robert on TV">
+                        <span class="post-category">TELEVISION</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>July 2025</span>
+                            <span class="post-meta-divider"></span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3>Robert on Parlons Économie - Carac TV</h3>
+                        <p>Robert discusses the future of AI in finance on Swiss television, showcasing revolutionary financial advisory capabilities.</p>
+                        <a href="https://carac.tv/replay/parlons-economie/3021" target="_blank" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="https://robert.finance/assets/robert%20in%20the%20journal.jpeg" alt="Robert at Palexpo">
+                        <span class="post-category">PRESS</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>July 2025</span>
+                            <span class="post-meta-divider"></span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3>Robots humanoïdes et intelligence artificielle</h3>
+                        <p>Featured at Palexpo - Le Dauphiné Libéré covers Robert as the future of financial advisory technology.</p>
+                        <a href="https://www.ledauphine.com/science-et-technologie/2025/07/08/robots-humanoides-et-ia-jusqu-a-vendredi-a-geneve-au-salon-ai-for-good" target="_blank" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="decentralizing-trading-robots/main_image.jpg" alt="Decentralizing Trading Robots">
+                        <span class="post-category">TECHNOLOGY</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>December 20, 2024</span>
+                            <span class="post-meta-divider"></span>
+                            <span>8 min read</span>
+                        </div>
+                        <h3>Decentralizing Trading Robots</h3>
+                        <p>RB Labs is introducing a new approach to algorithmic trading by decentralizing the development and deployment of trading robots on ICP.</p>
+                        <a href="/blog/decentralizing-trading-robots/" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="../images/featured/featured-image-01.jpg" alt="Decentralized AI">
+                        <span class="post-category">RESEARCH</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>December 1, 2024</span>
+                            <span class="post-meta-divider"></span>
+                            <span>7 min read</span>
+                        </div>
+                        <h3>The Future of Decentralized AI in Finance</h3>
+                        <p>Blockchain technology is revolutionizing financial AI deployment with transparency and security.</p>
+                        <a href="/blog/decentralized-ai-finance/" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="wiw3ch-japan/main_image.jpg" alt="WiW3CH Event">
+                        <span class="post-category">EVENTS</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>August 18, 2024</span>
+                            <span class="post-meta-divider"></span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3>Women in Web3 Switzerland Event at Swiss Embassy</h3>
+                        <p>RB Labs participates in the prestigious WiW3CH event in Japan, supporting women in technology.</p>
+                        <a href="/blog/wiw3ch-japan/" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-card-image">
+                        <img src="rblabs-tesla-event/main_image.jpg" alt="Tesla Event">
+                        <span class="post-category">PARTNERSHIP</span>
+                    </div>
+                    <div class="post-card-content">
+                        <div class="post-meta">
+                            <span>May 30, 2024</span>
+                            <span class="post-meta-divider"></span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3>RB Labs and Tesla Collaborate for Landmark Event</h3>
+                        <p>Exclusive Geneva event showcases RB Labs' innovative blockchain solutions in collaboration with Tesla.</p>
+                        <a href="/blog/rblabs-tesla-event/" class="read-more-btn">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">RB Labs</h4>
+                    <p class="footer-description">
+                        Leading the transformation of financial services through advanced artificial intelligence and machine learning technologies.
+                    </p>
+                    <p class="footer-description" style="margin-top: 1rem;">
+                        Headquarters: Geneva, Switzerland
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/career/">Career</a></li>
+                        <li><a href="/news/">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="/contact/">Contact</a></li>
+                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/company/rblabs-ai/" target="_blank" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/robotbulls/" target="_blank" aria-label="Twitter/X">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/robot-bulls/" target="_blank" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RB Labs AG. All rights reserved. | Switzerland</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
