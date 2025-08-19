@@ -223,6 +223,7 @@
             display: flex;
             gap: 24px;
             margin-bottom: 16px;
+            flex-wrap: wrap;
         }
         
         .job-meta-item {
@@ -514,6 +515,28 @@
             
             .job-header {
                 flex-direction: column;
+                gap: 12px;
+            }
+            
+            .job-title {
+                font-size: 18px;
+            }
+            
+            .job-meta {
+                gap: 16px;
+            }
+            
+            .job-meta-item {
+                font-size: 13px;
+            }
+            
+            .job-card {
+                padding: 24px 20px;
+            }
+            
+            .skill-tag {
+                font-size: 12px;
+                padding: 4px 10px;
             }
             
             .modal-content {
@@ -522,9 +545,32 @@
                 max-height: 100%;
                 border-radius: 0;
             }
+            
+            body {
+                overflow-x: hidden;
+            }
+            
+            .container {
+                padding: 0 15px;
+                overflow-x: hidden;
+            }
         }
         
         @media (max-width: 480px) {
+            .career-title {
+                font-size: 32px;
+                padding: 0 10px;
+            }
+            
+            .career-subtitle {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+            
+            .filter-section {
+                padding: 16px 0;
+            }
+            
             .filter-tabs {
                 gap: 4px;
                 padding: 6px;
@@ -542,6 +588,52 @@
             
             .career-title {
                 font-size: 28px;
+            }
+            
+            .job-description {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            
+            .apply-section {
+                padding: 60px 20px;
+            }
+            
+            .apply-title {
+                font-size: 28px;
+            }
+            
+            .apply-description {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+            
+            .modal-body {
+                padding: 24px 20px;
+            }
+            
+            .modal-header {
+                padding: 24px 20px;
+            }
+            
+            .modal-job-title {
+                font-size: 22px;
+                word-break: break-word;
+            }
+            
+            /* Prevent horizontal scroll */
+            html, body {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+            
+            .job-skills {
+                gap: 6px;
+            }
+            
+            .job-department {
+                font-size: 11px;
+                padding: 3px 8px;
             }
         }
     </style>
