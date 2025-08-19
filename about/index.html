@@ -126,6 +126,7 @@
             padding: 140px 0 80px;
             border-bottom: 1px solid #e5e7eb;
             text-align: center;
+            overflow: hidden;
         }
         
         .about-hero-content {
@@ -146,6 +147,7 @@
             font-weight: 600;
             letter-spacing: 0.1em;
             margin-bottom: 24px;
+            text-transform: uppercase;
         }
         
         .about-title {
@@ -456,23 +458,35 @@
         
         @media (max-width: 968px) {
             .about-title { 
-                font-size: 40px; 
+                font-size: 42px; 
                 padding: 0 20px;
+                line-height: 1.2;
             }
             .about-subtitle {
                 padding: 0 20px;
+                font-size: 18px;
+            }
+            .about-badge {
+                font-size: 12px;
+                padding: 6px 16px;
             }
             .mission-grid { 
                 grid-template-columns: 1fr; 
-                gap: 40px; 
+                gap: 30px; 
+            }
+            .mission-content h2 {
+                font-size: 2rem;
             }
             .values-grid { 
-                grid-template-columns: 1fr; 
-                gap: 24px;
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 20px;
+            }
+            .value-card {
+                padding: 30px;
             }
             .team-grid { 
                 grid-template-columns: repeat(2, 1fr); 
-                gap: 20px;
+                gap: 24px;
             }
             .timeline::before { 
                 left: 30px; 
@@ -490,16 +504,87 @@
                 gap: 30px;
             }
             .about-hero {
-                padding: 120px 0 60px;
+                padding: 110px 0 50px;
             }
             .mission-section,
             .values-section,
-            .team-section {
-                padding: 60px 0;
+            .team-section,
+            .timeline-section {
+                padding: 70px 0;
+            }
+            .cta-section {
+                padding: 80px 0;
             }
         }
         
         @media (max-width: 768px) {
+            /* Hero Mobile */
+            .about-hero {
+                padding: 100px 0 50px;
+            }
+            
+            .about-title {
+                font-size: 36px;
+                padding: 0 15px;
+            }
+            
+            .about-subtitle {
+                font-size: 18px;
+                padding: 0 15px;
+            }
+            
+            /* Mission Mobile */
+            .mission-content h2 {
+                font-size: 32px;
+            }
+            
+            .mission-content p {
+                font-size: 16px;
+            }
+            
+            /* Values Mobile */
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .value-card {
+                padding: 32px 24px;
+            }
+            
+            /* Team Mobile */
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            /* Stats Mobile */
+            .stats-section {
+                padding: 60px 0;
+            }
+            
+            .stat-item h3 {
+                font-size: 2.5rem;
+            }
+            
+            /* Timeline Mobile */
+            .timeline-section {
+                padding: 60px 0;
+            }
+            
+            /* CTA Mobile */
+            .cta-section {
+                padding: 70px 0;
+            }
+            
+            .cta-content h2 {
+                font-size: 32px;
+            }
+            
+            .cta-content p {
+                font-size: 18px;
+            }
+            
             /* Footer Mobile */
             .footer-content {
                 grid-template-columns: 1fr;
@@ -703,6 +788,23 @@
             html, body {
                 max-width: 100%;
                 overflow-x: hidden;
+            }
+            
+            /* Consistent button styles */
+            .btn-primary,
+            .btn-secondary {
+                font-size: 15px;
+                padding: 12px 24px;
+                border-radius: 8px;
+            }
+            
+            /* Consistent section spacing */
+            section {
+                padding: 50px 0;
+            }
+            
+            .about-hero {
+                padding: 90px 0 40px;
             }
             
             /* Footer adjustments for small screens */
