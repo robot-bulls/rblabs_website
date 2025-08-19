@@ -455,14 +455,48 @@
         }
         
         @media (max-width: 968px) {
-            .about-title { font-size: 40px; }
-            .mission-grid { grid-template-columns: 1fr; gap: 40px; }
-            .values-grid { grid-template-columns: 1fr; }
-            .team-grid { grid-template-columns: repeat(2, 1fr); }
-            .timeline::before { left: 30px; }
-            .timeline-content { width: calc(100% - 80px); margin-left: 80px !important; }
-            .timeline-dot { left: 30px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-title { 
+                font-size: 40px; 
+                padding: 0 20px;
+            }
+            .about-subtitle {
+                padding: 0 20px;
+            }
+            .mission-grid { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+            }
+            .values-grid { 
+                grid-template-columns: 1fr; 
+                gap: 24px;
+            }
+            .team-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 20px;
+            }
+            .timeline::before { 
+                left: 30px; 
+            }
+            .timeline-content { 
+                width: calc(100% - 80px); 
+                margin-left: 80px !important; 
+                padding: 24px;
+            }
+            .timeline-dot { 
+                left: 30px; 
+            }
+            .stats-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 30px;
+            }
+            .about-hero {
+                padding: 120px 0 60px;
+            }
+            .mission-section,
+            .values-section,
+            .team-section {
+                padding: 60px 0;
+            }
         }
         
         @media (max-width: 768px) {
@@ -491,10 +525,185 @@
         }
         
         @media (max-width: 576px) {
-            .about-title { font-size: 32px; }
-            .team-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .cta-buttons { flex-direction: column; align-items: center; }
+            .about-title { 
+                font-size: 32px; 
+                line-height: 1.2;
+                margin-bottom: 16px;
+            }
+            .about-subtitle {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .about-hero {
+                padding: 100px 0 40px;
+            }
+            .about-badge {
+                font-size: 12px;
+                padding: 6px 16px;
+                margin-bottom: 16px;
+            }
+            
+            /* Mission Section Mobile */
+            .mission-section {
+                padding: 40px 0;
+            }
+            .mission-content h2 {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+            .mission-content p {
+                font-size: 15px;
+                line-height: 1.6;
+                margin-bottom: 16px;
+            }
+            .mission-image {
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+            
+            /* Values Section Mobile */
+            .values-section {
+                padding: 40px 0;
+            }
+            .value-card {
+                padding: 30px 20px;
+                margin-bottom: 16px;
+            }
+            .value-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 16px;
+            }
+            .value-card h3 {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+            .value-card p {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            
+            /* Team Section Mobile */
+            .team-section {
+                padding: 40px 0;
+            }
+            .team-grid { 
+                grid-template-columns: 1fr; 
+                gap: 24px;
+            }
+            .team-member h4 {
+                font-size: 18px;
+            }
+            .team-member .role {
+                font-size: 14px;
+            }
+            .team-member .bio {
+                font-size: 13px;
+                padding: 0 10px;
+            }
+            
+            /* Timeline Mobile */
+            .timeline-section {
+                padding: 40px 0;
+            }
+            .timeline {
+                margin-top: 40px;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-dot {
+                left: 20px;
+                width: 16px;
+                height: 16px;
+                border-width: 3px;
+            }
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+                padding: 20px;
+            }
+            .timeline-content h4 {
+                font-size: 18px;
+            }
+            .timeline-content p {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            .timeline-date {
+                font-size: 12px;
+            }
+            
+            /* Stats Section Mobile */
+            .stats-section {
+                padding: 50px 0;
+            }
+            .stats-grid { 
+                grid-template-columns: 1fr; 
+                gap: 24px;
+            }
+            .stat-item h3 {
+                font-size: 2.5rem;
+                margin-bottom: 6px;
+            }
+            .stat-item p {
+                font-size: 16px;
+            }
+            
+            /* CTA Section Mobile */
+            .cta-section {
+                padding: 60px 0;
+            }
+            .cta-content h2 {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+            .cta-content p {
+                font-size: 16px;
+                margin-bottom: 24px;
+                padding: 0 20px;
+            }
+            .cta-buttons { 
+                flex-direction: column; 
+                align-items: stretch;
+                padding: 0 20px;
+                gap: 12px;
+            }
+            .btn-large {
+                width: 100%;
+                padding: 14px 24px;
+                font-size: 16px;
+            }
+            
+            /* Section Headers Mobile */
+            .section-header {
+                padding: 0 20px;
+                margin-bottom: 30px;
+            }
+            .section-label {
+                font-size: 11px;
+                margin-bottom: 8px;
+            }
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+            .section-subtitle {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            
+            /* Container padding */
+            .container {
+                padding: 0 15px;
+            }
+            
+            /* Prevent horizontal scroll */
+            html, body {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
             
             /* Footer adjustments for small screens */
             .footer {
