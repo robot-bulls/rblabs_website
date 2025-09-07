@@ -3293,6 +3293,16 @@ EOF < /dev/null
     box-shadow: var(--shadow-lg);
 }
 
+.innovation-image video,
+.innovation-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+}
+
 .innovation-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

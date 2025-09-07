@@ -327,5 +327,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     */
 
+    // Video control - add delay after videos end
+    const videosWithDelay = document.querySelectorAll('video.hero-sphere, video.innovation-video');
+    videosWithDelay.forEach(video => {
+        video.addEventListener('ended', function() {
+            setTimeout(() => {
+                video.play();
+            }, 3000); // 3 second delay before replaying
+        });
+    });
+
     console.log('RB Labs website initialized successfully');
 });
