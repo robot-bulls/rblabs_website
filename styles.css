@@ -3286,21 +3286,21 @@ EOF < /dev/null
     margin-bottom: 30px;
 }
 
-.innovation-image img {
+.innovation-image {
+    position: relative;
     width: 100%;
-    height: auto;
+    aspect-ratio: 1/1;
+    overflow: hidden;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg);
 }
 
-.innovation-image video,
-.innovation-video {
-    display: block;
+.innovation-image img,
+.innovation-image video {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    height: 100%;
     object-fit: cover;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-lg);
+    display: block;
 }
 
 .innovation-grid {
