@@ -36,37 +36,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Navbar scroll effect with transparent home page navbar
+    // Navbar scroll effect - ONLY for home page
     const navbar = document.getElementById('navbar');
     let lastScroll = 0;
 
-    // Check if we're on the home page (index.html or root path)
-    const isHomePage = window.location.pathname === '/' ||
-                       window.location.pathname.endsWith('index.html') ||
-                       window.location.pathname.endsWith('/');
+    // Check if we're on the home page using data attribute
+    const isHomePage = document.body.getAttribute('data-page') === 'home';
 
-    // Add transparent class if on home page and at top
+    // Only apply transparent navbar logic on home page
     if (isHomePage) {
-        navbar.classList.add('navbar-transparent');
-    }
-
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-            if (isHomePage) {
-                navbar.classList.remove('navbar-transparent');
-            }
-        } else {
-            navbar.classList.remove('scrolled');
-            if (isHomePage) {
-                navbar.classList.add('navbar-transparent');
-            }
+        // Start transparent if at top
+        if (window.pageYOffset <= 50) {
+            navbar.classList.add('navbar-transparent');
         }
 
-        lastScroll = currentScroll;
-    });
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+                navbar.classList.remove('navbar-transparent');
+            } else {
+                navbar.classList.remove('scrolled');
+                navbar.classList.add('navbar-transparent');
+            }
+
+            lastScroll = currentScroll;
+        });
+    } else {
+        // For non-home pages, just handle the scrolled state for shadow
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+    }
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

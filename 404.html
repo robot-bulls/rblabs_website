@@ -18,6 +18,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
+        /* Force normal navbar styling on error pages */
+        body[data-page="error"] .navbar {
+            background: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: saturate(180%) blur(20px) !important;
+            -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        }
+
+        body[data-page="error"] .navbar .logo {
+            color: #06438c !important;
+        }
+
+        body[data-page="error"] .navbar .nav-link {
+            color: #1d1d1f !important;
+        }
+
+        body[data-page="error"] .navbar .nav-link:hover {
+            color: #06438c !important;
+        }
+
+        body[data-page="error"] .navbar .nav-link::after {
+            background: #06438c !important;
+        }
+
+        body[data-page="error"] .navbar .nav-toggle span {
+            background: #1d1d1f !important;
+        }
+
+        body[data-page="error"] .navbar .logo img {
+            filter: none !important;
+        }
+
         .error-page {
             min-height: 100vh;
             display: flex;
@@ -152,7 +184,7 @@
         }
     </style>
 </head>
-<body>
+<body data-page="error">
     <!-- Navigation -->
     <nav class="navbar" id="navbar" style="position: fixed; top: 0; width: 100%; z-index: 1000;">
         <div class="container">
