@@ -309,7 +309,7 @@
 }
 
 .btn-minimal:hover {
-    background: linear-gradient(135deg, #043366 0%, #06438c 100%);
+    background: white;
     transform: translateY(-1px);
     box-shadow: 0 10px 25px rgba(6, 67, 140, 0.25);
 }
