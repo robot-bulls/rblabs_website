@@ -246,6 +246,7 @@
     text-transform: uppercase;
     color: white;
     margin-bottom: 2.5rem;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .hero-title {
@@ -254,6 +255,7 @@
     line-height: 1.1;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
+    /*text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 4px 20px rgba(0, 0, 0, 0.15);*/
 }
 
 .hero-welcome {
@@ -262,6 +264,7 @@
     font-size: 0.85em;
     color: white;
     margin-bottom: 0.5rem;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.25), 0 3px 15px rgba(0, 0, 0, 0.12);
 }
 
 .hero-brand {
@@ -279,6 +282,7 @@
     max-width: 700px;
     margin: 0 auto 3rem;
     font-weight: 400;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.25), 0 3px 15px rgba(0, 0, 0, 0.12);
 }
 
 /* Minimal CTAs */

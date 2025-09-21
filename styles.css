@@ -56,6 +56,34 @@ body {
     border-bottom-color: transparent;
 }
 
+/* Transparent navbar for home page */
+.navbar.navbar-transparent {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar.navbar-transparent .logo {
+    color: white;
+}
+
+.navbar.navbar-transparent .logo img {
+    filter: brightness(0) invert(1);
+}
+
+.navbar.navbar-transparent .nav-link {
+    color: white;
+}
+
+.navbar.navbar-transparent .nav-link:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar.navbar-transparent .nav-link::after {
+    background: white;
+}
+
 .nav-wrapper {
     display: flex;
     justify-content: space-between;
@@ -174,6 +202,15 @@ body {
     transform: translateX(-50%) rotate(-45deg);
     bottom: 50%;
     margin-bottom: -0.75px;
+}
+
+/* White hamburger menu for transparent navbar */
+.navbar.navbar-transparent .nav-toggle span {
+    background: white;
+}
+
+.navbar.navbar-transparent .nav-toggle.active span {
+    background: white;
 }
 
 /* Hero Wrapper */

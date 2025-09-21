@@ -36,19 +36,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Navbar scroll effect
+    // Navbar scroll effect with transparent home page navbar
     const navbar = document.getElementById('navbar');
     let lastScroll = 0;
 
+    // Check if we're on the home page (index.html or root path)
+    const isHomePage = window.location.pathname === '/' ||
+                       window.location.pathname.endsWith('index.html') ||
+                       window.location.pathname.endsWith('/');
+
+    // Add transparent class if on home page and at top
+    if (isHomePage) {
+        navbar.classList.add('navbar-transparent');
+    }
+
     window.addEventListener('scroll', function() {
         const currentScroll = window.pageYOffset;
-        
+
         if (currentScroll > 50) {
             navbar.classList.add('scrolled');
+            if (isHomePage) {
+                navbar.classList.remove('navbar-transparent');
+            }
         } else {
             navbar.classList.remove('scrolled');
+            if (isHomePage) {
+                navbar.classList.add('navbar-transparent');
+            }
         }
-        
+
         lastScroll = currentScroll;
     });
 
