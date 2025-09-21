@@ -246,7 +246,7 @@
     text-transform: uppercase;
     color: white;
     margin-bottom: 2.5rem;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.7);
 }
 
 .hero-title {
@@ -264,15 +264,19 @@
     font-size: 0.85em;
     color: white;
     margin-bottom: 0.5rem;
-    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.25), 0 3px 15px rgba(0, 0, 0, 0.12);
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.7);
 }
 
 .hero-brand {
     display: block;
+    /*
     background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    */
+    color: white;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.7);
 }
 
 .hero-description {
@@ -282,7 +286,7 @@
     max-width: 700px;
     margin: 0 auto 3rem;
     font-weight: 400;
-    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.25), 0 3px 15px rgba(0, 0, 0, 0.12);
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.7);
 }
 
 /* Minimal CTAs */
@@ -294,8 +298,9 @@
 }
 
 .btn-minimal {
-    background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
-    color: white;
+    /*background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);*/
+    background: white;
+    color: #06438c;
     border: none;
     padding: 14px 32px;
     font-weight: 500;
