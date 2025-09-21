@@ -32,8 +32,8 @@
     <link rel="apple-touch-icon" sizes="60x60" href="/images/logo/logo.png">
     <link rel="apple-touch-icon" sizes="57x57" href="/images/logo/logo.png">
     
+    <link rel="preload" as="video" href="images/featured/rblabs.jpg" fetchpriority="high">
     <link rel="preload" as="video" href="images/featured/rblabs.mp4">
-    <link rel="preload" as="video" href="images/featured/rblabs.jpg">
     
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="hero-styles.css">
@@ -119,10 +119,21 @@
         <section class="hero" id="home">
             <div class="hero-background">
                 <!-- Tech background video -->
-                <video autoplay muted playsinline loop class="hero-sphere">
-                    <source src="images/featured/rblabs.mp4" type="video/mp4">
-                    <img src="images/featured/rblabs.jpg" alt="RB Labs AI Technology - Financial Intelligence Solutions" loading="eager">
+                <!-- Hero -->
+                <video
+                  class="hero-sphere"
+                  autoplay
+                  muted
+                  playsinline
+                  loop
+                  preload="metadata"
+                  poster="images/featured/rblabs.jpg"
+                  width="1920" height="1080"
+                >
+                  <!-- Prefer HEVC for Safari (smaller), then H.264 fallback, then WebM for Chromium -->
+                  <source src="images/featured/rblabs.mp4" type="video/mp4">
                 </video>
+
             </div>
             <div class="container">
                 <div class="hero-content">
