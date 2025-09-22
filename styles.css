@@ -209,8 +209,9 @@ body {
     background: white;
 }
 
+/* Black hamburger menu when active (menu opened) on home page */
 .navbar.navbar-transparent .nav-toggle.active span {
-    background: white;
+    background: #1d1d1f;
 }
 
 /* Hero Wrapper */
