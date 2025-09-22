@@ -2751,6 +2751,22 @@ body {
         visibility: hidden;
         transform: translateY(-20px);
     }
+
+    /* Force mobile menu links to be black regardless of navbar state */
+    .navbar-transparent .nav-menu .nav-link,
+    .nav-menu .nav-link {
+        color: #1d1d1f !important;
+    }
+
+    .navbar-transparent .nav-menu .nav-link:hover,
+    .nav-menu .nav-link:hover {
+        color: var(--primary-color) !important;
+    }
+
+    .navbar-transparent .nav-menu .nav-link::after,
+    .nav-menu .nav-link::after {
+        background: var(--primary-color) !important;
+    }
     
     /* Backdrop blur effect */
     .nav-menu::before {
