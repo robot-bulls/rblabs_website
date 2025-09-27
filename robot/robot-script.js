@@ -546,29 +546,27 @@ ${vision || 'No additional information provided'}`;
 
     // Drag functionality for PiP
     let isDragging = false;
-    let currentX;
-    let currentY;
-    let initialX;
-    let initialY;
-    let xOffset = 0;
-    let yOffset = 0;
+    let startX, startY;
+    let pipX, pipY;
 
     if (pipContainer) {
         // Only enable drag on tablet/mobile (< 1024px)
         function checkDragEnable() {
             if (window.innerWidth <= 1024) {
                 pipContainer.style.cursor = 'move';
-                pipContainer.addEventListener('mousedown', dragStart);
-                pipContainer.addEventListener('touchstart', dragStart);
+                pipContainer.addEventListener('mousedown', dragStart, { passive: false });
+                pipContainer.addEventListener('touchstart', dragStart, { passive: false });
             } else {
                 // Reset drag state for desktop
                 pipContainer.style.cursor = 'default';
                 pipContainer.removeEventListener('mousedown', dragStart);
                 pipContainer.removeEventListener('touchstart', dragStart);
-                // Reset any drag transforms
+                // Reset position for desktop
                 isDragging = false;
-                xOffset = 0;
-                yOffset = 0;
+                pipContainer.style.left = '';
+                pipContainer.style.top = '';
+                pipContainer.style.right = '';
+                pipContainer.style.bottom = '';
                 pipContainer.style.transform = '';
             }
         }
@@ -579,51 +577,75 @@ ${vision || 'No additional information provided'}`;
                 return;
             }
 
+            // Prevent default touch behavior
             if (e.type === 'touchstart') {
-                initialX = e.touches[0].clientX - xOffset;
-                initialY = e.touches[0].clientY - yOffset;
-            } else {
-                initialX = e.clientX - xOffset;
-                initialY = e.clientY - yOffset;
+                e.preventDefault();
             }
+
+            const rect = pipContainer.getBoundingClientRect();
+
+            // Get starting position
+            if (e.type === 'touchstart') {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            } else {
+                startX = e.clientX;
+                startY = e.clientY;
+            }
+
+            // Store current position
+            pipX = rect.left;
+            pipY = rect.top;
 
             if (e.target === pipContainer || e.target.closest('.product-visual')) {
                 isDragging = true;
+                // Switch to absolute positioning for dragging - use setProperty to override !important
+                pipContainer.style.setProperty('right', 'auto', 'important');
+                pipContainer.style.setProperty('bottom', 'auto', 'important');
+                pipContainer.style.setProperty('left', pipX + 'px', 'important');
+                pipContainer.style.setProperty('top', pipY + 'px', 'important');
             }
         }
 
         function dragEnd(e) {
-            initialX = currentX;
-            initialY = currentY;
             isDragging = false;
         }
 
         function drag(e) {
-            if (isDragging) {
-                e.preventDefault();
+            if (!isDragging) return;
 
-                if (e.type === 'touchmove') {
-                    currentX = e.touches[0].clientX - initialX;
-                    currentY = e.touches[0].clientY - initialY;
-                } else {
-                    currentX = e.clientX - initialX;
-                    currentY = e.clientY - initialY;
-                }
+            e.preventDefault();
 
-                xOffset = currentX;
-                yOffset = currentY;
+            let clientX, clientY;
 
-                // Keep PiP within viewport bounds
-                const rect = pipContainer.getBoundingClientRect();
-                const maxX = window.innerWidth - rect.width - 20;
-                const maxY = window.innerHeight - rect.height - 20;
-
-                // Clamp position
-                currentX = Math.max(-rect.width + 50, Math.min(currentX, maxX));
-                currentY = Math.max(20, Math.min(currentY, maxY));
-
-                pipContainer.style.transform = `translate(${currentX}px, ${currentY}px)`;
+            if (e.type === 'touchmove') {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
             }
+
+            // Calculate new position
+            const deltaX = clientX - startX;
+            const deltaY = clientY - startY;
+
+            let newX = pipX + deltaX;
+            let newY = pipY + deltaY;
+
+            // Get PiP dimensions
+            const rect = pipContainer.getBoundingClientRect();
+
+            // Keep within viewport bounds
+            const maxX = window.innerWidth - rect.width;
+            const maxY = window.innerHeight - rect.height;
+
+            newX = Math.max(0, Math.min(newX, maxX));
+            newY = Math.max(0, Math.min(newY, maxY));
+
+            // Apply new position - use setProperty to ensure it overrides CSS
+            pipContainer.style.setProperty('left', newX + 'px', 'important');
+            pipContainer.style.setProperty('top', newY + 'px', 'important');
         }
 
         // Add event listeners
