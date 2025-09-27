@@ -519,14 +519,12 @@ ${vision || 'No additional information provided'}`;
     // Throttled scroll handler for video
     let scrollTimeout;
     window.addEventListener('scroll', function() {
-        // Only do video scrubbing on desktop or tablet
-        if (!isMobileDevice || window.innerWidth > 768) {
-            if (!scrollTimeout) {
-                scrollTimeout = setTimeout(function() {
-                    scrollTimeout = null;
-                    updateVideoProgress();
-                }, 30); // Increased timeout for better performance
-            }
+        // Update video progress on all devices
+        if (!scrollTimeout) {
+            scrollTimeout = setTimeout(function() {
+                scrollTimeout = null;
+                updateVideoProgress();
+            }, 30); // Increased timeout for better performance
         }
     });
 
