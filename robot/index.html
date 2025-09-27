@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Build Your Custom Robot Employee | Starting at $50,000 USD. Get a white-label AI solution trained on your data for finance, real estate, sales, legal, and education. Transform your business with RB Labs.">
+    <meta name="keywords" content="Custom Robot Employee, White Label AI, Business Automation, AI Employee, Finance Robot, Real Estate AI, Sales Assistant, Legal AI, Education Robot, RB Labs">
+    <meta property="og:title" content="Custom Robot Employee for Your Business | Starting at $50,000 | RB Labs">
+    <meta property="og:description" content="Build your own Robot Employee customized for your business needs. White-label solution trained on your data. Finance, real estate, sales, legal, education configurations. Starting at $50,000 USD.">
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://rblabs.ai/robot/">
+    <title>Build Your Custom Robot Employee | Starting at $50,000 | RB Labs</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="robot-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="home">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <img src="../images/logo/logo.png" alt="RB Labs Logo" height="50">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about/" class="nav-link">About</a>
+                    <a href="/career/" class="nav-link">Career</a>
+                    <a href="/news/" class="nav-link">News</a>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="hero-background">
+            <video
+                class="hero-video"
+                autoplay
+                muted
+                playsinline
+                loop
+                preload="metadata"
+                poster="../images/featured/your-robot.webp"
+            >
+                <source src="../images/featured/your-robot.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="product-hero-content">
+            <div class="hero-title">
+                <span class="hero-welcome">Build Your Own</span>
+                <span class="hero-brand">Robot Employee</span>
+            </div>
+            <p class="hero-description">
+                Deploy a custom AI solution trained on your data, branded for your company, and designed to scale with your business.
+            </p>
+            <div class="hero-cta">
+                <a href="#contact-form" class="btn btn-primary btn-large btn-minimal">
+                    <span>Configure Your Robot</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Product Section -->
+    <section class="product-showcase" id="personalities">
+        <div class="product-container">
+            <!-- Sticky Robot Visual -->
+            <div class="product-visual">
+                <div class="robot-display">
+                    <video muted playsinline class="robot-video" id="robotVideo">
+                        <!-- Mobile/tablet video loads for screens <= 1024px -->
+                        <source src="../images/featured/your-rb-labs-robot_mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
+                        <!-- Desktop video loads for screens > 1024px -->
+                        <source src="../images/featured/your-rb-labs-robot.mp4" type="video/mp4">
+                        <img src="../images/featured/robert.jpg" alt="Your Custom Robot Employee">
+                    </video>
+                    <div class="robot-personality-badge" id="personalityBadge">
+                        <span class="badge-icon"><i class="fas fa-robot"></i></span>
+                        <span class="badge-text">Your Robot Employee</span>
+                    </div>
+                    <div class="pip-controls">
+                        <button class="pip-btn" id="pipMinimize" title="Minimize">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button class="pip-btn" id="pipExpand" title="Expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                        <button class="pip-btn" id="pipClose" title="Close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scrolling Content -->
+            <div class="product-content">
+                <!-- Introduction -->
+                <div class="content-section" data-personality="intro">
+                    <div class="section-inner">
+                        <span class="section-label">CUSTOM AI SOLUTION</span>
+                        <h2>Build Your Perfect AI Employee</h2>
+                        <p class="lead-text">
+                            Get a fully customizable Robot Employee trained specifically for your company's needs. Your data, your brand, your voice - powered by cutting-edge AI technology.
+                        </p>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-palette"></i>
+                                <h4>White-Label Solution</h4>
+                                <p>Fully branded with your company's identity and voice</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-database"></i>
+                                <h4>Train on Your Data</h4>
+                                <p>Import your knowledge base, documents, and processes</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-plug"></i>
+                                <h4>Seamless Integration</h4>
+                                <p>Connects with your existing CRM, ERP, and tools</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <h4>Full Analytics</h4>
+                                <p>Track performance, ROI, and customer satisfaction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finance Robot -->
+                <div class="content-section personality-section" data-personality="finance">
+                    <div class="section-inner">
+                        <span class="section-label">FINANCE CONFIGURATION</span>
+                        <h2>Your Robot Financial Advisor</h2>
+                        <p class="lead-text">
+                            Deploy an Robot Employee that becomes your company's dedicated financial expert, trained on your specific products, compliance requirements, and investment strategies.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Portfolio Analysis</h4>
+                                    <p>Real-time portfolio optimization and risk assessment</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Market Intelligence</h4>
+                                    <p>Track global markets and identify investment opportunities</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Regulatory Compliance</h4>
+                                    <p>Stay compliant with financial regulations automatically</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Personalized Advice</h4>
+                                    <p>Tailored financial strategies for each client</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stats-row">
+                            <div class="stat">
+                                <span class="stat-value">90%</span>
+                                <span class="stat-label">Accuracy Rate</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">0.3s</span>
+                                <span class="stat-label">Response Time</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">24/7</span>
+                                <span class="stat-label">Availability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real Estate Agent -->
+                <div class="content-section personality-section" data-personality="realestate">
+                    <div class="section-inner">
+                        <span class="section-label">REAL ESTATE CONFIGURATION</span>
+                        <h2>Your Robot Property Specialist</h2>
+                        <p class="lead-text">
+                            Create an AI agent trained on your property portfolio, local market data, and sales processes to handle inquiries and qualify leads 24/7.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Property Matching</h4>
+                                    <p>AI-powered matching of buyers with perfect properties</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Virtual Tours</h4>
+                                    <p>Guide clients through properties with detailed descriptions</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Market Analysis</h4>
+                                    <p>Instant property valuations and neighborhood insights</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Lead Qualification</h4>
+                                    <p>Automatically qualify and nurture potential buyers</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <p>"Robert increased our lead conversion by 45% and handles 80% of initial inquiries automatically."</p>
+                            <cite>- Sarah Chen, Real Estate Broker</cite>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Agent -->
+                <div class="content-section personality-section" data-personality="sales">
+                    <div class="section-inner">
+                        <span class="section-label">SALES CONFIGURATION</span>
+                        <h2>Your Robot Sales Team</h2>
+                        <p class="lead-text">
+                            Build an AI sales force that knows your products inside out, follows your sales methodology, and scales infinitely with demand.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Lead Generation</h4>
+                                    <p>Identify and engage high-quality prospects automatically</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Product Knowledge</h4>
+                                    <p>Deep understanding of your entire product catalog</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Objection Handling</h4>
+                                    <p>Sophisticated responses to common sales objections</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>CRM Integration</h4>
+                                    <p>Seamless integration with your existing sales tools</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="performance-metrics">
+                            <h4>Performance Metrics</h4>
+                            <div class="metrics-grid">
+                                <div class="metric">
+                                    <span class="metric-value">3x</span>
+                                    <span class="metric-label">More Leads Handled</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">65%</span>
+                                    <span class="metric-label">Conversion Increase</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">$2M+</span>
+                                    <span class="metric-label">Revenue Generated</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal Assistant -->
+                <div class="content-section personality-section" data-personality="legal">
+                    <div class="section-inner">
+                        <span class="section-label">LEGAL CONFIGURATION</span>
+                        <h2>Your Robot Legal Assistant</h2>
+                        <p class="lead-text">
+                            Deploy an AI assistant trained on your firm's precedents, case history, and legal frameworks to streamline research and client intake.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Document Analysis</h4>
+                                    <p>Review contracts and legal documents in seconds</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Legal Research</h4>
+                                    <p>Access vast databases of case law and precedents</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Client Intake</h4>
+                                    <p>Streamline initial consultations and data gathering</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Compliance Monitoring</h4>
+                                    <p>Stay updated with changing regulations</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="security-note">
+                            <i class="fas fa-lock"></i>
+                            <p>Enterprise-grade security ensures client confidentiality and attorney-client privilege protection</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher -->
+                <div class="content-section personality-section" data-personality="teacher">
+                    <div class="section-inner">
+                        <span class="section-label">EDUCATION CONFIGURATION</span>
+                        <h2>Your Robot Instructor</h2>
+                        <p class="lead-text">
+                            Create an AI tutor trained on your curriculum, teaching methods, and educational content to provide personalized learning at scale.
+                        </p>
+                        <div class="capability-list">
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Personalized Learning</h4>
+                                    <p>Adapt teaching style to each student's needs</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Interactive Lessons</h4>
+                                    <p>Engage students with dynamic Q&A sessions</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Progress Tracking</h4>
+                                    <p>Monitor and report on student performance</p>
+                                </div>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h4>Multi-Subject Expertise</h4>
+                                    <p>Teach across various subjects and skill levels</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="education-stats">
+                            <div class="edu-stat">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>10,000+ Students Taught</span>
+                            </div>
+                            <div class="edu-stat">
+                                <i class="fas fa-star"></i>
+                                <span>4.9/5 Student Rating</span>
+                            </div>
+                            <div class="edu-stat">
+                                <i class="fas fa-language"></i>
+                                <span>50+ Languages Supported</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Section -->
+                <div class="content-section" data-personality="pricing">
+                    <div class="section-inner">
+                        <span class="section-label">INVESTMENT</span>
+                        <h2>Your Investment</h2>
+                        <div class="pricing-container">
+                            <div class="pricing-main">
+                                <div class="price-display">
+                                    <span class="price-starting">Starting at</span>
+                                    <span class="price-amount">$50,000</span>
+                                    <span class="price-period">USD</span>
+                                </div>
+                                <div class="whats-included">
+                                    <h3>What's Included</h3>
+                                    <ul class="included-list">
+                                        <li><i class="fas fa-check"></i> Complete AI system setup</li>
+                                        <li><i class="fas fa-check"></i> 5-hour battery autonomy</li>
+                                        <li><i class="fas fa-check"></i> 3 personality configurations</li>
+                                        <li><i class="fas fa-check"></i> 1-year support & updates</li>
+                                        <li><i class="fas fa-check"></i> Training for your team</li>
+                                        <li><i class="fas fa-check"></i> API access & integrations</li>
+                                        <li><i class="fas fa-check"></i> Custom branding options</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="pricing-addons">
+                                <h3>Additional Options</h3>
+                                <div class="addon-item">
+                                    <span class="addon-name">Extra Hand Dexterity</span>
+                                    <span class="addon-price">$20,000</span>
+                                </div>
+                                <div class="addon-item">
+                                    <span class="addon-name">On-Premise Deployment</span>
+                                    <span class="addon-price">$25,000</span>
+                                </div>
+                                <div class="addon-item">
+                                    <span class="addon-name">Premium Support</span>
+                                    <span class="addon-price">Contact for quote</span>
+                                </div>
+                                <div class="addon-item">
+                                    <span class="addon-name">Walking Robot</span>
+                                    <span class="addon-price">Contact for quote</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Section -->
+                <div class="content-section contact-section" id="contact-form">
+                    <div class="section-inner">
+                        <span class="section-label">GET STARTED</span>
+                        <h2>Build Your Custom Robot Employee</h2>
+                        <p class="lead-text">
+                            Tell us about your business needs and we'll design a custom AI solution that fits perfectly into your operations.
+                        </p>
+
+                        <form class="contact-form" id="robotContactForm">
+                            <div class="form-section">
+                                <h3>Company Information</h3>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="company">Company Name *</label>
+                                        <input type="text" id="company" name="company" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="industry">Industry *</label>
+                                        <select id="industry" name="industry" required>
+                                            <option value="">Select Industry</option>
+                                            <option value="finance">Finance & Banking</option>
+                                            <option value="realestate">Real Estate</option>
+                                            <option value="retail">Retail & E-commerce</option>
+                                            <option value="legal">Legal Services</option>
+                                            <option value="education">Education</option>
+                                            <option value="healthcare">Healthcare</option>
+                                            <option value="technology">Technology</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="size">Company Size</label>
+                                        <select id="size" name="size">
+                                            <option value="">Select Size</option>
+                                            <option value="1-10">1-10 employees</option>
+                                            <option value="11-50">11-50 employees</option>
+                                            <option value="51-200">51-200 employees</option>
+                                            <option value="201-1000">201-1000 employees</option>
+                                            <option value="1000+">1000+ employees</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>Contact Details</h3>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="name">Full Name *</label>
+                                        <input type="text" id="name" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Business Email *</label>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="country">Country/Region *</label>
+                                        <input type="text" id="country" name="country" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>Your Interest</h3>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="usecase">Primary Use Case *</label>
+                                        <select id="usecase" name="usecase" required>
+                                            <option value="">Select Use Case</option>
+                                            <option value="finance">Finance & Banking</option>
+                                            <option value="realestate">Real Estate</option>
+                                            <option value="sales">Sales & Marketing</option>
+                                            <option value="legal">Legal Services</option>
+                                            <option value="education">Education</option>
+                                            <option value="customer-service">Customer Service</option>
+                                            <option value="other">Other (specify below)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="timeline">Implementation Timeline</label>
+                                        <select id="timeline" name="timeline">
+                                            <option value="">Select Timeline</option>
+                                            <option value="immediate">Immediate (< 1 month)</option>
+                                            <option value="1-3months">1-3 months</option>
+                                            <option value="3-6months">3-6 months</option>
+                                            <option value="6-12months">6-12 months</option>
+                                            <option value="planning">Just planning</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="personalities">Number of Personalities Needed</label>
+                                        <select id="personalities" name="personalities">
+                                            <option value="">Select Number</option>
+                                            <option value="1">1 personality</option>
+                                            <option value="2-3">2-3 personalities</option>
+                                            <option value="4-5">4-5 personalities</option>
+                                            <option value="5+">5+ personalities</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="budget">Budget Range</label>
+                                        <select id="budget" name="budget">
+                                            <option value="">Select Budget</option>
+                                            <option value="50-100k">$50K - $100K</option>
+                                            <option value="100-250k">$100K - $250K</option>
+                                            <option value="250-500k">$250K - $500K</option>
+                                            <option value="500k+">$500K+</option>
+                                            <option value="custom">Request Custom Quote</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <div class="form-group full-width">
+                                    <label for="message">Tell us about your vision</label>
+                                    <textarea id="message" name="message" rows="4" placeholder="Share your goals and how you envision Robert helping your business..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>Preferred Contact Method</h3>
+                                <div class="contact-preferences">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contact-method" value="video-call">
+                                        <span>Schedule a video call</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contact-method" value="phone">
+                                        <span>Phone consultation</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contact-method" value="email">
+                                        <span>Email correspondence</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contact-method" value="in-person">
+                                        <span>In-person meeting (Geneva)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-submit">
+                                <button type="submit" class="btn btn-primary btn-large">
+                                    Get Your Custom Proposal
+                                </button>
+                                <div class="form-trust">
+                                    <p><i class="fas fa-lock"></i> Your information is encrypted and secure</p>
+                                    <p><i class="fas fa-clock"></i> Response within 24 hours</p>
+                                    <p><i class="fas fa-shield-alt"></i> No spam, ever</p>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">RB Labs</h4>
+                    <p class="footer-description">
+                        Leading the transformation of financial services through advanced artificial intelligence and machine learning technologies.
+                    </p>
+                    <p class="footer-description" style="margin-top: 1rem;">
+                        Headquarters: Geneva, Switzerland
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/career/">Career</a></li>
+                        <li><a href="/news/">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="/contact/">Contact</a></li>
+                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/company/rblabs-ai/" target="_blank" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/robotbulls/" target="_blank" aria-label="Twitter/X">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/robot-bulls/" target="_blank" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RB Labs AG. All rights reserved. | Switzerland</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="robot-script.js"></script>
+</body>
+</html>
