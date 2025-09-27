@@ -223,6 +223,9 @@
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+    -webkit-transform: translateZ(0); /* iOS GPU acceleration */
+    transform: translateZ(0);
+    will-change: transform; /* Hint browser for optimization */
 }
 
 .robot-display {
@@ -243,6 +246,10 @@
     object-fit: cover;
     border-radius: 24px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    -webkit-transform: translateZ(0); /* iOS GPU acceleration */
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden; /* Fix iOS flickering */
+    backface-visibility: hidden;
 }
 
 .robot-personality-badge {
@@ -1153,8 +1160,8 @@
         right: 20px !important;
         width: 150px !important;
         height: 150px !important;
+        top: auto;
         aspect-ratio: 1/1 !important;
-        top: auto !important;
         flex: none !important;
         margin: 0 !important;
         z-index: 1000 !important;
@@ -1186,6 +1193,10 @@
         max-height: none !important;
         object-fit: cover !important;
         aspect-ratio: 1/1 !important;
+        background-color: #f0f0f0;
+        background-image: url('../images/featured/robert.jpg');
+        background-size: cover;
+        background-position: center;
     }
 
     /* Move badge closer to bottom on mobile PiP */

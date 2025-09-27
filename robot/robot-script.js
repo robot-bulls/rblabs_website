@@ -382,26 +382,118 @@ ${vision || 'No additional information provided'}`;
     // Video scroll control
     const robotVideo = document.getElementById('robotVideo');
     let videoReady = false;
+    let isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    let videoPlaying = false;
 
     if (robotVideo) {
-        // Pause video initially
-        robotVideo.pause();
+        // Set up video for all devices with proper mobile attributes
+        robotVideo.setAttribute('autoplay', '');
+        robotVideo.setAttribute('loop', '');
+        robotVideo.setAttribute('muted', 'true');
+        robotVideo.setAttribute('playsinline', 'true');
+        robotVideo.setAttribute('webkit-playsinline', 'true');
+        robotVideo.muted = true;
+        robotVideo.playsInline = true;
+        robotVideo.defaultMuted = true;
 
-        // Wait for video metadata to load
-        robotVideo.addEventListener('loadedmetadata', function() {
-            videoReady = true;
-            updateVideoProgress();
-        });
+        // For iOS specifically
+        if (isIOS) {
+            robotVideo.controls = false;
+            robotVideo.removeAttribute('controls');
+        }
 
-        // If metadata already loaded
-        if (robotVideo.readyState >= 1) {
-            videoReady = true;
+        // Function to start video playback
+        const startVideoPlayback = () => {
+            if (videoPlaying) return;
+
+            // Create a play promise
+            const playPromise = robotVideo.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    videoReady = true;
+                    videoPlaying = true;
+
+                    // Always pause initially for scroll-based control
+                    robotVideo.pause();
+                    videoPlaying = false;
+                    updateVideoProgress();
+                }).catch(error => {
+                    console.log('Video play failed:', error);
+                    // Don't set up additional listeners if already playing
+                    if (!videoPlaying) {
+                        setupUserInteraction();
+                    }
+                });
+            }
+        };
+
+        // Setup user interaction triggers for mobile
+        const setupUserInteraction = () => {
+            if (isMobileDevice && window.innerWidth <= 1024) {
+                const playTrigger = () => {
+                    if (!videoReady) {
+                        // Just mark as ready, don't actually play
+                        videoReady = true;
+                        console.log('Video ready for scroll control');
+                        updateVideoProgress();
+                        // Remove the interaction listeners
+                        document.removeEventListener('touchstart', playTrigger);
+                        document.removeEventListener('scroll', playTrigger);
+                    }
+                };
+
+                // Try on various user interactions
+                document.addEventListener('touchstart', playTrigger, { once: true, passive: true });
+                document.addEventListener('scroll', playTrigger, { once: true, passive: true });
+            }
+        };
+
+        // iOS specific handling
+        if (isIOS) {
+            // iOS needs the video to load first
+            robotVideo.load();
+
+            // Try to play when metadata is loaded
+            robotVideo.addEventListener('loadedmetadata', () => {
+                startVideoPlayback();
+            });
+
+            // Also try when data is loaded
+            robotVideo.addEventListener('loadeddata', () => {
+                if (!videoPlaying) {
+                    startVideoPlayback();
+                }
+            });
+        } else {
+            // For Android and desktop
+            robotVideo.load();
+
+            // Wait for video to be ready
+            if (robotVideo.readyState >= 3) {
+                startVideoPlayback();
+            } else {
+                robotVideo.addEventListener('canplay', startVideoPlayback, { once: true });
+            }
+        }
+
+        // Fallback: ensure video plays on first user interaction
+        if (isMobileDevice) {
+            setupUserInteraction();
         }
     }
 
     // Update video progress based on scroll
     function updateVideoProgress() {
         if (!robotVideo || !videoReady) return;
+
+        // Don't skip on mobile anymore - we want scroll-based playback in PiP
+        // Only skip if video element is not visible
+        const pipContainer = document.querySelector('.product-visual');
+        if (pipContainer && pipContainer.style.display === 'none') {
+            return;
+        }
 
         const scrollStart = window.innerHeight * 0.5; // Start after hero
         const scrollEnd = document.documentElement.scrollHeight - window.innerHeight;
@@ -414,19 +506,27 @@ ${vision || 'No additional information provided'}`;
 
         // Set video time based on scroll progress
         const videoDuration = robotVideo.duration;
-        if (videoDuration) {
-            robotVideo.currentTime = videoDuration * progress;
+        if (videoDuration && isFinite(videoDuration)) {
+            try {
+                robotVideo.currentTime = videoDuration * progress;
+            } catch (e) {
+                // Handle any errors in setting currentTime
+                console.log('Video scrubbing error:', e);
+            }
         }
     }
 
     // Throttled scroll handler for video
     let scrollTimeout;
     window.addEventListener('scroll', function() {
-        if (!scrollTimeout) {
-            scrollTimeout = setTimeout(function() {
-                scrollTimeout = null;
-                updateVideoProgress();
-            }, 10); // Update every 10ms for smooth video scrubbing
+        // Only do video scrubbing on desktop or tablet
+        if (!isMobileDevice || window.innerWidth > 768) {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(function() {
+                    scrollTimeout = null;
+                    updateVideoProgress();
+                }, 30); // Increased timeout for better performance
+            }
         }
     });
 

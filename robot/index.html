@@ -87,7 +87,16 @@
             <!-- Sticky Robot Visual -->
             <div class="product-visual">
                 <div class="robot-display">
-                    <video muted playsinline class="robot-video" id="robotVideo">
+                    <video
+                        muted
+                        playsinline
+                        webkit-playsinline
+                        x-webkit-airplay="allow"
+                        class="robot-video"
+                        id="robotVideo"
+                        poster="../images/featured/robert.jpg"
+                        preload="auto"
+                    >
                         <!-- Mobile/tablet video loads for screens <= 1024px -->
                         <source src="../images/featured/your-rb-labs-robot_mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
                         <!-- Desktop video loads for screens > 1024px -->
