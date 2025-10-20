@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover how Robert the Robot is revolutionizing law enforcement with AI-powered policing capabilities and advanced public safety features.">
+    <meta name="keywords" content="Robert the Robot, AI Police, robot policeman, law enforcement AI, RB Labs, public safety technology">
+    <meta property="og:title" content="Robert the Robot: The Future of AI-Powered Law Enforcement - RB Labs Blog">
+    <meta property="og:description" content="Meet Robert the Policeman - the groundbreaking humanoid robot combining artificial intelligence with law enforcement to enhance public safety.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rblabs.ai/blog/robert-the-policeman/">
+    <meta property="og:image" content="https://rblabs.ai/blog/robert-the-policeman/robot-police-robert.jpg">
+    <title>Robert the Robot: AI-Powered Policing - RB Labs Blog</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .article-header {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+            padding: 140px 0 60px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        .article-category {
+            background: #06438c;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            font-size: 12px;
+        }
+        .meta-divider {
+            width: 4px;
+            height: 4px;
+            background: #d1d5db;
+            border-radius: 50%;
+        }
+        .article-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #1f2937;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        .article-excerpt {
+            font-size: 20px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #06438c, #0ea5e9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+        .author-info p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        .article-hero-image {
+            width: 100%;
+            max-width: 840px;
+            margin: 40px auto 60px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .article-hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 500px;
+            object-fit: cover;
+        }
+        .article-content {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .article-content h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 48px 0 24px;
+            letter-spacing: -0.01em;
+        }
+        .article-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #374151;
+            margin: 36px 0 16px;
+        }
+        .article-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4b5563;
+            margin-bottom: 24px;
+        }
+        .article-content ul, .article-content ol {
+            margin: 24px 0;
+            padding-left: 32px;
+            color: #4b5563;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        .article-content li {
+            margin-bottom: 12px;
+        }
+        .article-content a {
+            color: #06438c;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .article-content a:hover {
+            border-bottom-color: #06438c;
+        }
+        .feature-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 16px;
+            padding: 32px;
+            margin: 48px 0;
+        }
+        .feature-box h3 {
+            color: #1e40af;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .feature-box p {
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+        .feature-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .stat-card h4 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #06438c;
+            margin-bottom: 8px;
+        }
+        .stat-card p {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 0;
+        }
+        .capability-section {
+            background: #f8fafb;
+            border-radius: 12px;
+            padding: 32px;
+            margin: 48px 0;
+        }
+        .capability-section h3 {
+            font-size: 24px;
+            color: #1f2937;
+            margin-bottom: 24px;
+        }
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .capability-item {
+            display: flex;
+            gap: 16px;
+        }
+        .capability-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #06438c, #0ea5e9);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .capability-icon i {
+            color: white;
+            font-size: 20px;
+        }
+        .capability-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+        .capability-content p {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 0;
+        }
+        .highlight-quote {
+            background: white;
+            border-left: 4px solid #06438c;
+            padding: 24px 32px;
+            margin: 36px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .highlight-quote p {
+            font-size: 20px;
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 12px;
+        }
+        .highlight-quote cite {
+            font-size: 16px;
+            color: #6b7280;
+            font-style: normal;
+        }
+        .video-container {
+            width: 100%;
+            max-width: 840px;
+            margin: 48px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: #000;
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 48px 0;
+        }
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .article-footer {
+            max-width: 740px;
+            margin: 80px auto 0;
+            padding: 40px 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        .share-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            color: #4b5563;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .share-button:hover {
+            border-color: #06438c;
+            color: #06438c;
+            transform: translateY(-2px);
+        }
+        .related-posts {
+            margin-top: 60px;
+        }
+        .related-posts h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 24px;
+        }
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .related-post-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .related-post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .related-post-image {
+            aspect-ratio: 16/9;
+            background: #f3f4f6;
+            overflow: hidden;
+        }
+        .related-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .related-post-content {
+            padding: 20px;
+        }
+        .related-post-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .related-post-content p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 36px;
+            }
+            .article-hero-image {
+                margin: 20px auto 40px;
+                max-width: 100%;
+            }
+            .article-hero-image img {
+                max-height: 300px;
+            }
+            .feature-stats {
+                grid-template-columns: 1fr;
+            }
+            .capability-grid {
+                grid-template-columns: 1fr;
+            }
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+            .related-posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <img src="../../images/logo/logo.png" alt="RB Labs Logo" height="50">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about/" class="nav-link">About</a>
+                    <a href="/career/" class="nav-link">Career</a>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="article-meta">
+                    <span class="article-category">INNOVATION</span>
+                    <span class="meta-divider"></span>
+                    <span>October 2025</span>
+                    <span class="meta-divider"></span>
+                    <span>6 min read</span>
+                </div>
+                <h1 class="article-title">Robert the Policeman: Unveiled at Palexpo Geneva</h1>
+                <p class="article-excerpt">
+                    In October 2025 at Palexpo Geneva, RB Labs presented Robert the Robot in his groundbreaking new role as an AI-powered police officer during an exclusive event with law enforcement agencies, showcasing the future of public safety technology.
+                </p>
+                <div class="article-author">
+                    <div class="author-avatar">RB</div>
+                    <div class="author-info">
+                        <h4>RB Labs Innovation Team</h4>
+                        <p>Public Safety & AI Division</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="article-hero-image">
+        <img src="robot-police-robert.jpg" alt="Robert the Robot Policeman">
+    </div>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <p>
+            In October 2025, Palexpo Geneva became the stage for a historic unveiling as RB Labs presented Robert the Robot in his new role as an AI-powered police officer. The exclusive event, attended by law enforcement agencies from across Switzerland and Europe, marked a pivotal moment in the convergence of artificial intelligence and public safety. Robert's demonstration showcased how advanced robotics can support and enhance traditional policing methods while maintaining the essential human elements of community protection.
+        </p>
+
+        <h2>The Palexpo Demonstration: A Glimpse into the Future</h2>
+        <p>
+            At the prestigious Palexpo venue, Robert captivated police officials and security experts with live demonstrations of his law enforcement capabilities. The presentation highlighted his ability to patrol autonomously, communicate with citizens in multiple languages, and provide real-time threat assessment—all while maintaining a reassuring and approachable presence.
+        </p>
+        <p>
+            Law enforcement representatives from Geneva's police force participated in interactive sessions with Robert, witnessing firsthand how the AI-powered officer could assist with crowd management, information services, and security monitoring. The event demonstrated that Robert doesn't replace human officers but rather augments their capabilities, allowing them to focus on tasks requiring emotional intelligence and complex decision-making.
+        </p>
+
+        <h2>The Evolution of Robert: From Finance to Public Safety</h2>
+        <p>
+            While Robert the Robot has gained international recognition as a sophisticated financial advisor at robert.finance, his versatile AI platform has now expanded into the critical domain of law enforcement. This transition demonstrates the remarkable adaptability of RB Labs' advanced AI systems and their potential to address diverse societal needs beyond financial services.
+        </p>
+
+        <div class="feature-box">
+            <h3>Robert's Law Enforcement Capabilities</h3>
+            <p>
+                Equipped with state-of-the-art sensors, computer vision, and natural language processing, Robert brings unprecedented technological sophistication to public safety operations. His AI-driven systems operate 24/7 without fatigue, ensuring constant vigilance and rapid response capabilities.
+            </p>
+            <div class="feature-stats">
+                <div class="stat-card">
+                    <h4>360°</h4>
+                    <p>Visual Coverage</p>
+                </div>
+                <div class="stat-card">
+                    <h4>24/7</h4>
+                    <p>Operational Capacity</p>
+                </div>
+                <div class="stat-card">
+                    <h4>50+</h4>
+                    <p>Languages Supported</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Advanced Technology Integration</h2>
+        <p>
+            Robert's law enforcement configuration integrates multiple cutting-edge technologies working in harmony:
+        </p>
+
+        <div class="capability-section">
+            <h3>Core Capabilities</h3>
+            <div class="capability-grid">
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="capability-content">
+                        <h4>Advanced Computer Vision</h4>
+                        <p>Real-time facial recognition and object detection for enhanced situational awareness</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="capability-content">
+                        <h4>Threat Assessment</h4>
+                        <p>AI-powered analysis to identify and evaluate potential security risks</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="capability-content">
+                        <h4>Multilingual Communication</h4>
+                        <p>Natural conversation in over 50 languages for diverse community engagement</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="capability-content">
+                        <h4>Data Analytics</h4>
+                        <p>Real-time processing of crime patterns and predictive policing insights</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <div class="capability-content">
+                        <h4>Patrol Autonomy</h4>
+                        <p>Independent navigation through complex urban environments</p>
+                    </div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="capability-content">
+                        <h4>System Integration</h4>
+                        <p>Seamless connection with existing law enforcement databases and networks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Real-World Applications</h2>
+        <p>
+            Robert's deployment in law enforcement encompasses various critical functions that enhance public safety:
+        </p>
+        <ul>
+            <li><strong>Community Patrol:</strong> Robert conducts regular patrols in designated areas, providing visible security presence and deterring criminal activity through his imposing yet approachable design</li>
+            <li><strong>Information Services:</strong> Citizens can interact with Robert to receive directions, report non-emergency incidents, or access important safety information in their preferred language</li>
+            <li><strong>Traffic Management:</strong> Equipped with advanced sensors, Robert monitors traffic patterns, identifies violations, and assists in managing congestion during peak hours or special events</li>
+            <li><strong>Emergency Response Support:</strong> In crisis situations, Robert provides real-time data collection and analysis, helping human officers make informed decisions quickly</li>
+            <li><strong>Evidence Documentation:</strong> Robert's high-resolution cameras and sensors create comprehensive, unbiased documentation of incidents and crime scenes</li>
+        </ul>
+
+        <div class="video-container">
+            <video controls poster="robot-police.jpg">
+                <source src="Robot-Police-RB-Labs.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="highlight-quote">
+            <p>"Robert represents the perfect synergy between human judgment and artificial intelligence. He doesn't replace police officers; he empowers them with tools and data that make their jobs safer and more effective."</p>
+            <cite>— RB Labs Chief Technology Officer</cite>
+        </div>
+
+        <h2>Ethical Considerations and Privacy</h2>
+        <p>
+            RB Labs recognizes that deploying AI in law enforcement raises important ethical questions. Robert's system has been designed with privacy and civil liberties as foundational principles:
+        </p>
+        <ul>
+            <li><strong>Transparent Operations:</strong> All of Robert's activities are logged and auditable, ensuring accountability in every interaction</li>
+            <li><strong>Privacy Protection:</strong> Facial recognition and data collection strictly comply with privacy regulations, with built-in safeguards against misuse</li>
+            <li><strong>Bias Mitigation:</strong> Regular audits and algorithmic fairness testing ensure Robert's decision-making remains unbiased and equitable across all demographics</li>
+            <li><strong>Human Oversight:</strong> Critical decisions always involve human officers, with Robert serving in a supportive rather than autonomous enforcement role</li>
+        </ul>
+
+        <div class="image-grid">
+            <img src="robot-police.jpg" alt="Robert on patrol">
+            <img src="rb-labs-robot-police-man.jpg" alt="Robert with law enforcement team">
+        </div>
+
+        <h2>Community Reception and Impact</h2>
+        <p>
+            Early deployments of Robert in pilot programs have yielded encouraging results. Communities report feeling safer with Robert's constant presence, while police departments note significant improvements in efficiency and data-driven decision-making.
+        </p>
+        <p>
+            Children are particularly drawn to Robert, seeing him as a friendly, approachable figure who makes learning about safety engaging and fun. This positive reception helps build stronger police-community relationships and fosters trust in both technology and law enforcement.
+        </p>
+
+        <h2>The Future of AI in Public Safety</h2>
+        <p>
+            Robert's successful integration into law enforcement opens new possibilities for AI in public safety. Future developments may include:
+        </p>
+        <ul>
+            <li>Enhanced predictive analytics for crime prevention</li>
+            <li>Disaster response and search-and-rescue capabilities</li>
+            <li>Integration with smart city infrastructure for comprehensive safety networks</li>
+            <li>Advanced de-escalation protocols using psychological AI models</li>
+            <li>Environmental monitoring for public health and safety threats</li>
+        </ul>
+
+        <h2>Global Recognition and Expansion</h2>
+        <p>
+            Following successful pilot programs, several cities worldwide have expressed interest in deploying Robert for law enforcement duties. This global interest reflects growing recognition that AI-powered policing, when implemented thoughtfully and ethically, can significantly enhance public safety outcomes.
+        </p>
+        <p>
+            RB Labs continues to collaborate with law enforcement agencies, policymakers, and civil rights organizations to ensure that Robert's capabilities are deployed responsibly and in service of community well-being.
+        </p>
+
+        <h2>Conclusion: A New Era of Public Safety</h2>
+        <p>
+            Robert the Robot's transition into law enforcement represents more than technological innovation—it symbolizes a fundamental reimagining of how communities can be protected and served. By combining the best of human judgment with the consistency and analytical power of artificial intelligence, Robert demonstrates that the future of policing can be both more effective and more humane.
+        </p>
+        <p>
+            As Robert continues to patrol streets, interact with citizens, and support law enforcement professionals, he proves that technology and humanity need not be at odds. Instead, they can work together to create safer, more connected communities where innovation serves the common good.
+        </p>
+        <p>
+            For more information about Robert the Robot and RB Labs' public safety initiatives, visit <a href="https://www.rblabs.ai">rblabs.ai</a>
+        </p>
+    </article>
+
+    <!-- Article Footer -->
+    <div class="article-footer">
+        <div class="share-buttons">
+            <a href="#" class="share-button">
+                <i class="fab fa-twitter"></i>
+                <span>Share on Twitter</span>
+            </a>
+            <a href="#" class="share-button">
+                <i class="fab fa-linkedin"></i>
+                <span>Share on LinkedIn</span>
+            </a>
+            <a href="#" class="share-button">
+                <i class="fas fa-link"></i>
+                <span>Copy Link</span>
+            </a>
+        </div>
+
+        <div class="related-posts">
+            <h3>Related Articles</h3>
+            <div class="related-posts-grid">
+                <a href="/blog/decentralizing-trading-robots/" class="related-post-card">
+                    <div class="related-post-image">
+                        <img src="../decentralizing-trading-robots/main_image.jpg" alt="Trading Robots">
+                    </div>
+                    <div class="related-post-content">
+                        <h4>Decentralizing Trading Robots</h4>
+                        <p>Revolutionary approach to algorithmic trading on ICP.</p>
+                    </div>
+                </a>
+                <a href="/blog/decentralized-ai-finance/" class="related-post-card">
+                    <div class="related-post-image">
+                        <img src="../../images/featured/featured-image-01.jpg" alt="Decentralized AI">
+                    </div>
+                    <div class="related-post-content">
+                        <h4>The Future of Decentralized AI</h4>
+                        <p>Blockchain technology transforming financial AI deployment.</p>
+                    </div>
+                </a>
+                <a href="/blog/wiw3ch-japan/" class="related-post-card">
+                    <div class="related-post-image">
+                        <img src="../wiw3ch-japan/main_image.jpg" alt="WiW3CH Event">
+                    </div>
+                    <div class="related-post-content">
+                        <h4>Women in Web3 Switzerland Event</h4>
+                        <p>RB Labs at the Swiss Embassy in Japan.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">RB Labs</h4>
+                    <p class="footer-description">
+                        Leading the transformation of financial services through advanced artificial intelligence and machine learning technologies.
+                    </p>
+                    <p class="footer-description" style="margin-top: 1rem;">
+                        Headquarters: Geneva, Switzerland
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/career/">Career</a></li>
+                        <li><a href="/blog/">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="/contact/">Contact</a></li>
+                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/company/rblabs-ai/" target="_blank" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/robotbulls/" target="_blank" aria-label="Twitter/X">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/robot-bulls/" target="_blank" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RB Labs AG. All rights reserved. | Switzerland</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
