@@ -1633,6 +1633,7 @@
                 // Get form inputs
                 const formInputs = form.querySelectorAll('.form-input, .form-textarea');
                 const formData = {
+                    formType: 'application',
                     position: document.getElementById('modalJobTitle').textContent,
                     name: formInputs[0].value,
                     email: formInputs[1].value,
@@ -1665,7 +1666,7 @@
                 }
                 
                 // Submit to same Google Sheets as rblabs_website-main
-                await fetch('https://script.google.com/macros/s/AKfycbyfU-kKKDppvKnFZfE-MtLUdOq-BUwjofwUtAXHQwyN575h_uc7Q4pL57d_LgFPMLy0cA/exec', {
+                await fetch('https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {
@@ -1771,6 +1772,7 @@
                 // Get form inputs
                 const formInputs = form.querySelectorAll('.form-input, .form-textarea');
                 const formData = {
+                    formType: 'application',
                     position: 'General Application',
                     name: formInputs[0].value,
                     email: formInputs[1].value,
@@ -1803,7 +1805,7 @@
                 }
                 
                 // Submit to same Google Sheets as rblabs_website-main
-                await fetch('https://script.google.com/macros/s/AKfycby3rfTdp10ngj3lqKKG2bmJqHXkFF5YCHAzrzHyAA5OhQGsikBfhmXKqHVY-Wnl083fnQ/exec', {
+                await fetch('https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {

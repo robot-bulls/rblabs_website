@@ -771,7 +771,7 @@
                     lname: lastName,
                     email: email,
                     phone: phone || 'Not provided',
-                    message: `[${inquiryType.toUpperCase()}] Company: ${company}\n\n${message}`,
+                    message: `Inquiry Type: ${inquiryType.toUpperCase()} \nCompany: ${company}\n\Message: ${message} \n\nSource: RB Labs Contact page`,
                     created_at: new Date().toISOString(),
                     ip: ipData.ip,
                     country: ipData.country,
@@ -779,7 +779,7 @@
                 };
                 
                 // Submit to Google Sheets
-                await fetch('https://script.google.com/macros/s/AKfycbzyfwlw7yLJdk5foMtzm-RayTBj4OBcwsJ-Qvq8wFSM2bfxO7fvycEmZU9Bl9PO2v_v0w/exec', {
+                await fetch('https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {

@@ -210,7 +210,9 @@ Budget Range: ${budget}
 Preferred Contact Methods: ${contactMethods.length > 0 ? contactMethods.join(', ') : 'Not specified'}
 
 Vision/Goals:
-${vision || 'No additional information provided'}`;
+${vision || 'No additional information provided'}
+Source: RB Labs Robot order page
+`;
 
                 // Prepare form data for Google Sheets
                 const formData = {
@@ -226,7 +228,7 @@ ${vision || 'No additional information provided'}`;
                 };
 
                 // Submit to Google Sheets
-                await fetch('https://script.google.com/macros/s/AKfycbzyfwlw7yLJdk5foMtzm-RayTBj4OBcwsJ-Qvq8wFSM2bfxO7fvycEmZU9Bl9PO2v_v0w/exec', {
+                await fetch('https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {
