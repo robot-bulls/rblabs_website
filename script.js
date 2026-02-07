@@ -17,10 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Close mobile menu when clicking on a link
+    // Close mobile menu when clicking on a link (skip language trigger)
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
+            if (this.classList.contains('nav-lang-trigger')) return;
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
             body.style.overflow = '';

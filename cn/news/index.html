@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KJH15F9QP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3KJH15F9QP');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="RB Labs关于人工智能、机器人和自动化的最新新闻、更新和见解。">
+    <meta name="keywords" content="RB Labs, Robotics, AI Integration, Automation, Humanoid Robots, Enterprise AI, Robotics Solutions">
+    <meta property="og:title" content="新闻与见解 - RB Labs">
+    <meta property="og:description" content="RB Labs关于人工智能、机器人和自动化的最新新闻、更新和见解。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rblabs.ai/cn/news/">
+    <title>新闻与见解 - RB Labs</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon.ico">
+
+    <!-- Apple Web App Configuration -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="RB Labs">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/logo.png">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://rblabs.ai/cn/news/">
+    <link rel="alternate" hreflang="en" href="https://rblabs.ai/news/">
+    <link rel="alternate" hreflang="zh-CN" href="https://rblabs.ai/cn/news/">
+    <link rel="alternate" hreflang="de" href="https://rblabs.ai/de/news/">
+    <link rel="alternate" hreflang="fr" href="https://rblabs.ai/fr/news/">
+    <link rel="alternate" hreflang="x-default" href="https://rblabs.ai/news/">
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .visuallyhidden {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+        }
+        .nav-lang-dropdown {
+            position: relative;
+        }
+        .nav-lang-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 8px 0;
+        }
+        .nav-lang-trigger .fa-globe {
+            font-size: 15px;
+        }
+        .nav-lang-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+        .nav-lang-trigger[aria-expanded="true"] .nav-lang-arrow {
+            transform: rotate(180deg);
+        }
+        .nav-lang-panel {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 260px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .nav-lang-panel.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-lang-search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .nav-lang-search .fa-search {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+        .nav-lang-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1f2937;
+            background: transparent;
+        }
+        .nav-lang-search input::placeholder {
+            color: #9ca3af;
+        }
+        .nav-lang-list {
+            max-height: 240px;
+            overflow-y: auto;
+            padding: 6px;
+        }
+        .nav-lang-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .nav-lang-list::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        .nav-lang-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+            transition: background 0.15s ease;
+        }
+        .nav-lang-item:hover {
+            background: #f3f4f6;
+        }
+        .nav-lang-item.active {
+            background: rgba(6, 67, 140, 0.06);
+            color: #06438c;
+            font-weight: 600;
+        }
+        .nav-lang-name {
+            flex: 1;
+        }
+        .nav-lang-code {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .nav-lang-item.active .nav-lang-code {
+            color: #06438c;
+        }
+        .nav-lang-item .fa-check {
+            font-size: 12px;
+            color: #06438c;
+        }
+        .nav-lang-empty {
+            padding: 20px 16px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .nav-lang-dropdown {
+                width: 100%;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .nav-menu.active .nav-lang-dropdown {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.25s;
+            }
+            .nav-lang-trigger {
+                width: 100%;
+                justify-content: center;
+                padding: 1.5rem 0 !important;
+            }
+            .nav-lang-trigger .fa-globe {
+                font-size: 1.8rem;
+            }
+            .nav-lang-trigger .nav-lang-arrow {
+                font-size: 0.7rem;
+            }
+            .nav-lang-panel {
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                border-radius: 16px 16px 0 0;
+                transform: translateY(100%);
+                max-height: 60vh;
+                z-index: 10001;
+            }
+            .nav-lang-panel.open {
+                transform: translateY(0);
+            }
+            .nav-lang-backdrop {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.3);
+                z-index: 10000;
+            }
+            .nav-lang-backdrop.visible {
+                display: block;
+            }
+            .nav-lang-list {
+                max-height: calc(60vh - 60px);
+            }
+        }
+    </style>
+
+    
+
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/cn/" class="logo">
+                    <img src="../../logo/logo.png" alt="RB Labs Logo" height="50">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/cn/" class="nav-link">首页</a>
+                    <a href="/cn/about/" class="nav-link">关于</a>
+                    <a href="/cn/career/" class="nav-link">职业</a>
+                    <a href="/cn/news/" class="nav-link">新闻</a>
+                    <div class="nav-lang-dropdown">
+                        <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
+                            <i class="fas fa-globe"></i>
+                            <span>语言</span>
+                            <i class="fas fa-chevron-down nav-lang-arrow"></i>
+                        </button>
+                        <div class="nav-lang-backdrop" id="langBackdrop"></div>
+                        <div class="nav-lang-panel" id="langDropdownPanel">
+                            <div class="nav-lang-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="langSearchInput" placeholder="搜索语言..." autocomplete="off">
+                            </div>
+                            <div class="nav-lang-list" id="langList">
+                                <a href="/news/" class="nav-lang-item" data-name="English" data-code="en">
+                                    <span class="nav-lang-name">English</span>
+                                    <span class="nav-lang-code">en</span>
+                                    
+                                </a>
+                                <a href="/cn/news/" class="nav-lang-item active" data-name="简体中文" data-code="cn">
+                                    <span class="nav-lang-name">简体中文</span>
+                                    <span class="nav-lang-code">cn</span>
+                                    <i class="fas fa-check"></i>
+                                </a>
+                                <a href="/de/news/" class="nav-lang-item" data-name="Deutsch" data-code="de">
+                                    <span class="nav-lang-name">Deutsch</span>
+                                    <span class="nav-lang-code">de</span>
+                                    
+                                </a>
+                                <a href="/fr/news/" class="nav-lang-item" data-name="Français" data-code="fr">
+                                    <span class="nav-lang-name">Français</span>
+                                    <span class="nav-lang-code">fr</span>
+                                    
+                                </a>
+                            </div>
+                            <div class="nav-lang-empty" id="langEmpty" style="display:none;">
+                                未找到语言
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    (function() {
+        var trigger = document.getElementById('langDropdownTrigger');
+        var panel = document.getElementById('langDropdownPanel');
+        var backdrop = document.getElementById('langBackdrop');
+        var searchInput = document.getElementById('langSearchInput');
+        var langList = document.getElementById('langList');
+        var langEmpty = document.getElementById('langEmpty');
+        var items = langList.querySelectorAll('.nav-lang-item');
+        var navMenu = document.getElementById('navMenu');
+        var navToggle = document.getElementById('navToggle');
+    
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+    
+        function openDropdown() {
+            panel.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+            if (isMobile()) backdrop.classList.add('visible');
+            searchInput.value = '';
+            filterLanguages('');
+            setTimeout(function() { searchInput.focus(); }, 100);
+        }
+    
+        function closeDropdown() {
+            panel.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+            if (backdrop) backdrop.classList.remove('visible');
+        }
+    
+        function toggleDropdown(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (panel.classList.contains('open')) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        }
+    
+        function filterLanguages(query) {
+            var q = query.toLowerCase();
+            var visibleCount = 0;
+            for (var i = 0; i < items.length; i++) {
+                var name = items[i].getAttribute('data-name').toLowerCase();
+                var code = items[i].getAttribute('data-code').toLowerCase();
+                if (name.indexOf(q) !== -1 || code.indexOf(q) !== -1) {
+                    items[i].style.display = '';
+                    visibleCount++;
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+            langEmpty.style.display = visibleCount === 0 ? '' : 'none';
+        }
+    
+        trigger.addEventListener('click', toggleDropdown);
+    
+        searchInput.addEventListener('input', function() {
+            filterLanguages(this.value);
+        });
+    
+        searchInput.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    
+        // Close dropdown on backdrop click (mobile)
+        if (backdrop) {
+            backdrop.addEventListener('click', function() {
+                closeDropdown();
+            });
+        }
+    
+        document.addEventListener('click', function(e) {
+            if (!panel.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+    
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDropdown();
+        });
+    
+        // Close language panel when mobile menu closes
+        if (navToggle) {
+            navToggle.addEventListener('click', function() {
+                if (navMenu && !navMenu.classList.contains('active')) {
+                    closeDropdown();
+                }
+            });
+        }
+    })();
+    </script>
+
+    <!-- News Header -->
+<style>
+    .blog-header {
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+        padding: 140px 0 60px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .blog-header-content {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .blog-header h1 {
+        font-size: 48px;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+    .blog-header .section-label {
+        display: inline-block;
+        margin-bottom: 16px;
+    }
+    .blog-header-subtitle {
+        font-size: 20px;
+        color: #6b7280;
+        line-height: 1.6;
+        margin: 0 auto;
+    }
+    .blog-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 20px;
+    }
+    .featured-post {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        margin-bottom: 60px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+    }
+    .featured-post-image {
+        position: relative;
+        overflow: hidden;
+        background: #f3f4f6;
+    }
+    .featured-post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+    .featured-post:hover .featured-post-image img {
+        transform: scale(1.05);
+    }
+    .featured-label {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        background: #06438c;
+        color: white;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+    .featured-post-content {
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #6b7280;
+    }
+    .post-meta-divider {
+        width: 4px;
+        height: 4px;
+        background: #d1d5db;
+        border-radius: 50%;
+    }
+    .featured-post h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 20px;
+        line-height: 1.3;
+    }
+    .featured-post p {
+        font-size: 18px;
+        color: #6b7280;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+    .read-more-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #06438c;
+        font-weight: 600;
+        text-decoration: none;
+        transition: gap 0.2s;
+    }
+    .read-more-btn:hover {
+        gap: 12px;
+    }
+    .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+    .post-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+    .post-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .post-card-image {
+        position: relative;
+        padding-top: 60%;
+        background: #f3f4f6;
+        overflow: hidden;
+    }
+    .post-card-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .post-category {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: white;
+        color: #06438c;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+    .post-card-content {
+        padding: 25px;
+    }
+    .post-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+    .post-card p {
+        font-size: 15px;
+        color: #6b7280;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .post-card .post-meta {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+    @media (max-width: 1024px) {
+        .featured-post {
+            grid-template-columns: 1fr;
+        }
+        .featured-post-image {
+            height: 300px;
+        }
+        .posts-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 640px) {
+        .blog-container {
+            padding: 40px 20px;
+        }
+        .featured-post-content {
+            padding: 30px;
+        }
+        .featured-post h2 {
+            font-size: 24px;
+        }
+        .posts-grid {
+            grid-template-columns: 1fr;
+        }
+        .blog-header h1 {
+            font-size: 36px;
+        }
+    }
+</style>
+
+<section class="blog-header">
+    <div class="container">
+        <div class="blog-header-content">
+            <span class="section-label">新闻与见解</span>
+            <h1>RB Labs的最新新闻</h1>
+            <p class="blog-header-subtitle">关注人工智能和机器人领域的最新发展</p>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Posts Section -->
+<section>
+    <div class="blog-container">
+        <!-- Featured Post (first article) -->
+        <article class="featured-post">
+            <div class="featured-post-image">
+                <img src="../../featured/RB-Labs-Ben-Bandari-Damac.jpg" alt="机器人在迪拜房地产中获得超过一亿次观看">
+                <span class="featured-label">特色</span>
+            </div>
+            <div class="featured-post-content">
+                <div class="post-meta">
+                    <span>2025年12月11日</span>
+                    <span class="post-meta-divider"></span>
+                    <span>特色</span>
+                    <span class="post-meta-divider"></span>
+                    <span>5分钟阅读</span>
+                </div>
+                <h2>机器人在迪拜房地产中获得超过一亿次观看</h2>
+                <p>机器人Robert通过与迪拜房地产专家Ben Bendari的合作取得了巨大的病毒式成功。他们的合作视频在TikTok、Instagram、YouTube和其他平台上累计超过1亿次观看，使Robert成为全球观看次数最多的房地产主持人之一。</p>
+                <a href="https://dubai.news/artificial-intelligence/robot-gets-over-100-million-views-and-your-job-might-be-next/" target="_blank" class="read-more-btn">
+                    阅读更多 →
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"/>
+                    </svg>
+                </a>
+            </div>
+        </article>
+
+        <!-- Posts Grid (remaining articles) -->
+        <div class="posts-grid">
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../../news/robert-the-policeman/robot-police.jpg" alt="瑞士最大警察日的警察罗伯特">
+                    <span class="post-category">活动</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>2025年10月11日</span>
+                        <span class="post-meta-divider"></span>
+                        <span>7分钟阅读</span>
+                    </div>
+                    <h3>瑞士最大警察日的警察罗伯特</h3>
+                    <p>在2025年10月11日，RB Labs 在瑞士最大的警察日活动中于日内瓦的帕莱克斯波展示了罗伯特机器人。超过8200名访客和50多个合作伙伴组织见证了以“蓝色灯光的银河”为主题的人工智能驱动执法的未来壮观演示。</p>
+                    <a href="/cn/news/robert-the-policeman/" class="read-more-btn">阅读更多 →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="https://robert.finance/assets/robert_the_robot.jpeg" alt="与机器人Robert见面 - 企业家杂志">
+                    <span class="post-category">新闻稿</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>2025年7月</span>
+                        <span class="post-meta-divider"></span>
+                        <span>3分钟阅读</span>
+                    </div>
+                    <h3>与机器人Robert见面 - 企业家杂志</h3>
+                    <p>这款革命性的人工智能驱动的人形机器人正在全球范围内改变运营。Robert将尖端人工智能与先进的机器人技术相结合，提供自动化解决方案。</p>
+                    <a href="https://www.entrepreneur.com/en-ae/technology/meet-robert-the-robot-by-rb-labs-the-man-who-stole/494517" target="_blank" class="read-more-btn">阅读更多 →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="https://robert.finance/assets/robert_swiss_tv.jpeg" alt="Robert在Parlons Économie - Carac TV上">
+                    <span class="post-category">电视</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>2025年7月</span>
+                        <span class="post-meta-divider"></span>
+                        <span>4分钟阅读</span>
+                    </div>
+                    <h3>Robert在Parlons Économie - Carac TV上</h3>
+                    <p>罗伯特在瑞士电视上讨论了人工智能在机器人领域的未来，展示了革命性的自动化能力。</p>
+                    <a href="https://carac.tv/replay/parlons-economie/3021" target="_blank" class="read-more-btn">阅读更多 →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="https://robert.finance/assets/robert%20in%20the%20journal.jpeg" alt="人形机器人和人工智能">
+                    <span class="post-category">新闻稿</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>2025年7月</span>
+                        <span class="post-meta-divider"></span>
+                        <span>5分钟阅读</span>
+                    </div>
+                    <h3>人形机器人和人工智能</h3>
+                    <p>在Palexpo展出 - 《法兰西自由报》报道了Robert作为人形机器人技术的未来。</p>
+                    <a href="https://www.ledauphine.com/science-et-technologie/2025/07/08/robots-humanoides-et-ia-jusqu-a-vendredi-a-geneve-au-salon-ai-for-good" target="_blank" class="read-more-btn">阅读更多 →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../../news/decentralizing-trading-robots/main_image.jpg" alt="在互联网计算协议上去中心化交易机器人">
+                    <span class="post-category">技术</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>2024年12月20日</span>
+                        <span class="post-meta-divider"></span>
+                        <span>8分钟阅读</span>
+                    </div>
+                    <h3>在互联网计算协议上去中心化交易机器人</h3>
+                    <p>RB Labs 通过在互联网计算协议上去中心化交易机器人开发和部署，推出了一种革命性的算法交易方法，实现了透明的利润分享和民主化的访问。</p>
+                    <a href="/cn/news/decentralizing-trading-robots/" class="read-more-btn">阅读更多 →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../../featured/featured-image-01.jpg" alt="金融领域去中心化人工智能的未来">
+                    <span class="post-category">研究</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>2024年12月1日</span>
+                        <span class="post-meta-divider"></span>
+                        <span>7分钟阅读</span>
+                    </div>
+                    <h3>金融领域去中心化人工智能的未来</h3>
+                    <p>探索区块链技术如何改变人工智能的部署，使金融智能比以往任何时候都更易获取和安全。我们最新的研究揭示了分布式计算的突破性方法。</p>
+                    <a href="/cn/news/decentralized-ai-finance/" class="read-more-btn">阅读更多 →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../../news/wiw3ch-japan/main_image.jpg" alt="RB Labs受邀参加在日本瑞士大使馆举行的Web3女性活动">
+                    <span class="post-category">活动</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>2024年8月18日</span>
+                        <span class="post-meta-divider"></span>
+                        <span>4分钟阅读</span>
+                    </div>
+                    <h3>RB Labs受邀参加在日本瑞士大使馆举行的Web3女性活动</h3>
+                    <p>在2024年7月，RB Labs有幸参与了在东京瑞士大使馆举办的著名“Women in Web3 Switzerland”活动，汇聚了行业领袖和创新者，共同讨论区块链技术的未来以及行业中的性别平等。</p>
+                    <a href="/cn/news/wiw3ch-japan/" class="read-more-btn">阅读更多 →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../../news/rblabs-tesla-event/main_image.jpg" alt="RB Labs与Tesla合作举办里程碑区块链活动">
+                    <span class="post-category">合作</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>2024年5月30日</span>
+                        <span class="post-meta-divider"></span>
+                        <span>4分钟阅读</span>
+                    </div>
+                    <h3>RB Labs与Tesla合作举办里程碑区块链活动</h3>
+                    <p>在2024年5月，RB Labs与Tesla合作在日内瓦举办了一场独家活动，展示他们在区块链技术方面的最新进展，并演示去中心化系统的未来。</p>
+                    <a href="/cn/news/rblabs-tesla-event/" class="read-more-btn">阅读更多 →</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">RB Labs</h4>
+                    <p class="footer-description">
+                        通过先进的人工智能和自动化技术，开创人工智能和机器人技术的未来。
+                    </p>
+                    <p class="footer-description" style="margin-top: 1rem;">
+                        总部：瑞士日内瓦
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">资源</h4>
+                    <ul class="footer-links">
+                        <li><a href="/cn/">首页</a></li>
+                        <li><a href="/cn/about/">关于</a></li>
+                        <li><a href="/cn/career/">职业</a></li>
+                        <li><a href="/cn/news/">新闻</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="/cn/contact/">联系</a></li>
+                        <li><a href="/cn/privacy-policy/">隐私政策</a></li>
+                        <li><a href="/cn/terms-of-service/">服务条款</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">连接</h4>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/robert_robot_official" target="_blank" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RB Labs AG。版权所有。| 瑞士</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

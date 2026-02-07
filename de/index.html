@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KJH15F9QP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3KJH15F9QP');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="RB Labs - Integration von KI-Lösungen und Robotik. Spezialisiert auf humanoide Robotik, KI-gestützte Automatisierung und Unternehmenslösungen.">
+    <meta name="keywords" content="RB Labs, Robotik, KI-Integration, Automatisierung, Humanoide Roboter, Unternehmens-KI, Robotiklösungen">
+    <meta property="og:title" content="RB Labs - KI- und Robotik-Integration">
+    <meta property="og:description" content="RB Labs - Integration von KI-Lösungen und Robotik. Spezialisiert auf humanoide Robotik, KI-gestützte Automatisierung und Unternehmenslösungen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rblabs.ai/de/">
+    <title>RB Labs - KI- und Robotik-Integration</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon.ico">
+
+    <!-- Apple Web App Configuration -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="RB Labs">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/logo.png">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://rblabs.ai/de/">
+    <link rel="alternate" hreflang="en" href="https://rblabs.ai/">
+    <link rel="alternate" hreflang="zh-CN" href="https://rblabs.ai/cn/">
+    <link rel="alternate" hreflang="de" href="https://rblabs.ai/de/">
+    <link rel="alternate" hreflang="fr" href="https://rblabs.ai/fr/">
+    <link rel="alternate" hreflang="x-default" href="https://rblabs.ai/">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../hero-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .visuallyhidden {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+        }
+        .nav-lang-dropdown {
+            position: relative;
+        }
+        .nav-lang-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 8px 0;
+        }
+        .nav-lang-trigger .fa-globe {
+            font-size: 15px;
+        }
+        .nav-lang-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+        .nav-lang-trigger[aria-expanded="true"] .nav-lang-arrow {
+            transform: rotate(180deg);
+        }
+        .nav-lang-panel {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 260px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .nav-lang-panel.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-lang-search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .nav-lang-search .fa-search {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+        .nav-lang-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1f2937;
+            background: transparent;
+        }
+        .nav-lang-search input::placeholder {
+            color: #9ca3af;
+        }
+        .nav-lang-list {
+            max-height: 240px;
+            overflow-y: auto;
+            padding: 6px;
+        }
+        .nav-lang-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .nav-lang-list::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        .nav-lang-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+            transition: background 0.15s ease;
+        }
+        .nav-lang-item:hover {
+            background: #f3f4f6;
+        }
+        .nav-lang-item.active {
+            background: rgba(6, 67, 140, 0.06);
+            color: #06438c;
+            font-weight: 600;
+        }
+        .nav-lang-name {
+            flex: 1;
+        }
+        .nav-lang-code {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .nav-lang-item.active .nav-lang-code {
+            color: #06438c;
+        }
+        .nav-lang-item .fa-check {
+            font-size: 12px;
+            color: #06438c;
+        }
+        .nav-lang-empty {
+            padding: 20px 16px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .nav-lang-dropdown {
+                width: 100%;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .nav-menu.active .nav-lang-dropdown {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.25s;
+            }
+            .nav-lang-trigger {
+                width: 100%;
+                justify-content: center;
+                padding: 1.5rem 0 !important;
+            }
+            .nav-lang-trigger .fa-globe {
+                font-size: 1.8rem;
+            }
+            .nav-lang-trigger .nav-lang-arrow {
+                font-size: 0.7rem;
+            }
+            .nav-lang-panel {
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                border-radius: 16px 16px 0 0;
+                transform: translateY(100%);
+                max-height: 60vh;
+                z-index: 10001;
+            }
+            .nav-lang-panel.open {
+                transform: translateY(0);
+            }
+            .nav-lang-backdrop {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.3);
+                z-index: 10000;
+            }
+            .nav-lang-backdrop.visible {
+                display: block;
+            }
+            .nav-lang-list {
+                max-height: calc(60vh - 60px);
+            }
+        }
+    </style>
+
+    
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "RB Labs",
+        "alternateName": "RB Labs AG",
+        "description": "RB Labs - Integration von KI-Lösungen und Robotik. Spezialisiert auf humanoide Robotik, KI-gestützte Automatisierung und Unternehmenslösungen.",
+        "url": "https://rblabs.ai/",
+        "logo": "https://rblabs.ai/images/logo/logo.png",
+        "foundingDate": "2020",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Geneva",
+            "addressCountry": "Switzerland"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "areaServed": "Worldwide"
+        },
+        "sameAs": [
+            "https://www.instagram.com/robert_robot_official"
+        ],
+        "industry": "Robotics & AI",
+        "numberOfEmployees": "10-50"
+    }
+    </script>
+</head>
+<body data-page="home">
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/de/" class="logo">
+                    <img src="../logo/logo.png" alt="RB Labs Logo" height="50">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/de/" class="nav-link">Startseite</a>
+                    <a href="/de/about/" class="nav-link">Über uns</a>
+                    <a href="/de/career/" class="nav-link">Karriere</a>
+                    <a href="/de/news/" class="nav-link">Nachrichten</a>
+                    <div class="nav-lang-dropdown">
+                        <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
+                            <i class="fas fa-globe"></i>
+                            <span>Sprache</span>
+                            <i class="fas fa-chevron-down nav-lang-arrow"></i>
+                        </button>
+                        <div class="nav-lang-backdrop" id="langBackdrop"></div>
+                        <div class="nav-lang-panel" id="langDropdownPanel">
+                            <div class="nav-lang-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="langSearchInput" placeholder="Sprachen suchen..." autocomplete="off">
+                            </div>
+                            <div class="nav-lang-list" id="langList">
+                                <a href="/" class="nav-lang-item" data-name="English" data-code="en">
+                                    <span class="nav-lang-name">English</span>
+                                    <span class="nav-lang-code">en</span>
+                                    
+                                </a>
+                                <a href="/cn/" class="nav-lang-item" data-name="简体中文" data-code="cn">
+                                    <span class="nav-lang-name">简体中文</span>
+                                    <span class="nav-lang-code">cn</span>
+                                    
+                                </a>
+                                <a href="/de/" class="nav-lang-item active" data-name="Deutsch" data-code="de">
+                                    <span class="nav-lang-name">Deutsch</span>
+                                    <span class="nav-lang-code">de</span>
+                                    <i class="fas fa-check"></i>
+                                </a>
+                                <a href="/fr/" class="nav-lang-item" data-name="Français" data-code="fr">
+                                    <span class="nav-lang-name">Français</span>
+                                    <span class="nav-lang-code">fr</span>
+                                    
+                                </a>
+                            </div>
+                            <div class="nav-lang-empty" id="langEmpty" style="display:none;">
+                                Keine Sprachen gefunden
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    (function() {
+        var trigger = document.getElementById('langDropdownTrigger');
+        var panel = document.getElementById('langDropdownPanel');
+        var backdrop = document.getElementById('langBackdrop');
+        var searchInput = document.getElementById('langSearchInput');
+        var langList = document.getElementById('langList');
+        var langEmpty = document.getElementById('langEmpty');
+        var items = langList.querySelectorAll('.nav-lang-item');
+        var navMenu = document.getElementById('navMenu');
+        var navToggle = document.getElementById('navToggle');
+    
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+    
+        function openDropdown() {
+            panel.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+            if (isMobile()) backdrop.classList.add('visible');
+            searchInput.value = '';
+            filterLanguages('');
+            setTimeout(function() { searchInput.focus(); }, 100);
+        }
+    
+        function closeDropdown() {
+            panel.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+            if (backdrop) backdrop.classList.remove('visible');
+        }
+    
+        function toggleDropdown(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (panel.classList.contains('open')) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        }
+    
+        function filterLanguages(query) {
+            var q = query.toLowerCase();
+            var visibleCount = 0;
+            for (var i = 0; i < items.length; i++) {
+                var name = items[i].getAttribute('data-name').toLowerCase();
+                var code = items[i].getAttribute('data-code').toLowerCase();
+                if (name.indexOf(q) !== -1 || code.indexOf(q) !== -1) {
+                    items[i].style.display = '';
+                    visibleCount++;
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+            langEmpty.style.display = visibleCount === 0 ? '' : 'none';
+        }
+    
+        trigger.addEventListener('click', toggleDropdown);
+    
+        searchInput.addEventListener('input', function() {
+            filterLanguages(this.value);
+        });
+    
+        searchInput.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    
+        // Close dropdown on backdrop click (mobile)
+        if (backdrop) {
+            backdrop.addEventListener('click', function() {
+                closeDropdown();
+            });
+        }
+    
+        document.addEventListener('click', function(e) {
+            if (!panel.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+    
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDropdown();
+        });
+    
+        // Close language panel when mobile menu closes
+        if (navToggle) {
+            navToggle.addEventListener('click', function() {
+                if (navMenu && !navMenu.classList.contains('active')) {
+                    closeDropdown();
+                }
+            });
+        }
+    })();
+    </script>
+
+    <!-- Hero Section -->
+<div class="hero-wrapper">
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <video
+              class="hero-sphere"
+              autoplay muted playsinline loop
+              preload="metadata"
+              poster="../featured/rblabs.jpg"
+              width="1920" height="1080"
+            >
+              <source src="../featured/rblabs.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+            <div class="hero-badge">KI • ROBOTIK • INTEGRATION</div>
+            <div class="hero-title">
+                <h1 class="visuallyhidden">RB Labs</h1>
+                <span class="hero-welcome">Die Zukunft von</span>
+                <span class="hero-brand">Robotik</span>
+                <span style="position: absolute; left: -9999px;">RB Labs - KI-gestützte Robotiklösungen</span>
+            </div>
+            <p class="hero-description">
+                <span style="position: absolute; left: -9999px;">RB Labs</span> RB Labs integriert modernste KI mit fortschrittlicher Robotik, um die Betriebsabläufe von Unternehmen zu transformieren und Prozesse zu automatisieren.
+            </p>
+            <div class="hero-cta">
+                <a href="/de/robot/" class="btn btn-primary btn-large btn-minimal">
+                    <span>Holen Sie sich Ihren Roboter</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-indicator"><span></span></div>
+        </div>
+    </section>
+</div>
+
+<!-- LLMs Section -->
+<section class="llms-section" id="llms">
+    <div class="container">
+        <div class="llms-wrapper">
+            <div class="llms-content">
+                <h2 class="section-title">Lernen Sie Robert, den Roboter, kennen<span style="position: absolute; left: -9999px;"> von RB Labs</span></h2>
+                <p class="llms-description">Wo KI auf Robotik trifft. RB Labs verbindet fortschrittliche künstliche Intelligenz mit humanoider Robotik – und bringt die Zukunft der Automatisierung zum Leben.</p>
+                <div class="llms-features">
+                    <div class="llm-feature">
+                        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                        <h4>Fortschrittliche KI</h4>
+                        <p>Angetrieben von modernster künstlicher Intelligenz für anspruchsvolle Automatisierungsaufgaben</p>
+                    </div>
+                    <div class="llm-feature">
+                        <div class="feature-icon"><i class="fas fa-industry"></i></div>
+                        <h4>Prozessexpertise</h4>
+                        <p>Tiefes Verständnis für Arbeitsabläufe, Operationen und Geschäftsprozesse</p>
+                    </div>
+                    <div class="llm-feature">
+                        <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                        <h4>Humanoide Schnittstelle</h4>
+                        <p>Natürliche Interaktionen durch fortschrittliche Robotik und konversationale KI</p>
+                    </div>
+                    <div class="llm-feature">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>Unternehmenssicherheit</h4>
+                        <p>Sicherheitsprotokolle auf Unternehmensniveau, die sicherstellen, dass Ihre Betriebsdaten geschützt bleiben</p>
+                    </div>
+                </div>
+                <a href="https://www.robertrobot.com/" target="_blank" class="btn btn-primary">Lernen Sie Robert kennen</a>
+            </div>
+            <div class="llms-visual">
+                <video autoplay loop muted playsinline class="llms-video">
+                    <source src="../featured/robert-finance.mp4" type="video/mp4">
+                    <img src="../featured/robert.jpg" alt="Robert the Robot" class="llms-img">
+                </video>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Book Robert Banner -->
+<section class="speaker-banner" style="padding: 80px 0;">
+    <div class="container">
+        <div class="speaker-banner-card" style="background: linear-gradient(135deg, #06438c 0%, #0856b3 100%); border-radius: 20px; padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; gap: 40px; box-shadow: 0 10px 40px rgba(6, 67, 140, 0.15);">
+            <div style="flex: 1;">
+                <h2 style="font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 16px 0; line-height: 1.3;">Buchen Sie Robert als Redner</h2>
+                <p style="font-size: 17px; color: rgba(255, 255, 255, 0.95); line-height: 1.6; margin: 0;">Präsentieren Sie sich als führend in Ihrer Branche, indem Sie die neuesten technologischen Innovationen auf die Bühne bringen.</p>
+            </div>
+            <div style="flex-shrink: 0;">
+                <a href="https://www.robertrobot.com" target="_blank" class="btn btn-primary" style="padding: 14px 32px; font-size: 16px; font-weight: 600; background: #fff; color: #06438c; border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+                    <i class="fas fa-calendar-alt"></i>
+                    Buchen Sie Robert jetzt
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .speaker-banner-card a.btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+    }
+    @media (max-width: 768px) {
+        .speaker-banner-card {
+            flex-direction: column !important;
+            text-align: center;
+            gap: 30px !important;
+            padding: 40px 30px !important;
+        }
+        .speaker-banner-card h2 { font-size: 24px !important; }
+        .speaker-banner-card p { font-size: 16px !important; }
+    }
+</style>
+
+<!-- What We Do Section -->
+<section class="what-we-do-section" id="what-we-do">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">WAS WIR TUN</span>
+            <h2 class="section-title"><span style="position: absolute; left: -9999px;">RB Labs</span> Revolutionierung der Geschäftswelt mit KI &amp; Robotik</h2>
+            <p class="section-subtitle">Wir entwickeln modernste KI- und Robotiklösungen, die die Betriebsabläufe von Unternehmen transformieren und sie effizienter, automatisierter und nachhaltiger machen.</p>
+        </div>
+        <div class="innovation-grid">
+            <div class="innovation-card">
+                <div class="innovation-card-image">
+                    <img src="../featured/RB-Labs-Ben-Bandari-Damac.jpg" alt="Robert the Robot - Dubai Real Estate Viral Success">
+                </div>
+                <div class="innovation-card-content">
+                    <h4>100M+ Aufrufe in Dubai</h4>
+                    <p>Robert wurde einer der meistgesehenen Immobilienpräsentatoren der Welt und erzielte viralen Erfolg mit dem Immobilienexperten Ben Bendari aus Dubai.</p>
+                    <a href="https://dubai.news/artificial-intelligence/robot-gets-over-100-million-views-and-your-job-might-be-next/" target="_blank" class="innovation-link">Erfahren Sie mehr</a>
+                </div>
+            </div>
+            <div class="innovation-card">
+                <div class="innovation-card-image">
+                    <img src="../news/robert-the-policeman/robot-police.jpg" alt="Robert the Policeman">
+                </div>
+                <div class="innovation-card-content">
+                    <h4>Robert der Polizist</h4>
+                    <p>KI-gestützter Polizeiroboter wurde am Polizeitag 2025 vorgestellt. Die Zukunft der Technologie für öffentliche Sicherheit.</p>
+                    <a href="/de/news/robert-the-policeman/" class="innovation-link">Erfahren Sie mehr</a>
+                </div>
+            </div>
+            <div class="innovation-card">
+                <div class="innovation-card-image">
+                    <img src="../featured/featured-image-03.jpg" alt="Decentralized AI Models">
+                </div>
+                <div class="innovation-card-content">
+                    <h4>Dezentralisierte KI-Modelle</h4>
+                    <p>Auf Blockchain aufgebaut. Angetrieben von KI. Sicher, skalierbar und bereit, die Bereitstellung von Modellen zu transformieren.</p>
+                    <a href="https://robotbulls.com/" target="_blank" class="innovation-link">Erfahren Sie mehr</a>
+                </div>
+            </div>
+            <div class="innovation-card">
+                <div class="innovation-card-image">
+                    <img src="../featured/robert_finance_robot.jpg" alt="Bespoke AI">
+                </div>
+                <div class="innovation-card-content">
+                    <h4>Maßgeschneiderte KI für Unternehmen</h4>
+                    <p>Individuell gestaltete KI- und Blockchain-Systeme, die auf Ihre Unternehmensziele ausgerichtet sind. Wir bauen, was zu Ihnen passt – nicht weniger.</p>
+                    <a href="https://www.robertrobot.com/" target="_blank" class="innovation-link">Erfahren Sie mehr</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us / Conversational AI Section -->
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="about-wrapper">
+            <div class="about-content">
+                <span class="section-label">KONVERSATIONALE KI</span>
+                <h2 class="section-title"><span style="position: absolute; left: -9999px;">RB Labs</span> LLMs für echte Gespräche entwickelt</h2>
+                <p class="about-lead">Unsere Sprachmodelle verarbeiten nicht nur Text – sie verstehen Kontext, Nuancen und Absichten. Von Grund auf für natürliche, bedeutungsvolle Interaktionen entwickelt, die sich wirklich menschlich anfühlen.</p>
+                <p class="about-text">Wir haben konversationale KI entwickelt, die über einfache Fragen und Antworten hinausgeht. Unsere Modelle führen dynamische Dialoge, erinnern sich an den Kontext und liefern Antworten mit beispielloser Genauigkeit und Geschwindigkeit.</p>
+                <div class="about-stats">
+                    <div class="about-stat">
+                        <span class="stat-value">5M+</span>
+                        <span class="stat-label">API-Aufrufe</span>
+                    </div>
+                    <div class="about-stat">
+                        <span class="stat-value">99.9%</span>
+                        <span class="stat-label">Betriebszeit</span>
+                    </div>
+                    <div class="about-stat">
+                        <span class="stat-value">22+</span>
+                        <span class="stat-label">KI-Modelle</span>
+                    </div>
+                    <div class="about-stat">
+                        <span class="stat-value">12+</span>
+                        <span class="stat-label">Blockchain-Netzwerke</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-images">
+                <video autoplay loop muted playsinline style="width: 100%; aspect-ratio: 1/1; border-radius: 12px; object-fit: cover;">
+                    <source src="../featured/llm.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Career Section -->
+<section class="career-section" style="padding: 60px 0; background: #f8f8f8; border-top: 1px solid #e5e7eb;">
+    <div class="container">
+        <div class="career-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
+            <div style="flex: 1;">
+                <h2 style="font-size: 28px; font-weight: 600; color: #1f2937; margin-bottom: 12px;">Schließen Sie sich unserer Mission an</h2>
+                <p style="font-size: 16px; color: #6b7280; line-height: 1.5;">Seien Sie Teil eines Teams, das die Zukunft von KI und Robotik gestaltet. Wir suchen leidenschaftliche Personen, die bereit sind, einen Unterschied zu machen.</p>
+            </div>
+            <div>
+                <a href="/de/career/" class="btn btn-primary" style="padding: 12px 28px; font-size: 16px; font-weight: 500;">Karrieren erkunden</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (max-width: 768px) {
+        .career-content {
+            flex-direction: column !important;
+            text-align: center;
+            gap: 24px;
+        }
+    }
+</style>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">RB Labs</h4>
+                    <p class="footer-description">
+                        Die Zukunft von KI und Robotik durch fortschrittliche künstliche Intelligenz und Automatisierungstechnologien gestalten.
+                    </p>
+                    <p class="footer-description" style="margin-top: 1rem;">
+                        Hauptsitz: Genf, Schweiz
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Ressourcen</h4>
+                    <ul class="footer-links">
+                        <li><a href="/de/">Startseite</a></li>
+                        <li><a href="/de/about/">Über uns</a></li>
+                        <li><a href="/de/career/">Karriere</a></li>
+                        <li><a href="/de/news/">Nachrichten</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Unterstützung</h4>
+                    <ul class="footer-links">
+                        <li><a href="/de/contact/">Kontakt</a></li>
+                        <li><a href="/de/privacy-policy/">Datenschutzrichtlinie</a></li>
+                        <li><a href="/de/terms-of-service/">Nutzungsbedingungen</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Verbinden</h4>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/robert_robot_official" target="_blank" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RB Labs AG. Alle Rechte vorbehalten. | Schweiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -7,60 +7,281 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-3KJH15F9QP');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="RB Labs News - Latest insights and developments in AI, robotics, and automation">
-    <meta name="keywords" content="AI news, robotics articles, automation news, RB Labs news">
-    <meta property="og:title" content="News - RB Labs">
-    <meta property:og:description" content="Stay updated with the latest developments in AI and robotics">
+    <meta name="description" content="Latest news, updates, and insights from RB Labs about AI, robotics, and automation.">
+    <meta name="keywords" content="RB Labs, Robotics, AI Integration, Automation, Humanoid Robots, Enterprise AI, Robotics Solutions">
+    <meta property="og:title" content="News &amp; Insights - RB Labs">
+    <meta property="og:description" content="Latest news, updates, and insights from RB Labs about AI, robotics, and automation.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rblabs.ai/blog/">
-    <title>News - RB Labs</title>
-    
+    <meta property="og:url" content="https://rblabs.ai/news/">
+    <title>News &amp; Insights - RB Labs</title>
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/images/logo/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon.ico">
-    
+
     <!-- Apple Web App Configuration -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="RB Labs News">
+    <meta name="apple-mobile-web-app-title" content="RB Labs">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/logo.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/logo/logo.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/logo/logo.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo/logo.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/logo/logo.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/logo/logo.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/logo/logo.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/images/logo/logo.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/logo/logo.png">
-    
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://rblabs.ai/news/">
+    <link rel="alternate" hreflang="en" href="https://rblabs.ai/news/">
+    <link rel="alternate" hreflang="zh-CN" href="https://rblabs.ai/cn/news/">
+    <link rel="alternate" hreflang="de" href="https://rblabs.ai/de/news/">
+    <link rel="alternate" hreflang="fr" href="https://rblabs.ai/fr/news/">
+    <link rel="alternate" hreflang="x-default" href="https://rblabs.ai/news/">
+
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../hero-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .visuallyhidden {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+        }
+        .nav-lang-dropdown {
+            position: relative;
+        }
+        .nav-lang-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 8px 0;
+        }
+        .nav-lang-trigger .fa-globe {
+            font-size: 15px;
+        }
+        .nav-lang-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+        .nav-lang-trigger[aria-expanded="true"] .nav-lang-arrow {
+            transform: rotate(180deg);
+        }
+        .nav-lang-panel {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 260px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .nav-lang-panel.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-lang-search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .nav-lang-search .fa-search {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+        .nav-lang-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1f2937;
+            background: transparent;
+        }
+        .nav-lang-search input::placeholder {
+            color: #9ca3af;
+        }
+        .nav-lang-list {
+            max-height: 240px;
+            overflow-y: auto;
+            padding: 6px;
+        }
+        .nav-lang-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .nav-lang-list::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        .nav-lang-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+            transition: background 0.15s ease;
+        }
+        .nav-lang-item:hover {
+            background: #f3f4f6;
+        }
+        .nav-lang-item.active {
+            background: rgba(6, 67, 140, 0.06);
+            color: #06438c;
+            font-weight: 600;
+        }
+        .nav-lang-name {
+            flex: 1;
+        }
+        .nav-lang-code {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .nav-lang-item.active .nav-lang-code {
+            color: #06438c;
+        }
+        .nav-lang-item .fa-check {
+            font-size: 12px;
+            color: #06438c;
+        }
+        .nav-lang-empty {
+            padding: 20px 16px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .nav-lang-dropdown {
+                width: 100%;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .nav-menu.active .nav-lang-dropdown {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.25s;
+            }
+            .nav-lang-trigger {
+                width: 100%;
+                justify-content: center;
+                padding: 1.5rem 0 !important;
+            }
+            .nav-lang-trigger .fa-globe {
+                font-size: 1.8rem;
+            }
+            .nav-lang-trigger .nav-lang-arrow {
+                font-size: 0.7rem;
+            }
+            .nav-lang-panel {
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                border-radius: 16px 16px 0 0;
+                transform: translateY(100%);
+                max-height: 60vh;
+                z-index: 10001;
+            }
+            .nav-lang-panel.open {
+                transform: translateY(0);
+            }
+            .nav-lang-backdrop {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.3);
+                z-index: 10000;
+            }
+            .nav-lang-backdrop.visible {
+                display: block;
+            }
+            .nav-lang-list {
+                max-height: calc(60vh - 60px);
+            }
+        }
+    </style>
+
+    
+
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="/" class="logo">
-                    <img src="../images/logo/logo.png" alt="RB Labs Logo" height="50">
+                    <img src="../logo/logo.png" alt="RB Labs Logo" height="50">
                 </a>
                 <div class="nav-menu" id="navMenu">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/about/" class="nav-link">About</a>
                     <a href="/career/" class="nav-link">Career</a>
-                    <a href="/news/" class="nav-link active">News</a>
+                    <a href="/news/" class="nav-link">News</a>
+                    <div class="nav-lang-dropdown">
+                        <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
+                            <i class="fas fa-globe"></i>
+                            <span>Language</span>
+                            <i class="fas fa-chevron-down nav-lang-arrow"></i>
+                        </button>
+                        <div class="nav-lang-backdrop" id="langBackdrop"></div>
+                        <div class="nav-lang-panel" id="langDropdownPanel">
+                            <div class="nav-lang-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="langSearchInput" placeholder="Search languages..." autocomplete="off">
+                            </div>
+                            <div class="nav-lang-list" id="langList">
+                                <a href="/news/" class="nav-lang-item active" data-name="English" data-code="en">
+                                    <span class="nav-lang-name">English</span>
+                                    <span class="nav-lang-code">en</span>
+                                    <i class="fas fa-check"></i>
+                                </a>
+                                <a href="/cn/news/" class="nav-lang-item" data-name="简体中文" data-code="cn">
+                                    <span class="nav-lang-name">简体中文</span>
+                                    <span class="nav-lang-code">cn</span>
+                                    
+                                </a>
+                                <a href="/de/news/" class="nav-lang-item" data-name="Deutsch" data-code="de">
+                                    <span class="nav-lang-name">Deutsch</span>
+                                    <span class="nav-lang-code">de</span>
+                                    
+                                </a>
+                                <a href="/fr/news/" class="nav-lang-item" data-name="Français" data-code="fr">
+                                    <span class="nav-lang-name">Français</span>
+                                    <span class="nav-lang-code">fr</span>
+                                    
+                                </a>
+                            </div>
+                            <div class="nav-lang-empty" id="langEmpty" style="display:none;">
+                                No languages found
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button class="nav-toggle" id="navToggle">
                     <span></span>
@@ -70,396 +291,484 @@
             </div>
         </div>
     </nav>
+    
+    <script>
+    (function() {
+        var trigger = document.getElementById('langDropdownTrigger');
+        var panel = document.getElementById('langDropdownPanel');
+        var backdrop = document.getElementById('langBackdrop');
+        var searchInput = document.getElementById('langSearchInput');
+        var langList = document.getElementById('langList');
+        var langEmpty = document.getElementById('langEmpty');
+        var items = langList.querySelectorAll('.nav-lang-item');
+        var navMenu = document.getElementById('navMenu');
+        var navToggle = document.getElementById('navToggle');
+    
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+    
+        function openDropdown() {
+            panel.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+            if (isMobile()) backdrop.classList.add('visible');
+            searchInput.value = '';
+            filterLanguages('');
+            setTimeout(function() { searchInput.focus(); }, 100);
+        }
+    
+        function closeDropdown() {
+            panel.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+            if (backdrop) backdrop.classList.remove('visible');
+        }
+    
+        function toggleDropdown(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (panel.classList.contains('open')) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        }
+    
+        function filterLanguages(query) {
+            var q = query.toLowerCase();
+            var visibleCount = 0;
+            for (var i = 0; i < items.length; i++) {
+                var name = items[i].getAttribute('data-name').toLowerCase();
+                var code = items[i].getAttribute('data-code').toLowerCase();
+                if (name.indexOf(q) !== -1 || code.indexOf(q) !== -1) {
+                    items[i].style.display = '';
+                    visibleCount++;
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+            langEmpty.style.display = visibleCount === 0 ? '' : 'none';
+        }
+    
+        trigger.addEventListener('click', toggleDropdown);
+    
+        searchInput.addEventListener('input', function() {
+            filterLanguages(this.value);
+        });
+    
+        searchInput.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    
+        // Close dropdown on backdrop click (mobile)
+        if (backdrop) {
+            backdrop.addEventListener('click', function() {
+                closeDropdown();
+            });
+        }
+    
+        document.addEventListener('click', function(e) {
+            if (!panel.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+    
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDropdown();
+        });
+    
+        // Close language panel when mobile menu closes
+        if (navToggle) {
+            navToggle.addEventListener('click', function() {
+                if (navMenu && !navMenu.classList.contains('active')) {
+                    closeDropdown();
+                }
+            });
+        }
+    })();
+    </script>
 
     <!-- News Header -->
-    <style>
-        .blog-header {
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
-            padding: 140px 0 60px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .blog-header-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .blog-header h1 {
-            font-size: 48px;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
-        }
-        .blog-header-subtitle {
-            font-size: 20px;
-            color: #6b7280;
-            line-height: 1.6;
-            margin: 0 auto;
-        }
-    </style>
-    <section class="blog-header">
-        <div class="container">
-            <div class="blog-header-content">
-                <h1>Insights & Research</h1>
-                <p class="blog-header-subtitle">
-                    Explore the latest developments in AI and robotics from our expert team and thought leaders.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Posts Section -->
-    <style>
-        .blog-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
+<style>
+    .blog-header {
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+        padding: 140px 0 60px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .blog-header-content {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .blog-header h1 {
+        font-size: 48px;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+    .blog-header .section-label {
+        display: inline-block;
+        margin-bottom: 16px;
+    }
+    .blog-header-subtitle {
+        font-size: 20px;
+        color: #6b7280;
+        line-height: 1.6;
+        margin: 0 auto;
+    }
+    .blog-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 20px;
+    }
+    .featured-post {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        margin-bottom: 60px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+    }
+    .featured-post-image {
+        position: relative;
+        overflow: hidden;
+        background: #f3f4f6;
+    }
+    .featured-post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+    .featured-post:hover .featured-post-image img {
+        transform: scale(1.05);
+    }
+    .featured-label {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        background: #06438c;
+        color: white;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+    .featured-post-content {
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #6b7280;
+    }
+    .post-meta-divider {
+        width: 4px;
+        height: 4px;
+        background: #d1d5db;
+        border-radius: 50%;
+    }
+    .featured-post h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 20px;
+        line-height: 1.3;
+    }
+    .featured-post p {
+        font-size: 18px;
+        color: #6b7280;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+    .read-more-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #06438c;
+        font-weight: 600;
+        text-decoration: none;
+        transition: gap 0.2s;
+    }
+    .read-more-btn:hover {
+        gap: 12px;
+    }
+    .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+    .post-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+    .post-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .post-card-image {
+        position: relative;
+        padding-top: 60%;
+        background: #f3f4f6;
+        overflow: hidden;
+    }
+    .post-card-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .post-category {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: white;
+        color: #06438c;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+    .post-card-content {
+        padding: 25px;
+    }
+    .post-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+    .post-card p {
+        font-size: 15px;
+        color: #6b7280;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .post-card .post-meta {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+    @media (max-width: 1024px) {
         .featured-post {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            margin-bottom: 60px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
+            grid-template-columns: 1fr;
         }
         .featured-post-image {
-            position: relative;
-            overflow: hidden;
-            background: #f3f4f6;
-        }
-        .featured-post-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        .featured-post:hover .featured-post-image img {
-            transform: scale(1.05);
-        }
-        .featured-label {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            background: #06438c;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-        .featured-post-content {
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .post-meta {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #6b7280;
-        }
-        .post-meta-divider {
-            width: 4px;
-            height: 4px;
-            background: #d1d5db;
-            border-radius: 50%;
-        }
-        .featured-post h2 {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-        .featured-post p {
-            font-size: 18px;
-            color: #6b7280;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
-        .read-more-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #06438c;
-            font-weight: 600;
-            text-decoration: none;
-            transition: gap 0.2s;
-        }
-        .read-more-btn:hover {
-            gap: 12px;
+            height: 300px;
         }
         .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(2, 1fr);
         }
-        .post-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: all 0.3s;
-            cursor: pointer;
+    }
+    @media (max-width: 640px) {
+        .blog-container {
+            padding: 40px 20px;
         }
-        .post-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        .featured-post-content {
+            padding: 30px;
         }
-        .post-card-image {
-            position: relative;
-            padding-top: 60%;
-            background: #f3f4f6;
-            overflow: hidden;
+        .featured-post h2 {
+            font-size: 24px;
         }
-        .post-card-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .posts-grid {
+            grid-template-columns: 1fr;
         }
-        .post-category {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: white;
-            color: #06438c;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+        .blog-header h1 {
+            font-size: 36px;
         }
-        .post-card-content {
-            padding: 25px;
-        }
-        .post-card h3 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-        .post-card p {
-            font-size: 15px;
-            color: #6b7280;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .post-card .post-meta {
-            font-size: 13px;
-            margin-bottom: 15px;
-        }
-        @media (max-width: 1024px) {
-            .featured-post {
-                grid-template-columns: 1fr;
-            }
-            .featured-post-image {
-                height: 300px;
-            }
-            .posts-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 640px) {
-            .blog-container {
-                padding: 40px 20px;
-            }
-            .featured-post-content {
-                padding: 30px;
-            }
-            .featured-post h2 {
-                font-size: 24px;
-            }
-            .posts-grid {
-                grid-template-columns: 1fr;
-            }
-            .blog-header h1 {
-                font-size: 36px;
-            }
-        }
-    </style>
-    <section>
-        <div class="blog-container">
-            <!-- Featured Post -->
-            <article class="featured-post">
-                <div class="featured-post-image">
-                    <img src="../images/featured/RB-Labs-Ben-Bandari-Damac.jpg" alt="Robert the Robot - Dubai Real Estate with Ben Bendari">
-                    <span class="featured-label">FEATURED</span>
+    }
+</style>
+
+<section class="blog-header">
+    <div class="container">
+        <div class="blog-header-content">
+            <span class="section-label">NEWS &amp; INSIGHTS</span>
+            <h1>Latest News from RB Labs</h1>
+            <p class="blog-header-subtitle">Stay updated with the latest developments in AI and robotics</p>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Posts Section -->
+<section>
+    <div class="blog-container">
+        <!-- Featured Post (first article) -->
+        <article class="featured-post">
+            <div class="featured-post-image">
+                <img src="../featured/RB-Labs-Ben-Bandari-Damac.jpg" alt="Robot Gets Over 100 Million Views in Dubai Real Estate">
+                <span class="featured-label">FEATURED</span>
+            </div>
+            <div class="featured-post-content">
+                <div class="post-meta">
+                    <span>December 11, 2025</span>
+                    <span class="post-meta-divider"></span>
+                    <span>FEATURED</span>
+                    <span class="post-meta-divider"></span>
+                    <span>5 min read</span>
                 </div>
-                <div class="featured-post-content">
+                <h2>Robot Gets Over 100 Million Views in Dubai Real Estate</h2>
+                <p>Robert the Robot achieved massive viral success through a partnership with Dubai real estate specialist Ben Bendari. Their collaborative videos accumulated over 100 million views across TikTok, Instagram, YouTube, and other platforms, making Robert one of the world&#x27;s most-viewed property presenters.</p>
+                <a href="https://dubai.news/artificial-intelligence/robot-gets-over-100-million-views-and-your-job-might-be-next/" target="_blank" class="read-more-btn">
+                    Read More →
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"/>
+                    </svg>
+                </a>
+            </div>
+        </article>
+
+        <!-- Posts Grid (remaining articles) -->
+        <div class="posts-grid">
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../news/robert-the-policeman/robot-police.jpg" alt="Robert the Policeman at Switzerland&#x27;s Largest Police Day">
+                    <span class="post-category">EVENTS</span>
+                </div>
+                <div class="post-card-content">
                     <div class="post-meta">
-                        <span>December 11, 2025</span>
+                        <span>October 11, 2025</span>
                         <span class="post-meta-divider"></span>
-                        <span>Dubai News</span>
+                        <span>7 min read</span>
+                    </div>
+                    <h3>Robert the Policeman at Switzerland&#x27;s Largest Police Day</h3>
+                    <p>On October 11, 2025, RB Labs presented Robert the Robot at Switzerland&#x27;s largest Police Day at Palexpo Geneva. Over 8,200 visitors and 50+ partner organizations witnessed the future of AI-powered law enforcement in a spectacular demonstration themed &quot;the galaxy of blue lights.&quot;</p>
+                    <a href="/news/robert-the-policeman/" class="read-more-btn">Read More →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="https://robert.finance/assets/robert_the_robot.jpeg" alt="Meet Robert the Robot - Entrepreneur Magazine">
+                    <span class="post-category">PRESS</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>July 2025</span>
+                        <span class="post-meta-divider"></span>
+                        <span>3 min read</span>
+                    </div>
+                    <h3>Meet Robert the Robot - Entrepreneur Magazine</h3>
+                    <p>The revolutionary AI-powered humanoid robot transforming operations across the globe. Robert combines cutting-edge artificial intelligence with advanced robotics to deliver automated solutions.</p>
+                    <a href="https://www.entrepreneur.com/en-ae/technology/meet-robert-the-robot-by-rb-labs-the-man-who-stole/494517" target="_blank" class="read-more-btn">Read More →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="https://robert.finance/assets/robert_swiss_tv.jpeg" alt="Robert on Parlons Économie - Carac TV">
+                    <span class="post-category">TELEVISION</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>July 2025</span>
+                        <span class="post-meta-divider"></span>
+                        <span>4 min read</span>
+                    </div>
+                    <h3>Robert on Parlons Économie - Carac TV</h3>
+                    <p>Robert discusses the future of AI in robotics on Swiss television, showcasing revolutionary automation capabilities.</p>
+                    <a href="https://carac.tv/replay/parlons-economie/3021" target="_blank" class="read-more-btn">Read More →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="https://robert.finance/assets/robert%20in%20the%20journal.jpeg" alt="Robots humanoïdes et intelligence artificielle">
+                    <span class="post-category">PRESS</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>July 2025</span>
                         <span class="post-meta-divider"></span>
                         <span>5 min read</span>
                     </div>
-                    <h2>Robot Gets Over 100 Million Views in Dubai Real Estate</h2>
-                    <p>Robert the Robot achieved massive viral success through a partnership with Dubai real estate specialist Ben Bendari. Their collaborative videos accumulated over 100 million views across TikTok, Instagram, YouTube, and other platforms, making Robert one of the world's most-viewed property presenters.</p>
-                    <a href="https://dubai.news/artificial-intelligence/robot-gets-over-100-million-views-and-your-job-might-be-next/" target="_blank" class="read-more-btn">
-                        Read Full Article
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"/>
-                        </svg>
-                    </a>
+                    <h3>Robots humanoïdes et intelligence artificielle</h3>
+                    <p>Featured at Palexpo - Le Dauphiné Libéré covers Robert as the future of humanoid robotics technology.</p>
+                    <a href="https://www.ledauphine.com/science-et-technologie/2025/07/08/robots-humanoides-et-ia-jusqu-a-vendredi-a-geneve-au-salon-ai-for-good" target="_blank" class="read-more-btn">Read More →</a>
                 </div>
             </article>
-
-            <!-- Posts Grid -->
-            <div class="posts-grid">
-                <article class="post-card">
-                    <div class="post-card-image">
-                        <img src="robert-the-policeman/robot-police.jpg" alt="Robert the Policeman at Palexpo">
-                        <span class="post-category">EVENTS</span>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../news/decentralizing-trading-robots/main_image.jpg" alt="Decentralizing Trading Robots on the Internet Computer Protocol">
+                    <span class="post-category">TECHNOLOGY</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>December 20, 2024</span>
+                        <span class="post-meta-divider"></span>
+                        <span>8 min read</span>
                     </div>
-                    <div class="post-card-content">
-                        <div class="post-meta">
-                            <span>October 11, 2025</span>
-                            <span class="post-meta-divider"></span>
-                            <span>7 min read</span>
-                        </div>
-                        <h3>Robert the Policeman at Switzerland's Largest Police Day</h3>
-                        <p>RB Labs presents Robert at Switzerland's largest Police Day at Palexpo Geneva. Over 8,200 visitors witnessed the future of AI-powered law enforcement.</p>
-                        <a href="/news/robert-the-policeman/" class="read-more-btn">Read More →</a>
+                    <h3>Decentralizing Trading Robots on the Internet Computer Protocol</h3>
+                    <p>RB Labs introduces a revolutionary approach to algorithmic trading by decentralizing the development and deployment of trading robots on the Internet Computer Protocol, enabling transparent profit-sharing and democratized access.</p>
+                    <a href="/news/decentralizing-trading-robots/" class="read-more-btn">Read More →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../featured/featured-image-01.jpg" alt="The Future of Decentralized AI in Finance">
+                    <span class="post-category">RESEARCH</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>December 1, 2024</span>
+                        <span class="post-meta-divider"></span>
+                        <span>7 min read</span>
                     </div>
-                </article>
-
-                <article class="post-card">
-                    <div class="post-card-image">
-                        <img src="https://robert.finance/assets/robert_the_robot.jpeg" alt="Robert in Entrepreneur Magazine">
-                        <span class="post-category">PRESS</span>
+                    <h3>The Future of Decentralized AI in Finance</h3>
+                    <p>Explore how blockchain technology is transforming AI deployment and making financial intelligence more accessible and secure than ever before. Our latest research reveals groundbreaking approaches to distributed computing.</p>
+                    <a href="/news/decentralized-ai-finance/" class="read-more-btn">Read More →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../news/wiw3ch-japan/main_image.jpg" alt="RB Labs Invited to Women in Web3 Switzerland Event at Swiss Embassy Japan">
+                    <span class="post-category">EVENTS</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>August 18, 2024</span>
+                        <span class="post-meta-divider"></span>
+                        <span>4 min read</span>
                     </div>
-                    <div class="post-card-content">
-                        <div class="post-meta">
-                            <span>July 2025</span>
-                            <span class="post-meta-divider"></span>
-                            <span>3 min read</span>
-                        </div>
-                        <h3>Meet Robert the Robot - Entrepreneur Magazine</h3>
-                        <p>The revolutionary AI-powered humanoid robot transforming operations across the globe. Robert combines cutting-edge artificial intelligence with advanced robotics to deliver automated solutions.</p>
-                        <a href="https://www.entrepreneur.com/en-ae/technology/meet-robert-the-robot-by-rb-labs-the-man-who-stole/494517" target="_blank" class="read-more-btn">Read More →</a>
+                    <h3>RB Labs Invited to Women in Web3 Switzerland Event at Swiss Embassy Japan</h3>
+                    <p>In July 2024, RB Labs had the honor of participating in the prestigious Women in Web3 Switzerland event, hosted at the Swiss Embassy in Tokyo, bringing together leaders and innovators to discuss the future of blockchain technology and gender equality in the industry.</p>
+                    <a href="/news/wiw3ch-japan/" class="read-more-btn">Read More →</a>
+                </div>
+            </article>
+            <article class="post-card">
+                <div class="post-card-image">
+                    <img src="../news/rblabs-tesla-event/main_image.jpg" alt="RB Labs and Tesla Collaborate for Landmark Blockchain Event">
+                    <span class="post-category">PARTNERSHIP</span>
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span>May 30, 2024</span>
+                        <span class="post-meta-divider"></span>
+                        <span>4 min read</span>
                     </div>
-                </article>
-
-                <article class="post-card">
-                    <div class="post-card-image">
-                        <img src="https://robert.finance/assets/robert_swiss_tv.jpeg" alt="Robert on TV">
-                        <span class="post-category">TELEVISION</span>
-                    </div>
-                    <div class="post-card-content">
-                        <div class="post-meta">
-                            <span>July 2025</span>
-                            <span class="post-meta-divider"></span>
-                            <span>4 min read</span>
-                        </div>
-                        <h3>Robert on Parlons Économie - Carac TV</h3>
-                        <p>Robert discusses the future of AI in robotics on Swiss television, showcasing revolutionary automation capabilities.</p>
-                        <a href="https://carac.tv/replay/parlons-economie/3021" target="_blank" class="read-more-btn">Read More →</a>
-                    </div>
-                </article>
-
-                <article class="post-card">
-                    <div class="post-card-image">
-                        <img src="https://robert.finance/assets/robert%20in%20the%20journal.jpeg" alt="Robert at Palexpo">
-                        <span class="post-category">PRESS</span>
-                    </div>
-                    <div class="post-card-content">
-                        <div class="post-meta">
-                            <span>July 2025</span>
-                            <span class="post-meta-divider"></span>
-                            <span>5 min read</span>
-                        </div>
-                        <h3>Robots humanoïdes et intelligence artificielle</h3>
-                        <p>Featured at Palexpo - Le Dauphiné Libéré covers Robert as the future of humanoid robotics technology.</p>
-                        <a href="https://www.ledauphine.com/science-et-technologie/2025/07/08/robots-humanoides-et-ia-jusqu-a-vendredi-a-geneve-au-salon-ai-for-good" target="_blank" class="read-more-btn">Read More →</a>
-                    </div>
-                </article>
-
-                <article class="post-card">
-                    <div class="post-card-image">
-                        <img src="decentralizing-trading-robots/main_image.jpg" alt="Decentralizing Trading Robots">
-                        <span class="post-category">TECHNOLOGY</span>
-                    </div>
-                    <div class="post-card-content">
-                        <div class="post-meta">
-                            <span>December 20, 2024</span>
-                            <span class="post-meta-divider"></span>
-                            <span>8 min read</span>
-                        </div>
-                        <h3>Decentralizing Trading Robots</h3>
-                        <p>RB Labs is introducing a new approach to algorithmic trading by decentralizing the development and deployment of trading robots on ICP.</p>
-                        <a href="/blog/decentralizing-trading-robots/" class="read-more-btn">Read More →</a>
-                    </div>
-                </article>
-
-                <article class="post-card">
-                    <div class="post-card-image">
-                        <img src="../images/featured/featured-image-01.jpg" alt="Decentralized AI">
-                        <span class="post-category">RESEARCH</span>
-                    </div>
-                    <div class="post-card-content">
-                        <div class="post-meta">
-                            <span>December 1, 2024</span>
-                            <span class="post-meta-divider"></span>
-                            <span>7 min read</span>
-                        </div>
-                        <h3>The Future of Decentralized AI in Finance</h3>
-                        <p>Blockchain technology is revolutionizing financial AI deployment with transparency and security.</p>
-                        <a href="/blog/decentralized-ai-finance/" class="read-more-btn">Read More →</a>
-                    </div>
-                </article>
-
-                <article class="post-card">
-                    <div class="post-card-image">
-                        <img src="wiw3ch-japan/main_image.jpg" alt="WiW3CH Event">
-                        <span class="post-category">EVENTS</span>
-                    </div>
-                    <div class="post-card-content">
-                        <div class="post-meta">
-                            <span>August 18, 2024</span>
-                            <span class="post-meta-divider"></span>
-                            <span>4 min read</span>
-                        </div>
-                        <h3>Women in Web3 Switzerland Event at Swiss Embassy</h3>
-                        <p>RB Labs participates in the prestigious WiW3CH event in Japan, supporting women in technology.</p>
-                        <a href="/blog/wiw3ch-japan/" class="read-more-btn">Read More →</a>
-                    </div>
-                </article>
-
-                <article class="post-card">
-                    <div class="post-card-image">
-                        <img src="rblabs-tesla-event/main_image.jpg" alt="Tesla Event">
-                        <span class="post-category">PARTNERSHIP</span>
-                    </div>
-                    <div class="post-card-content">
-                        <div class="post-meta">
-                            <span>May 30, 2024</span>
-                            <span class="post-meta-divider"></span>
-                            <span>4 min read</span>
-                        </div>
-                        <h3>RB Labs and Tesla Collaborate for Landmark Event</h3>
-                        <p>Exclusive Geneva event showcases RB Labs' innovative blockchain solutions in collaboration with Tesla.</p>
-                        <a href="/blog/rblabs-tesla-event/" class="read-more-btn">Read More →</a>
-                    </div>
-                </article>
-            </div>
-
+                    <h3>RB Labs and Tesla Collaborate for Landmark Blockchain Event</h3>
+                    <p>In May 2024, RB Labs held an exclusive event in Geneva, in collaboration with Tesla, to present their latest advancements in blockchain technology and demonstrate the future of decentralized systems.</p>
+                    <a href="/news/rblabs-tesla-event/" class="read-more-btn">Read More →</a>
+                </div>
+            </article>
         </div>
-    </section>
+    </div>
+</section>
 
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -486,9 +795,10 @@
                     <ul class="footer-links">
                         <li><a href="/contact/">Contact</a></li>
                         <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service/">Terms of Service</a></li>
                     </ul>
                 </div>
-                                <div class="footer-section">
+                <div class="footer-section">
                     <h4 class="footer-title">Connect</h4>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/robert_robot_official" target="_blank" aria-label="Instagram">
