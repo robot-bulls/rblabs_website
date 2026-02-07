@@ -5,15 +5,53 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.getElementById('navMenu');
     const body = document.body;
     
+    var scrollY = 0;
+    var html = document.documentElement;
+
+    function preventTouchMove(e) {
+        // Only allow scrolling inside the language dropdown list
+        var target = e.target;
+        while (target && target !== document) {
+            if (target.classList && target.classList.contains('nav-lang-list')) return;
+            target = target.parentElement;
+        }
+        e.preventDefault();
+    }
+
+    function lockScroll() {
+        scrollY = window.scrollY;
+        body.style.position = 'fixed';
+        body.style.top = '-' + scrollY + 'px';
+        body.style.left = '0';
+        body.style.right = '0';
+        body.style.width = '100%';
+        body.style.overflow = 'hidden';
+        html.style.overflow = 'hidden';
+        html.style.height = '100%';
+        document.addEventListener('touchmove', preventTouchMove, { passive: false });
+    }
+
+    function unlockScroll() {
+        body.style.position = '';
+        body.style.top = '';
+        body.style.left = '';
+        body.style.right = '';
+        body.style.width = '';
+        body.style.overflow = '';
+        html.style.overflow = '';
+        html.style.height = '';
+        document.removeEventListener('touchmove', preventTouchMove);
+        window.scrollTo(0, scrollY);
+    }
+
     navToggle.addEventListener('click', function() {
         navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
-        
-        // Prevent body scroll when menu is open
+
         if (navMenu.classList.contains('active')) {
-            body.style.overflow = 'hidden';
+            lockScroll();
         } else {
-            body.style.overflow = '';
+            unlockScroll();
         }
     });
 
@@ -24,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.classList.contains('nav-lang-trigger')) return;
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
-            body.style.overflow = '';
+            unlockScroll();
         });
     });
 
@@ -33,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape' && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
-            body.style.overflow = '';
+            unlockScroll();
         }
     });
 

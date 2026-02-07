@@ -35,9 +35,19 @@
     <!-- Canonical & hreflang -->
     <link rel="canonical" href="https://rblabs.ai/cn/contact/">
     <link rel="alternate" hreflang="en" href="https://rblabs.ai/contact/">
+    <link rel="alternate" hreflang="ar" href="https://rblabs.ai/ar/contact/">
+    <link rel="alternate" hreflang="bg" href="https://rblabs.ai/bg/contact/">
     <link rel="alternate" hreflang="zh-CN" href="https://rblabs.ai/cn/contact/">
     <link rel="alternate" hreflang="de" href="https://rblabs.ai/de/contact/">
+    <link rel="alternate" hreflang="es" href="https://rblabs.ai/es/contact/">
     <link rel="alternate" hreflang="fr" href="https://rblabs.ai/fr/contact/">
+    <link rel="alternate" hreflang="it" href="https://rblabs.ai/it/contact/">
+    <link rel="alternate" hreflang="lt" href="https://rblabs.ai/lt/contact/">
+    <link rel="alternate" hreflang="nb" href="https://rblabs.ai/nb/contact/">
+    <link rel="alternate" hreflang="ru" href="https://rblabs.ai/ru/contact/">
+    <link rel="alternate" hreflang="sv" href="https://rblabs.ai/sv/contact/">
+    <link rel="alternate" hreflang="zh-TW" href="https://rblabs.ai/tw/contact/">
+    <link rel="alternate" hreflang="uk" href="https://rblabs.ai/uk/contact/">
     <link rel="alternate" hreflang="x-default" href="https://rblabs.ai/contact/">
 
     <link rel="stylesheet" href="../../styles.css">
@@ -177,6 +187,8 @@
                 opacity: 0;
                 transform: translateY(20px);
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                margin-top: auto;
+                padding-top: clamp(0.5rem, 1.5vh, 1rem);
             }
             .nav-menu.active .nav-lang-dropdown {
                 opacity: 1;
@@ -186,10 +198,11 @@
             .nav-lang-trigger {
                 width: 100%;
                 justify-content: center;
-                padding: 1.5rem 0 !important;
+                padding: clamp(0.6rem, 1.5vh, 1.5rem) 0 !important;
+                font-size: clamp(0.9rem, 2vh, 1.1rem);
             }
             .nav-lang-trigger .fa-globe {
-                font-size: 1.8rem;
+                font-size: clamp(1rem, 2.5vh, 1.8rem);
             }
             .nav-lang-trigger .nav-lang-arrow {
                 font-size: 0.7rem;
@@ -246,7 +259,7 @@
                     <div class="nav-lang-dropdown">
                         <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
                             <i class="fas fa-globe"></i>
-                            <span>语言</span>
+                            <span>语言选择</span>
                             <i class="fas fa-chevron-down nav-lang-arrow"></i>
                         </button>
                         <div class="nav-lang-backdrop" id="langBackdrop"></div>
@@ -256,9 +269,64 @@
                                 <input type="text" id="langSearchInput" placeholder="搜索语言..." autocomplete="off">
                             </div>
                             <div class="nav-lang-list" id="langList">
+                                <a href="/de/contact/" class="nav-lang-item" data-name="Deutsch" data-code="de">
+                                    <span class="nav-lang-name">Deutsch</span>
+                                    <span class="nav-lang-code">de</span>
+                                    
+                                </a>
                                 <a href="/contact/" class="nav-lang-item" data-name="English" data-code="en">
                                     <span class="nav-lang-name">English</span>
                                     <span class="nav-lang-code">en</span>
+                                    
+                                </a>
+                                <a href="/es/contact/" class="nav-lang-item" data-name="Español" data-code="es">
+                                    <span class="nav-lang-name">Español</span>
+                                    <span class="nav-lang-code">es</span>
+                                    
+                                </a>
+                                <a href="/fr/contact/" class="nav-lang-item" data-name="Français" data-code="fr">
+                                    <span class="nav-lang-name">Français</span>
+                                    <span class="nav-lang-code">fr</span>
+                                    
+                                </a>
+                                <a href="/it/contact/" class="nav-lang-item" data-name="Italiano" data-code="it">
+                                    <span class="nav-lang-name">Italiano</span>
+                                    <span class="nav-lang-code">it</span>
+                                    
+                                </a>
+                                <a href="/lt/contact/" class="nav-lang-item" data-name="Lietuvių" data-code="lt">
+                                    <span class="nav-lang-name">Lietuvių</span>
+                                    <span class="nav-lang-code">lt</span>
+                                    
+                                </a>
+                                <a href="/nb/contact/" class="nav-lang-item" data-name="Norsk" data-code="nb">
+                                    <span class="nav-lang-name">Norsk</span>
+                                    <span class="nav-lang-code">nb</span>
+                                    
+                                </a>
+                                <a href="/sv/contact/" class="nav-lang-item" data-name="Svenska" data-code="sv">
+                                    <span class="nav-lang-name">Svenska</span>
+                                    <span class="nav-lang-code">sv</span>
+                                    
+                                </a>
+                                <a href="/bg/contact/" class="nav-lang-item" data-name="Български" data-code="bg">
+                                    <span class="nav-lang-name">Български</span>
+                                    <span class="nav-lang-code">bg</span>
+                                    
+                                </a>
+                                <a href="/ru/contact/" class="nav-lang-item" data-name="Русский" data-code="ru">
+                                    <span class="nav-lang-name">Русский</span>
+                                    <span class="nav-lang-code">ru</span>
+                                    
+                                </a>
+                                <a href="/uk/contact/" class="nav-lang-item" data-name="Українська" data-code="uk">
+                                    <span class="nav-lang-name">Українська</span>
+                                    <span class="nav-lang-code">uk</span>
+                                    
+                                </a>
+                                <a href="/ar/contact/" class="nav-lang-item" data-name="العربية" data-code="ar">
+                                    <span class="nav-lang-name">العربية</span>
+                                    <span class="nav-lang-code">ar</span>
                                     
                                 </a>
                                 <a href="/cn/contact/" class="nav-lang-item active" data-name="简体中文" data-code="cn">
@@ -266,14 +334,9 @@
                                     <span class="nav-lang-code">cn</span>
                                     <i class="fas fa-check"></i>
                                 </a>
-                                <a href="/de/contact/" class="nav-lang-item" data-name="Deutsch" data-code="de">
-                                    <span class="nav-lang-name">Deutsch</span>
-                                    <span class="nav-lang-code">de</span>
-                                    
-                                </a>
-                                <a href="/fr/contact/" class="nav-lang-item" data-name="Français" data-code="fr">
-                                    <span class="nav-lang-name">Français</span>
-                                    <span class="nav-lang-code">fr</span>
+                                <a href="/tw/contact/" class="nav-lang-item" data-name="繁體中文" data-code="tw">
+                                    <span class="nav-lang-name">繁體中文</span>
+                                    <span class="nav-lang-code">tw</span>
                                     
                                 </a>
                             </div>
@@ -913,21 +976,21 @@
                         <div class="form-group">
                             <label for="inquiryType">询问类型 <span class="required">*</span></label>
                             <select id="inquiryType" name="inquiryType" required>
-                                <option value="">Select an option</option>
-                                <option value="partnership">Partnership Opportunity</option>
-                                <option value="demo">Product Demo</option>
-                                <option value="technical">Technical Support</option>
-                                <option value="enterprise">Enterprise Solutions</option>
-                                <option value="investment">Investment Inquiry</option>
-                                <option value="media">Media & Press</option>
-                                <option value="other">Other</option>
+                                <option value="">请选择</option>
+                                <option value="partnership">合作机会</option>
+                                <option value="demo">产品演示</option>
+                                <option value="technical">技术支持</option>
+                                <option value="enterprise">企业解决方案</option>
+                                <option value="investment">投资咨询</option>
+                                <option value="media">媒体与新闻</option>
+                                <option value="other">其他</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="message">您的消息 <span class="required">*</span></label>
-                        <textarea id="message" name="message" placeholder="Please provide details about your inquiry..." required></textarea>
+                        <textarea id="message" name="message" placeholder="请提供有关您咨询的详细信息..." required></textarea>
                     </div>
 
                     <div class="form-footer">

@@ -35,9 +35,19 @@
     <!-- Canonical & hreflang -->
     <link rel="canonical" href="https://rblabs.ai/fr/news/">
     <link rel="alternate" hreflang="en" href="https://rblabs.ai/news/">
+    <link rel="alternate" hreflang="ar" href="https://rblabs.ai/ar/news/">
+    <link rel="alternate" hreflang="bg" href="https://rblabs.ai/bg/news/">
     <link rel="alternate" hreflang="zh-CN" href="https://rblabs.ai/cn/news/">
     <link rel="alternate" hreflang="de" href="https://rblabs.ai/de/news/">
+    <link rel="alternate" hreflang="es" href="https://rblabs.ai/es/news/">
     <link rel="alternate" hreflang="fr" href="https://rblabs.ai/fr/news/">
+    <link rel="alternate" hreflang="it" href="https://rblabs.ai/it/news/">
+    <link rel="alternate" hreflang="lt" href="https://rblabs.ai/lt/news/">
+    <link rel="alternate" hreflang="nb" href="https://rblabs.ai/nb/news/">
+    <link rel="alternate" hreflang="ru" href="https://rblabs.ai/ru/news/">
+    <link rel="alternate" hreflang="sv" href="https://rblabs.ai/sv/news/">
+    <link rel="alternate" hreflang="zh-TW" href="https://rblabs.ai/tw/news/">
+    <link rel="alternate" hreflang="uk" href="https://rblabs.ai/uk/news/">
     <link rel="alternate" hreflang="x-default" href="https://rblabs.ai/news/">
 
     <link rel="stylesheet" href="../../styles.css">
@@ -177,6 +187,8 @@
                 opacity: 0;
                 transform: translateY(20px);
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                margin-top: auto;
+                padding-top: clamp(0.5rem, 1.5vh, 1rem);
             }
             .nav-menu.active .nav-lang-dropdown {
                 opacity: 1;
@@ -186,10 +198,11 @@
             .nav-lang-trigger {
                 width: 100%;
                 justify-content: center;
-                padding: 1.5rem 0 !important;
+                padding: clamp(0.6rem, 1.5vh, 1.5rem) 0 !important;
+                font-size: clamp(0.9rem, 2vh, 1.1rem);
             }
             .nav-lang-trigger .fa-globe {
-                font-size: 1.8rem;
+                font-size: clamp(1rem, 2.5vh, 1.8rem);
             }
             .nav-lang-trigger .nav-lang-arrow {
                 font-size: 0.7rem;
@@ -246,7 +259,7 @@
                     <div class="nav-lang-dropdown">
                         <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
                             <i class="fas fa-globe"></i>
-                            <span>Langue</span>
+                            <span>Langues</span>
                             <i class="fas fa-chevron-down nav-lang-arrow"></i>
                         </button>
                         <div class="nav-lang-backdrop" id="langBackdrop"></div>
@@ -256,9 +269,64 @@
                                 <input type="text" id="langSearchInput" placeholder="Rechercher des langues..." autocomplete="off">
                             </div>
                             <div class="nav-lang-list" id="langList">
+                                <a href="/de/news/" class="nav-lang-item" data-name="Deutsch" data-code="de">
+                                    <span class="nav-lang-name">Deutsch</span>
+                                    <span class="nav-lang-code">de</span>
+                                    
+                                </a>
                                 <a href="/news/" class="nav-lang-item" data-name="English" data-code="en">
                                     <span class="nav-lang-name">English</span>
                                     <span class="nav-lang-code">en</span>
+                                    
+                                </a>
+                                <a href="/es/news/" class="nav-lang-item" data-name="Español" data-code="es">
+                                    <span class="nav-lang-name">Español</span>
+                                    <span class="nav-lang-code">es</span>
+                                    
+                                </a>
+                                <a href="/fr/news/" class="nav-lang-item active" data-name="Français" data-code="fr">
+                                    <span class="nav-lang-name">Français</span>
+                                    <span class="nav-lang-code">fr</span>
+                                    <i class="fas fa-check"></i>
+                                </a>
+                                <a href="/it/news/" class="nav-lang-item" data-name="Italiano" data-code="it">
+                                    <span class="nav-lang-name">Italiano</span>
+                                    <span class="nav-lang-code">it</span>
+                                    
+                                </a>
+                                <a href="/lt/news/" class="nav-lang-item" data-name="Lietuvių" data-code="lt">
+                                    <span class="nav-lang-name">Lietuvių</span>
+                                    <span class="nav-lang-code">lt</span>
+                                    
+                                </a>
+                                <a href="/nb/news/" class="nav-lang-item" data-name="Norsk" data-code="nb">
+                                    <span class="nav-lang-name">Norsk</span>
+                                    <span class="nav-lang-code">nb</span>
+                                    
+                                </a>
+                                <a href="/sv/news/" class="nav-lang-item" data-name="Svenska" data-code="sv">
+                                    <span class="nav-lang-name">Svenska</span>
+                                    <span class="nav-lang-code">sv</span>
+                                    
+                                </a>
+                                <a href="/bg/news/" class="nav-lang-item" data-name="Български" data-code="bg">
+                                    <span class="nav-lang-name">Български</span>
+                                    <span class="nav-lang-code">bg</span>
+                                    
+                                </a>
+                                <a href="/ru/news/" class="nav-lang-item" data-name="Русский" data-code="ru">
+                                    <span class="nav-lang-name">Русский</span>
+                                    <span class="nav-lang-code">ru</span>
+                                    
+                                </a>
+                                <a href="/uk/news/" class="nav-lang-item" data-name="Українська" data-code="uk">
+                                    <span class="nav-lang-name">Українська</span>
+                                    <span class="nav-lang-code">uk</span>
+                                    
+                                </a>
+                                <a href="/ar/news/" class="nav-lang-item" data-name="العربية" data-code="ar">
+                                    <span class="nav-lang-name">العربية</span>
+                                    <span class="nav-lang-code">ar</span>
                                     
                                 </a>
                                 <a href="/cn/news/" class="nav-lang-item" data-name="简体中文" data-code="cn">
@@ -266,15 +334,10 @@
                                     <span class="nav-lang-code">cn</span>
                                     
                                 </a>
-                                <a href="/de/news/" class="nav-lang-item" data-name="Deutsch" data-code="de">
-                                    <span class="nav-lang-name">Deutsch</span>
-                                    <span class="nav-lang-code">de</span>
+                                <a href="/tw/news/" class="nav-lang-item" data-name="繁體中文" data-code="tw">
+                                    <span class="nav-lang-name">繁體中文</span>
+                                    <span class="nav-lang-code">tw</span>
                                     
-                                </a>
-                                <a href="/fr/news/" class="nav-lang-item active" data-name="Français" data-code="fr">
-                                    <span class="nav-lang-name">Français</span>
-                                    <span class="nav-lang-code">fr</span>
-                                    <i class="fas fa-check"></i>
                                 </a>
                             </div>
                             <div class="nav-lang-empty" id="langEmpty" style="display:none;">
