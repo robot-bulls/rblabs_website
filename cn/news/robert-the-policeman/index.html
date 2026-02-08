@@ -605,6 +605,96 @@
         border-radius: 12px;
         margin: 24px 0;
     }
+    .capability-section {
+        background: #f8fafb;
+        border-radius: 12px;
+        padding: 32px;
+        margin: 48px 0;
+    }
+    .capability-section h3 {
+        font-size: 24px;
+        color: #1f2937;
+        margin-bottom: 24px;
+    }
+    .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .capability-item {
+        display: flex;
+        gap: 16px;
+    }
+    .capability-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #06438c, #0ea5e9);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .capability-icon i {
+        color: white;
+        font-size: 20px;
+    }
+    .capability-content h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 4px;
+    }
+    .capability-content p {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 0;
+    }
+    .video-container {
+        width: 100%;
+        max-width: 840px;
+        margin: 48px auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        background: #000;
+    }
+    .video-container video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin: 48px 0;
+    }
+    .image-grid img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .highlight-quote {
+        background: white;
+        border-left: 4px solid #06438c;
+        padding: 24px 32px;
+        margin: 36px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .highlight-quote p {
+        font-size: 20px;
+        font-style: italic;
+        color: #374151;
+        margin-bottom: 12px;
+    }
+    .highlight-quote cite {
+        font-size: 16px;
+        color: #6b7280;
+        font-style: normal;
+    }
     .article-footer {
         max-width: 740px;
         margin: 80px auto 0;
@@ -656,6 +746,12 @@
         .article-hero-image img {
             max-height: 300px;
         }
+        .capability-grid {
+            grid-template-columns: 1fr;
+        }
+        .image-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 
@@ -706,6 +802,8 @@
 <h2>先进技术的整合</h2>
 <p>罗伯特的执法配置整合了多种前沿技术，协同工作。配备最先进的传感器、计算机视觉和自然语言处理，罗伯特为公共安全操作带来了前所未有的技术复杂性。他的人工智能驱动系统全��候运行，无疲劳，确保持续的警惕性和快速的响应能力。</p>
 
+<div class="capability-section"><h3>Core Capabilities</h3><div class="capability-grid"><div class="capability-item"><div class="capability-icon"><i class="fas fa-eye"></i></div><div class="capability-content"><h4>Advanced Computer Vision</h4><p>Real-time facial recognition and object detection for enhanced situational awareness</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-shield-alt"></i></div><div class="capability-content"><h4>Threat Assessment</h4><p>AI-powered analysis to identify and evaluate potential security risks</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-comments"></i></div><div class="capability-content"><h4>Multilingual Communication</h4><p>Natural conversation in over 50 languages for diverse community engagement</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-database"></i></div><div class="capability-content"><h4>Data Analytics</h4><p>Real-time processing of crime patterns and predictive policing insights</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-walking"></i></div><div class="capability-content"><h4>Patrol Autonomy</h4><p>Independent navigation through complex urban environments</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-network-wired"></i></div><div class="capability-content"><h4>System Integration</h4><p>Seamless connection with existing law enforcement databases and networks</p></div></div></div></div>
+
 <h2>现实世界的应用</h2>
 <p>罗伯特在执法中的部署涵盖了多种关键功能，以增强公共安全：</p>
 <ul>
@@ -716,6 +814,10 @@
 <li><strong>证据记录：</strong>罗伯特的高分辨率摄像头和传感器创建全面、公正的事件和犯罪现场记录</li>
 </ul>
 
+<div class="video-container"><video controls><source src="/news/robert-the-policeman/Robot-Police-RB-Labs-small.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+
+<div class="highlight-quote"><p>“Robert represents the perfect synergy between human judgment and artificial intelligence. He doesn’t replace police officers; he empowers them with tools and data that make their jobs safer and more effective.”</p><cite>— RB Labs Chief Technology Officer</cite></div>
+
 <h2>伦理考虑与隐私</h2>
 <p>RB Labs认识到，在执法中部署人工智能引发了重要的伦理问题。罗伯特的系统以隐私和公民自由为基础原则进行设计：</p>
 <ul>
@@ -724,6 +826,8 @@
 <li><strong>偏见缓解：</strong>定期审计和算法公平性测试确保罗伯特的决策在所有人口统计中保持无偏见和公平</li>
 <li><strong>人类监督：</strong>关键决策始终涉及人类警官，罗伯特在支持而非自主执法的角色中发挥作用</li>
 </ul>
+
+<div class="image-grid"><img src="/news/robert-the-policeman/robot-police-robert.jpg" alt="Robert the Robot Police - RB Labs"><img src="/news/robert-the-policeman/rb-labs-robot-police-man.jpg" alt="Robert Robot Policeman - RB Labs"></div>
 
 <h2>社区反响与影响</h2>
 <p>罗伯特在试点项目中的早期部署取得了令人鼓舞的结果。社区报告称，由于罗伯特的持续存在，他们感到更安全，而警察部门则注意到效率和数据驱动决策的显著改善。</p>

@@ -605,6 +605,96 @@
         border-radius: 12px;
         margin: 24px 0;
     }
+    .capability-section {
+        background: #f8fafb;
+        border-radius: 12px;
+        padding: 32px;
+        margin: 48px 0;
+    }
+    .capability-section h3 {
+        font-size: 24px;
+        color: #1f2937;
+        margin-bottom: 24px;
+    }
+    .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .capability-item {
+        display: flex;
+        gap: 16px;
+    }
+    .capability-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #06438c, #0ea5e9);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .capability-icon i {
+        color: white;
+        font-size: 20px;
+    }
+    .capability-content h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 4px;
+    }
+    .capability-content p {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 0;
+    }
+    .video-container {
+        width: 100%;
+        max-width: 840px;
+        margin: 48px auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        background: #000;
+    }
+    .video-container video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin: 48px 0;
+    }
+    .image-grid img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .highlight-quote {
+        background: white;
+        border-left: 4px solid #06438c;
+        padding: 24px 32px;
+        margin: 36px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .highlight-quote p {
+        font-size: 20px;
+        font-style: italic;
+        color: #374151;
+        margin-bottom: 12px;
+    }
+    .highlight-quote cite {
+        font-size: 16px;
+        color: #6b7280;
+        font-style: normal;
+    }
     .article-footer {
         max-width: 740px;
         margin: 80px auto 0;
@@ -656,6 +746,12 @@
         .article-hero-image img {
             max-height: 300px;
         }
+        .capability-grid {
+            grid-template-columns: 1fr;
+        }
+        .image-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 
@@ -706,6 +802,8 @@
 <h2>Avansert teknologiintegrering</h2>
 <p>Roberts rettshåndhevelseskonfigurasjon integrerer flere banebrytende teknologier som arbeider i harmoni. Utstyrt med toppmoderne sensorer, datasyn og naturlig språkbehandling, bringer Robert en enestående teknologisk sofistikering til offentlig sikkerhetsoperasjoner. Hans KI-drevne systemer opererer 24/7 uten utmattelse, og sikrer konstant årvåkenhet og rask responsevne.</p>
 
+<div class="capability-section"><h3>Core Capabilities</h3><div class="capability-grid"><div class="capability-item"><div class="capability-icon"><i class="fas fa-eye"></i></div><div class="capability-content"><h4>Advanced Computer Vision</h4><p>Real-time facial recognition and object detection for enhanced situational awareness</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-shield-alt"></i></div><div class="capability-content"><h4>Threat Assessment</h4><p>AI-powered analysis to identify and evaluate potential security risks</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-comments"></i></div><div class="capability-content"><h4>Multilingual Communication</h4><p>Natural conversation in over 50 languages for diverse community engagement</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-database"></i></div><div class="capability-content"><h4>Data Analytics</h4><p>Real-time processing of crime patterns and predictive policing insights</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-walking"></i></div><div class="capability-content"><h4>Patrol Autonomy</h4><p>Independent navigation through complex urban environments</p></div></div><div class="capability-item"><div class="capability-icon"><i class="fas fa-network-wired"></i></div><div class="capability-content"><h4>System Integration</h4><p>Seamless connection with existing law enforcement databases and networks</p></div></div></div></div>
+
 <h2>Virkelige anvendelser</h2>
 <p>Roberts utplassering innen rettshåndhevelse omfatter ulike kritiske funksjoner som styrker offentlig sikkerhet:</p>
 <ul>
@@ -716,6 +814,10 @@
 <li><strong>Bevisdokumentasjon:</strong> Roberts høyoppløsningskameraer og sensorer skaper omfattende, upartisk dokumentasjon av hendelser og åsteder</li>
 </ul>
 
+<div class="video-container"><video controls><source src="/news/robert-the-policeman/Robot-Police-RB-Labs-small.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+
+<div class="highlight-quote"><p>“Robert represents the perfect synergy between human judgment and artificial intelligence. He doesn’t replace police officers; he empowers them with tools and data that make their jobs safer and more effective.”</p><cite>— RB Labs Chief Technology Officer</cite></div>
+
 <h2>Etiske betraktninger og personvern</h2>
 <p>RB Labs anerkjenner at utplassering av KI i rettshåndhevelse reiser viktige etiske spørsmål. Roberts system er designet med personvern og sivile rettigheter som grunnleggende prinsipper:</p>
 <ul>
@@ -724,6 +826,8 @@
 <li><strong>Reduksjon av skjevhet:</strong> Regelmessige revisjoner og testing av algoritmisk rettferdighet sikrer at Roberts beslutningstaking forblir upartisk og rettferdig på tvers av alle demografiske grupper</li>
 <li><strong>Menneskelig tilsyn:</strong> Kritiske beslutninger involverer alltid menneskelige betjenter, der Robert tjener i en støttende rolle fremfor en autonom håndhevelsesrolle</li>
 </ul>
+
+<div class="image-grid"><img src="/news/robert-the-policeman/robot-police-robert.jpg" alt="Robert the Robot Police - RB Labs"><img src="/news/robert-the-policeman/rb-labs-robot-police-man.jpg" alt="Robert Robot Policeman - RB Labs"></div>
 
 <h2>Samfunnets mottakelse og påvirkning</h2>
 <p>Tidlige utplasseringer av Robert i pilotprogrammer har gitt oppmuntrende resultater. Samfunn rapporterer at de føler seg tryggere med Roberts konstante tilstedeværelse, mens politiavdelinger merker betydelige forbedringer i effektivitet og datadrevet beslutningstaking.</p>

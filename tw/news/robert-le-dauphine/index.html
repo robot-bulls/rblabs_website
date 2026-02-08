@@ -605,6 +605,96 @@
         border-radius: 12px;
         margin: 24px 0;
     }
+    .capability-section {
+        background: #f8fafb;
+        border-radius: 12px;
+        padding: 32px;
+        margin: 48px 0;
+    }
+    .capability-section h3 {
+        font-size: 24px;
+        color: #1f2937;
+        margin-bottom: 24px;
+    }
+    .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .capability-item {
+        display: flex;
+        gap: 16px;
+    }
+    .capability-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #06438c, #0ea5e9);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .capability-icon i {
+        color: white;
+        font-size: 20px;
+    }
+    .capability-content h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 4px;
+    }
+    .capability-content p {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 0;
+    }
+    .video-container {
+        width: 100%;
+        max-width: 840px;
+        margin: 48px auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        background: #000;
+    }
+    .video-container video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin: 48px 0;
+    }
+    .image-grid img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .highlight-quote {
+        background: white;
+        border-left: 4px solid #06438c;
+        padding: 24px 32px;
+        margin: 36px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .highlight-quote p {
+        font-size: 20px;
+        font-style: italic;
+        color: #374151;
+        margin-bottom: 12px;
+    }
+    .highlight-quote cite {
+        font-size: 16px;
+        color: #6b7280;
+        font-style: normal;
+    }
     .article-footer {
         max-width: 740px;
         margin: 80px auto 0;
@@ -655,6 +745,12 @@
         }
         .article-hero-image img {
             max-height: 300px;
+        }
+        .capability-grid {
+            grid-template-columns: 1fr;
+        }
+        .image-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>
