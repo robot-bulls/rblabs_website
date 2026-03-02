@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KJH15F9QP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3KJH15F9QP');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Забронюйте Роберта, людиноподібного робота на базі ШІ, для вашого наступного заходу. Ідеально для корпоративних заходів, виставок, презентацій продуктів та іншого.">
+    <meta name="keywords" content="RB Labs, Робототехніка, Інтеграція ШІ, Автоматизація, Гуманоїдні роботи, Корпоративний ШІ, Рішення в робототехніці">
+    <meta property="og:title" content="Забронюйте Роберта для вашого заходу - RB Labs">
+    <meta property="og:description" content="Забронюйте Роберта, людиноподібного робота на базі ШІ, для вашого наступного заходу. Ідеально для корпоративних заходів, виставок, презентацій продуктів та іншого.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.rblabs.ai/uk/book/">
+    <title>Забронюйте Роберта для вашого заходу - RB Labs</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon.ico">
+
+    <!-- Apple Web App Configuration -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="RB Labs">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/logo.png">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://www.rblabs.ai/uk/book/">
+    <link rel="alternate" hreflang="en" href="https://www.rblabs.ai/book/">
+    <link rel="alternate" hreflang="ar" href="https://www.rblabs.ai/ar/book/">
+    <link rel="alternate" hreflang="bg" href="https://www.rblabs.ai/bg/book/">
+    <link rel="alternate" hreflang="zh-CN" href="https://www.rblabs.ai/cn/book/">
+    <link rel="alternate" hreflang="de" href="https://www.rblabs.ai/de/book/">
+    <link rel="alternate" hreflang="es" href="https://www.rblabs.ai/es/book/">
+    <link rel="alternate" hreflang="fr" href="https://www.rblabs.ai/fr/book/">
+    <link rel="alternate" hreflang="it" href="https://www.rblabs.ai/it/book/">
+    <link rel="alternate" hreflang="lt" href="https://www.rblabs.ai/lt/book/">
+    <link rel="alternate" hreflang="nb" href="https://www.rblabs.ai/nb/book/">
+    <link rel="alternate" hreflang="ru" href="https://www.rblabs.ai/ru/book/">
+    <link rel="alternate" hreflang="sv" href="https://www.rblabs.ai/sv/book/">
+    <link rel="alternate" hreflang="zh-TW" href="https://www.rblabs.ai/tw/book/">
+    <link rel="alternate" hreflang="uk" href="https://www.rblabs.ai/uk/book/">
+    <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/book/">
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .visuallyhidden {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+        }
+        .nav-lang-dropdown {
+            position: relative;
+        }
+        .nav-lang-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 8px 0;
+        }
+        .nav-lang-trigger .fa-globe {
+            font-size: 15px;
+        }
+        .nav-lang-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+        .nav-lang-trigger[aria-expanded="true"] .nav-lang-arrow {
+            transform: rotate(180deg);
+        }
+        .nav-lang-panel {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 260px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .nav-lang-panel.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-lang-search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .nav-lang-search .fa-search {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+        .nav-lang-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1f2937;
+            background: transparent;
+        }
+        .nav-lang-search input::placeholder {
+            color: #9ca3af;
+        }
+        .nav-lang-list {
+            max-height: 240px;
+            overflow-y: auto;
+            padding: 6px;
+        }
+        .nav-lang-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .nav-lang-list::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        .nav-lang-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+            transition: background 0.15s ease;
+        }
+        .nav-lang-item:hover {
+            background: #f3f4f6;
+        }
+        .nav-lang-item.active {
+            background: rgba(6, 67, 140, 0.06);
+            color: #06438c;
+            font-weight: 600;
+        }
+        .nav-lang-name {
+            flex: 1;
+        }
+        .nav-lang-code {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .nav-lang-item.active .nav-lang-code {
+            color: #06438c;
+        }
+        .nav-lang-item .fa-check {
+            font-size: 12px;
+            color: #06438c;
+        }
+        .nav-lang-empty {
+            padding: 20px 16px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .nav-lang-dropdown {
+                width: 100%;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                margin-top: auto;
+                padding-top: clamp(0.5rem, 1.5vh, 1rem);
+            }
+            .nav-menu.active .nav-lang-dropdown {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.25s;
+            }
+            .nav-lang-trigger {
+                width: 100%;
+                justify-content: center;
+                padding: clamp(0.6rem, 1.5vh, 1.5rem) 0 !important;
+                font-size: clamp(0.9rem, 2vh, 1.1rem);
+            }
+            .nav-lang-trigger .fa-globe {
+                font-size: clamp(1rem, 2.5vh, 1.8rem);
+            }
+            .nav-lang-trigger .nav-lang-arrow {
+                font-size: 0.7rem;
+            }
+            .nav-lang-panel {
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                border-radius: 16px 16px 0 0;
+                transform: translateY(100%);
+                max-height: 60vh;
+                z-index: 10001;
+            }
+            .nav-lang-panel.open {
+                transform: translateY(0);
+            }
+            .nav-lang-backdrop {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.3);
+                z-index: 10000;
+            }
+            .nav-lang-backdrop.visible {
+                display: block;
+            }
+            .nav-lang-list {
+                max-height: calc(60vh - 60px);
+            }
+        }
+    </style>
+
+    
+
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/uk/" class="logo">
+                    <img src="../../logo/logo.png" alt="RB Labs Logo" height="50">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/uk/" class="nav-link">Головна</a>
+                    <a href="/uk/about/" class="nav-link">Про нас</a>
+                    <a href="/uk/career/" class="nav-link">Кар&#x27;єра</a>
+                    <a href="/uk/news/" class="nav-link">Новини</a>
+                    <a href="/uk/book/" class="nav-link">Book</a>
+                    <div class="nav-lang-dropdown">
+                        <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
+                            <i class="fas fa-globe"></i>
+                            <span>Мови</span>
+                            <i class="fas fa-chevron-down nav-lang-arrow"></i>
+                        </button>
+                        <div class="nav-lang-backdrop" id="langBackdrop"></div>
+                        <div class="nav-lang-panel" id="langDropdownPanel">
+                            <div class="nav-lang-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="langSearchInput" placeholder="Пошук мов..." autocomplete="off">
+                            </div>
+                            <div class="nav-lang-list" id="langList">
+                                <a href="/de/book/" class="nav-lang-item" data-name="Deutsch" data-code="de">
+                                    <span class="nav-lang-name">Deutsch</span>
+                                    <span class="nav-lang-code">de</span>
+                                    
+                                </a>
+                                <a href="/book/" class="nav-lang-item" data-name="English" data-code="en">
+                                    <span class="nav-lang-name">English</span>
+                                    <span class="nav-lang-code">en</span>
+                                    
+                                </a>
+                                <a href="/es/book/" class="nav-lang-item" data-name="Español" data-code="es">
+                                    <span class="nav-lang-name">Español</span>
+                                    <span class="nav-lang-code">es</span>
+                                    
+                                </a>
+                                <a href="/fr/book/" class="nav-lang-item" data-name="Français" data-code="fr">
+                                    <span class="nav-lang-name">Français</span>
+                                    <span class="nav-lang-code">fr</span>
+                                    
+                                </a>
+                                <a href="/it/book/" class="nav-lang-item" data-name="Italiano" data-code="it">
+                                    <span class="nav-lang-name">Italiano</span>
+                                    <span class="nav-lang-code">it</span>
+                                    
+                                </a>
+                                <a href="/lt/book/" class="nav-lang-item" data-name="Lietuvių" data-code="lt">
+                                    <span class="nav-lang-name">Lietuvių</span>
+                                    <span class="nav-lang-code">lt</span>
+                                    
+                                </a>
+                                <a href="/nb/book/" class="nav-lang-item" data-name="Norsk" data-code="nb">
+                                    <span class="nav-lang-name">Norsk</span>
+                                    <span class="nav-lang-code">nb</span>
+                                    
+                                </a>
+                                <a href="/sv/book/" class="nav-lang-item" data-name="Svenska" data-code="sv">
+                                    <span class="nav-lang-name">Svenska</span>
+                                    <span class="nav-lang-code">sv</span>
+                                    
+                                </a>
+                                <a href="/bg/book/" class="nav-lang-item" data-name="Български" data-code="bg">
+                                    <span class="nav-lang-name">Български</span>
+                                    <span class="nav-lang-code">bg</span>
+                                    
+                                </a>
+                                <a href="/ru/book/" class="nav-lang-item" data-name="Русский" data-code="ru">
+                                    <span class="nav-lang-name">Русский</span>
+                                    <span class="nav-lang-code">ru</span>
+                                    
+                                </a>
+                                <a href="/uk/book/" class="nav-lang-item active" data-name="Українська" data-code="uk">
+                                    <span class="nav-lang-name">Українська</span>
+                                    <span class="nav-lang-code">uk</span>
+                                    <i class="fas fa-check"></i>
+                                </a>
+                                <a href="/ar/book/" class="nav-lang-item" data-name="العربية" data-code="ar">
+                                    <span class="nav-lang-name">العربية</span>
+                                    <span class="nav-lang-code">ar</span>
+                                    
+                                </a>
+                                <a href="/cn/book/" class="nav-lang-item" data-name="简体中文" data-code="cn">
+                                    <span class="nav-lang-name">简体中文</span>
+                                    <span class="nav-lang-code">cn</span>
+                                    
+                                </a>
+                                <a href="/tw/book/" class="nav-lang-item" data-name="繁體中文" data-code="tw">
+                                    <span class="nav-lang-name">繁體中文</span>
+                                    <span class="nav-lang-code">tw</span>
+                                    
+                                </a>
+                            </div>
+                            <div class="nav-lang-empty" id="langEmpty" style="display:none;">
+                                Мови не знайдено
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    (function() {
+        var trigger = document.getElementById('langDropdownTrigger');
+        var panel = document.getElementById('langDropdownPanel');
+        var backdrop = document.getElementById('langBackdrop');
+        var searchInput = document.getElementById('langSearchInput');
+        var langList = document.getElementById('langList');
+        var langEmpty = document.getElementById('langEmpty');
+        var items = langList.querySelectorAll('.nav-lang-item');
+        var navMenu = document.getElementById('navMenu');
+        var navToggle = document.getElementById('navToggle');
+    
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+    
+        function openDropdown() {
+            panel.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+            if (isMobile()) backdrop.classList.add('visible');
+            searchInput.value = '';
+            filterLanguages('');
+            setTimeout(function() { searchInput.focus(); }, 100);
+        }
+    
+        function closeDropdown() {
+            panel.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+            if (backdrop) backdrop.classList.remove('visible');
+        }
+    
+        function toggleDropdown(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (panel.classList.contains('open')) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        }
+    
+        function filterLanguages(query) {
+            var q = query.toLowerCase();
+            var visibleCount = 0;
+            for (var i = 0; i < items.length; i++) {
+                var name = items[i].getAttribute('data-name').toLowerCase();
+                var code = items[i].getAttribute('data-code').toLowerCase();
+                if (name.indexOf(q) !== -1 || code.indexOf(q) !== -1) {
+                    items[i].style.display = '';
+                    visibleCount++;
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+            langEmpty.style.display = visibleCount === 0 ? '' : 'none';
+        }
+    
+        trigger.addEventListener('click', toggleDropdown);
+    
+        searchInput.addEventListener('input', function() {
+            filterLanguages(this.value);
+        });
+    
+        searchInput.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    
+        // Close dropdown on backdrop click (mobile)
+        if (backdrop) {
+            backdrop.addEventListener('click', function() {
+                closeDropdown();
+            });
+        }
+    
+        document.addEventListener('click', function(e) {
+            if (!panel.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+    
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDropdown();
+        });
+    
+        // Close language panel when mobile menu closes
+        if (navToggle) {
+            navToggle.addEventListener('click', function() {
+                if (navMenu && !navMenu.classList.contains('active')) {
+                    closeDropdown();
+                }
+            });
+        }
+    })();
+    </script>
+
+    <style>
+    /* Rent Page Styles */
+
+    /* Hero with video background */
+    .rent-hero {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #0a0a0a;
+    }
+
+    .rent-hero-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.45;
+    }
+
+    .rent-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(6,67,140,0.4) 100%);
+        z-index: 1;
+    }
+
+    .rent-hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 140px 20px 80px;
+    }
+
+    .rent-badge {
+        display: inline-block;
+        padding: 8px 20px;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 30px;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .rent-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+    }
+
+    .rent-subtitle {
+        font-size: 1.2rem;
+        color: rgba(255,255,255,0.85);
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0 auto 2.5rem;
+    }
+
+    .rent-hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--primary-color);
+        color: white;
+        padding: 16px 36px;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .rent-hero-cta:hover {
+        background: #0856b3;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(6, 67, 140, 0.4);
+    }
+
+    /* Showcase / Robert in Action Carousel */
+    .rent-showcase {
+        padding: 100px 0;
+        background: white;
+        overflow: hidden;
+    }
+
+    .rent-carousel-wrapper {
+        position: relative;
+        margin-top: 60px;
+    }
+
+    .rent-carousel {
+        display: flex;
+        gap: 20px;
+        padding: 10px 0 20px;
+    }
+
+    .rent-showcase-card {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #000;
+        aspect-ratio: 9/16;
+        flex: 0 0 calc((100% - 60px) / 4);
+        min-width: 0;
+        scroll-snap-align: start;
+        cursor: pointer;
+    }
+
+    .rent-showcase-card video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .rent-showcase-card:hover video {
+        transform: scale(1.03);
+    }
+
+    .rent-showcase-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 40px 20px 20px;
+        background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+        color: white;
+    }
+
+    .rent-showcase-caption h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .rent-showcase-caption p {
+        font-size: 0.8rem;
+        opacity: 0.85;
+        line-height: 1.4;
+    }
+
+    .rent-showcase-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 56px;
+        height: 56px;
+        background: rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .rent-showcase-card:hover .rent-showcase-play {
+        background: var(--primary-color);
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .rent-carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1f2937;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 3;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .rent-carousel-btn:hover {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+        box-shadow: 0 6px 20px rgba(6, 67, 140, 0.3);
+    }
+
+    .rent-carousel-prev {
+        left: -24px;
+        display: none;
+    }
+
+    .rent-carousel-next {
+        right: -24px;
+        display: none;
+    }
+
+    /* Carousel dots */
+    .rent-carousel-dots {
+        display: none;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .rent-carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #d1d5db;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .rent-carousel-dot.active {
+        background: var(--primary-color);
+        width: 24px;
+        border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+        .rent-carousel {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            margin: 0 -20px;
+            padding: 10px 20px 20px;
+        }
+
+        .rent-showcase-card {
+            flex: 0 0 72vw;
+            scroll-snap-align: center;
+        }
+
+        .rent-carousel-btn {
+            display: none;
+        }
+
+        .rent-carousel-dots {
+            display: flex;
+        }
+    }
+
+    /* Video Lightbox Modal */
+    .video-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    .video-modal-overlay.active {
+        display: flex;
+    }
+
+    .video-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10000;
+    }
+
+    .video-modal-close:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.1);
+    }
+
+    .video-modal-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 90vw;
+        max-height: 85vh;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-modal-content video {
+        max-width: 90vw;
+        max-height: 85vh;
+        display: block;
+        border-radius: 12px;
+    }
+
+    @media (max-width: 768px) {
+        .video-modal-overlay {
+            padding: 20px;
+        }
+
+        .video-modal-close {
+            top: 12px;
+            right: 16px;
+        }
+    }
+
+    /* How It Works Section */
+    .rent-how {
+        padding: 100px 0;
+        background: #fafbfc;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .rent-how-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-top: 60px;
+    }
+
+    .rent-how-card {
+        text-align: center;
+        position: relative;
+    }
+
+    .rent-how-number {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+    }
+
+    .rent-how-card h3 {
+        font-size: 1.25rem;
+        color: #1f2937;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .rent-how-card p {
+        color: #6b7280;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* Rental Form Section */
+    .rent-form-section {
+        padding: 100px 0;
+        background: white;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .rent-container {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 80px;
+        align-items: start;
+    }
+
+    .rent-info-sidebar {
+        position: sticky;
+        top: 100px;
+    }
+
+    .rent-info-card {
+        background: #fafbfc;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 40px;
+        margin-bottom: 30px;
+    }
+
+    .rent-info-card h3 {
+        font-size: 1.5rem;
+        color: #1f2937;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .rent-info-item {
+        margin-bottom: 25px;
+    }
+
+    .rent-info-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .rent-info-item h4 {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+
+    .rent-info-item p {
+        font-size: 1.125rem;
+        color: #1f2937;
+        line-height: 1.6;
+    }
+
+    .rent-form-wrapper {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 50px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .rent-form-header {
+        margin-bottom: 40px;
+    }
+
+    .rent-form-header h2 {
+        font-size: 2rem;
+        color: #1f2937;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+    }
+
+    .rent-form-header p {
+        color: #6b7280;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .rent-form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 8px;
+        letter-spacing: 0.025em;
+    }
+
+    .form-group label .required {
+        color: #ef4444;
+        margin-left: 2px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 16px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+        background: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .form-group select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 20px;
+        padding-right: 40px;
+    }
+
+    .form-footer {
+        margin-top: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-note {
+        font-size: 0.875rem;
+        color: #6b7280;
+        line-height: 1.5;
+        max-width: 350px;
+    }
+
+    .submit-btn {
+        background: var(--primary-color);
+        color: white;
+        padding: 14px 40px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .submit-btn:hover {
+        background: #0856b3;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(6, 67, 140, 0.3);
+    }
+
+    .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .spinner {
+        display: none;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .form-message {
+        margin-top: 20px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        display: none;
+    }
+
+    .form-message.success {
+        background: #d1fae5;
+        color: #065f46;
+        border: 1px solid #a7f3d0;
+        display: block;
+    }
+
+    .form-message.error {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fecaca;
+        display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .rent-title {
+            font-size: 2.5rem;
+        }
+
+        .rent-container {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .rent-info-sidebar {
+            position: static;
+        }
+
+    }
+
+    @media (max-width: 768px) {
+        .rent-hero {
+            min-height: 70vh;
+        }
+
+        .rent-title {
+            font-size: 2rem;
+        }
+
+        .rent-subtitle {
+            font-size: 1.05rem;
+        }
+
+        .rent-how-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .rent-form-wrapper {
+            padding: 20px;
+            margin: 0 -10px;
+            border-radius: 8px;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .form-footer {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .submit-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .rent-form-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            font-size: 16px;
+            padding: 14px 12px;
+        }
+
+    }
+
+    @media (max-width: 480px) {
+        .rent-form-wrapper {
+            padding: 16px;
+            margin: 0 -8px;
+            box-shadow: none;
+            border: none;
+            border-radius: 0;
+        }
+
+        .rent-form-header {
+            margin-bottom: 24px;
+        }
+
+        .rent-form {
+            gap: 16px;
+        }
+
+        .submit-btn {
+            padding: 16px 24px;
+        }
+
+    }
+</style>
+
+<!-- Hero Section with Video Background -->
+<section class="rent-hero">
+    <video
+        class="rent-hero-video"
+        autoplay muted playsinline loop
+        preload="metadata"
+        poster=""
+    >
+        <source src="../../featured/robert_tv.mp4" type="video/mp4">
+    </video>
+    <div class="rent-hero-overlay"></div>
+    <div class="rent-hero-content">
+        <div class="rent-badge">ЗАБРОНЮВАТИ РОБЕРТА</div>
+        <h1 class="visuallyhidden">Забронюйте Роберта Робота</h1>
+        <div class="rent-title">Запросіть Роберта на ваш захід</div>
+        <p class="rent-subtitle">Зробіть ваш наступний захід незабутнім з Робертом, нашим людиноподібним роботом на базі ШІ. Від корпоративних зустрічей до презентацій продуктів, Роберт пропонує унікальний досвід, який захоплює аудиторію.</p>
+        <a href="#rentForm" class="rent-hero-cta">
+            Запросити пропозицію
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Robert in Action — Showcase Section -->
+<section class="rent-showcase">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">РОБЕРТ В ДІЇ</span>
+            <h2 class="section-title">На заходах по всьому світу</h2>
+        </div>
+        <div class="rent-carousel-wrapper">
+            <button class="rent-carousel-btn rent-carousel-prev" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+            <div class="rent-carousel" id="rentCarousel">
+                <div class="rent-showcase-card">
+                    <video autoplay muted playsinline loop preload="metadata" poster="../../news/robert-the-policeman/robot-police.jpg">
+                        <source src="../../featured/Robot-Police-RB-Labs.mp4" type="video/mp4">
+                    </video>
+                    <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
+                    <div class="rent-showcase-caption">
+                        <h3>День поліції 2025</h3>
+                        <p>Роберт був представлений як поліцейський помічник на базі ШІ в День поліції.</p>
+                    </div>
+                </div>
+                <div class="rent-showcase-card">
+                    <video autoplay muted playsinline loop preload="metadata" poster="../../featured/robert-in-davos.png">
+                        <source src="../../featured/robert_in_davos.mp4" type="video/mp4">
+                    </video>
+                    <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
+                    <div class="rent-showcase-caption">
+                        <h3>Конференція в Давосі</h3>
+                        <p>Роберт взяв участь у престижному Всесвітньому інноваційному форумі в Давосі, Швейцарія.</p>
+                    </div>
+                </div>
+                <div class="rent-showcase-card">
+                    <video autoplay muted playsinline loop preload="metadata">
+                        <source src="../../featured/money1.mp4" type="video/mp4">
+                    </video>
+                    <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
+                    <div class="rent-showcase-caption">
+                        <h3>Роберт у фінансах</h3>
+                        <p>Роберт демонструє можливості фінансового аналізу та трейдингу на базі ШІ.</p>
+                    </div>
+                </div>
+                <div class="rent-showcase-card">
+                    <video autoplay muted playsinline loop preload="metadata">
+                        <source src="../../featured/money2.mp4" type="video/mp4">
+                    </video>
+                    <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
+                    <div class="rent-showcase-caption">
+                        <h3>Живі презентації</h3>
+                        <p>Роберт захоплює аудиторію динамічними, інтерактивними сценічними презентаціями.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="rent-carousel-btn rent-carousel-next" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+            <div class="rent-carousel-dots" id="carouselDots">
+                <button class="rent-carousel-dot active" data-index="0"></button>
+                <button class="rent-carousel-dot" data-index="1"></button>
+                <button class="rent-carousel-dot" data-index="2"></button>
+                <button class="rent-carousel-dot" data-index="3"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="rent-how">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">ЯК ЦЕ ПРАЦЮЄ</span>
+            <h2 class="section-title">Три прості кроки</h2>
+        </div>
+        <div class="rent-how-grid">
+            <div class="rent-how-card">
+                <div class="rent-how-number">1</div>
+                <h3>Запит</h3>
+                <p>Розкажіть нам про ваш захід, включаючи дату, місце та що ви хочете, щоб Роберт робив.</p>
+            </div>
+            <div class="rent-how-card">
+                <div class="rent-how-number">2</div>
+                <h3>Налаштування</h3>
+                <p>Ми адаптуємо особистість Роберта, сценарії та брендинг під тему та цілі вашого заходу.</p>
+            </div>
+            <div class="rent-how-card">
+                <div class="rent-how-number">3</div>
+                <h3>День заходу</h3>
+                <p>Наша команда доставить Роберта на ваш майданчик, виконає налаштування та забезпечить підтримку на місці протягом усього заходу.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Rental Form Section -->
+<section class="rent-form-section">
+    <div class="container">
+        <div class="rent-container">
+            <!-- Info Sidebar -->
+            <div class="rent-info-sidebar">
+                <div class="rent-info-card">
+                    <h3>Інформація про бронювання заходу</h3>
+                    <div class="rent-info-item">
+                        <h4>Доступність</h4>
+                        <p>По всьому світу — ми привеземо Роберта до вас</p>
+                    </div>
+                    <div class="rent-info-item">
+                        <h4>Що включено</h4>
+                        <p>Робот, оператор, налаштування та підтримка на місці</p>
+                    </div>
+                    <div class="rent-info-item">
+                        <h4>Тривалість бронювання</h4>
+                        <p>Доступні пакети на півдня або повний день</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Rental Form -->
+            <div class="rent-form-wrapper">
+                <div class="rent-form-header">
+                    <h2>Запросити пропозицію на бронювання</h2>
+                    <p>Заповніть форму нижче, і наша команда заходів зв&#x27;яжеться з вами протягом 24 годин.</p>
+                </div>
+
+                <form class="rent-form" id="rentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rentFirstName">Ім&#x27;я <span class="required">*</span></label>
+                            <input type="text" id="rentFirstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rentLastName">Прізвище <span class="required">*</span></label>
+                            <input type="text" id="rentLastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rentEmail">Електронна пошта <span class="required">*</span></label>
+                            <input type="email" id="rentEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rentPhone">Номер телефону</label>
+                            <input type="tel" id="rentPhone" name="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rentCompany">Компанія / Організація *</label>
+                        <input type="text" id="rentCompany" name="company" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rentEventDate">Дата заходу <span class="required">*</span></label>
+                            <input type="date" id="rentEventDate" name="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rentLocation">Місце проведення <span class="required">*</span></label>
+                            <input type="text" id="rentLocation" name="eventLocation" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rentDuration">Тривалість заходу <span class="required">*</span></label>
+                            <select id="rentDuration" name="duration" required>
+                                <option value="">Виберіть тривалість</option>
+                                <option value="half-day">Півдня (до 4 годин)</option>
+                                <option value="full-day">Повний день (до 8 годин)</option>
+                                <option value="2-days">2 дні</option>
+                                <option value="3-days">3 дні</option>
+                                <option value="4-days">4 дні</option>
+                                <option value="5-days">5 днів</option>
+                                <option value="6-days">6 днів</option>
+                                <option value="7-days">7 днів</option>
+                                <option value="2-weeks">2 тижні</option>
+                                <option value="custom">Індивідуальна тривалість</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rentGuests">Очікувані гості</label>
+                            <select id="rentGuests" name="guests">
+                                <option value="">Виберіть діапазон</option>
+                                <option value="under50">Менше 50</option>
+                                <option value="50-100">50 – 100</option>
+                                <option value="100-300">100 – 300</option>
+                                <option value="300-500">300 – 500</option>
+                                <option value="500-1000">500 – 1 000</option>
+                                <option value="1000+">1 000+</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rentMessage">Повідомлення / Вимоги</label>
+                        <textarea id="rentMessage" name="message" placeholder="Розкажіть нам про ваш захід та що ви хочете, щоб Роберт робив..."></textarea>
+                    </div>
+
+                    <div class="form-footer">
+                        <p class="form-note">Надсилаючи цю форму, ви погоджуєтеся з нашою політикою конфіденційності</p>
+                        <button type="submit" class="submit-btn" id="rentSubmitBtn">
+                            Запросити пропозицію
+                            <span class="spinner" id="rentSpinner"></span>
+                        </button>
+                    </div>
+
+                    <div class="form-message" id="rentFormMessage"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Lightbox Modal -->
+<div class="video-modal-overlay" id="videoModal">
+    <button class="video-modal-close" id="videoModalClose"><i class="fas fa-times"></i></button>
+    <div class="video-modal-content">
+        <video id="videoModalPlayer" controls playsinline preload="metadata"></video>
+    </div>
+</div>
+
+<script>
+    // Video lightbox
+    (function() {
+        var modal = document.getElementById('videoModal');
+        var player = document.getElementById('videoModalPlayer');
+        var closeBtn = document.getElementById('videoModalClose');
+
+        function openModal(videoSrc) {
+            player.src = videoSrc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            player.play();
+        }
+
+        function closeModal() {
+            player.pause();
+            player.src = '';
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.rent-showcase-card').forEach(function(card) {
+            var video = card.querySelector('video');
+            if (!video) return;
+            var source = video.querySelector('source');
+            var src = source ? source.getAttribute('src') : '';
+
+            card.addEventListener('click', function() {
+                openModal(src);
+            });
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    })();
+
+    // Carousel navigation + dots
+    (function() {
+        var carousel = document.getElementById('rentCarousel');
+        var dots = document.querySelectorAll('.rent-carousel-dot');
+        var cards = carousel.querySelectorAll('.rent-showcase-card');
+        var scrollTimer;
+
+        function updateDots() {
+            var scrollLeft = carousel.scrollLeft;
+            var cardWidth = cards[0].offsetWidth;
+            var gap = 24;
+            var index = Math.round(scrollLeft / (cardWidth + gap));
+            index = Math.max(0, Math.min(index, dots.length - 1));
+            dots.forEach(function(dot, i) {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        carousel.addEventListener('scroll', function() {
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(updateDots, 50);
+        });
+
+        dots.forEach(function(dot) {
+            dot.addEventListener('click', function() {
+                var index = parseInt(this.getAttribute('data-index'));
+                var card = cards[index];
+                if (card) {
+                    carousel.scrollTo({ left: card.offsetLeft - 20, behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+</script>
+
+<script>
+    document.getElementById('rentForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById('rentSubmitBtn');
+        const spinner = document.getElementById('rentSpinner');
+        const messageDiv = document.getElementById('rentFormMessage');
+
+        submitBtn.disabled = true;
+        spinner.style.display = 'inline-block';
+        messageDiv.style.display = 'none';
+        messageDiv.className = 'form-message';
+
+        async function getUserIPAndCountry() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                return { ip: data.ip || 'Unknown', country: data.country_name || 'Unknown' };
+            } catch (error) {
+                try {
+                    const ipResponse = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipResponse.json();
+                    return { ip: ipData.ip || 'Unknown', country: 'Unknown' };
+                } catch (fallbackError) {
+                    return { ip: 'Unknown', country: 'Unknown' };
+                }
+            }
+        }
+
+        function getBrowserInfo() {
+            var ua = navigator.userAgent;
+            var browserInfo = 'Unknown';
+            if (ua.indexOf('Chrome') > -1 && ua.indexOf('Edg') === -1 && ua.indexOf('OPR') === -1) browserInfo = 'Chrome';
+            else if (ua.indexOf('Safari') > -1 && ua.indexOf('Chrome') === -1) browserInfo = 'Safari';
+            else if (ua.indexOf('Firefox') > -1) browserInfo = 'Firefox';
+            else if (ua.indexOf('Edg') > -1) browserInfo = 'Edge';
+            else if (ua.indexOf('OPR') > -1 || ua.indexOf('Opera') > -1) browserInfo = 'Opera';
+            if (/Mobile|Android|iPhone|iPad/i.test(ua)) browserInfo += ' (Mobile)';
+            else browserInfo += ' (Desktop)';
+            return browserInfo;
+        }
+
+        try {
+            var ipData = await getUserIPAndCountry();
+
+            var firstName = document.getElementById('rentFirstName').value.trim();
+            var lastName = document.getElementById('rentLastName').value.trim();
+            var email = document.getElementById('rentEmail').value.trim();
+            var phone = document.getElementById('rentPhone').value.trim();
+            var company = document.getElementById('rentCompany').value.trim();
+            var eventDate = document.getElementById('rentEventDate').value;
+            var location = document.getElementById('rentLocation').value.trim();
+            var duration = document.getElementById('rentDuration').value;
+            var guests = document.getElementById('rentGuests').value;
+            var message = document.getElementById('rentMessage').value.trim();
+
+            var formData = {
+                fname: firstName,
+                lname: lastName,
+                email: email,
+                phone: phone || 'Not provided',
+                message: 'Event Date: ' + eventDate +
+                    '\nEvent Duration: ' + duration +
+                    '\nEvent Location: ' + location +
+                    '\nExpected Guests: ' + (guests || 'Not specified') +
+                    '\nCompany: ' + (company || 'Not provided') +
+                    '\nMessage: ' + (message || 'No additional details') +
+                    '\n\nSource: RB Labs Book Page',
+                created_at: new Date().toISOString(),
+                ip: ipData.ip,
+                country: ipData.country,
+                browser: getBrowserInfo()
+            };
+
+            await fetch('https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            messageDiv.className = 'form-message success';
+            messageDiv.innerHTML = 'Дякуємо! Ваш запит на бронювання отримано. Наша команда заходів зв&#x27;яжеться з вами протягом 24 годин.';
+            messageDiv.style.display = 'block';
+            document.getElementById('rentForm').reset();
+            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        } catch (error) {
+            messageDiv.className = 'form-message error';
+            messageDiv.innerHTML = 'Вибачте, під час надсилання вашого запиту сталася помилка. Будь ласка, спробуйте ще раз або напишіть нам напряму.';
+            messageDiv.style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            spinner.style.display = 'none';
+        }
+    });
+</script>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">RB Labs</h4>
+                    <p class="footer-description">
+                        Піонери майбутнього ШІ та робототехніки через передові технології штучного інтелекту та автоматизації.
+                    </p>
+                    <p class="footer-description" style="margin-top: 1rem;">
+                        Головний офіс: Женева, Швейцарія
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Ресурси</h4>
+                    <ul class="footer-links">
+                        <li><a href="/uk/">Головна</a></li>
+                        <li><a href="/uk/about/">Про нас</a></li>
+                        <li><a href="/uk/career/">Кар&#x27;єра</a></li>
+                        <li><a href="/uk/news/">Новини</a></li>
+                        <li><a href="/uk/book/">Book Robert</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Підтримка</h4>
+                    <ul class="footer-links">
+                        <li><a href="/uk/contact/">Контакт</a></li>
+                        <li><a href="/uk/privacy-policy/">Політика конфіденційності</a></li>
+                        <li><a href="/uk/terms-of-service/">Умови обслуговування</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Зв&#x27;язатися</h4>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/robert_robot_official" target="_blank" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RB Labs AG. Усі права захищені. | Швейцарія</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
