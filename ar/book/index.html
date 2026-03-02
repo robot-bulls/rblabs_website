@@ -1164,10 +1164,9 @@
 <section class="rent-hero">
     <video
         class="rent-hero-video"
-        autoplay muted playsinline loop
+        muted playsinline loop
         preload="none"
-        poster="../../featured/robert_tv_poster.jpg"
-        data-src="../../featured/robert_tv_lite.mp4"
+        data-src="../../featured/robert_tv.mp4"
     >
     </video>
     <div class="rent-hero-overlay"></div>
@@ -1585,6 +1584,7 @@
             source.type = 'video/mp4';
             heroVideo.appendChild(source);
             heroVideo.load();
+            heroVideo.play();
         }
     });
 </script>
