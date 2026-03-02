@@ -566,6 +566,15 @@
         display: flex;
         gap: 20px;
         padding: 10px 0 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .rent-carousel::-webkit-scrollbar {
+        display: none;
     }
 
     .rent-showcase-card {
@@ -668,12 +677,10 @@
 
     .rent-carousel-prev {
         left: -24px;
-        display: none;
     }
 
     .rent-carousel-next {
         right: -24px;
-        display: none;
     }
 
     /* Carousel dots */
@@ -1227,22 +1234,22 @@
                 </div>
                 <div class="rent-showcase-card">
                     <video muted playsinline preload="metadata">
-                        <source src="../../featured/money1.mp4" type="video/mp4">
+                        <source src="../../featured/robert-the-robot.mp4" type="video/mp4">
                     </video>
                     <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
                     <div class="rent-showcase-caption">
-                        <h3>Робърт във финансите</h3>
-                        <p>Робърт демонстрира възможности за финансов анализ и търговия с изкуствен интелект.</p>
+                        <h3>Робърт Роботът</h3>
+                        <p>Робърт показва бъдещето на хуманоидната роботика с реалистични движения и взаимодействия, задвижвани от изкуствен интелект.</p>
                     </div>
                 </div>
                 <div class="rent-showcase-card">
                     <video muted playsinline preload="metadata">
-                        <source src="../../featured/money2.mp4" type="video/mp4">
+                        <source src="../../featured/robert_real_estate_broker.mp4" type="video/mp4">
                     </video>
                     <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
                     <div class="rent-showcase-caption">
-                        <h3>Презентации на живо</h3>
-                        <p>Робърт завладява публиката с динамични, интерактивни сценични презентации.</p>
+                        <h3>Брокер на недвижими имоти</h3>
+                        <p>Робърт стана вирусен, представяйки луксозни имоти като брокер на недвижими имоти с изкуствен интелект.</p>
                     </div>
                 </div>
             </div>

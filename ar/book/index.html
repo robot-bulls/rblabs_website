@@ -567,6 +567,15 @@
         display: flex;
         gap: 20px;
         padding: 10px 0 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .rent-carousel::-webkit-scrollbar {
+        display: none;
     }
 
     .rent-showcase-card {
@@ -669,12 +678,10 @@
 
     .rent-carousel-prev {
         left: -24px;
-        display: none;
     }
 
     .rent-carousel-next {
         right: -24px;
-        display: none;
     }
 
     /* Carousel dots */
@@ -1228,22 +1235,22 @@
                 </div>
                 <div class="rent-showcase-card">
                     <video muted playsinline preload="metadata">
-                        <source src="../../featured/money1.mp4" type="video/mp4">
+                        <source src="../../featured/robert-the-robot.mp4" type="video/mp4">
                     </video>
                     <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
                     <div class="rent-showcase-caption">
-                        <h3>روبرت في المالية</h3>
-                        <p>يوضح روبرت قدرات التحليل المالي والتداول المدعومة بالذكاء الاصطناعي.</p>
+                        <h3>روبرت الروبوت</h3>
+                        <p>يعرض روبرت مستقبل الروبوتات البشرية بحركات واقعية وتفاعلات مدعومة بالذكاء الاصطناعي.</p>
                     </div>
                 </div>
                 <div class="rent-showcase-card">
                     <video muted playsinline preload="metadata">
-                        <source src="../../featured/money2.mp4" type="video/mp4">
+                        <source src="../../featured/robert_real_estate_broker.mp4" type="video/mp4">
                     </video>
                     <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
                     <div class="rent-showcase-caption">
-                        <h3>عروض حية</h3>
-                        <p>يأسر روبرت الجمهور بعروض مسرحية ديناميكية وتفاعلية.</p>
+                        <h3>وسيط عقاري</h3>
+                        <p>انتشر روبرت بشكل فيروسي وهو يقدم العقارات الفاخرة كوسيط عقاري مدعوم بالذكاء الاصطناعي.</p>
                     </div>
                 </div>
             </div>
