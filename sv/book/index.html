@@ -244,7 +244,7 @@
     
 
 </head>
-<body>
+<body data-page="home">
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
@@ -475,6 +475,10 @@
         opacity: 0.45;
     }
 
+    .rent-hero-video-mobile {
+        display: none;
+    }
+
     .rent-hero-overlay {
         position: absolute;
         top: 0;
@@ -496,17 +500,16 @@
 
     .rent-badge {
         display: inline-block;
-        padding: 8px 20px;
-        color: #fff;
+        padding: 0.5rem 1.5rem;
+        background: rgba(6, 67, 140, 0.1);
+        border: 1px solid white;
+        border-radius: 50px;
         font-size: 0.75rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
+        font-weight: 600;
         letter-spacing: 2px;
         text-transform: uppercase;
-        border: 1px solid rgba(255,255,255,0.3);
-        border-radius: 30px;
-        background: rgba(255,255,255,0.1);
-        backdrop-filter: blur(10px);
+        color: white;
+        margin-bottom: 2rem;
     }
 
     .rent-title {
@@ -699,8 +702,12 @@
     }
 
     @media (max-width: 768px) {
-        .rent-hero-video {
-            object-position: left center;
+        .rent-hero-video-desktop {
+            display: none;
+        }
+
+        .rent-hero-video-mobile {
+            display: block;
         }
 
         .rent-carousel {
@@ -1162,10 +1169,17 @@
 <!-- Hero Section with Video Background -->
 <section class="rent-hero">
     <video
-        class="rent-hero-video"
+        class="rent-hero-video rent-hero-video-desktop"
         muted playsinline loop
         preload="none"
         data-src="../../featured/robert_tv.mp4"
+    >
+    </video>
+    <video
+        class="rent-hero-video rent-hero-video-mobile"
+        muted playsinline loop
+        preload="none"
+        data-src="../../featured/robert_tv_phone.mp4"
     >
     </video>
     <div class="rent-hero-overlay"></div>
@@ -1576,7 +1590,8 @@
 
     // Lazy-load hero video after page renders
     window.addEventListener('load', function() {
-        var heroVideo = document.querySelector('.rent-hero-video');
+        var isMobile = window.innerWidth <= 768;
+        var heroVideo = document.querySelector(isMobile ? '.rent-hero-video-mobile' : '.rent-hero-video-desktop');
         if (heroVideo && heroVideo.dataset.src) {
             var source = document.createElement('source');
             source.src = heroVideo.dataset.src;
