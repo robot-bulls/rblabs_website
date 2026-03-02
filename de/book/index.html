@@ -1164,10 +1164,10 @@
     <video
         class="rent-hero-video"
         autoplay muted playsinline loop
-        preload="metadata"
-        poster=""
+        preload="none"
+        poster="../../featured/robert_tv_poster.jpg"
+        data-src="../../featured/robert_tv_lite.mp4"
     >
-        <source src="../../featured/robert_tv.mp4" type="video/mp4">
     </video>
     <div class="rent-hero-overlay"></div>
     <div class="rent-hero-content">
@@ -1572,6 +1572,18 @@
         } finally {
             submitBtn.disabled = false;
             spinner.style.display = 'none';
+        }
+    });
+
+    // Lazy-load hero video after page renders
+    window.addEventListener('load', function() {
+        var heroVideo = document.querySelector('.rent-hero-video');
+        if (heroVideo && heroVideo.dataset.src) {
+            var source = document.createElement('source');
+            source.src = heroVideo.dataset.src;
+            source.type = 'video/mp4';
+            heroVideo.appendChild(source);
+            heroVideo.load();
         }
     });
 </script>
