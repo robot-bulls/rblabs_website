@@ -51,10 +51,8 @@
     <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/career/">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../typography.css">
 
     <style>
         .visuallyhidden {
@@ -72,6 +70,9 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
             padding: 8px 0;
         }
         .nav-lang-trigger .fa-globe {
@@ -148,15 +149,16 @@
             text-decoration: none;
             color: #374151;
             font-size: 14px;
+            font-family: inherit;
             transition: background 0.15s ease;
         }
         .nav-lang-item:hover {
             background: #f3f4f6;
         }
         .nav-lang-item.active {
-            background: rgba(6, 67, 140, 0.06);
-            color: #06438c;
-            font-weight: 600;
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
         }
         .nav-lang-name {
             flex: 1;
@@ -169,11 +171,11 @@
             font-weight: 500;
         }
         .nav-lang-item.active .nav-lang-code {
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-item .fa-check {
             font-size: 12px;
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-empty {
             padding: 20px 16px;
@@ -514,7 +516,7 @@
         display: flex;
         gap: 8px;
         padding: 4px;
-        background: #f3f4f6;
+        background: transparent;
         border-radius: 12px;
     }
 
@@ -522,7 +524,7 @@
         padding: 10px 20px;
         background: transparent;
         border: none;
-        border-radius: 8px;
+        border-radius: 999px;
         font-weight: 500;
         color: #6b7280;
         cursor: pointer;
@@ -552,15 +554,25 @@
     }
 
     .search-bar:focus-within {
-        border-color: #06438c;
-        background: white;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #e5e7eb;
+        background: #f9fafb;
+        box-shadow: none;
+        outline: none !important;
+    }
+
+    .search-bar *:focus {
+        outline: none !important;
+    }
+
+    #jobSearch:focus {
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     .search-bar input {
-        border: none;
-        background: none;
-        outline: none;
+        border: none !important;
+        background: none !important;
+        outline: none !important;
         flex: 1;
         font-size: 14px;
         color: #111827;
@@ -600,7 +612,7 @@
         left: 0;
         width: 4px;
         height: 100%;
-        background: linear-gradient(180deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         transform: translateX(-4px);
         transition: transform 0.3s;
     }
@@ -683,30 +695,31 @@
     }
 
     .apply-section {
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: white;
         padding: 80px 0;
         text-align: center;
-        color: white;
+        color: #1d1d1f;
     }
 
     .apply-title {
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
+        color: #1d1d1f;
     }
 
     .apply-description {
         font-size: 18px;
-        opacity: 0.9;
+        color: #6e6e73;
         margin-bottom: 32px;
     }
 
     .apply-btn {
         display: inline-block;
         padding: 14px 32px;
-        background: white;
-        color: #06438c;
-        border-radius: 10px;
+        background: #1d1d1f;
+        color: white;
+        border-radius: 999px;
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s;
@@ -849,8 +862,8 @@
     .form-input:focus,
     .form-textarea:focus {
         outline: none;
-        border-color: #06438c;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #1d1d1f;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
     }
 
     .form-textarea {
@@ -862,10 +875,10 @@
     .submit-btn {
         width: 100%;
         padding: 14px;
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         color: white;
         border: none;
-        border-radius: 10px;
+        border-radius: 999px;
         font-weight: 600;
         font-size: 16px;
         cursor: pointer;
@@ -874,7 +887,7 @@
 
     .submit-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(6, 67, 140, 0.3);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
     }
 
     @keyframes spin {
@@ -925,6 +938,7 @@
 
         .jobs-container {
             padding: 40px 0 80px;
+            background: transparent;
         }
 
         .job-header {
@@ -1136,6 +1150,69 @@
                     <span class="skill-tag">ICP</span>
                     <span class="skill-tag">Smart Contracts</span>
                     <span class="skill-tag">DeFi</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-locomotion-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Ingénieur Systèmes de Locomotion</h3>
+                        <span class="job-department">Ingénierie Robotique</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Genève, Suisse</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Temps plein</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Niveau Senior</span>
+                </div>
+                <p class="job-description">Concevez et implémentez des systèmes de locomotion bipède pour nos robots humanoïdes. Développez des démarches stables, des contrôleurs d&#x27;équilibre et une planification de mouvement dynamique pour le déploiement en conditions réelles.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Locomotion Bipède</span>
+                    <span class="skill-tag">Théorie du Contrôle</span>
+                    <span class="skill-tag">ROS2</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">MuJoCo</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-perception-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Ingénieur Perception Robotique</h3>
+                        <span class="job-department">Ingénierie Robotique</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Genève, Suisse</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Temps plein</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Niveau Senior</span>
+                </div>
+                <p class="job-description">Construisez l&#x27;intelligence perceptuelle de nos robots humanoïdes. Développez des systèmes de vision par ordinateur en temps réel, de fusion de capteurs et de conscience spatiale pour une navigation sûre.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Vision par Ordinateur</span>
+                    <span class="skill-tag">Fusion de Capteurs</span>
+                    <span class="skill-tag">SLAM</span>
+                    <span class="skill-tag">LiDAR</span>
+                    <span class="skill-tag">ROS2</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-manipulation-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Ingénieur Manipulation Robotique</h3>
+                        <span class="job-department">Ingénierie Robotique</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Genève, Suisse</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Temps plein</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Niveau Mid-Senior</span>
+                </div>
+                <p class="job-description">Développez les bras et mains dextres de nos robots humanoïdes. Travaillez sur la cinématique, la planification de préhension et les systèmes d&#x27;exécution de tâches pour des interactions physiques en milieu entreprise.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Manipulation Robotique</span>
+                    <span class="skill-tag">Cinématique</span>
+                    <span class="skill-tag">Planification de Préhension</span>
+                    <span class="skill-tag">MoveIt</span>
+                    <span class="skill-tag">ROS2</span>
                 </div>
             </div>
             <div class="job-card" data-category="ai" onclick="openJobModal('deep-learning-developer')">
@@ -1498,7 +1575,7 @@
 
 <script>
     // Job data loaded from career data files
-    const jobData = {"senior-ai-developer":{"title":"Développeur IA Python Senior","department":"IA & Recherche","location":"Genève, Suisse","type":"Temps plein","level":"Niveau Senior","modalDescription":"Nous recherchons un Développeur IA Python Senior pour diriger le développement de systèmes IA de pointe pour des applications robotiques.","responsibilities":["Travailler sur des projets impliquant le prototypage rapide de systèmes et l'expérimentation à l'aide de logiciels de vision par ordinateur, de systèmes robotiques et de modèles d'apprentissage automatique","Former des réseaux de neurones profonds à la pointe de la technologie pour la prédiction et l'apprentissage par renforcement","Concevoir des configurations robotiques dans des environnements de laboratoire et de simulation physique","Identifier des opportunités et mener de nouvelles initiatives pour appliquer l'apprentissage automatique","Contribuer à des articles de blog techniques, des publications, des conférences et des demandes de brevet"],"requirements":["Excellente connaissance de la théorie et de la pratique de l'apprentissage automatique","Compétent en Python, Java et C++","Connaissance des frameworks d'apprentissage profond (TensorFlow, Keras, PyTorch)","Expérience en vision par ordinateur et en robotique","Expérience avec des technologies de big data (BigQuery, Spark, AWS)","Expérience avec Kubernetes, Docker et des plateformes Cloud"],"benefits":["Salaire compétitif et package d'équité","Horaires de travail flexibles et options de télétravail","Budget de développement professionnel","Assurance santé et programmes de bien-être","Bureau moderne dans le centre-ville de Genève"]},"blockchain-developer":{"title":"Développeur Blockchain","department":"Ingénierie","location":"À distance","type":"Temps plein","level":"Niveau Intermédiaire-Senior","modalDescription":"Rejoignez notre équipe pour construire l'avenir de la finance décentralisée sur Ethereum et Internet Computer Protocol.","responsibilities":["Développer et maintenir des contrats intelligents sur Ethereum et ICP","Concevoir et mettre en œuvre des solutions blockchain pour des applications IoT et robotiques","Assurer la sécurité, l'évolutivité et l'efficacité des applications blockchain","Rester à jour avec les avancées technologiques en blockchain","Déboguer et résoudre les problèmes d'implémentation blockchain"],"requirements":["Forte expérience avec Ethereum et Solidity","Connaissance du protocole Internet Computer (ICP)","Compréhension des fondamentaux de la blockchain et de la cryptographie","Expérience avec des protocoles DeFi","Capacité à travailler de manière autonome dans un cadre à distance"],"benefits":["Poste entièrement à distance","Rémunération compétitive en crypto/fiat","Opportunités d'allocation de tokens","Horaires de travail flexibles à travers les fuseaux horaires","Rassemblements annuels de l'équipe"]},"deep-learning-developer":{"title":"Développeur IA Apprentissage Profond","department":"IA & Recherche","location":"Genève, Suisse","type":"Temps plein","level":"Niveau Intermédiaire","modalDescription":"Développer et optimiser des modèles d'apprentissage profond pour des environnements de production dans la robotique et l'automatisation.","responsibilities":["Concevoir et mettre en œuvre des modèles d'apprentissage profond à la pointe de la technologie","Optimiser les modèles pour la performance et l'évolutivité","Collaborer avec l'équipe de recherche sur des solutions IA innovantes","Déployer des modèles dans des environnements de production","Surveiller et améliorer la performance des modèles"],"requirements":["Solides compétences en programmation en Python","Expérience avec des frameworks d'apprentissage profond","Compréhension des architectures de réseaux de neurones","Connaissance des techniques d'optimisation","Passion pour la technologie IA"],"benefits":["Travailler sur des projets IA de pointe","Accès à des ressources informatiques puissantes","Participation à des conférences et formations","Environnement de recherche collaboratif","Opportunités de publication"]},"data-analyst":{"title":"Analyste de Données","department":"Intelligence d'Affaires","location":"Genève, Suisse","type":"Temps plein","level":"Niveau intermédiaire","modalDescription":"Transformez des ensembles de données complexes en informations exploitables pour orienter les décisions stratégiques.","responsibilities":["Analyser de grands ensembles de données pour identifier des tendances et des motifs","Créer des visualisations de données et des tableaux de bord","Collaborer avec les équipes pour comprendre les besoins en données","Assurer l'exactitude et l'intégrité des données","Développer des stratégies basées sur les données"],"requirements":["Expérience avérée en tant qu'Analyste de Données","Solide maîtrise de SQL et Excel","Expérience avec des outils de visualisation (Tableau, Power BI)","Compétences en analyse statistique","Excellentes capacités de communication"],"benefits":["Ensemble d'analytique moderne","Collaboration interfonctionnelle","Opportunités de développement professionnel","Impact sur les décisions stratégiques","Rémunération compétitive"]},"hr-assistant":{"title":"Assistant(e) Ressources Humaines / Personnel","department":"People & Culture","location":"Genève, Suisse","type":"Temps plein","level":"Niveau intermédiaire","modalDescription":"Façonnez notre culture d'entreprise et construisez des équipes de classe mondiale dans une startup AI en forte croissance.","responsibilities":["Sourcer et attirer les meilleurs talents pour divers postes","Gérer le processus de recrutement complet","Développer et maintenir des bases de données de recrutement","Coordonner les entretiens et l'évaluation des candidats","Soutenir l'intégration et le développement des employés"],"requirements":["Diplôme BA/BS avec un solide bagage académique","Excellentes compétences organisationnelles et de multitâche","Forte communication verbale et écrite","Expérience avec la suite MS Office","Capacité à travailler dans un environnement dynamique"],"benefits":["Façonnez la culture d'entreprise dès le début","Travaillez avec une équipe internationale et diversifiée","Opportunités de croissance professionnelle","Conditions de travail flexibles","Package de rémunération compétitif"]},"video-editor":{"title":"Monteur Vidéo","department":"Créatif","location":"Genève / Télétravail","type":"Temps plein","level":"Niveau intermédiaire","modalDescription":"Créez un contenu vidéo captivant mettant en avant nos innovations en IA et en robotique. Vous produirez tout, des démonstrations de produits au contenu pour les réseaux sociaux et des pièces de style documentaire.","responsibilities":["Monter et produire un contenu vidéo de haute qualité pour plusieurs plateformes","Créer des graphismes en mouvement et des effets visuels pour des démonstrations de produits","Collaborer avec l'équipe marketing sur la stratégie vidéo et les campagnes","Gérer les projets vidéo depuis le concept jusqu'à la livraison finale","Maintenir des bibliothèques de médias organisées et des archives de projets","Rester à jour avec les tendances vidéo et les formats émergents"],"requirements":["Expérience avérée en tant que monteur vidéo avec un solide portfolio","Maîtrise experte d'Adobe Premiere Pro et After Effects","Expérience avec DaVinci Resolve pour l'étalonnage des couleurs","Solide compréhension de la narration et de la composition visuelle","Connaissance des graphismes en mouvement et de l'animation 3D de base","Capacité à travailler de manière autonome et à respecter les délais"],"benefits":["Liberté créative et propriété des projets","Accès à un équipement et à des logiciels professionnels","Options de travail à distance flexibles","Opportunité de mettre en avant des technologies de pointe","Salaire compétitif et package d'avantages"]},"marketing-specialist":{"title":"Spécialiste en Marketing","department":"Marketing","location":"Genève, Suisse","type":"Temps plein","level":"Niveau intermédiaire","modalDescription":"Stimuler la notoriété de la marque et la génération de leads pour nos produits d'IA et de robotique. Développer et exécuter des campagnes marketing à travers des canaux numériques et traditionnels.","responsibilities":["Développer et exécuter des campagnes marketing intégrées","Gérer la présence sur les réseaux sociaux et le calendrier de contenu","Créer un contenu marketing et des textes convaincants","Analyser la performance des campagnes et optimiser les stratégies","Coordonner avec l'équipe de vente sur les initiatives de génération de leads","Représenter l'entreprise lors d'événements industriels et de salons"],"requirements":["Diplôme de Bachelor en Marketing, Communications ou domaine connexe","Plus de 3 ans d'expérience en marketing B2B","Bonne compréhension des canaux de marketing numérique","Expérience avec des outils d'automatisation marketing","Excellentes compétences en communication écrite et verbale","Passion pour la technologie et l'innovation"],"benefits":["Façonner la stratégie marketing d'une entreprise en croissance","Travailler avec des produits d'IA et de robotique à la pointe de la technologie","Opportunités de développement professionnel","Exposition internationale et opportunités de voyage","Package de rémunération compétitif"]},"rl-specialist":{"title":"Spécialiste en Apprentissage par Renforcement","department":"IA & Recherche","location":"Genève, Suisse","type":"Temps plein","level":"Niveau senior","modalDescription":"Concevoir et mettre en œuvre des algorithmes d'apprentissage par renforcement pour le contrôle robotique et les systèmes de prise de décision autonome. Repousser les limites de ce qui est possible dans l'apprentissage des robots.","responsibilities":["Concevoir et mettre en œuvre des algorithmes d'apprentissage par renforcement pour la manipulation et la locomotion robotiques","Développer des environnements de simulation pour la formation et le test des agents d'apprentissage par renforcement","Transférer les politiques apprises de la simulation aux robots réels (sim-to-real)","Collaborer avec l'équipe de robotique sur l'intégration matériel-logiciel","Publier les résultats de recherche lors de conférences de haut niveau","Encadrer des chercheurs et ingénieurs juniors"],"requirements":["Doctorat ou Master en Informatique, Robotique ou domaine connexe","Solide dossier de publication en apprentissage par renforcement ou robotique (ICML, NeurIPS, CoRL, RSS)","Connaissance experte des algorithmes d'apprentissage par renforcement (PPO, SAC, TD3, RL basé sur modèle)","Expérience avec des simulateurs robotiques (MuJoCo, Isaac Gym, PyBullet)","Maîtrise de Python et des frameworks d'apprentissage profond (PyTorch de préférence)","Une expérience avec des systèmes robotiques réels est un atout considérable"],"benefits":["Travailler sur des recherches en robotique à la pointe de la technologie","Accès à du matériel robotique avancé et à des clusters de calcul","Soutien à la publication et à la participation à des conférences","Collaborer avec des chercheurs de classe mondiale","Salaire compétitif avec primes de recherche"]},"app-developer-intern":{"title":"Stagiaire Développeur d'Applications","department":"Ingénierie","location":"Genève, Suisse","type":"3-6 mois","level":"Étudiant","modalDescription":"Rejoignez notre équipe d'ingénierie en tant que Stagiaire Développeur d'Applications pour développer des applications mobiles et web pour nos produits d'IA.","responsibilities":["Développer et maintenir des applications mobiles en utilisant React Native","Construire des applications web avec Node.js et PHP","Travailler avec des bases de données MySQL et des intégrations API","Collaborer avec des développeurs seniors sur des systèmes de production","Participer aux revues de code et à la planification des sprints"],"requirements":["Actuellement inscrit dans un programme en Informatique ou domaine connexe","Connaissance de React Native ou du développement mobile","Familiarité avec Node.js, PHP ou technologies similaires","Compréhension des concepts de base de données","Solides compétences en résolution de problèmes"],"benefits":["Expérience pratique avec des systèmes de production","Mentorat de la part de développeurs seniors","Horaires flexibles pour s'adapter aux études","Potentiel d'emploi à temps plein","Indemnité mensuelle"]},"web-designer-intern":{"title":"Stagiaire Designer Web/Spécialiste SEO","department":"Design & Marketing","location":"Genève, Suisse","type":"3-6 mois","level":"Étudiant","modalDescription":"Concevoir et optimiser des interfaces web tout en mettant en œuvre des stratégies SEO pour nos plateformes d'IA.","responsibilities":["Concevoir des interfaces web responsives","Mettre en œuvre les meilleures pratiques SEO","Créer des designs UI/UX pour de nouvelles fonctionnalités","Optimiser la performance et l'accessibilité du site web","Réaliser des recherches utilisateurs et des tests d'utilisabilité"],"requirements":["Actuellement inscrit dans un programme de Design, Marketing ou domaine connexe","Maîtrise de HTML, CSS et JavaScript","Compréhension des principes SEO","Expérience avec des outils de design (Figma, Adobe XD)","Portfolio démontrant des travaux de design"],"benefits":["Travailler sur des projets réels ayant un impact mondial","Apprendre auprès de designers expérimentés","Horaires de travail flexibles","Opportunité de poste permanent","Indemnité mensuelle"]},"financial-analyst-intern":{"title":"Stagiaire Analyste Commercial","department":"Opérations","location":"Genève, Suisse","type":"6-12 mois","level":"Étudiant","modalDescription":"Soutenir l'analyse commerciale et les prévisions pour des produits robotiques alimentés par l'IA.","responsibilities":["Assister dans la modélisation commerciale et les prévisions","Analyser des ensembles de données opérationnelles complexes","Soutenir la préparation de rapports commerciaux","Réaliser des études de marché et des analyses concurrentielles","Aider à développer des tableaux de bord d'intelligence commerciale"],"requirements":["Actuellement inscrit dans un programme de Commerce, Économie ou domaine connexe","Solides compétences en Excel et en modélisation de données","Compréhension des marchés commerciaux","Esprit analytique avec attention aux détails","Connaissance des outils d'analyse de données (Python/R) un plus"],"benefits":["Exposition aux robots alimentés par l'IA","Travailler avec des professionnels expérimentés","Durée de stage prolongée pour un apprentissage approfondi","Potentiel de collaboration pour une thèse","Indemnité mensuelle compétitive"]},"video-editor-intern":{"title":"Stagiaire Monteur Vidéo","department":"Créatif","location":"Genève, Suisse","type":"Temps partiel (15-20h/semaine)","level":"Étudiant","modalDescription":"Créer du contenu vidéo engageant pour nos produits d'IA et nos campagnes marketing.","responsibilities":["Monter du contenu vidéo court et long","Créer des graphiques animés et des animations","Collaborer avec l'équipe marketing sur les campagnes","Gérer le flux de production vidéo","Optimiser le contenu pour diverses plateformes"],"requirements":["Actuellement inscrit dans un programme de Film, Médias ou domaine connexe","Maîtrise d'Adobe Premiere et After Effects","Sens créatif pour la narration","Compréhension des formats vidéo pour les réseaux sociaux","Portfolio de travaux vidéo"],"benefits":["Horaires à temps partiel parfaits pour les étudiants","Liberté créative sur les projets","Accès à du matériel professionnel","Construire un portfolio avec des travaux réels pour des clients","Rémunération horaire"]},"personal-assistant-intern":{"title":"Stagiaire Assistant Personnel","department":"Opérations","location":"Genève, Suisse","type":"3-6 mois","level":"Étudiant","modalDescription":"Soutenir les fonctions RH et administratives dans un environnement de startup dynamique.","responsibilities":["Assister aux processus de recrutement et d'intégration","Soutenir les opérations administratives quotidiennes","Coordonner les réunions et gérer les calendriers","Aider à organiser des événements et des activités d'entreprise","Maintenir la documentation et les bases de données RH"],"requirements":["Actuellement inscrit dans un programme de commerce, RH ou un programme connexe","Excellentes compétences organisationnelles","Communication solide en anglais et en français","Maîtrise de la suite MS Office","Capacité à gérer des informations confidentielles"],"benefits":["Expérience RH complète","Exposition aux opérations de startup","Opportunités de réseautage","Horaires flexibles","Indemnité mensuelle"]},"graphic-designer-intern":{"title":"Stagiaire Designer Graphique","department":"Design","location":"Genève, Suisse","type":"3-6 mois","level":"Étudiant","modalDescription":"Concevoir des éléments visuels pour nos produits d'IA et nos supports marketing.","responsibilities":["Créer des designs visuels pour les médias numériques et imprimés","Développer des éléments de marque et des supports marketing","Concevoir des éléments UI pour des applications","Collaborer avec les équipes produit et marketing","Maintenir la cohérence de la marque à travers tous les supports"],"requirements":["Actuellement inscrit dans un programme de design graphique ou un programme connexe","Maîtrise de la suite Adobe Creative","Expérience avec Figma ou des outils similaires","Portefeuille solide mettant en valeur les compétences en design","Compréhension des principes de design de marque"],"benefits":["Travailler sur des projets de design diversifiés","Mentorat de la part de designers seniors","Construire un portefeuille professionnel","Arrangements de travail flexibles","Indemnité mensuelle"]}};
+    const jobData = {"senior-ai-developer":{"title":"Développeur IA Python Senior","department":"IA & Recherche","location":"Genève, Suisse","type":"Temps plein","level":"Niveau Senior","modalDescription":"Nous recherchons un Développeur IA Python Senior pour diriger le développement de systèmes IA de pointe pour des applications robotiques.","responsibilities":["Travailler sur des projets impliquant le prototypage rapide de systèmes et l'expérimentation à l'aide de logiciels de vision par ordinateur, de systèmes robotiques et de modèles d'apprentissage automatique","Former des réseaux de neurones profonds à la pointe de la technologie pour la prédiction et l'apprentissage par renforcement","Concevoir des configurations robotiques dans des environnements de laboratoire et de simulation physique","Identifier des opportunités et mener de nouvelles initiatives pour appliquer l'apprentissage automatique","Contribuer à des articles de blog techniques, des publications, des conférences et des demandes de brevet"],"requirements":["Excellente connaissance de la théorie et de la pratique de l'apprentissage automatique","Compétent en Python, Java et C++","Connaissance des frameworks d'apprentissage profond (TensorFlow, Keras, PyTorch)","Expérience en vision par ordinateur et en robotique","Expérience avec des technologies de big data (BigQuery, Spark, AWS)","Expérience avec Kubernetes, Docker et des plateformes Cloud"],"benefits":["Salaire compétitif et package d'équité","Horaires de travail flexibles et options de télétravail","Budget de développement professionnel","Assurance santé et programmes de bien-être","Bureau moderne dans le centre-ville de Genève"]},"blockchain-developer":{"title":"Développeur Blockchain","department":"Ingénierie","location":"À distance","type":"Temps plein","level":"Niveau Intermédiaire-Senior","modalDescription":"Rejoignez notre équipe pour construire l'avenir de la finance décentralisée sur Ethereum et Internet Computer Protocol.","responsibilities":["Développer et maintenir des contrats intelligents sur Ethereum et ICP","Concevoir et mettre en œuvre des solutions blockchain pour des applications IoT et robotiques","Assurer la sécurité, l'évolutivité et l'efficacité des applications blockchain","Rester à jour avec les avancées technologiques en blockchain","Déboguer et résoudre les problèmes d'implémentation blockchain"],"requirements":["Forte expérience avec Ethereum et Solidity","Connaissance du protocole Internet Computer (ICP)","Compréhension des fondamentaux de la blockchain et de la cryptographie","Expérience avec des protocoles DeFi","Capacité à travailler de manière autonome dans un cadre à distance"],"benefits":["Poste entièrement à distance","Rémunération compétitive en crypto/fiat","Opportunités d'allocation de tokens","Horaires de travail flexibles à travers les fuseaux horaires","Rassemblements annuels de l'équipe"]},"humanoid-locomotion-engineer":{"title":"Ingénieur Systèmes de Locomotion","department":"Ingénierie Robotique","location":"Genève, Suisse","type":"Temps plein","level":"Niveau Senior","modalDescription":"Rejoignez l'équipe robotique centrale pour concevoir les systèmes de mouvement et d'équilibre qui permettent à nos robots humanoïdes de marcher et de naviguer dans le monde physique.","responsibilities":["Concevoir et implémenter des démarches bipèdes stables et des contrôleurs d'équilibre","Développer des algorithmes de planification de mouvement pour terrains complexes","Simuler, tester et valider les systèmes de locomotion dans MuJoCo et Isaac Gym","Combler le fossé sim-to-real en réglant les systèmes de contrôle sur hardware","Collaborer avec les équipes perception et manipulation","Documenter et publier les avancées en locomotion"],"requirements":["MSc ou PhD en Robotique, Génie Mécanique ou domaine connexe","Expertise en théorie du contrôle, dynamique et locomotion bipède","Expérience pratique avec ROS2, C++ et Python","Familiarité avec les simulateurs physiques (MuJoCo, Isaac Gym, PyBullet)","Expérience de déploiement de contrôleurs sur hardware réel","Publications ou projets démontrables en robotique à pattes"],"benefits":["Travailler directement sur des robots humanoïdes de classe mondiale","Accès à un laboratoire et hardware de pointe","Soutien pour publications et conférences","Salaire compétitif et package equity","Basé à Genève avec une équipe internationale"]},"humanoid-perception-engineer":{"title":"Ingénieur Perception Robotique","department":"Ingénierie Robotique","location":"Genève, Suisse","type":"Temps plein","level":"Niveau Senior","modalDescription":"Créez les yeux et l'intelligence spatiale de nos robots — en fusionnant caméras, LiDAR et proprioception en un modèle du monde unifié en temps réel.","responsibilities":["Développer des pipelines de détection d'objets et compréhension de scènes en temps réel","Implémenter la fusion de capteurs entre caméras RGB-D, LiDAR et IMUs","Construire et maintenir des systèmes SLAM pour la navigation","Concevoir la détection humaine et l'estimation de pose","Optimiser les pipelines de perception pour hardware embarqué","Intégrer la perception avec la planification de mouvement"],"requirements":["MSc ou PhD en Robotique, Vision par Ordinateur ou domaine connexe","Maîtrise de C++ et Python avec expérience temps réel","Solide background en vision par ordinateur, SLAM et fusion de capteurs","Expérience avec ROS2, OpenCV et frameworks d'inférence deep learning","Familiarité avec le traitement de nuages de points 3D (PCL, Open3D)","Travail préalable avec capteurs de profondeur, LiDAR ou caméras stéréo"],"benefits":["Diriger l'architecture de perception pour robots humanoïdes","Accès à des suites de capteurs et hardware de calcul premium","Collaboration avec une équipe robotique multidisciplinaire","Soutien conférences et publications","Rémunération compétitive à Genève"]},"humanoid-manipulation-engineer":{"title":"Ingénieur Manipulation Robotique","department":"Ingénierie Robotique","location":"Genève, Suisse","type":"Temps plein","level":"Niveau Mid-Senior","modalDescription":"Développez les capacités de manipulation dextre permettant à nos robots humanoïdes de manipuler des objets et d'interagir physiquement avec le monde.","responsibilities":["Développer des solveurs de cinématique inverse et planification de mouvement pour bras dual","Implémenter la planification de préhension et manipulation en main","Intégrer la sensorique tactile et force-couple pour manipulation conforme","Programmer des pipelines d'exécution de tâches répétables","Tester et valider sur hardware réel","Collaborer avec l'équipe IA pour politiques de manipulation par apprentissage"],"requirements":["BSc ou MSc en Robotique, Génie Mécanique ou domaine connexe","Expérience avec bibliothèques de planification de mouvement (MoveIt, OMPL)","Maîtrise de C++ et Python; familiarité avec ROS2","Background en cinématique, dynamique et contrôle en force","Expérience pratique avec bras robotiques ou préhenseurs","Passion pour la robotique humanoïde"],"benefits":["Façonner les capacités de manipulation de robots humanoïdes nouvelle génération","Travailler aux côtés de chercheurs roboticiens de premier plan","Laboratoire robotique moderne au centre de Genève","Salaire et avantages compétitifs","Progression vers des rôles senior"]},"deep-learning-developer":{"title":"Développeur IA Apprentissage Profond","department":"IA & Recherche","location":"Genève, Suisse","type":"Temps plein","level":"Niveau Intermédiaire","modalDescription":"Développer et optimiser des modèles d'apprentissage profond pour des environnements de production dans la robotique et l'automatisation.","responsibilities":["Concevoir et mettre en œuvre des modèles d'apprentissage profond à la pointe de la technologie","Optimiser les modèles pour la performance et l'évolutivité","Collaborer avec l'équipe de recherche sur des solutions IA innovantes","Déployer des modèles dans des environnements de production","Surveiller et améliorer la performance des modèles"],"requirements":["Solides compétences en programmation en Python","Expérience avec des frameworks d'apprentissage profond","Compréhension des architectures de réseaux de neurones","Connaissance des techniques d'optimisation","Passion pour la technologie IA"],"benefits":["Travailler sur des projets IA de pointe","Accès à des ressources informatiques puissantes","Participation à des conférences et formations","Environnement de recherche collaboratif","Opportunités de publication"]},"data-analyst":{"title":"Analyste de Données","department":"Intelligence d'Affaires","location":"Genève, Suisse","type":"Temps plein","level":"Niveau intermédiaire","modalDescription":"Transformez des ensembles de données complexes en informations exploitables pour orienter les décisions stratégiques.","responsibilities":["Analyser de grands ensembles de données pour identifier des tendances et des motifs","Créer des visualisations de données et des tableaux de bord","Collaborer avec les équipes pour comprendre les besoins en données","Assurer l'exactitude et l'intégrité des données","Développer des stratégies basées sur les données"],"requirements":["Expérience avérée en tant qu'Analyste de Données","Solide maîtrise de SQL et Excel","Expérience avec des outils de visualisation (Tableau, Power BI)","Compétences en analyse statistique","Excellentes capacités de communication"],"benefits":["Ensemble d'analytique moderne","Collaboration interfonctionnelle","Opportunités de développement professionnel","Impact sur les décisions stratégiques","Rémunération compétitive"]},"hr-assistant":{"title":"Assistant(e) Ressources Humaines / Personnel","department":"People & Culture","location":"Genève, Suisse","type":"Temps plein","level":"Niveau intermédiaire","modalDescription":"Façonnez notre culture d'entreprise et construisez des équipes de classe mondiale dans une startup AI en forte croissance.","responsibilities":["Sourcer et attirer les meilleurs talents pour divers postes","Gérer le processus de recrutement complet","Développer et maintenir des bases de données de recrutement","Coordonner les entretiens et l'évaluation des candidats","Soutenir l'intégration et le développement des employés"],"requirements":["Diplôme BA/BS avec un solide bagage académique","Excellentes compétences organisationnelles et de multitâche","Forte communication verbale et écrite","Expérience avec la suite MS Office","Capacité à travailler dans un environnement dynamique"],"benefits":["Façonnez la culture d'entreprise dès le début","Travaillez avec une équipe internationale et diversifiée","Opportunités de croissance professionnelle","Conditions de travail flexibles","Package de rémunération compétitif"]},"video-editor":{"title":"Monteur Vidéo","department":"Créatif","location":"Genève / Télétravail","type":"Temps plein","level":"Niveau intermédiaire","modalDescription":"Créez un contenu vidéo captivant mettant en avant nos innovations en IA et en robotique. Vous produirez tout, des démonstrations de produits au contenu pour les réseaux sociaux et des pièces de style documentaire.","responsibilities":["Monter et produire un contenu vidéo de haute qualité pour plusieurs plateformes","Créer des graphismes en mouvement et des effets visuels pour des démonstrations de produits","Collaborer avec l'équipe marketing sur la stratégie vidéo et les campagnes","Gérer les projets vidéo depuis le concept jusqu'à la livraison finale","Maintenir des bibliothèques de médias organisées et des archives de projets","Rester à jour avec les tendances vidéo et les formats émergents"],"requirements":["Expérience avérée en tant que monteur vidéo avec un solide portfolio","Maîtrise experte d'Adobe Premiere Pro et After Effects","Expérience avec DaVinci Resolve pour l'étalonnage des couleurs","Solide compréhension de la narration et de la composition visuelle","Connaissance des graphismes en mouvement et de l'animation 3D de base","Capacité à travailler de manière autonome et à respecter les délais"],"benefits":["Liberté créative et propriété des projets","Accès à un équipement et à des logiciels professionnels","Options de travail à distance flexibles","Opportunité de mettre en avant des technologies de pointe","Salaire compétitif et package d'avantages"]},"marketing-specialist":{"title":"Spécialiste en Marketing","department":"Marketing","location":"Genève, Suisse","type":"Temps plein","level":"Niveau intermédiaire","modalDescription":"Stimuler la notoriété de la marque et la génération de leads pour nos produits d'IA et de robotique. Développer et exécuter des campagnes marketing à travers des canaux numériques et traditionnels.","responsibilities":["Développer et exécuter des campagnes marketing intégrées","Gérer la présence sur les réseaux sociaux et le calendrier de contenu","Créer un contenu marketing et des textes convaincants","Analyser la performance des campagnes et optimiser les stratégies","Coordonner avec l'équipe de vente sur les initiatives de génération de leads","Représenter l'entreprise lors d'événements industriels et de salons"],"requirements":["Diplôme de Bachelor en Marketing, Communications ou domaine connexe","Plus de 3 ans d'expérience en marketing B2B","Bonne compréhension des canaux de marketing numérique","Expérience avec des outils d'automatisation marketing","Excellentes compétences en communication écrite et verbale","Passion pour la technologie et l'innovation"],"benefits":["Façonner la stratégie marketing d'une entreprise en croissance","Travailler avec des produits d'IA et de robotique à la pointe de la technologie","Opportunités de développement professionnel","Exposition internationale et opportunités de voyage","Package de rémunération compétitif"]},"rl-specialist":{"title":"Spécialiste en Apprentissage par Renforcement","department":"IA & Recherche","location":"Genève, Suisse","type":"Temps plein","level":"Niveau senior","modalDescription":"Concevoir et mettre en œuvre des algorithmes d'apprentissage par renforcement pour le contrôle robotique et les systèmes de prise de décision autonome. Repousser les limites de ce qui est possible dans l'apprentissage des robots.","responsibilities":["Concevoir et mettre en œuvre des algorithmes d'apprentissage par renforcement pour la manipulation et la locomotion robotiques","Développer des environnements de simulation pour la formation et le test des agents d'apprentissage par renforcement","Transférer les politiques apprises de la simulation aux robots réels (sim-to-real)","Collaborer avec l'équipe de robotique sur l'intégration matériel-logiciel","Publier les résultats de recherche lors de conférences de haut niveau","Encadrer des chercheurs et ingénieurs juniors"],"requirements":["Doctorat ou Master en Informatique, Robotique ou domaine connexe","Solide dossier de publication en apprentissage par renforcement ou robotique (ICML, NeurIPS, CoRL, RSS)","Connaissance experte des algorithmes d'apprentissage par renforcement (PPO, SAC, TD3, RL basé sur modèle)","Expérience avec des simulateurs robotiques (MuJoCo, Isaac Gym, PyBullet)","Maîtrise de Python et des frameworks d'apprentissage profond (PyTorch de préférence)","Une expérience avec des systèmes robotiques réels est un atout considérable"],"benefits":["Travailler sur des recherches en robotique à la pointe de la technologie","Accès à du matériel robotique avancé et à des clusters de calcul","Soutien à la publication et à la participation à des conférences","Collaborer avec des chercheurs de classe mondiale","Salaire compétitif avec primes de recherche"]},"app-developer-intern":{"title":"Stagiaire Développeur d'Applications","department":"Ingénierie","location":"Genève, Suisse","type":"3-6 mois","level":"Étudiant","modalDescription":"Rejoignez notre équipe d'ingénierie en tant que Stagiaire Développeur d'Applications pour développer des applications mobiles et web pour nos produits d'IA.","responsibilities":["Développer et maintenir des applications mobiles en utilisant React Native","Construire des applications web avec Node.js et PHP","Travailler avec des bases de données MySQL et des intégrations API","Collaborer avec des développeurs seniors sur des systèmes de production","Participer aux revues de code et à la planification des sprints"],"requirements":["Actuellement inscrit dans un programme en Informatique ou domaine connexe","Connaissance de React Native ou du développement mobile","Familiarité avec Node.js, PHP ou technologies similaires","Compréhension des concepts de base de données","Solides compétences en résolution de problèmes"],"benefits":["Expérience pratique avec des systèmes de production","Mentorat de la part de développeurs seniors","Horaires flexibles pour s'adapter aux études","Potentiel d'emploi à temps plein","Indemnité mensuelle"]},"web-designer-intern":{"title":"Stagiaire Designer Web/Spécialiste SEO","department":"Design & Marketing","location":"Genève, Suisse","type":"3-6 mois","level":"Étudiant","modalDescription":"Concevoir et optimiser des interfaces web tout en mettant en œuvre des stratégies SEO pour nos plateformes d'IA.","responsibilities":["Concevoir des interfaces web responsives","Mettre en œuvre les meilleures pratiques SEO","Créer des designs UI/UX pour de nouvelles fonctionnalités","Optimiser la performance et l'accessibilité du site web","Réaliser des recherches utilisateurs et des tests d'utilisabilité"],"requirements":["Actuellement inscrit dans un programme de Design, Marketing ou domaine connexe","Maîtrise de HTML, CSS et JavaScript","Compréhension des principes SEO","Expérience avec des outils de design (Figma, Adobe XD)","Portfolio démontrant des travaux de design"],"benefits":["Travailler sur des projets réels ayant un impact mondial","Apprendre auprès de designers expérimentés","Horaires de travail flexibles","Opportunité de poste permanent","Indemnité mensuelle"]},"financial-analyst-intern":{"title":"Stagiaire Analyste Commercial","department":"Opérations","location":"Genève, Suisse","type":"6-12 mois","level":"Étudiant","modalDescription":"Soutenir l'analyse commerciale et les prévisions pour des produits robotiques alimentés par l'IA.","responsibilities":["Assister dans la modélisation commerciale et les prévisions","Analyser des ensembles de données opérationnelles complexes","Soutenir la préparation de rapports commerciaux","Réaliser des études de marché et des analyses concurrentielles","Aider à développer des tableaux de bord d'intelligence commerciale"],"requirements":["Actuellement inscrit dans un programme de Commerce, Économie ou domaine connexe","Solides compétences en Excel et en modélisation de données","Compréhension des marchés commerciaux","Esprit analytique avec attention aux détails","Connaissance des outils d'analyse de données (Python/R) un plus"],"benefits":["Exposition aux robots alimentés par l'IA","Travailler avec des professionnels expérimentés","Durée de stage prolongée pour un apprentissage approfondi","Potentiel de collaboration pour une thèse","Indemnité mensuelle compétitive"]},"video-editor-intern":{"title":"Stagiaire Monteur Vidéo","department":"Créatif","location":"Genève, Suisse","type":"Temps partiel (15-20h/semaine)","level":"Étudiant","modalDescription":"Créer du contenu vidéo engageant pour nos produits d'IA et nos campagnes marketing.","responsibilities":["Monter du contenu vidéo court et long","Créer des graphiques animés et des animations","Collaborer avec l'équipe marketing sur les campagnes","Gérer le flux de production vidéo","Optimiser le contenu pour diverses plateformes"],"requirements":["Actuellement inscrit dans un programme de Film, Médias ou domaine connexe","Maîtrise d'Adobe Premiere et After Effects","Sens créatif pour la narration","Compréhension des formats vidéo pour les réseaux sociaux","Portfolio de travaux vidéo"],"benefits":["Horaires à temps partiel parfaits pour les étudiants","Liberté créative sur les projets","Accès à du matériel professionnel","Construire un portfolio avec des travaux réels pour des clients","Rémunération horaire"]},"personal-assistant-intern":{"title":"Stagiaire Assistant Personnel","department":"Opérations","location":"Genève, Suisse","type":"3-6 mois","level":"Étudiant","modalDescription":"Soutenir les fonctions RH et administratives dans un environnement de startup dynamique.","responsibilities":["Assister aux processus de recrutement et d'intégration","Soutenir les opérations administratives quotidiennes","Coordonner les réunions et gérer les calendriers","Aider à organiser des événements et des activités d'entreprise","Maintenir la documentation et les bases de données RH"],"requirements":["Actuellement inscrit dans un programme de commerce, RH ou un programme connexe","Excellentes compétences organisationnelles","Communication solide en anglais et en français","Maîtrise de la suite MS Office","Capacité à gérer des informations confidentielles"],"benefits":["Expérience RH complète","Exposition aux opérations de startup","Opportunités de réseautage","Horaires flexibles","Indemnité mensuelle"]},"graphic-designer-intern":{"title":"Stagiaire Designer Graphique","department":"Design","location":"Genève, Suisse","type":"3-6 mois","level":"Étudiant","modalDescription":"Concevoir des éléments visuels pour nos produits d'IA et nos supports marketing.","responsibilities":["Créer des designs visuels pour les médias numériques et imprimés","Développer des éléments de marque et des supports marketing","Concevoir des éléments UI pour des applications","Collaborer avec les équipes produit et marketing","Maintenir la cohérence de la marque à travers tous les supports"],"requirements":["Actuellement inscrit dans un programme de design graphique ou un programme connexe","Maîtrise de la suite Adobe Creative","Expérience avec Figma ou des outils similaires","Portefeuille solide mettant en valeur les compétences en design","Compréhension des principes de design de marque"],"benefits":["Travailler sur des projets de design diversifiés","Mentorat de la part de designers seniors","Construire un portefeuille professionnel","Arrangements de travail flexibles","Indemnité mensuelle"]}};
 
     // Filter jobs
     function filterJobs(category) {
@@ -1913,5 +1990,26 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>

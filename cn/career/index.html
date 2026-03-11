@@ -51,10 +51,8 @@
     <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/career/">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../typography.css">
 
     <style>
         .visuallyhidden {
@@ -72,6 +70,9 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
             padding: 8px 0;
         }
         .nav-lang-trigger .fa-globe {
@@ -148,15 +149,16 @@
             text-decoration: none;
             color: #374151;
             font-size: 14px;
+            font-family: inherit;
             transition: background 0.15s ease;
         }
         .nav-lang-item:hover {
             background: #f3f4f6;
         }
         .nav-lang-item.active {
-            background: rgba(6, 67, 140, 0.06);
-            color: #06438c;
-            font-weight: 600;
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
         }
         .nav-lang-name {
             flex: 1;
@@ -169,11 +171,11 @@
             font-weight: 500;
         }
         .nav-lang-item.active .nav-lang-code {
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-item .fa-check {
             font-size: 12px;
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-empty {
             padding: 20px 16px;
@@ -514,7 +516,7 @@
         display: flex;
         gap: 8px;
         padding: 4px;
-        background: #f3f4f6;
+        background: transparent;
         border-radius: 12px;
     }
 
@@ -522,7 +524,7 @@
         padding: 10px 20px;
         background: transparent;
         border: none;
-        border-radius: 8px;
+        border-radius: 999px;
         font-weight: 500;
         color: #6b7280;
         cursor: pointer;
@@ -552,15 +554,25 @@
     }
 
     .search-bar:focus-within {
-        border-color: #06438c;
-        background: white;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #e5e7eb;
+        background: #f9fafb;
+        box-shadow: none;
+        outline: none !important;
+    }
+
+    .search-bar *:focus {
+        outline: none !important;
+    }
+
+    #jobSearch:focus {
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     .search-bar input {
-        border: none;
-        background: none;
-        outline: none;
+        border: none !important;
+        background: none !important;
+        outline: none !important;
         flex: 1;
         font-size: 14px;
         color: #111827;
@@ -600,7 +612,7 @@
         left: 0;
         width: 4px;
         height: 100%;
-        background: linear-gradient(180deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         transform: translateX(-4px);
         transition: transform 0.3s;
     }
@@ -683,30 +695,31 @@
     }
 
     .apply-section {
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: white;
         padding: 80px 0;
         text-align: center;
-        color: white;
+        color: #1d1d1f;
     }
 
     .apply-title {
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
+        color: #1d1d1f;
     }
 
     .apply-description {
         font-size: 18px;
-        opacity: 0.9;
+        color: #6e6e73;
         margin-bottom: 32px;
     }
 
     .apply-btn {
         display: inline-block;
         padding: 14px 32px;
-        background: white;
-        color: #06438c;
-        border-radius: 10px;
+        background: #1d1d1f;
+        color: white;
+        border-radius: 999px;
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s;
@@ -849,8 +862,8 @@
     .form-input:focus,
     .form-textarea:focus {
         outline: none;
-        border-color: #06438c;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #1d1d1f;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
     }
 
     .form-textarea {
@@ -862,10 +875,10 @@
     .submit-btn {
         width: 100%;
         padding: 14px;
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         color: white;
         border: none;
-        border-radius: 10px;
+        border-radius: 999px;
         font-weight: 600;
         font-size: 16px;
         cursor: pointer;
@@ -874,7 +887,7 @@
 
     .submit-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(6, 67, 140, 0.3);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
     }
 
     @keyframes spin {
@@ -925,6 +938,7 @@
 
         .jobs-container {
             padding: 40px 0 80px;
+            background: transparent;
         }
 
         .job-header {
@@ -1136,6 +1150,69 @@
                     <span class="skill-tag">ICP</span>
                     <span class="skill-tag">智能合约</span>
                     <span class="skill-tag">去中心化金融（DeFi）</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-locomotion-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">运动系统工程师</h3>
+                        <span class="job-department">机器人工程</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> 日内瓦，瑞士</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> 全职</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> 高级工程师</span>
+                </div>
+                <p class="job-description">为我们的仿人机器人设计并实现双足运动系统。开发稳定的步态、平衡控制器及动态运动规划，用于真实世界的部署。</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Bipedal Locomotion</span>
+                    <span class="skill-tag">Control Theory</span>
+                    <span class="skill-tag">ROS2</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">MuJoCo</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-perception-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">机器人感知工程师</h3>
+                        <span class="job-department">机器人工程</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> 日内瓦，瑞士</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> 全职</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> 高级工程师</span>
+                </div>
+                <p class="job-description">构建我们仿人机器人的感知智能。开发实时计算机视觉、传感器融合和空间感知系统，使机器人能在人类环境中安全导航和交互。</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">Sensor Fusion</span>
+                    <span class="skill-tag">SLAM</span>
+                    <span class="skill-tag">LiDAR</span>
+                    <span class="skill-tag">ROS2</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-manipulation-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">操作工程师</h3>
+                        <span class="job-department">机器人工程</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> 日内瓦，瑞士</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> 全职</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> 中高级工程师</span>
+                </div>
+                <p class="job-description">开发我们仿人机器人灵巧的手臂和双手。研究运动学、抓取规划和任务执行系统，使机器人在企业环境中完成复杂的物理交互。</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Robot Manipulation</span>
+                    <span class="skill-tag">Kinematics</span>
+                    <span class="skill-tag">Grasp Planning</span>
+                    <span class="skill-tag">MoveIt</span>
+                    <span class="skill-tag">ROS2</span>
                 </div>
             </div>
             <div class="job-card" data-category="ai" onclick="openJobModal('deep-learning-developer')">
@@ -1498,7 +1575,7 @@
 
 <script>
     // Job data loaded from career data files
-    const jobData = {"senior-ai-developer":{"title":"高级 Python AI 开发工程师","department":"AI & Research","location":"日内瓦，瑞士","type":"全职","level":"高级","modalDescription":"我们正在寻找一位高级 Python AI 开发工程师，领导机器人应用的前沿 AI 系统开发。","responsibilities":["参与快速系统原型设计和实验的项目，使用计算机视觉软件、机器人系统和机器学习模型","训练最先进的深度神经网络进行预测和强化学习","在实验室和物理仿真环境中设计机器人设置","识别机会并推动机器学习应用的新举措","撰写技术博客文章、论文、演讲和专利申请"],"requirements":["优秀的机器学习理论和实践知识","精通 Python、Java 和 C++","了解深度学习框架（TensorFlow、Keras、PyTorch）","具有计算机视觉和机器人经验","具有大数据技术经验（BigQuery、Spark、AWS）","使用 Kubernetes、Docker 和云平台的经验"],"benefits":["具有竞争力的薪资和股权方案","灵活的工作时间和远程选项","专业发展预算","健康保险和健康计划","位于日内瓦市中心的现代办公室"]},"blockchain-developer":{"title":"区块链开发工程师","department":"工程","location":"远程","type":"全职","level":"中高级","modalDescription":"加入我们的团队，在以太坊和互联网计算协议上构建去中心化金融的未来。","responsibilities":["在以太坊和 ICP 上开发和维护智能合约","为物联网和机器人应用设计和实施区块链解决方案","确保区块链应用的安全性、可扩展性和效率","跟踪区块链技术的最新进展","调试和解决区块链实施问题"],"requirements":["在以太坊和 Solidity 方面有丰富经验","了解互联网计算协议（ICP）","理解区块链基础知识和密码学","具有去中心化金融协议的经验","能够在远程环境中独立工作"],"benefits":["完全远程的职位","加密货币/法币的竞争性薪酬","代币分配机会","跨时区的灵活工作时间","年度团队聚会"]},"deep-learning-developer":{"title":"AI 深度学习开发工程师","department":"AI & Research","location":"日内瓦，瑞士","type":"全职","level":"中级","modalDescription":"为机器人和自动化的生产环境开发和优化深度学习模型。","responsibilities":["设计和实施最先进的深度学习模型","优化模型以提高性能和可扩展性","与研究团队合作，开发创新的 AI 解决方案","将模型部署到生产环境","监控和改进模型性能"],"requirements":["扎实的 Python 编程技能","具有深度学习框架的经验","理解神经网络架构","了解优化技术","对 AI 技术充满热情"],"benefits":["参与前沿 AI 项目","访问强大的计算资源","参加会议和培训","协作研究环境","发表机会"]},"data-analyst":{"title":"数据分析师","department":"商业智能","location":"日内瓦，瑞士","type":"全职","level":"中级","modalDescription":"将复杂的数据集转化为可操作的洞察，以推动战略决策。","responsibilities":["分析大型数据集以识别趋势和模式","创建数据可视化和仪表板","与团队合作以理解数据需求","确保数据的准确性和完整性","制定数据驱动的战略"],"requirements":["有数据分析师的工作经验","精通 SQL 和 Excel","具有可视化工具（Tableau、Power BI）的经验","具备统计分析技能","优秀的沟通能力"],"benefits":["现代分析技术栈","跨职能协作","专业发展机会","对战略决策的影响","具有竞争力的薪酬"]},"hr-assistant":{"title":"人力资源 / 人事助理","department":"人事与文化","location":"日内瓦，瑞士","type":"全职","level":"中级","modalDescription":"塑造我们的公司文化，建立世界级团队，在一家快速发展的人工智能初创公司中。","responsibilities":["为各个职位寻找和吸引顶尖人才","管理全周期招聘流程","开发和维护招聘数据库","协调面试和候选人评估","支持员工入职和发展"],"requirements":["具有良好学术背景的学士学位","优秀的组织和多任务处理能力","良好的口头和书面沟通能力","具备MS Office套件的使用经验","能够在快节奏的环境中工作"],"benefits":["从早期阶段塑造公司文化","与多元化的国际团队合作","专业成长机会","灵活的工作安排","具有竞争力的薪酬方案"]},"video-editor":{"title":"视频编辑","department":"创意部","location":"日内瓦 / 远程","type":"全职","level":"中级","modalDescription":"创建引人注目的视频内容，展示我们的人工智能和机器人创新。您将制作从产品演示到社交媒体内容和纪录片风格的作品。","responsibilities":["为多个平台编辑和制作高质量视频内容","为产品演示创建动态图形和视觉效果","与市场团队合作制定视频策略和活动","管理视频项目，从概念到最终交付","维护有序的媒体库和项目档案","跟踪视频趋势和新兴格式"],"requirements":["具有强大作品集的视频编辑经验","精通Adobe Premiere Pro和After Effects","具备使用DaVinci Resolve进行调色的经验","对叙事和视觉构图有深刻理解","了解动态图形和基础3D动画","能够独立工作并按时完成任务"],"benefits":["项目的创意自由和所有权","使用专业设备和软件","灵活的远程工作选项","展示尖端技术的机会","具有竞争力的薪资和福利方案"]},"marketing-specialist":{"title":"市场专员","department":"市场部","location":"日内瓦，瑞士","type":"全职","level":"中级","modalDescription":"推动我们人工智能和机器人产品的品牌知名度和潜在客户生成。在数字和传统渠道上开发和执行市场营销活动。","responsibilities":["开发和执行综合市场营销活动","管理社交媒体存在和内容日历","创建引人注目的市场营销内容和文案","分析活动表现并优化策略","与销售团队协调潜在客户生成的倡议","在行业活动和贸易展上代表公司"],"requirements":["市场营销、传播或相关领域的学士学位","3年以上B2B市场营销经验","对数字营销渠道有深入理解","具备市场自动化工具的使用经验","优秀的书面和口头沟通能力","对技术和创新的热情"],"benefits":["塑造一家成长公司的市场营销策略","与尖端的人工智能和机器人产品合作","专业发展机会","国际曝光和旅行机会","具有竞争力的薪酬方案"]},"rl-specialist":{"title":"强化学习专家","department":"人工智能与研究","location":"日内瓦，瑞士","type":"全职","level":"高级","modalDescription":"设计和实施用于机器人控制和自主决策系统的强化学习算法。推动机器人学习的可能性边界。","responsibilities":["为机器人操作和运动设计和实施RL算法","开发用于训练和测试RL代理的仿真环境","将学习到的策略从仿真转移到真实机器人（仿真到现实）","与机器人团队合作进行硬件与软件的集成","在顶级会议上发布研究成果","指导初级研究人员和工程师"],"requirements":["计算机科学、机器人或相关领域的博士或硕士学位","在RL或机器人领域有强大的发表记录（ICML、NeurIPS、CoRL、RSS）","对RL算法（PPO、SAC、TD3、基于模型的RL）有深入了解","具备使用机器人仿真器（MuJoCo、Isaac Gym、PyBullet）的经验","精通Python和深度学习框架（优先使用PyTorch）","有真实机器人系统的经验者优先"],"benefits":["从事最前沿的机器人研究","接触先进的机器人硬件和计算集群","支持发表和参加会议","与世界级研究人员合作","具有竞争力的薪资和研究奖金"]},"app-developer-intern":{"title":"应用开发实习生","department":"工程部","location":"日内瓦，瑞士","type":"3-6个月","level":"实习生","modalDescription":"加入我们的工程团队，作为应用开发实习生，为我们的AI产品开发移动和Web应用程序。","responsibilities":["使用React Native开发和维护移动应用程序","使用Node.js和PHP构建Web应用程序","与MySQL数据库和API集成合作","与高级开发人员协作生产系统","参与代码审查和冲刺计划"],"requirements":["目前在计算机科学或相关专业就读","了解React Native或移动开发","熟悉Node.js、PHP或类似技术","理解数据库概念","具备较强的问题解决能力"],"benefits":["获得生产系统的实践经验","从高级开发人员那里获得指导","灵活的时间安排以适应学习","有可能转为全职工作","每月津贴"]},"web-designer-intern":{"title":"网页设计师/SEO专家实习生","department":"设计与市场部","location":"日内瓦，瑞士","type":"3-6个月","level":"实习生","modalDescription":"为我们的AI平台设计和优化Web界面，同时实施SEO策略。","responsibilities":["设计响应式Web界面","实施SEO最佳实践","为新功能创建UI/UX设计","优化网站性能和可访问性","进行用户研究和可用性测试"],"requirements":["目前在设计、市场营销或相关专业就读","精通HTML、CSS和JavaScript","理解SEO原则","有设计工具（Figma、Adobe XD）使用经验","提供展示设计工作的作品集"],"benefits":["参与具有全球影响的真实项目","向经验丰富的设计师学习","灵活的工作时间","有机会获得正式职位","每月津贴"]},"financial-analyst-intern":{"title":"商业分析实习生","department":"运营部","location":"日内瓦，瑞士","type":"6-12个月","level":"实习生","modalDescription":"支持AI驱动的机器人产品的商业分析和预测。","responsibilities":["协助商业建模和预测","分析复杂的运营数据集","支持商业报告的准备","进行市场研究和竞争分析","帮助开发商业智能仪表板"],"requirements":["目前在商业、经济或相关专业就读","具备较强的Excel和数据建模技能","理解商业市场","具备分析思维和关注细节的能力","了解数据分析工具（Python/R）者优先"],"benefits":["接触AI驱动的机器人技术","与经验丰富的专业人士合作","延长实习时间以深入学习","有可能进行论文合作","具有竞争力的每月津贴"]},"video-editor-intern":{"title":"视频编辑实习生","department":"创意部","location":"日内瓦，瑞士","type":"兼职（每周15-20小时）","level":"实习生","modalDescription":"为我们的AI产品和市场营销活动创建引人入胜的视频内容。","responsibilities":["编辑短视频和长视频内容","创建动态图形和动画","与市场团队合作进行活动","管理视频制作工作流程","优化内容以适应各种平台"],"requirements":["目前在电影、媒体或相关专业就读","精通Adobe Premiere和After Effects","具备讲故事的创意眼光","理解社交媒体视频格式","提供视频作品的作品集"],"benefits":["兼职时间安排非常适合学生","项目具有创作自由","可使用专业设备","通过真实客户工作建立作品集","按小时支付报酬"]},"personal-assistant-intern":{"title":"个人助理实习生","department":"运营部","location":"日内瓦，瑞士","type":"3-6个月","level":"实习生","modalDescription":"在快速发展的初创企业环境中支持人力资源和行政职能。","responsibilities":["协助招聘和入职流程","支持日常行政运营","协调会议并管理日历","帮助组织公司活动","维护人力资源文档和数据库"],"requirements":["目前在商业、人力资源或相关专业就读","优秀的组织能力","英语和法语沟通能力强","熟练使用MS Office套件","能够处理机密信息"],"benefits":["全面的人力资源经验","接触初创企业运营","网络机会","灵活的工作时间","每月津贴"]},"graphic-designer-intern":{"title":"平面设计实习生","department":"设计部","location":"日内瓦，瑞士","type":"3-6个月","level":"实习生","modalDescription":"为我们的AI产品和营销材料设计视觉资产。","responsibilities":["为数字和印刷媒体创建视觉设计","开发品牌资产和营销材料","为应用程序设计UI元素","与产品和营销团队合作","维护所有材料的品牌一致性"],"requirements":["目前在平面设计或相关专业就读","熟练使用Adobe创意套件","有使用Figma或类似工具的经验","有展示设计技能的强大作品集","理解品牌设计原则"],"benefits":["参与多样化的设计项目","获得高级设计师的指导","建立专业作品集","灵活的工作安排","每月津贴"]}};
+    const jobData = {"senior-ai-developer":{"title":"高级 Python AI 开发工程师","department":"AI & Research","location":"日内瓦，瑞士","type":"全职","level":"高级","modalDescription":"我们正在寻找一位高级 Python AI 开发工程师，领导机器人应用的前沿 AI 系统开发。","responsibilities":["参与快速系统原型设计和实验的项目，使用计算机视觉软件、机器人系统和机器学习模型","训练最先进的深度神经网络进行预测和强化学习","在实验室和物理仿真环境中设计机器人设置","识别机会并推动机器学习应用的新举措","撰写技术博客文章、论文、演讲和专利申请"],"requirements":["优秀的机器学习理论和实践知识","精通 Python、Java 和 C++","了解深度学习框架（TensorFlow、Keras、PyTorch）","具有计算机视觉和机器人经验","具有大数据技术经验（BigQuery、Spark、AWS）","使用 Kubernetes、Docker 和云平台的经验"],"benefits":["具有竞争力的薪资和股权方案","灵活的工作时间和远程选项","专业发展预算","健康保险和健康计划","位于日内瓦市中心的现代办公室"]},"blockchain-developer":{"title":"区块链开发工程师","department":"工程","location":"远程","type":"全职","level":"中高级","modalDescription":"加入我们的团队，在以太坊和互联网计算协议上构建去中心化金融的未来。","responsibilities":["在以太坊和 ICP 上开发和维护智能合约","为物联网和机器人应用设计和实施区块链解决方案","确保区块链应用的安全性、可扩展性和效率","跟踪区块链技术的最新进展","调试和解决区块链实施问题"],"requirements":["在以太坊和 Solidity 方面有丰富经验","了解互联网计算协议（ICP）","理解区块链基础知识和密码学","具有去中心化金融协议的经验","能够在远程环境中独立工作"],"benefits":["完全远程的职位","加密货币/法币的竞争性薪酬","代币分配机会","跨时区的灵活工作时间","年度团队聚会"]},"humanoid-locomotion-engineer":{"title":"运动系统工程师","department":"机器人工程","location":"日内瓦，瑞士","type":"全职","level":"高级工程师","modalDescription":"加入核心机器人团队，打造让我们仿人机器人行走、奔跑、在物理世界中导航的运动与平衡系统。","responsibilities":["设计并实现稳定的双足步态和平衡控制器","开发复杂地形全身运动规划算法","在MuJoCo和Isaac Gym中模拟、测试和验证运动系统","通过在真实硬件上调优控制系统弥合仿真与现实的差距","与感知和操作团队协作实现全身协调","记录并发表运动系统研究成果"],"requirements":["机器人学、机械工程或相关领域硕士或博士学位","扎实的控制理论、动力学和双足运动专业知识","具备ROS2、C++和Python实践经验","熟悉物理仿真器（MuJoCo、Isaac Gym、PyBullet）","具备在真实机器人硬件上部署控制器的经验","腿式机器人领域的发表论文或可展示项目"],"benefits":["直接参与世界级仿人机器人研发","使用最先进的实验室设备和机器人硬件","学术发表和参会支持","具竞争力的薪资和股权","驻日内瓦，与国际团队共事"]},"humanoid-perception-engineer":{"title":"机器人感知工程师","department":"机器人工程","location":"日内瓦，瑞士","type":"全职","level":"高级工程师","modalDescription":"为我们的机器人打造视觉和空间智能——将摄像头、LiDAR和本体感受融合为统一的实时世界模型。","responsibilities":["开发实时目标检测、跟踪和场景理解流水线","实现RGB-D摄像头、LiDAR和IMU之间的传感器融合","构建并维护用于室内外导航的SLAM系统","设计人体检测和姿态估计以实现安全人机交互","优化感知流水线以适配机器人嵌入式硬件","与运动团队合作，将感知与运动规划结合"],"requirements":["机器人学、计算机视觉或相关领域硕士或博士学位","熟练掌握C++和Python，具备实时系统开发经验","计算机视觉、SLAM和传感器融合方面的坚实背景","具备ROS2、OpenCV和深度学习推理框架的使用经验","熟悉三维点云处理（PCL、Open3D）","有深度传感器、LiDAR或立体摄像头的实际工作经验"],"benefits":["主导前沿仿人机器人的感知架构设计","使用高端传感器套件和计算硬件","与多学科机器人团队合作","会议和学术发表支持","日内瓦具竞争力的薪酬"]},"humanoid-manipulation-engineer":{"title":"操作工程师","department":"机器人工程","location":"日内瓦，瑞士","type":"全职","level":"中高级工程师","modalDescription":"开发让我们仿人机器人抓取物体、执行任务并与物理世界交互的灵巧操作能力。","responsibilities":["开发双臂系统的逆运动学求解器和手臂运动规划","实现抓取规划和手内操作算法","集成触觉传感和力矩传感以实现柔顺操作","编程可重复操作的任务执行流水线","在真实机器人硬件上测试和验证操作系统","与AI团队合作，集成基于学习的操作策略"],"requirements":["机器人学、机械工程或相关领域本科或硕士学位","具备运动规划库（MoveIt、OMPL等）的使用经验","熟练掌握C++和Python；熟悉ROS2","机器人运动学、动力学和力控制背景","具备机械臂或灵巧抓手的实践经验","对仿人机器人充满热情"],"benefits":["主导下一代仿人机器人操作能力的开发","与顶尖机器人研究人员并肩工作","位于日内瓦市中心的现代化机器人实验室","具竞争力的薪资和福利","清晰的高级工程师晋升路径"]},"deep-learning-developer":{"title":"AI 深度学习开发工程师","department":"AI & Research","location":"日内瓦，瑞士","type":"全职","level":"中级","modalDescription":"为机器人和自动化的生产环境开发和优化深度学习模型。","responsibilities":["设计和实施最先进的深度学习模型","优化模型以提高性能和可扩展性","与研究团队合作，开发创新的 AI 解决方案","将模型部署到生产环境","监控和改进模型性能"],"requirements":["扎实的 Python 编程技能","具有深度学习框架的经验","理解神经网络架构","了解优化技术","对 AI 技术充满热情"],"benefits":["参与前沿 AI 项目","访问强大的计算资源","参加会议和培训","协作研究环境","发表机会"]},"data-analyst":{"title":"数据分析师","department":"商业智能","location":"日内瓦，瑞士","type":"全职","level":"中级","modalDescription":"将复杂的数据集转化为可操作的洞察，以推动战略决策。","responsibilities":["分析大型数据集以识别趋势和模式","创建数据可视化和仪表板","与团队合作以理解数据需求","确保数据的准确性和完整性","制定数据驱动的战略"],"requirements":["有数据分析师的工作经验","精通 SQL 和 Excel","具有可视化工具（Tableau、Power BI）的经验","具备统计分析技能","优秀的沟通能力"],"benefits":["现代分析技术栈","跨职能协作","专业发展机会","对战略决策的影响","具有竞争力的薪酬"]},"hr-assistant":{"title":"人力资源 / 人事助理","department":"人事与文化","location":"日内瓦，瑞士","type":"全职","level":"中级","modalDescription":"塑造我们的公司文化，建立世界级团队，在一家快速发展的人工智能初创公司中。","responsibilities":["为各个职位寻找和吸引顶尖人才","管理全周期招聘流程","开发和维护招聘数据库","协调面试和候选人评估","支持员工入职和发展"],"requirements":["具有良好学术背景的学士学位","优秀的组织和多任务处理能力","良好的口头和书面沟通能力","具备MS Office套件的使用经验","能够在快节奏的环境中工作"],"benefits":["从早期阶段塑造公司文化","与多元化的国际团队合作","专业成长机会","灵活的工作安排","具有竞争力的薪酬方案"]},"video-editor":{"title":"视频编辑","department":"创意部","location":"日内瓦 / 远程","type":"全职","level":"中级","modalDescription":"创建引人注目的视频内容，展示我们的人工智能和机器人创新。您将制作从产品演示到社交媒体内容和纪录片风格的作品。","responsibilities":["为多个平台编辑和制作高质量视频内容","为产品演示创建动态图形和视觉效果","与市场团队合作制定视频策略和活动","管理视频项目，从概念到最终交付","维护有序的媒体库和项目档案","跟踪视频趋势和新兴格式"],"requirements":["具有强大作品集的视频编辑经验","精通Adobe Premiere Pro和After Effects","具备使用DaVinci Resolve进行调色的经验","对叙事和视觉构图有深刻理解","了解动态图形和基础3D动画","能够独立工作并按时完成任务"],"benefits":["项目的创意自由和所有权","使用专业设备和软件","灵活的远程工作选项","展示尖端技术的机会","具有竞争力的薪资和福利方案"]},"marketing-specialist":{"title":"市场专员","department":"市场部","location":"日内瓦，瑞士","type":"全职","level":"中级","modalDescription":"推动我们人工智能和机器人产品的品牌知名度和潜在客户生成。在数字和传统渠道上开发和执行市场营销活动。","responsibilities":["开发和执行综合市场营销活动","管理社交媒体存在和内容日历","创建引人注目的市场营销内容和文案","分析活动表现并优化策略","与销售团队协调潜在客户生成的倡议","在行业活动和贸易展上代表公司"],"requirements":["市场营销、传播或相关领域的学士学位","3年以上B2B市场营销经验","对数字营销渠道有深入理解","具备市场自动化工具的使用经验","优秀的书面和口头沟通能力","对技术和创新的热情"],"benefits":["塑造一家成长公司的市场营销策略","与尖端的人工智能和机器人产品合作","专业发展机会","国际曝光和旅行机会","具有竞争力的薪酬方案"]},"rl-specialist":{"title":"强化学习专家","department":"人工智能与研究","location":"日内瓦，瑞士","type":"全职","level":"高级","modalDescription":"设计和实施用于机器人控制和自主决策系统的强化学习算法。推动机器人学习的可能性边界。","responsibilities":["为机器人操作和运动设计和实施RL算法","开发用于训练和测试RL代理的仿真环境","将学习到的策略从仿真转移到真实机器人（仿真到现实）","与机器人团队合作进行硬件与软件的集成","在顶级会议上发布研究成果","指导初级研究人员和工程师"],"requirements":["计算机科学、机器人或相关领域的博士或硕士学位","在RL或机器人领域有强大的发表记录（ICML、NeurIPS、CoRL、RSS）","对RL算法（PPO、SAC、TD3、基于模型的RL）有深入了解","具备使用机器人仿真器（MuJoCo、Isaac Gym、PyBullet）的经验","精通Python和深度学习框架（优先使用PyTorch）","有真实机器人系统的经验者优先"],"benefits":["从事最前沿的机器人研究","接触先进的机器人硬件和计算集群","支持发表和参加会议","与世界级研究人员合作","具有竞争力的薪资和研究奖金"]},"app-developer-intern":{"title":"应用开发实习生","department":"工程部","location":"日内瓦，瑞士","type":"3-6个月","level":"实习生","modalDescription":"加入我们的工程团队，作为应用开发实习生，为我们的AI产品开发移动和Web应用程序。","responsibilities":["使用React Native开发和维护移动应用程序","使用Node.js和PHP构建Web应用程序","与MySQL数据库和API集成合作","与高级开发人员协作生产系统","参与代码审查和冲刺计划"],"requirements":["目前在计算机科学或相关专业就读","了解React Native或移动开发","熟悉Node.js、PHP或类似技术","理解数据库概念","具备较强的问题解决能力"],"benefits":["获得生产系统的实践经验","从高级开发人员那里获得指导","灵活的时间安排以适应学习","有可能转为全职工作","每月津贴"]},"web-designer-intern":{"title":"网页设计师/SEO专家实习生","department":"设计与市场部","location":"日内瓦，瑞士","type":"3-6个月","level":"实习生","modalDescription":"为我们的AI平台设计和优化Web界面，同时实施SEO策略。","responsibilities":["设计响应式Web界面","实施SEO最佳实践","为新功能创建UI/UX设计","优化网站性能和可访问性","进行用户研究和可用性测试"],"requirements":["目前在设计、市场营销或相关专业就读","精通HTML、CSS和JavaScript","理解SEO原则","有设计工具（Figma、Adobe XD）使用经验","提供展示设计工作的作品集"],"benefits":["参与具有全球影响的真实项目","向经验丰富的设计师学习","灵活的工作时间","有机会获得正式职位","每月津贴"]},"financial-analyst-intern":{"title":"商业分析实习生","department":"运营部","location":"日内瓦，瑞士","type":"6-12个月","level":"实习生","modalDescription":"支持AI驱动的机器人产品的商业分析和预测。","responsibilities":["协助商业建模和预测","分析复杂的运营数据集","支持商业报告的准备","进行市场研究和竞争分析","帮助开发商业智能仪表板"],"requirements":["目前在商业、经济或相关专业就读","具备较强的Excel和数据建模技能","理解商业市场","具备分析思维和关注细节的能力","了解数据分析工具（Python/R）者优先"],"benefits":["接触AI驱动的机器人技术","与经验丰富的专业人士合作","延长实习时间以深入学习","有可能进行论文合作","具有竞争力的每月津贴"]},"video-editor-intern":{"title":"视频编辑实习生","department":"创意部","location":"日内瓦，瑞士","type":"兼职（每周15-20小时）","level":"实习生","modalDescription":"为我们的AI产品和市场营销活动创建引人入胜的视频内容。","responsibilities":["编辑短视频和长视频内容","创建动态图形和动画","与市场团队合作进行活动","管理视频制作工作流程","优化内容以适应各种平台"],"requirements":["目前在电影、媒体或相关专业就读","精通Adobe Premiere和After Effects","具备讲故事的创意眼光","理解社交媒体视频格式","提供视频作品的作品集"],"benefits":["兼职时间安排非常适合学生","项目具有创作自由","可使用专业设备","通过真实客户工作建立作品集","按小时支付报酬"]},"personal-assistant-intern":{"title":"个人助理实习生","department":"运营部","location":"日内瓦，瑞士","type":"3-6个月","level":"实习生","modalDescription":"在快速发展的初创企业环境中支持人力资源和行政职能。","responsibilities":["协助招聘和入职流程","支持日常行政运营","协调会议并管理日历","帮助组织公司活动","维护人力资源文档和数据库"],"requirements":["目前在商业、人力资源或相关专业就读","优秀的组织能力","英语和法语沟通能力强","熟练使用MS Office套件","能够处理机密信息"],"benefits":["全面的人力资源经验","接触初创企业运营","网络机会","灵活的工作时间","每月津贴"]},"graphic-designer-intern":{"title":"平面设计实习生","department":"设计部","location":"日内瓦，瑞士","type":"3-6个月","level":"实习生","modalDescription":"为我们的AI产品和营销材料设计视觉资产。","responsibilities":["为数字和印刷媒体创建视觉设计","开发品牌资产和营销材料","为应用程序设计UI元素","与产品和营销团队合作","维护所有材料的品牌一致性"],"requirements":["目前在平面设计或相关专业就读","熟练使用Adobe创意套件","有使用Figma或类似工具的经验","有展示设计技能的强大作品集","理解品牌设计原则"],"benefits":["参与多样化的设计项目","获得高级设计师的指导","建立专业作品集","灵活的工作安排","每月津贴"]}};
 
     // Filter jobs
     function filterJobs(category) {
@@ -1913,5 +1990,26 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>

@@ -51,10 +51,8 @@
     <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/contact/">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../typography.css">
 
     <style>
         .visuallyhidden {
@@ -72,6 +70,9 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
             padding: 8px 0;
         }
         .nav-lang-trigger .fa-globe {
@@ -148,15 +149,16 @@
             text-decoration: none;
             color: #374151;
             font-size: 14px;
+            font-family: inherit;
             transition: background 0.15s ease;
         }
         .nav-lang-item:hover {
             background: #f3f4f6;
         }
         .nav-lang-item.active {
-            background: rgba(6, 67, 140, 0.06);
-            color: #06438c;
-            font-weight: 600;
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
         }
         .nav-lang-name {
             flex: 1;
@@ -169,11 +171,11 @@
             font-weight: 500;
         }
         .nav-lang-item.active .nav-lang-code {
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-item .fa-check {
             font-size: 12px;
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-empty {
             padding: 20px 16px;
@@ -557,7 +559,7 @@
     }
 
     .info-item a:hover {
-        color: #0856b3;
+        color: #6e6e73;
     }
 
     .social-links-contact {
@@ -658,7 +660,7 @@
     .form-group textarea:focus {
         outline: none;
         border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
     }
 
     .form-group textarea {
@@ -697,7 +699,7 @@
         color: white;
         padding: 14px 40px;
         border: none;
-        border-radius: 8px;
+        border-radius: 999px;
         font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
@@ -708,9 +710,9 @@
     }
 
     .submit-btn:hover {
-        background: #0856b3;
+        background: #6e6e73;
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(6, 67, 140, 0.3);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
     }
 
     .submit-btn:disabled {
@@ -1219,5 +1221,26 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>

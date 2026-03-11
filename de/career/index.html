@@ -51,10 +51,8 @@
     <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/career/">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../typography.css">
 
     <style>
         .visuallyhidden {
@@ -72,6 +70,9 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
             padding: 8px 0;
         }
         .nav-lang-trigger .fa-globe {
@@ -148,15 +149,16 @@
             text-decoration: none;
             color: #374151;
             font-size: 14px;
+            font-family: inherit;
             transition: background 0.15s ease;
         }
         .nav-lang-item:hover {
             background: #f3f4f6;
         }
         .nav-lang-item.active {
-            background: rgba(6, 67, 140, 0.06);
-            color: #06438c;
-            font-weight: 600;
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
         }
         .nav-lang-name {
             flex: 1;
@@ -169,11 +171,11 @@
             font-weight: 500;
         }
         .nav-lang-item.active .nav-lang-code {
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-item .fa-check {
             font-size: 12px;
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-empty {
             padding: 20px 16px;
@@ -514,7 +516,7 @@
         display: flex;
         gap: 8px;
         padding: 4px;
-        background: #f3f4f6;
+        background: transparent;
         border-radius: 12px;
     }
 
@@ -522,7 +524,7 @@
         padding: 10px 20px;
         background: transparent;
         border: none;
-        border-radius: 8px;
+        border-radius: 999px;
         font-weight: 500;
         color: #6b7280;
         cursor: pointer;
@@ -552,15 +554,25 @@
     }
 
     .search-bar:focus-within {
-        border-color: #06438c;
-        background: white;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #e5e7eb;
+        background: #f9fafb;
+        box-shadow: none;
+        outline: none !important;
+    }
+
+    .search-bar *:focus {
+        outline: none !important;
+    }
+
+    #jobSearch:focus {
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     .search-bar input {
-        border: none;
-        background: none;
-        outline: none;
+        border: none !important;
+        background: none !important;
+        outline: none !important;
         flex: 1;
         font-size: 14px;
         color: #111827;
@@ -600,7 +612,7 @@
         left: 0;
         width: 4px;
         height: 100%;
-        background: linear-gradient(180deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         transform: translateX(-4px);
         transition: transform 0.3s;
     }
@@ -683,30 +695,31 @@
     }
 
     .apply-section {
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: white;
         padding: 80px 0;
         text-align: center;
-        color: white;
+        color: #1d1d1f;
     }
 
     .apply-title {
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
+        color: #1d1d1f;
     }
 
     .apply-description {
         font-size: 18px;
-        opacity: 0.9;
+        color: #6e6e73;
         margin-bottom: 32px;
     }
 
     .apply-btn {
         display: inline-block;
         padding: 14px 32px;
-        background: white;
-        color: #06438c;
-        border-radius: 10px;
+        background: #1d1d1f;
+        color: white;
+        border-radius: 999px;
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s;
@@ -849,8 +862,8 @@
     .form-input:focus,
     .form-textarea:focus {
         outline: none;
-        border-color: #06438c;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #1d1d1f;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
     }
 
     .form-textarea {
@@ -862,10 +875,10 @@
     .submit-btn {
         width: 100%;
         padding: 14px;
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         color: white;
         border: none;
-        border-radius: 10px;
+        border-radius: 999px;
         font-weight: 600;
         font-size: 16px;
         cursor: pointer;
@@ -874,7 +887,7 @@
 
     .submit-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(6, 67, 140, 0.3);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
     }
 
     @keyframes spin {
@@ -925,6 +938,7 @@
 
         .jobs-container {
             padding: 40px 0 80px;
+            background: transparent;
         }
 
         .job-header {
@@ -1136,6 +1150,69 @@
                     <span class="skill-tag">ICP</span>
                     <span class="skill-tag">Smart Contracts</span>
                     <span class="skill-tag">DeFi</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-locomotion-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Systemingenieur Lokomotion</h3>
+                        <span class="job-department">Robotik-Engineering</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Genf, Schweiz</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Vollzeit</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Senior Level</span>
+                </div>
+                <p class="job-description">Entwerfen und implementieren Sie bipede Fortbewegungssysteme für unsere humanoiden Roboter. Entwickeln Sie stabile Gangmuster, Gleichgewichtsregler und dynamische Bewegungsplanung für den Realeinsatz.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Bipede Fortbewegung</span>
+                    <span class="skill-tag">Regelungstheorie</span>
+                    <span class="skill-tag">ROS2</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">MuJoCo</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-perception-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Ingenieur Roboterwahrnehmung</h3>
+                        <span class="job-department">Robotik-Engineering</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Genf, Schweiz</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Vollzeit</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Senior Level</span>
+                </div>
+                <p class="job-description">Entwickeln Sie die Wahrnehmungsintelligenz unserer humanoiden Roboter. Erstellen Sie Echtzeit-Computer-Vision-, Sensorfusions- und räumliche Wahrnehmungssysteme für sichere Navigation in menschlichen Umgebungen.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">Sensorfusion</span>
+                    <span class="skill-tag">SLAM</span>
+                    <span class="skill-tag">LiDAR</span>
+                    <span class="skill-tag">ROS2</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-manipulation-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Ingenieur Robotermanipulation</h3>
+                        <span class="job-department">Robotik-Engineering</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Genf, Schweiz</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Vollzeit</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Mid-Senior Level</span>
+                </div>
+                <p class="job-description">Entwickeln Sie die geschickten Arme und Hände unserer humanoiden Roboter. Arbeiten Sie an Kinematik, Greifplanung und Aufgabenausführungssystemen für physische Interaktionen in Unternehmensumgebungen.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Robotermanipulation</span>
+                    <span class="skill-tag">Kinematik</span>
+                    <span class="skill-tag">Greifplanung</span>
+                    <span class="skill-tag">MoveIt</span>
+                    <span class="skill-tag">ROS2</span>
                 </div>
             </div>
             <div class="job-card" data-category="ai" onclick="openJobModal('deep-learning-developer')">
@@ -1498,7 +1575,7 @@
 
 <script>
     // Job data loaded from career data files
-    const jobData = {"senior-ai-developer":{"title":"Senior Python KI-Entwickler","department":"KI & Forschung","location":"Genf, Schweiz","type":"Vollzeit","level":"Senior Level","modalDescription":"Wir suchen einen Senior Python KI-Entwickler, der die Entwicklung von hochmodernen KI-Systemen für Robotikanwendungen leitet.","responsibilities":["Arbeiten an Projekten, die schnelles Systemprototyping und Experimente mit Computer Vision-Software, Robotersystemen und Machine Learning-Modellen umfassen","Training von hochmodernen tiefen neuronalen Netzwerken für Vorhersage und Verstärkungslernen","Entwerfen von Roboteraufbauten in Labor- und Physiksimulationsumgebungen","Identifizieren von Chancen und Vorantreiben neuer Initiativen zur Anwendung von Machine Learning","Beitragen zu technischen Blogbeiträgen, Artikeln, Vorträgen und Patentanmeldungen"],"requirements":["Ausgezeichnete Kenntnisse in Theorie und Praxis des Machine Learning","Versiert in Python, Java und C++","Kenntnisse in Deep-Learning-Frameworks (TensorFlow, Keras, PyTorch)","Erfahrung mit Computer Vision und Robotik","Erfahrung mit Big-Data-Technologien (BigQuery, Spark, AWS)","Erfahrung mit Kubernetes, Docker und Cloud-Plattformen"],"benefits":["Wettbewerbsfähiges Gehalt und Aktienpaket","Flexible Arbeitszeiten und Remote-Optionen","Budget für berufliche Weiterbildung","Krankenversicherung und Wellness-Programme","Modernes Büro im Stadtzentrum von Genf"]},"blockchain-developer":{"title":"Blockchain-Entwickler","department":"Ingenieurwesen","location":"Remote","type":"Vollzeit","level":"Mid-Senior Level","modalDescription":"Schließen Sie sich unserem Team an, um die Zukunft der dezentralen Finanzen auf Ethereum und Internet Computer Protocol zu gestalten.","responsibilities":["Entwickeln und Warten von Smart Contracts auf Ethereum und ICP","Entwerfen und Implementieren von Blockchain-Lösungen für IoT- und Robotikanwendungen","Sicherstellen der Sicherheit, Skalierbarkeit und Effizienz von Blockchain-Anwendungen","Aktuell bleiben mit den Fortschritten in der Blockchain-Technologie","Debuggen und Beheben von Implementierungsproblemen in der Blockchain"],"requirements":["Starke Erfahrung mit Ethereum und Solidity","Kenntnisse des Internet Computer Protocol (ICP)","Verständnis der Grundlagen der Blockchain und Kryptographie","Erfahrung mit DeFi-Protokollen","Fähigkeit, unabhängig in einem Remote-Umfeld zu arbeiten"],"benefits":["Vollständig remote Position","Wettbewerbsfähige Vergütung in Krypto/Fiat","Möglichkeiten zur Token-Zuteilung","Flexible Arbeitszeiten über verschiedene Zeitzonen","Jährliche Teamtreffen"]},"deep-learning-developer":{"title":"KI Deep Learning Entwickler","department":"KI & Forschung","location":"Genf, Schweiz","type":"Vollzeit","level":"Mid Level","modalDescription":"Entwickeln und optimieren Sie Deep Learning-Modelle für Produktionsumgebungen in Robotik und Automatisierung.","responsibilities":["Entwerfen und Implementieren von hochmodernen Deep Learning-Modellen","Optimieren von Modellen für Leistung und Skalierbarkeit","Zusammenarbeiten mit dem Forschungsteam an innovativen KI-Lösungen","Bereitstellen von Modellen in Produktionsumgebungen","Überwachen und Verbessern der Modellleistung"],"requirements":["Starke Programmierkenntnisse in Python","Erfahrung mit Deep Learning-Frameworks","Verständnis von Architekturen neuronaler Netzwerke","Kenntnisse von Optimierungstechniken","Leidenschaft für KI-Technologie"],"benefits":["Arbeiten an hochmodernen KI-Projekten","Zugang zu leistungsstarken Rechenressourcen","Teilnahme an Konferenzen und Schulungen","Kollaboratives Forschungsumfeld","Veröffentlichungsmöglichkeiten"]},"data-analyst":{"title":"Datenanalyst","department":"Business Intelligence","location":"Genf, Schweiz","type":"Vollzeit","level":"Mittelstufe","modalDescription":"Verwandeln Sie komplexe Datensätze in umsetzbare Erkenntnisse, um strategische Entscheidungen zu treffen.","responsibilities":["Analysieren Sie große Datensätze, um Trends und Muster zu identifizieren","Erstellen Sie Datenvisualisierungen und Dashboards","Arbeiten Sie mit Teams zusammen, um Datenbedürfnisse zu verstehen","Sichern Sie die Genauigkeit und Integrität der Daten","Entwickeln Sie datengestützte Strategien"],"requirements":["Nachgewiesene Erfahrung als Datenanalyst","Starke Kenntnisse in SQL und Excel","Erfahrung mit Visualisierungstools (Tableau, Power BI)","Fähigkeiten in der statistischen Analyse","Ausgezeichnete Kommunikationsfähigkeiten"],"benefits":["Modernes Analyse-Stack","Bereichsübergreifende Zusammenarbeit","Möglichkeiten zur beruflichen Weiterentwicklung","Einfluss auf strategische Entscheidungen","Wettbewerbsfähige Vergütung"]},"hr-assistant":{"title":"Human Resources / Personalassistent","department":"People & Culture","location":"Genf, Schweiz","type":"Vollzeit","level":"Mittelstufe","modalDescription":"Gestalten Sie unsere Unternehmenskultur und bauen Sie erstklassige Teams in einem schnell wachsenden KI-Startup auf.","responsibilities":["Suchen und gewinnen Sie Top-Talente für verschiedene Positionen","Verwalten Sie den gesamten Rekrutierungsprozess","Entwickeln und pflegen Sie Rekrutierungsdatenbanken","Koordinieren Sie Interviews und die Bewertung von Kandidaten","Unterstützen Sie die Einarbeitung und Entwicklung von Mitarbeitern"],"requirements":["BA/BS-Abschluss mit starkem akademischen Hintergrund","Ausgezeichnete organisatorische und multitasking Fähigkeiten","Starke mündliche und schriftliche Kommunikationsfähigkeiten","Erfahrung mit MS Office Suite","Fähigkeit, in einem schnelllebigen Umfeld zu arbeiten"],"benefits":["Gestalten Sie die Unternehmenskultur von Anfang an","Arbeiten Sie mit einem vielfältigen, internationalen Team","Möglichkeiten zur beruflichen Weiterentwicklung","Flexible Arbeitsbedingungen","Wettbewerbsfähiges Vergütungspaket"]},"video-editor":{"title":"Videoredakteur","department":"Kreativ","location":"Genf / Remote","type":"Vollzeit","level":"Mittelstufe","modalDescription":"Erstellen Sie ansprechende Videoinhalte, die unsere KI- und Robotik-Innovationen präsentieren. Sie werden alles von Produktdemonstrationen bis hin zu Inhalten für soziale Medien und dokumentarischen Stücken produzieren.","responsibilities":["Bearbeiten und produzieren Sie hochwertige Videoinhalte für mehrere Plattformen","Erstellen Sie Motion Graphics und visuelle Effekte für Produktdemonstrationen","Arbeiten Sie mit dem Marketingteam an Video-Strategien und Kampagnen","Verwalten Sie Videoprojekte von der Konzeption bis zur endgültigen Lieferung","Pflegen Sie organisierte Medienbibliotheken und Projektarchive","Bleiben Sie über Videotrends und aufkommende Formate informiert"],"requirements":["Nachgewiesene Erfahrung als Videoredakteur mit starkem Portfolio","Expertenkenntnisse in Adobe Premiere Pro und After Effects","Erfahrung mit DaVinci Resolve für die Farbkorrektur","Starkes Verständnis von Storytelling und visueller Komposition","Kenntnisse in Motion Graphics und grundlegender 3D-Animation","Fähigkeit, selbstständig zu arbeiten und Fristen einzuhalten"],"benefits":["Kreative Freiheit und Verantwortung für Projekte","Zugang zu professioneller Ausrüstung und Software","Flexible Remote-Arbeitsoptionen","Möglichkeit, modernste Technologie zu präsentieren","Wettbewerbsfähiges Gehalt und Leistungspaket"]},"marketing-specialist":{"title":"Marketing-Spezialist","department":"Marketing","location":"Genf, Schweiz","type":"Vollzeit","level":"Mittelstufe","modalDescription":"Steigern Sie die Markenbekanntheit und die Lead-Generierung für unsere KI- und Robotikprodukte. Entwickeln und führen Sie Marketingkampagnen über digitale und traditionelle Kanäle durch.","responsibilities":["Entwickeln und Durchführen integrierter Marketingkampagnen","Verwalten der Social-Media-Präsenz und des Inhaltskalenders","Erstellen von überzeugendem Marketinginhalt und Texten","Analysieren der Kampagnenleistung und Optimieren der Strategien","Koordinieren mit dem Vertriebsteam zu Initiativen zur Lead-Generierung","Das Unternehmen auf Branchenveranstaltungen und Messen vertreten"],"requirements":["Bachelor-Abschluss in Marketing, Kommunikation oder einem verwandten Bereich","3+ Jahre Erfahrung im B2B-Marketing","Starkes Verständnis der digitalen Marketingkanäle","Erfahrung mit Marketingautomatisierungstools","Ausgezeichnete schriftliche und mündliche Kommunikationsfähigkeiten","Leidenschaft für Technologie und Innovation"],"benefits":["Gestalten Sie die Marketingstrategie eines wachsenden Unternehmens","Arbeiten Sie mit modernsten KI- und Robotikprodukten","Möglichkeiten zur beruflichen Weiterentwicklung","Internationale Erfahrungen und Reisemöglichkeiten","Wettbewerbsfähiges Vergütungspaket"]},"rl-specialist":{"title":"Spezialist für Verstärkendes Lernen","department":"KI & Forschung","location":"Genf, Schweiz","type":"Vollzeit","level":"Senior Level","modalDescription":"Entwerfen und implementieren Sie Algorithmen für verstärkendes Lernen für die Robotersteuerung und autonome Entscheidungsfindungssysteme. Erweitern Sie die Grenzen dessen, was im Roboternlernen möglich ist.","responsibilities":["Entwerfen und Implementieren von RL-Algorithmen für robotische Manipulation und Fortbewegung","Entwickeln von Simulationsumgebungen für das Training und Testen von RL-Agenten","Übertragen von gelernten Politiken von der Simulation auf reale Roboter (sim-to-real)","Zusammenarbeiten mit dem Robotikteam zur Hardware-Software-Integration","Veröffentlichen von Forschungsergebnissen auf erstklassigen Konferenzen","Mentoring von Junior-Forschern und Ingenieuren"],"requirements":["Doktorat oder Master in Informatik, Robotik oder einem verwandten Bereich","Starkes Publikationsverzeichnis im Bereich RL oder Robotik (ICML, NeurIPS, CoRL, RSS)","Expertenwissen über RL-Algorithmen (PPO, SAC, TD3, modellbasiertes RL)","Erfahrung mit Robotersimulatoren (MuJoCo, Isaac Gym, PyBullet)","Kenntnisse in Python und Deep-Learning-Frameworks (PyTorch bevorzugt)","Erfahrung mit realen Robotersystemen ist ein großer Vorteil"],"benefits":["Arbeiten Sie an modernster Robotikforschung","Zugang zu fortschrittlicher Roboterhardware und Rechenclustern","Unterstützung bei Veröffentlichungen und Konferenzbesuchen","Zusammenarbeit mit erstklassigen Forschern","Wettbewerbsfähiges Gehalt mit Forschungsboni"]},"app-developer-intern":{"title":"Praktikant App-Entwicklung","department":"Ingenieurwesen","location":"Genf, Schweiz","type":"3-6 Monate","level":"Student","modalDescription":"Treten Sie unserem Ingenieurteam als Praktikant in der App-Entwicklung bei, um mobile und Webanwendungen für unsere KI-Produkte zu entwickeln.","responsibilities":["Entwickeln und Pflegen von mobilen Anwendungen mit React Native","Erstellen von Webanwendungen mit Node.js und PHP","Arbeiten mit MySQL-Datenbanken und API-Integrationen","Zusammenarbeiten mit erfahrenen Entwicklern an Produktionssystemen","Teilnehmen an Code-Reviews und Sprint-Planungen"],"requirements":["Derzeit eingeschrieben in Informatik oder einem verwandten Studiengang","Kenntnisse in React Native oder mobiler Entwicklung","Vertrautheit mit Node.js, PHP oder ähnlichen Technologien","Verständnis von Datenbankkonzepten","Starke Problemlösungsfähigkeiten"],"benefits":["Praktische Erfahrung mit Produktionssystemen","Mentoring durch erfahrene Entwickler","Flexibler Zeitplan zur Berücksichtigung des Studiums","Möglichkeit auf eine Vollzeitbeschäftigung","Monatliches Stipendium"]},"web-designer-intern":{"title":"Praktikant für Webdesign/SEO-Spezialist","department":"Design & Marketing","location":"Genf, Schweiz","type":"3-6 Monate","level":"Student","modalDescription":"Gestalten und optimieren Sie Webschnittstellen, während Sie SEO-Strategien für unsere KI-Plattformen implementieren.","responsibilities":["Gestalten Sie responsive Webschnittstellen","Implementieren Sie SEO-Best-Practices","Erstellen Sie UI/UX-Designs für neue Funktionen","Optimieren Sie die Website-Leistung und Zugänglichkeit","Durchführen von Benutzerforschung und Usability-Tests"],"requirements":["Derzeit immatrikuliert in Design, Marketing oder einem verwandten Studiengang","Kenntnisse in HTML, CSS und JavaScript","Verständnis der SEO-Prinzipien","Erfahrung mit Design-Tools (Figma, Adobe XD)","Portfolio, das Designarbeiten zeigt"],"benefits":["Arbeiten Sie an realen Projekten mit globaler Wirkung","Lernen Sie von erfahrenen Designern","Flexible Arbeitszeiten","Möglichkeit auf eine Festanstellung","Monatliches Stipendium"]},"financial-analyst-intern":{"title":"Praktikant für Business-Analyse","department":"Betrieb","location":"Genf, Schweiz","type":"6-12 Monate","level":"Student","modalDescription":"Unterstützen Sie die Geschäftsanalysen und Prognosen für KI-gesteuerte Robotikprodukte.","responsibilities":["Unterstützen Sie beim Business Modeling und der Prognose","Analysieren Sie komplexe betriebliche Datensätze","Unterstützen Sie die Erstellung von Geschäftsberichten","Durchführen von Marktanalysen und Wettbewerbsanalysen","Helfen Sie bei der Entwicklung von Business-Intelligence-Dashboards"],"requirements":["Derzeit immatrikuliert in Betriebswirtschaft, Volkswirtschaft oder einem verwandten Studiengang","Starke Excel- und Datenmodellierungsfähigkeiten","Verständnis der Geschäftsmärkte","Analytische Denkweise mit Liebe zum Detail","Kenntnisse in Datenanalysetools (Python/R) von Vorteil"],"benefits":["Einblick in KI-gesteuerte Robotik","Arbeiten Sie mit erfahrenen Fachleuten","Verlängerte Praktikumsdauer für vertieftes Lernen","Möglichkeit zur Zusammenarbeit bei der Thesis","Wettbewerbsfähiges monatliches Stipendium"]},"video-editor-intern":{"title":"Praktikant für Video-Editing","department":"Kreativ","location":"Genf, Schweiz","type":"Teilzeit (15-20 Stunden/Woche)","level":"Student","modalDescription":"Erstellen Sie ansprechende Videoinhalte für unsere KI-Produkte und Marketingkampagnen.","responsibilities":["Bearbeiten Sie Kurz- und Langform-Videoinhalte","Erstellen Sie Motion Graphics und Animationen","Zusammenarbeiten mit dem Marketingteam an Kampagnen","Verwalten Sie den Videoproduktionsworkflow","Optimieren Sie Inhalte für verschiedene Plattformen"],"requirements":["Derzeit immatrikuliert in Film, Medien oder einem verwandten Studiengang","Kenntnisse in Adobe Premiere und After Effects","Kreatives Auge für Geschichtenerzählen","Verständnis der Videoformate in sozialen Medien","Portfolio von Videoarbeiten"],"benefits":["Teilzeitplan, der perfekt für Studenten ist","Kreative Freiheit bei Projekten","Zugang zu professioneller Ausrüstung","Portfolio mit realen Kundenarbeiten aufbauen","Stundenvergütung"]},"personal-assistant-intern":{"title":"Praktikant/in als Persönliche/r Assistent/in","department":"Betrieb","location":"Genf, Schweiz","type":"3-6 Monate","level":"Student/in","modalDescription":"Unterstützen Sie die HR- und Verwaltungsfunktionen in einem dynamischen Startup-Umfeld.","responsibilities":["Helfen Sie bei den Rekrutierungs- und Einarbeitungsprozessen","Unterstützen Sie die täglichen Verwaltungsabläufe","Koordinieren Sie Meetings und verwalten Sie Kalender","Helfen Sie bei der Organisation von Unternehmensveranstaltungen und Aktivitäten","Pflegen Sie HR-Dokumentationen und Datenbanken"],"requirements":["Derzeit immatrikuliert in einem Studiengang Betriebswirtschaft, HR oder einem verwandten Bereich","Ausgezeichnete organisatorische Fähigkeiten","Starke Kommunikationsfähigkeiten in Englisch und Französisch","Kenntnisse in der MS Office Suite","Fähigkeit, vertrauliche Informationen zu behandeln"],"benefits":["Umfassende HR-Erfahrung","Einblick in die Abläufe eines Startups","Netzwerkmöglichkeiten","Flexibler Zeitplan","Monatliches Stipendium"]},"graphic-designer-intern":{"title":"Praktikant/in im Grafikdesign","department":"Design","location":"Genf, Schweiz","type":"3-6 Monate","level":"Student/in","modalDescription":"Gestalten Sie visuelle Elemente für unsere KI-Produkte und Marketingmaterialien.","responsibilities":["Erstellen Sie visuelle Designs für digitale und Printmedien","Entwickeln Sie Markenassets und Marketingmaterialien","Gestalten Sie UI-Elemente für Anwendungen","Zusammenarbeiten mit Produkt- und Marketingteams","Sicherstellen der Marken-Konsistenz über alle Materialien hinweg"],"requirements":["Derzeit immatrikuliert in einem Studiengang Grafikdesign oder einem verwandten Bereich","Kenntnisse in der Adobe Creative Suite","Erfahrung mit Figma oder ähnlichen Tools","Starkes Portfolio, das Designfähigkeiten zeigt","Verständnis der Prinzipien des Markendesigns"],"benefits":["Arbeiten an vielfältigen Designprojekten","Mentoring durch erfahrene Designer","Aufbau eines professionellen Portfolios","Flexible Arbeitsbedingungen","Monatliches Stipendium"]}};
+    const jobData = {"senior-ai-developer":{"title":"Senior Python KI-Entwickler","department":"KI & Forschung","location":"Genf, Schweiz","type":"Vollzeit","level":"Senior Level","modalDescription":"Wir suchen einen Senior Python KI-Entwickler, der die Entwicklung von hochmodernen KI-Systemen für Robotikanwendungen leitet.","responsibilities":["Arbeiten an Projekten, die schnelles Systemprototyping und Experimente mit Computer Vision-Software, Robotersystemen und Machine Learning-Modellen umfassen","Training von hochmodernen tiefen neuronalen Netzwerken für Vorhersage und Verstärkungslernen","Entwerfen von Roboteraufbauten in Labor- und Physiksimulationsumgebungen","Identifizieren von Chancen und Vorantreiben neuer Initiativen zur Anwendung von Machine Learning","Beitragen zu technischen Blogbeiträgen, Artikeln, Vorträgen und Patentanmeldungen"],"requirements":["Ausgezeichnete Kenntnisse in Theorie und Praxis des Machine Learning","Versiert in Python, Java und C++","Kenntnisse in Deep-Learning-Frameworks (TensorFlow, Keras, PyTorch)","Erfahrung mit Computer Vision und Robotik","Erfahrung mit Big-Data-Technologien (BigQuery, Spark, AWS)","Erfahrung mit Kubernetes, Docker und Cloud-Plattformen"],"benefits":["Wettbewerbsfähiges Gehalt und Aktienpaket","Flexible Arbeitszeiten und Remote-Optionen","Budget für berufliche Weiterbildung","Krankenversicherung und Wellness-Programme","Modernes Büro im Stadtzentrum von Genf"]},"blockchain-developer":{"title":"Blockchain-Entwickler","department":"Ingenieurwesen","location":"Remote","type":"Vollzeit","level":"Mid-Senior Level","modalDescription":"Schließen Sie sich unserem Team an, um die Zukunft der dezentralen Finanzen auf Ethereum und Internet Computer Protocol zu gestalten.","responsibilities":["Entwickeln und Warten von Smart Contracts auf Ethereum und ICP","Entwerfen und Implementieren von Blockchain-Lösungen für IoT- und Robotikanwendungen","Sicherstellen der Sicherheit, Skalierbarkeit und Effizienz von Blockchain-Anwendungen","Aktuell bleiben mit den Fortschritten in der Blockchain-Technologie","Debuggen und Beheben von Implementierungsproblemen in der Blockchain"],"requirements":["Starke Erfahrung mit Ethereum und Solidity","Kenntnisse des Internet Computer Protocol (ICP)","Verständnis der Grundlagen der Blockchain und Kryptographie","Erfahrung mit DeFi-Protokollen","Fähigkeit, unabhängig in einem Remote-Umfeld zu arbeiten"],"benefits":["Vollständig remote Position","Wettbewerbsfähige Vergütung in Krypto/Fiat","Möglichkeiten zur Token-Zuteilung","Flexible Arbeitszeiten über verschiedene Zeitzonen","Jährliche Teamtreffen"]},"humanoid-locomotion-engineer":{"title":"Systemingenieur Lokomotion","department":"Robotik-Engineering","location":"Genf, Schweiz","type":"Vollzeit","level":"Senior Level","modalDescription":"Verstärken Sie unser Kernrobotikteam und entwickeln Sie die Bewegungs- und Gleichgewichtssysteme, die unseren humanoiden Robotern das Gehen, Laufen und Navigieren ermöglichen.","responsibilities":["Entwurf und Implementierung stabiler bipeder Gangmuster und Gleichgewichtsregler","Entwicklung von Ganzkörper-Bewegungsplanungsalgorithmen für komplexes Gelände","Simulation, Test und Validierung von Fortbewegungssystemen in MuJoCo und Isaac Gym","Überbrückung der Sim-to-Real-Lücke durch Feinabstimmung auf echter Hardware","Zusammenarbeit mit Wahrnehmungs- und Manipulationsteams","Dokumentation und Veröffentlichung von Forschungsergebnissen"],"requirements":["MSc oder PhD in Robotik, Maschinenbau oder verwandtem Bereich","Fundierte Kenntnisse in Regelungstheorie, Dynamik und bipeder Fortbewegung","Praktische Erfahrung mit ROS2, C++ und Python","Vertrautheit mit Physiksimulationen (MuJoCo, Isaac Gym, PyBullet)","Erfahrung mit der Inbetriebnahme von Reglern auf echter Hardware","Veröffentlichungen oder nachweisliche Projekte in der Laufrobotik"],"benefits":["Arbeit an erstklassigen humanoiden Robotern","Zugang zu hochmodernem Labor und Hardware","Forschungsveröffentlichungs- und Konferenzunterstützung","Wettbewerbsfähiges Gehalt und Eigenkapitalpaket","Standort Genf mit internationalem Team"]},"humanoid-perception-engineer":{"title":"Ingenieur Roboterwahrnehmung","department":"Robotik-Engineering","location":"Genf, Schweiz","type":"Vollzeit","level":"Senior Level","modalDescription":"Schaffen Sie die Augen und räumliche Intelligenz unserer Roboter — durch Fusion von Kameras, LiDAR und Propriozeption in ein einheitliches Echtzeit-Weltmodell.","responsibilities":["Entwicklung von Echtzeit-Objekterkennung, -verfolgung und Szenenverständnis","Implementierung von Sensorfusion über RGB-D-Kameras, LiDAR und IMUs","Aufbau und Wartung von SLAM-Systemen für die Navigation","Design von Menschenerkennung und Poseabschätzung","Optimierung der Wahrnehmungspipelines für eingebettete Hardware","Zusammenarbeit mit dem Fortbewegungsteam"],"requirements":["MSc oder PhD in Robotik, Computer Vision oder verwandtem Bereich","Kenntnisse in C++ und Python mit Echtzeiterfahrung","Starker Hintergrund in Computer Vision, SLAM und Sensorfusion","Erfahrung mit ROS2, OpenCV und Deep-Learning-Inferenz","Vertrautheit mit 3D-Punktwolkenverarbeitung (PCL, Open3D)","Vorherige Arbeit mit Tiefensensoren, LiDAR oder Stereokameras"],"benefits":["Leitung der Wahrnehmungsarchitektur für humanoide Roboter","Zugang zu Premium-Sensorsuiten und Recheninfrastruktur","Zusammenarbeit in einem interdisziplinären Team","Konferenz- und Veröffentlichungsunterstützung","Wettbewerbsfähige Vergütung in Genf"]},"humanoid-manipulation-engineer":{"title":"Ingenieur Robotermanipulation","department":"Robotik-Engineering","location":"Genf, Schweiz","type":"Vollzeit","level":"Mid-Senior Level","modalDescription":"Entwickeln Sie die Manipulationsfähigkeiten unserer humanoiden Roboter für physische Interaktionen mit der Welt.","responsibilities":["Entwicklung von inversen Kinematiklösern und Armbewegungsplanung","Implementierung von Greifplanung und In-Hand-Manipulation","Integration von taktiler Sensorik und Kraft-Drehmoment-Sensoren","Programmierung von Aufgabenausführungspipelines","Test und Validierung auf echter Roboterhardware","Zusammenarbeit mit dem KI-Team für lernbasierte Manipulation"],"requirements":["BSc oder MSc in Robotik, Maschinenbau oder verwandtem Bereich","Erfahrung mit Bewegungsplanungsbibliotheken (MoveIt, OMPL)","Kenntnisse in C++ und Python; Vertrautheit mit ROS2","Hintergrund in Roboterkinematik, -dynamik und Kraftregelung","Praktische Erfahrung mit Roboterarmen oder Greifern","Leidenschaft für humanoide Robotik"],"benefits":["Gestaltung der Manipulationsfähigkeiten der nächsten Generation","Arbeit neben führenden Robotik-Forschern","Modernes Robotiklabor in Genf","Wettbewerbsfähiges Gehalt und Benefits","Klarer Weg zu Senior-Positionen"]},"deep-learning-developer":{"title":"KI Deep Learning Entwickler","department":"KI & Forschung","location":"Genf, Schweiz","type":"Vollzeit","level":"Mid Level","modalDescription":"Entwickeln und optimieren Sie Deep Learning-Modelle für Produktionsumgebungen in Robotik und Automatisierung.","responsibilities":["Entwerfen und Implementieren von hochmodernen Deep Learning-Modellen","Optimieren von Modellen für Leistung und Skalierbarkeit","Zusammenarbeiten mit dem Forschungsteam an innovativen KI-Lösungen","Bereitstellen von Modellen in Produktionsumgebungen","Überwachen und Verbessern der Modellleistung"],"requirements":["Starke Programmierkenntnisse in Python","Erfahrung mit Deep Learning-Frameworks","Verständnis von Architekturen neuronaler Netzwerke","Kenntnisse von Optimierungstechniken","Leidenschaft für KI-Technologie"],"benefits":["Arbeiten an hochmodernen KI-Projekten","Zugang zu leistungsstarken Rechenressourcen","Teilnahme an Konferenzen und Schulungen","Kollaboratives Forschungsumfeld","Veröffentlichungsmöglichkeiten"]},"data-analyst":{"title":"Datenanalyst","department":"Business Intelligence","location":"Genf, Schweiz","type":"Vollzeit","level":"Mittelstufe","modalDescription":"Verwandeln Sie komplexe Datensätze in umsetzbare Erkenntnisse, um strategische Entscheidungen zu treffen.","responsibilities":["Analysieren Sie große Datensätze, um Trends und Muster zu identifizieren","Erstellen Sie Datenvisualisierungen und Dashboards","Arbeiten Sie mit Teams zusammen, um Datenbedürfnisse zu verstehen","Sichern Sie die Genauigkeit und Integrität der Daten","Entwickeln Sie datengestützte Strategien"],"requirements":["Nachgewiesene Erfahrung als Datenanalyst","Starke Kenntnisse in SQL und Excel","Erfahrung mit Visualisierungstools (Tableau, Power BI)","Fähigkeiten in der statistischen Analyse","Ausgezeichnete Kommunikationsfähigkeiten"],"benefits":["Modernes Analyse-Stack","Bereichsübergreifende Zusammenarbeit","Möglichkeiten zur beruflichen Weiterentwicklung","Einfluss auf strategische Entscheidungen","Wettbewerbsfähige Vergütung"]},"hr-assistant":{"title":"Human Resources / Personalassistent","department":"People & Culture","location":"Genf, Schweiz","type":"Vollzeit","level":"Mittelstufe","modalDescription":"Gestalten Sie unsere Unternehmenskultur und bauen Sie erstklassige Teams in einem schnell wachsenden KI-Startup auf.","responsibilities":["Suchen und gewinnen Sie Top-Talente für verschiedene Positionen","Verwalten Sie den gesamten Rekrutierungsprozess","Entwickeln und pflegen Sie Rekrutierungsdatenbanken","Koordinieren Sie Interviews und die Bewertung von Kandidaten","Unterstützen Sie die Einarbeitung und Entwicklung von Mitarbeitern"],"requirements":["BA/BS-Abschluss mit starkem akademischen Hintergrund","Ausgezeichnete organisatorische und multitasking Fähigkeiten","Starke mündliche und schriftliche Kommunikationsfähigkeiten","Erfahrung mit MS Office Suite","Fähigkeit, in einem schnelllebigen Umfeld zu arbeiten"],"benefits":["Gestalten Sie die Unternehmenskultur von Anfang an","Arbeiten Sie mit einem vielfältigen, internationalen Team","Möglichkeiten zur beruflichen Weiterentwicklung","Flexible Arbeitsbedingungen","Wettbewerbsfähiges Vergütungspaket"]},"video-editor":{"title":"Videoredakteur","department":"Kreativ","location":"Genf / Remote","type":"Vollzeit","level":"Mittelstufe","modalDescription":"Erstellen Sie ansprechende Videoinhalte, die unsere KI- und Robotik-Innovationen präsentieren. Sie werden alles von Produktdemonstrationen bis hin zu Inhalten für soziale Medien und dokumentarischen Stücken produzieren.","responsibilities":["Bearbeiten und produzieren Sie hochwertige Videoinhalte für mehrere Plattformen","Erstellen Sie Motion Graphics und visuelle Effekte für Produktdemonstrationen","Arbeiten Sie mit dem Marketingteam an Video-Strategien und Kampagnen","Verwalten Sie Videoprojekte von der Konzeption bis zur endgültigen Lieferung","Pflegen Sie organisierte Medienbibliotheken und Projektarchive","Bleiben Sie über Videotrends und aufkommende Formate informiert"],"requirements":["Nachgewiesene Erfahrung als Videoredakteur mit starkem Portfolio","Expertenkenntnisse in Adobe Premiere Pro und After Effects","Erfahrung mit DaVinci Resolve für die Farbkorrektur","Starkes Verständnis von Storytelling und visueller Komposition","Kenntnisse in Motion Graphics und grundlegender 3D-Animation","Fähigkeit, selbstständig zu arbeiten und Fristen einzuhalten"],"benefits":["Kreative Freiheit und Verantwortung für Projekte","Zugang zu professioneller Ausrüstung und Software","Flexible Remote-Arbeitsoptionen","Möglichkeit, modernste Technologie zu präsentieren","Wettbewerbsfähiges Gehalt und Leistungspaket"]},"marketing-specialist":{"title":"Marketing-Spezialist","department":"Marketing","location":"Genf, Schweiz","type":"Vollzeit","level":"Mittelstufe","modalDescription":"Steigern Sie die Markenbekanntheit und die Lead-Generierung für unsere KI- und Robotikprodukte. Entwickeln und führen Sie Marketingkampagnen über digitale und traditionelle Kanäle durch.","responsibilities":["Entwickeln und Durchführen integrierter Marketingkampagnen","Verwalten der Social-Media-Präsenz und des Inhaltskalenders","Erstellen von überzeugendem Marketinginhalt und Texten","Analysieren der Kampagnenleistung und Optimieren der Strategien","Koordinieren mit dem Vertriebsteam zu Initiativen zur Lead-Generierung","Das Unternehmen auf Branchenveranstaltungen und Messen vertreten"],"requirements":["Bachelor-Abschluss in Marketing, Kommunikation oder einem verwandten Bereich","3+ Jahre Erfahrung im B2B-Marketing","Starkes Verständnis der digitalen Marketingkanäle","Erfahrung mit Marketingautomatisierungstools","Ausgezeichnete schriftliche und mündliche Kommunikationsfähigkeiten","Leidenschaft für Technologie und Innovation"],"benefits":["Gestalten Sie die Marketingstrategie eines wachsenden Unternehmens","Arbeiten Sie mit modernsten KI- und Robotikprodukten","Möglichkeiten zur beruflichen Weiterentwicklung","Internationale Erfahrungen und Reisemöglichkeiten","Wettbewerbsfähiges Vergütungspaket"]},"rl-specialist":{"title":"Spezialist für Verstärkendes Lernen","department":"KI & Forschung","location":"Genf, Schweiz","type":"Vollzeit","level":"Senior Level","modalDescription":"Entwerfen und implementieren Sie Algorithmen für verstärkendes Lernen für die Robotersteuerung und autonome Entscheidungsfindungssysteme. Erweitern Sie die Grenzen dessen, was im Roboternlernen möglich ist.","responsibilities":["Entwerfen und Implementieren von RL-Algorithmen für robotische Manipulation und Fortbewegung","Entwickeln von Simulationsumgebungen für das Training und Testen von RL-Agenten","Übertragen von gelernten Politiken von der Simulation auf reale Roboter (sim-to-real)","Zusammenarbeiten mit dem Robotikteam zur Hardware-Software-Integration","Veröffentlichen von Forschungsergebnissen auf erstklassigen Konferenzen","Mentoring von Junior-Forschern und Ingenieuren"],"requirements":["Doktorat oder Master in Informatik, Robotik oder einem verwandten Bereich","Starkes Publikationsverzeichnis im Bereich RL oder Robotik (ICML, NeurIPS, CoRL, RSS)","Expertenwissen über RL-Algorithmen (PPO, SAC, TD3, modellbasiertes RL)","Erfahrung mit Robotersimulatoren (MuJoCo, Isaac Gym, PyBullet)","Kenntnisse in Python und Deep-Learning-Frameworks (PyTorch bevorzugt)","Erfahrung mit realen Robotersystemen ist ein großer Vorteil"],"benefits":["Arbeiten Sie an modernster Robotikforschung","Zugang zu fortschrittlicher Roboterhardware und Rechenclustern","Unterstützung bei Veröffentlichungen und Konferenzbesuchen","Zusammenarbeit mit erstklassigen Forschern","Wettbewerbsfähiges Gehalt mit Forschungsboni"]},"app-developer-intern":{"title":"Praktikant App-Entwicklung","department":"Ingenieurwesen","location":"Genf, Schweiz","type":"3-6 Monate","level":"Student","modalDescription":"Treten Sie unserem Ingenieurteam als Praktikant in der App-Entwicklung bei, um mobile und Webanwendungen für unsere KI-Produkte zu entwickeln.","responsibilities":["Entwickeln und Pflegen von mobilen Anwendungen mit React Native","Erstellen von Webanwendungen mit Node.js und PHP","Arbeiten mit MySQL-Datenbanken und API-Integrationen","Zusammenarbeiten mit erfahrenen Entwicklern an Produktionssystemen","Teilnehmen an Code-Reviews und Sprint-Planungen"],"requirements":["Derzeit eingeschrieben in Informatik oder einem verwandten Studiengang","Kenntnisse in React Native oder mobiler Entwicklung","Vertrautheit mit Node.js, PHP oder ähnlichen Technologien","Verständnis von Datenbankkonzepten","Starke Problemlösungsfähigkeiten"],"benefits":["Praktische Erfahrung mit Produktionssystemen","Mentoring durch erfahrene Entwickler","Flexibler Zeitplan zur Berücksichtigung des Studiums","Möglichkeit auf eine Vollzeitbeschäftigung","Monatliches Stipendium"]},"web-designer-intern":{"title":"Praktikant für Webdesign/SEO-Spezialist","department":"Design & Marketing","location":"Genf, Schweiz","type":"3-6 Monate","level":"Student","modalDescription":"Gestalten und optimieren Sie Webschnittstellen, während Sie SEO-Strategien für unsere KI-Plattformen implementieren.","responsibilities":["Gestalten Sie responsive Webschnittstellen","Implementieren Sie SEO-Best-Practices","Erstellen Sie UI/UX-Designs für neue Funktionen","Optimieren Sie die Website-Leistung und Zugänglichkeit","Durchführen von Benutzerforschung und Usability-Tests"],"requirements":["Derzeit immatrikuliert in Design, Marketing oder einem verwandten Studiengang","Kenntnisse in HTML, CSS und JavaScript","Verständnis der SEO-Prinzipien","Erfahrung mit Design-Tools (Figma, Adobe XD)","Portfolio, das Designarbeiten zeigt"],"benefits":["Arbeiten Sie an realen Projekten mit globaler Wirkung","Lernen Sie von erfahrenen Designern","Flexible Arbeitszeiten","Möglichkeit auf eine Festanstellung","Monatliches Stipendium"]},"financial-analyst-intern":{"title":"Praktikant für Business-Analyse","department":"Betrieb","location":"Genf, Schweiz","type":"6-12 Monate","level":"Student","modalDescription":"Unterstützen Sie die Geschäftsanalysen und Prognosen für KI-gesteuerte Robotikprodukte.","responsibilities":["Unterstützen Sie beim Business Modeling und der Prognose","Analysieren Sie komplexe betriebliche Datensätze","Unterstützen Sie die Erstellung von Geschäftsberichten","Durchführen von Marktanalysen und Wettbewerbsanalysen","Helfen Sie bei der Entwicklung von Business-Intelligence-Dashboards"],"requirements":["Derzeit immatrikuliert in Betriebswirtschaft, Volkswirtschaft oder einem verwandten Studiengang","Starke Excel- und Datenmodellierungsfähigkeiten","Verständnis der Geschäftsmärkte","Analytische Denkweise mit Liebe zum Detail","Kenntnisse in Datenanalysetools (Python/R) von Vorteil"],"benefits":["Einblick in KI-gesteuerte Robotik","Arbeiten Sie mit erfahrenen Fachleuten","Verlängerte Praktikumsdauer für vertieftes Lernen","Möglichkeit zur Zusammenarbeit bei der Thesis","Wettbewerbsfähiges monatliches Stipendium"]},"video-editor-intern":{"title":"Praktikant für Video-Editing","department":"Kreativ","location":"Genf, Schweiz","type":"Teilzeit (15-20 Stunden/Woche)","level":"Student","modalDescription":"Erstellen Sie ansprechende Videoinhalte für unsere KI-Produkte und Marketingkampagnen.","responsibilities":["Bearbeiten Sie Kurz- und Langform-Videoinhalte","Erstellen Sie Motion Graphics und Animationen","Zusammenarbeiten mit dem Marketingteam an Kampagnen","Verwalten Sie den Videoproduktionsworkflow","Optimieren Sie Inhalte für verschiedene Plattformen"],"requirements":["Derzeit immatrikuliert in Film, Medien oder einem verwandten Studiengang","Kenntnisse in Adobe Premiere und After Effects","Kreatives Auge für Geschichtenerzählen","Verständnis der Videoformate in sozialen Medien","Portfolio von Videoarbeiten"],"benefits":["Teilzeitplan, der perfekt für Studenten ist","Kreative Freiheit bei Projekten","Zugang zu professioneller Ausrüstung","Portfolio mit realen Kundenarbeiten aufbauen","Stundenvergütung"]},"personal-assistant-intern":{"title":"Praktikant/in als Persönliche/r Assistent/in","department":"Betrieb","location":"Genf, Schweiz","type":"3-6 Monate","level":"Student/in","modalDescription":"Unterstützen Sie die HR- und Verwaltungsfunktionen in einem dynamischen Startup-Umfeld.","responsibilities":["Helfen Sie bei den Rekrutierungs- und Einarbeitungsprozessen","Unterstützen Sie die täglichen Verwaltungsabläufe","Koordinieren Sie Meetings und verwalten Sie Kalender","Helfen Sie bei der Organisation von Unternehmensveranstaltungen und Aktivitäten","Pflegen Sie HR-Dokumentationen und Datenbanken"],"requirements":["Derzeit immatrikuliert in einem Studiengang Betriebswirtschaft, HR oder einem verwandten Bereich","Ausgezeichnete organisatorische Fähigkeiten","Starke Kommunikationsfähigkeiten in Englisch und Französisch","Kenntnisse in der MS Office Suite","Fähigkeit, vertrauliche Informationen zu behandeln"],"benefits":["Umfassende HR-Erfahrung","Einblick in die Abläufe eines Startups","Netzwerkmöglichkeiten","Flexibler Zeitplan","Monatliches Stipendium"]},"graphic-designer-intern":{"title":"Praktikant/in im Grafikdesign","department":"Design","location":"Genf, Schweiz","type":"3-6 Monate","level":"Student/in","modalDescription":"Gestalten Sie visuelle Elemente für unsere KI-Produkte und Marketingmaterialien.","responsibilities":["Erstellen Sie visuelle Designs für digitale und Printmedien","Entwickeln Sie Markenassets und Marketingmaterialien","Gestalten Sie UI-Elemente für Anwendungen","Zusammenarbeiten mit Produkt- und Marketingteams","Sicherstellen der Marken-Konsistenz über alle Materialien hinweg"],"requirements":["Derzeit immatrikuliert in einem Studiengang Grafikdesign oder einem verwandten Bereich","Kenntnisse in der Adobe Creative Suite","Erfahrung mit Figma oder ähnlichen Tools","Starkes Portfolio, das Designfähigkeiten zeigt","Verständnis der Prinzipien des Markendesigns"],"benefits":["Arbeiten an vielfältigen Designprojekten","Mentoring durch erfahrene Designer","Aufbau eines professionellen Portfolios","Flexible Arbeitsbedingungen","Monatliches Stipendium"]}};
 
     // Filter jobs
     function filterJobs(category) {
@@ -1913,5 +1990,26 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>

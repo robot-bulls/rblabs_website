@@ -51,10 +51,9 @@
     <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/book/">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../hero-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../typography.css">
 
     <style>
         .visuallyhidden {
@@ -72,6 +71,9 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
             padding: 8px 0;
         }
         .nav-lang-trigger .fa-globe {
@@ -148,15 +150,16 @@
             text-decoration: none;
             color: #374151;
             font-size: 14px;
+            font-family: inherit;
             transition: background 0.15s ease;
         }
         .nav-lang-item:hover {
             background: #f3f4f6;
         }
         .nav-lang-item.active {
-            background: rgba(6, 67, 140, 0.06);
-            color: #06438c;
-            font-weight: 600;
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
         }
         .nav-lang-name {
             flex: 1;
@@ -169,11 +172,11 @@
             font-weight: 500;
         }
         .nav-lang-item.active .nav-lang-code {
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-item .fa-check {
             font-size: 12px;
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-empty {
             padding: 20px 16px;
@@ -457,7 +460,7 @@
     /* Hero with video background */
     .rent-hero {
         position: relative;
-        min-height: 85vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -475,17 +478,13 @@
         opacity: 0.45;
     }
 
-    .rent-hero-video-mobile {
-        display: none;
-    }
-
     .rent-hero-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(6,67,140,0.4) 100%);
+        background: linear-gradient(180deg, rgb(22 32 60 / 25%) 0%, rgba(0, 0, 0, 0.25) 100%);
         z-index: 1;
     }
 
@@ -501,7 +500,7 @@
     .rent-badge {
         display: inline-block;
         padding: 0.5rem 1.5rem;
-        background: rgba(6, 67, 140, 0.1);
+        background: rgba(0, 0, 0, 0.06);
         border: 1px solid white;
         border-radius: 50px;
         font-size: 0.75rem;
@@ -529,26 +528,6 @@
         margin: 0 auto 2.5rem;
     }
 
-    .rent-hero-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: var(--primary-color);
-        color: white;
-        padding: 16px 36px;
-        border-radius: 10px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        border: none;
-    }
-
-    .rent-hero-cta:hover {
-        background: #0856b3;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(6, 67, 140, 0.4);
-    }
 
     /* Showcase / Robert in Action Carousel */
     .rent-showcase {
@@ -672,7 +651,7 @@
         background: var(--primary-color);
         color: white;
         border-color: var(--primary-color);
-        box-shadow: 0 6px 20px rgba(6, 67, 140, 0.3);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
     }
 
     .rent-carousel-prev {
@@ -709,14 +688,6 @@
     }
 
     @media (max-width: 768px) {
-        .rent-hero-video-desktop {
-            display: none;
-        }
-
-        .rent-hero-video-mobile {
-            display: block;
-        }
-
         .rent-carousel {
             overflow-x: auto;
             scroll-snap-type: x mandatory;
@@ -985,7 +956,7 @@
     .form-group textarea:focus {
         outline: none;
         border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
     }
 
     .form-group textarea {
@@ -1020,24 +991,17 @@
     }
 
     .submit-btn {
-        background: var(--primary-color);
-        color: white;
-        padding: 14px 40px;
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
+        font-family: inherit;
+        padding: 14px 32px !important;
+        font-size: 15px !important;
     }
 
     .submit-btn:hover {
-        background: #0856b3;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(6, 67, 140, 0.3);
+        background: rgba(255, 255, 255, 0.92);
+        border-color: rgba(0, 0, 0, 0.16);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.09), inset 0 1px 0 rgba(255, 255, 255, 1);
+        transform: translateY(-1px);
     }
 
     .submit-btn:disabled {
@@ -1100,7 +1064,7 @@
 
     @media (max-width: 768px) {
         .rent-hero {
-            min-height: 70vh;
+            min-height: 100vh;
         }
 
         .rent-title {
@@ -1176,29 +1140,51 @@
 <!-- Hero Section with Video Background -->
 <section class="rent-hero">
     <video
-        class="rent-hero-video rent-hero-video-desktop"
-        muted playsinline loop
-        preload="none"
-        data-src="../../featured/robert_tv.mp4"
-    >
-    </video>
-    <video
-        class="rent-hero-video rent-hero-video-mobile"
-        muted playsinline loop
-        preload="none"
-        data-src="../../featured/robert_tv_phone.mp4"
-    >
-    </video>
+        id="rent-hero-video"
+        class="rent-hero-video"
+        autoplay muted playsinline loop
+        preload="metadata"
+    ></video>
+    <script>
+        (function() {
+            var v = document.getElementById('rent-hero-video');
+            var srcMobile = '../../featured/robert_tv_phone.mp4';
+            var srcDesktop = '../../featured/robert_tv.mp4';
+            var posterMobile = '../../featured/robert_tv_phone_poster.jpg';
+            var posterDesktop = '../../featured/robert_tv_poster.jpg';
+            var current = null;
+
+            function loadVideo() {
+                var isMobile = window.innerWidth <= 768;
+                var target = isMobile ? 'mobile' : 'desktop';
+                if (target === current) return;
+                current = target;
+                v.poster = isMobile ? posterMobile : posterDesktop;
+                v.src = isMobile ? srcMobile : srcDesktop;
+                v.load();
+            }
+
+            loadVideo();
+
+            var resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(loadVideo, 200);
+            });
+        })();
+    </script>
     <div class="rent-hero-overlay"></div>
     <div class="rent-hero-content">
         <div class="rent-badge">ЗАБРОНИРОВАТЬ РОБЕРТА</div>
         <h1 class="visuallyhidden">Забронируйте Роберта Робота</h1>
         <div class="rent-title">Пригласите Роберта на ваше мероприятие</div>
         <p class="rent-subtitle">Сделайте ваше следующее мероприятие незабываемым с Робертом, нашим человекоподобным роботом на базе ИИ. От корпоративных встреч до презентаций продуктов, Роберт предлагает уникальный опыт, который захватывает аудиторию.</p>
-        <a href="#rentForm" class="rent-hero-cta">
-            Запросить предложение
-            <i class="fas fa-arrow-right"></i>
-        </a>
+        <div class="hero-cta">
+            <a href="#rentForm" class="btn btn-primary btn-large btn-minimal">
+                <span>Запросить предложение</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
     </div>
 </section>
 
@@ -1399,7 +1385,7 @@
 
                     <div class="form-footer">
                         <p class="form-note">Отправляя эту форму, вы соглашаетесь с нашей политикой конфиденциальности</p>
-                        <button type="submit" class="submit-btn" id="rentSubmitBtn">
+                        <button type="submit" class="submit-btn btn btn-primary btn-large" id="rentSubmitBtn">
                             Запросить предложение
                             <span class="spinner" id="rentSpinner"></span>
                         </button>
@@ -1595,19 +1581,6 @@
         }
     });
 
-    // Lazy-load hero video after page renders
-    window.addEventListener('load', function() {
-        var isMobile = window.innerWidth <= 768;
-        var heroVideo = document.querySelector(isMobile ? '.rent-hero-video-mobile' : '.rent-hero-video-desktop');
-        if (heroVideo && heroVideo.dataset.src) {
-            var source = document.createElement('source');
-            source.src = heroVideo.dataset.src;
-            source.type = 'video/mp4';
-            heroVideo.appendChild(source);
-            heroVideo.load();
-            heroVideo.play();
-        }
-    });
 </script>
 
 
@@ -1659,5 +1632,26 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>

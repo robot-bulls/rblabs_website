@@ -51,10 +51,8 @@
     <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/career/">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../typography.css">
 
     <style>
         .visuallyhidden {
@@ -72,6 +70,9 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
             padding: 8px 0;
         }
         .nav-lang-trigger .fa-globe {
@@ -148,15 +149,16 @@
             text-decoration: none;
             color: #374151;
             font-size: 14px;
+            font-family: inherit;
             transition: background 0.15s ease;
         }
         .nav-lang-item:hover {
             background: #f3f4f6;
         }
         .nav-lang-item.active {
-            background: rgba(6, 67, 140, 0.06);
-            color: #06438c;
-            font-weight: 600;
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
         }
         .nav-lang-name {
             flex: 1;
@@ -169,11 +171,11 @@
             font-weight: 500;
         }
         .nav-lang-item.active .nav-lang-code {
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-item .fa-check {
             font-size: 12px;
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-empty {
             padding: 20px 16px;
@@ -514,7 +516,7 @@
         display: flex;
         gap: 8px;
         padding: 4px;
-        background: #f3f4f6;
+        background: transparent;
         border-radius: 12px;
     }
 
@@ -522,7 +524,7 @@
         padding: 10px 20px;
         background: transparent;
         border: none;
-        border-radius: 8px;
+        border-radius: 999px;
         font-weight: 500;
         color: #6b7280;
         cursor: pointer;
@@ -552,15 +554,25 @@
     }
 
     .search-bar:focus-within {
-        border-color: #06438c;
-        background: white;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #e5e7eb;
+        background: #f9fafb;
+        box-shadow: none;
+        outline: none !important;
+    }
+
+    .search-bar *:focus {
+        outline: none !important;
+    }
+
+    #jobSearch:focus {
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     .search-bar input {
-        border: none;
-        background: none;
-        outline: none;
+        border: none !important;
+        background: none !important;
+        outline: none !important;
         flex: 1;
         font-size: 14px;
         color: #111827;
@@ -600,7 +612,7 @@
         left: 0;
         width: 4px;
         height: 100%;
-        background: linear-gradient(180deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         transform: translateX(-4px);
         transition: transform 0.3s;
     }
@@ -683,30 +695,31 @@
     }
 
     .apply-section {
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: white;
         padding: 80px 0;
         text-align: center;
-        color: white;
+        color: #1d1d1f;
     }
 
     .apply-title {
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
+        color: #1d1d1f;
     }
 
     .apply-description {
         font-size: 18px;
-        opacity: 0.9;
+        color: #6e6e73;
         margin-bottom: 32px;
     }
 
     .apply-btn {
         display: inline-block;
         padding: 14px 32px;
-        background: white;
-        color: #06438c;
-        border-radius: 10px;
+        background: #1d1d1f;
+        color: white;
+        border-radius: 999px;
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s;
@@ -849,8 +862,8 @@
     .form-input:focus,
     .form-textarea:focus {
         outline: none;
-        border-color: #06438c;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #1d1d1f;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
     }
 
     .form-textarea {
@@ -862,10 +875,10 @@
     .submit-btn {
         width: 100%;
         padding: 14px;
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         color: white;
         border: none;
-        border-radius: 10px;
+        border-radius: 999px;
         font-weight: 600;
         font-size: 16px;
         cursor: pointer;
@@ -874,7 +887,7 @@
 
     .submit-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(6, 67, 140, 0.3);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
     }
 
     @keyframes spin {
@@ -925,6 +938,7 @@
 
         .jobs-container {
             padding: 40px 0 80px;
+            background: transparent;
         }
 
         .job-header {
@@ -1136,6 +1150,69 @@
                     <span class="skill-tag">ICP</span>
                     <span class="skill-tag">Smart Contracts</span>
                     <span class="skill-tag">DeFi</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-locomotion-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Bevegelsesingeniør</h3>
+                        <span class="job-department">Robotikk-ingeniørfag</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Genève, Sveits</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Fulltid</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Seniornivå</span>
+                </div>
+                <p class="job-description">Design og implementer tobente bevegelssystemer for våre humanoide roboter. Utvikle stabile gangmønstre, balanseregulators og dynamisk bevegelsesplanlegging for virkelig-verden-utrulling.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Bipedal Locomotion</span>
+                    <span class="skill-tag">Control Theory</span>
+                    <span class="skill-tag">ROS2</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">MuJoCo</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-perception-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Robot-persepsjonsingeniør</h3>
+                        <span class="job-department">Robotikk-ingeniørfag</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Genève, Sveits</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Fulltid</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Seniornivå</span>
+                </div>
+                <p class="job-description">Bygg den perseptuelle intelligensen til de humanoide robotene våre. Utvikle sanntids datamaskinvisjon, sensorfusjon og romlig bevissthetssystemer som gjør at roboter kan navigere og interagere trygt.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">Sensor Fusion</span>
+                    <span class="skill-tag">SLAM</span>
+                    <span class="skill-tag">LiDAR</span>
+                    <span class="skill-tag">ROS2</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-manipulation-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Manipulasjonsingeniør</h3>
+                        <span class="job-department">Robotikk-ingeniørfag</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Genève, Sveits</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Fulltid</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Mid-senior nivå</span>
+                </div>
+                <p class="job-description">Utvikle de ferdige armene og hendene til de humanoide robotene våre. Arbeid med kinematikk, gripeplanlegging og oppgaveutføringssystemer for fysiske interaksjoner i bedriftsmiljøer.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Robot Manipulation</span>
+                    <span class="skill-tag">Kinematics</span>
+                    <span class="skill-tag">Grasp Planning</span>
+                    <span class="skill-tag">MoveIt</span>
+                    <span class="skill-tag">ROS2</span>
                 </div>
             </div>
             <div class="job-card" data-category="ai" onclick="openJobModal('deep-learning-developer')">
@@ -1498,7 +1575,7 @@
 
 <script>
     // Job data loaded from career data files
-    const jobData = {"senior-ai-developer":{"title":"Senior Python AI-utvikler","department":"KI og forskning","location":"Geneve, Sveits","type":"Heltid","level":"Seniornivå","modalDescription":"Vi ser etter en Senior Python AI-utvikler for å lede utviklingen av banebrytende KI-systemer for robotikkapplikasjoner.","responsibilities":["Arbeide med prosjekter som involverer rask systemprototyping og eksperimentering ved bruk av datasyns-programvare, robotikksystemer og maskinlæringsmodeller","Trene toppmoderne dype nevrale nettverk for prediksjon og forsterkningslæring","Designe robotoppsett i laboratorier og fysikksimulerings-miljøer","Identifisere muligheter og drive nye initiativer for anvendelse av maskinlæring","Bidra til tekniske blogginnlegg, artikler, foredrag og patentsøknader"],"requirements":["Utmerket kunnskap om teori og praksis innen maskinlæring","Dyktig i Python, Java og C++","Kunnskap om dyplæringsrammeverk (TensorFlow, Keras, PyTorch)","Erfaring med datasyn og robotikk","Erfaring med stordatateknologier (BigQuery, Spark, AWS)","Erfaring med Kubernetes, Docker og skyplattformer"],"benefits":["Konkurransedyktig lønn og aksjepakke","Fleksibel arbeidstid og mulighet for fjernarbeid","Budsjett for faglig utvikling","Helseforsikring og velværeprogrammer","Moderne kontor i Geneve sentrum"]},"blockchain-developer":{"title":"Blockchain-utvikler","department":"Utvikling","location":"Fjernarbeid","type":"Heltid","level":"Mellom-seniornivå","modalDescription":"Bli med i teamet vårt for å bygge fremtiden for desentralisert finans på Ethereum og Internet Computer Protocol.","responsibilities":["Utvikle og vedlikeholde smarte kontrakter på Ethereum og ICP","Designe og implementere blockchain-løsninger for IoT- og robotikkapplikasjoner","Sikre sikkerhet, skalerbarhet og effektivitet i blockchain-applikasjoner","Holde seg oppdatert på fremskritt innen blockchain-teknologi","Feilsøke og løse blockchain-implementeringsproblemer"],"requirements":["Sterk erfaring med Ethereum og Solidity","Kunnskap om Internet Computer Protocol (ICP)","Forståelse av blockchain-grunnprinsipper og kryptografi","Erfaring med DeFi-protokoller","Evne til å jobbe selvstendig i en fjernarbeidsetting"],"benefits":["Fullt fjernarbeid","Konkurransedyktig kompensasjon i krypto/fiat","Muligheter for tokenallokering","Fleksibel arbeidstid på tvers av tidssoner","Årlige teamsamlinger"]},"deep-learning-developer":{"title":"KI-dyplæringsutvikler","department":"KI og forskning","location":"Geneve, Sveits","type":"Heltid","level":"Mellomnivå","modalDescription":"Utvikle og optimalisere dyplæringsmodeller for produksjonsmiljøer innen robotikk og automasjon.","responsibilities":["Designe og implementere toppmoderne dyplæringsmodeller","Optimalisere modeller for ytelse og skalerbarhet","Samarbeide med forskningsteamet om innovative KI-løsninger","Distribuere modeller til produksjonsmiljøer","Overvåke og forbedre modellytelse"],"requirements":["Sterke programmeringsferdigheter i Python","Erfaring med dyplæringsrammeverk","Forståelse av nevrale nettverksarkitekturer","Kunnskap om optimaliseringsteknikker","Lidenskap for KI-teknologi"],"benefits":["Arbeid med banebrytende KI-prosjekter","Tilgang til kraftige dataressurser","Konferansedeltakelse og opplæring","Samarbeidende forskningsmiljø","Publiseringsmuligheter"]},"data-analyst":{"title":"Dataanalytiker","department":"Forretningsanalyse","location":"Geneve, Sveits","type":"Heltid","level":"Mellomnivå","modalDescription":"Transformer komplekse datasett til handlingsrettede innsikter for å drive strategiske beslutninger.","responsibilities":["Analysere store datasett for å identifisere trender og mønstre","Lage datavisualiseringer og dashbord","Samarbeide med team for å forstå databehov","Sikre datanøyaktighet og -integritet","Utvikle datadrevne strategier"],"requirements":["Dokumentert erfaring som dataanalytiker","Sterk kompetanse i SQL og Excel","Erfaring med visualiseringsverktøy (Tableau, Power BI)","Ferdigheter innen statistisk analyse","Utmerkede kommunikasjonsevner"],"benefits":["Moderne analyseteknologi","Tverrfaglig samarbeid","Muligheter for faglig utvikling","Innvirkning på strategiske beslutninger","Konkurransedyktig kompensasjon"]},"hr-assistant":{"title":"Personalansvarlig / Personlig assistent","department":"Mennesker og kultur","location":"Geneve, Sveits","type":"Heltid","level":"Mellomnivå","modalDescription":"Form bedriftskulturen vår og bygg team i verdensklasse i en raskt voksende KI-oppstartsbedrift.","responsibilities":["Finne og tiltrekke topptalenter til ulike stillinger","Administrere hele rekrutteringsprosessen","Utvikle og vedlikeholde rekrutteringsdatabaser","Koordinere intervjuer og kandidatevaluering","Støtte onboarding og utvikling av medarbeidere"],"requirements":["Bachelor-/mastergrad med sterk akademisk bakgrunn","Utmerkede organisatoriske ferdigheter og evne til å håndtere flere oppgaver","Sterk muntlig og skriftlig kommunikasjon","Erfaring med MS Office Suite","Evne til å arbeide i et dynamisk miljø"],"benefits":["Forme bedriftskulturen fra tidlig fase","Jobbe med et mangfoldig, internasjonalt team","Muligheter for profesjonell vekst","Fleksible arbeidsordninger","Konkurransedyktig kompensasjonspakke"]},"video-editor":{"title":"Videoredigerer","department":"Kreativ","location":"Geneve / Fjernarbeid","type":"Heltid","level":"Mellomnivå","modalDescription":"Lag engasjerende videoinnhold som viser frem våre KI- og robotikkinnovasjoner. Du vil produsere alt fra produktdemoer til innhold for sosiale medier og dokumentariske produksjoner.","responsibilities":["Redigere og produsere videoinnhold av høy kvalitet for flere plattformer","Lage bevegelsesgrafikk og visuelle effekter for produktdemonstrasjoner","Samarbeide med markedsføringsteamet om videostrategi og kampanjer","Administrere videoprosjekter fra konsept til endelig levering","Vedlikeholde organiserte mediebiblioteker og prosjektarkiver","Holde seg oppdatert på videotrender og nye formater"],"requirements":["Dokumentert erfaring som videoredigerer med sterk portefølje","Ekspertkompetanse i Adobe Premiere Pro og After Effects","Erfaring med DaVinci Resolve for fargekorrigering","Sterk forståelse av historiefortelling og visuell komposisjon","Kunnskap om bevegelsesgrafikk og grunnleggende 3D-animasjon","Evne til å jobbe selvstendig og overholde tidsfrister"],"benefits":["Kreativ frihet og eierskap over prosjekter","Tilgang til profesjonelt utstyr og programvare","Fleksible muligheter for fjernarbeid","Mulighet til å fremvise banebrytende teknologi","Konkurransedyktig lønn og fordelspakke"]},"marketing-specialist":{"title":"Markedsføringsspesialist","department":"Markedsføring","location":"Geneve, Sveits","type":"Heltid","level":"Mellomnivå","modalDescription":"Driv merkevarebevissthet og leadgenerering for våre KI- og robotikkprodukter. Utvikle og gjennomføre markedsføringskampanjer på tvers av digitale og tradisjonelle kanaler.","responsibilities":["Utvikle og gjennomføre integrerte markedsføringskampanjer","Administrere tilstedeværelse på sosiale medier og innholdskalender","Lage engasjerende markedsføringsinnhold og tekster","Analysere kampanjeresultater og optimalisere strategier","Koordinere med salgsteamet om initiativer for leadgenerering","Representere selskapet på bransjearrangementer og messer"],"requirements":["Bachelorgrad i markedsføring, kommunikasjon eller relatert felt","Mer enn 3 års erfaring med B2B-markedsføring","Sterk forståelse av digitale markedsføringskanaler","Erfaring med verktøy for markedsføringsautomatisering","Utmerkede skriftlige og muntlige kommunikasjonsferdigheter","Lidenskap for teknologi og innovasjon"],"benefits":["Forme markedsføringsstrategien til et voksende selskap","Jobbe med banebrytende KI- og robotikkprodukter","Muligheter for faglig utvikling","Internasjonal eksponering og reisemuligheter","Konkurransedyktig kompensasjonspakke"]},"rl-specialist":{"title":"Spesialist innen forsterkningslæring","department":"KI og forskning","location":"Geneve, Sveits","type":"Heltid","level":"Seniornivå","modalDescription":"Design og implementer forsterkningslæringsalgoritmer for robotstyring og autonome beslutningssystemer. Flytt grensene for hva som er mulig innen robotlæring.","responsibilities":["Designe og implementere RL-algoritmer for robotmanipulering og bevegelse","Utvikle simuleringsmiljøer for trening og testing av RL-agenter","Overføre lærte strategier fra simulering til virkelige roboter (sim-to-real)","Samarbeide med robotikkteamet om maskinvare-programvare-integrasjon","Publisere forskningsresultater på toppkonferanser","Veilede juniorforskere og ingeniører"],"requirements":["Doktorgrad eller mastergrad i informatikk, robotikk eller relatert felt","Sterk publiseringshistorikk innen RL eller robotikk (ICML, NeurIPS, CoRL, RSS)","Ekspertkunnskap om RL-algoritmer (PPO, SAC, TD3, modellbasert RL)","Erfaring med robotikksimulatorer (MuJoCo, Isaac Gym, PyBullet)","Kompetanse i Python og dyplæringsrammeverk (PyTorch foretrukket)","Erfaring med virkelige robotsystemer er et stort pluss"],"benefits":["Arbeid med toppmoderne robotikkforskning","Tilgang til avansert robotmaskinvare og dataklynger","Støtte til publisering og konferansedeltakelse","Samarbeid med forskere i verdensklasse","Konkurransedyktig lønn med forskningsbonuser"]},"app-developer-intern":{"title":"Apputvikler-praktikant","department":"Utvikling","location":"Geneve, Sveits","type":"3–6 måneder","level":"Student","modalDescription":"Bli med i utviklingsteamet vårt som apputvikler-praktikant for å utvikle mobil- og webapplikasjoner for våre KI-produkter.","responsibilities":["Utvikle og vedlikeholde mobilapplikasjoner med React Native","Bygge webapplikasjoner med Node.js og PHP","Jobbe med MySQL-databaser og API-integrasjoner","Samarbeide med seniorutviklere på produksjonssystemer","Delta i kodegjennomganger og sprintplanlegging"],"requirements":["For tiden innskrevet i informatikk eller relatert studieprogram","Kunnskap om React Native eller mobilutvikling","Kjennskap til Node.js, PHP eller lignende teknologier","Forståelse av databasekonsepter","Sterke problemløsningsferdigheter"],"benefits":["Praktisk erfaring med produksjonssystemer","Veiledning fra seniorutviklere","Fleksibel timeplan tilpasset studier","Mulighet for fast ansettelse","Månedlig stipend"]},"web-designer-intern":{"title":"Webdesigner/SEO-spesialist-praktikant","department":"Design og markedsføring","location":"Geneve, Sveits","type":"3–6 måneder","level":"Student","modalDescription":"Design og optimaliser webgrensesnitt samtidig som du implementerer SEO-strategier for våre KI-plattformer.","responsibilities":["Designe responsive webgrensesnitt","Implementere SEO-beste praksis","Lage UI/UX-design for nye funksjoner","Optimalisere nettsideytelse og tilgjengelighet","Gjennomføre brukerundersøkelser og brukervennlighetstesting"],"requirements":["For tiden innskrevet i design, markedsføring eller relatert studieprogram","Kompetanse i HTML, CSS og JavaScript","Forståelse av SEO-prinsipper","Erfaring med designverktøy (Figma, Adobe XD)","Portefølje som viser designarbeid"],"benefits":["Arbeid med virkelige prosjekter med global innvirkning","Lær av erfarne designere","Fleksibel arbeidstid","Mulighet for fast stilling","Månedlig stipend"]},"financial-analyst-intern":{"title":"Forretningsanalytiker-praktikant","department":"Drift","location":"Geneve, Sveits","type":"6–12 måneder","level":"Student","modalDescription":"Støtt forretningsanalyse og prognoser for KI-drevne robotikkprodukter.","responsibilities":["Bistå med forretningsmodellering og prognoser","Analysere komplekse driftsdatasett","Støtte utarbeidelse av forretningsrapporter","Gjennomføre markedsundersøkelser og konkurranseanalyse","Hjelpe til med å utvikle dashbord for forretningsanalyse"],"requirements":["For tiden innskrevet i økonomi, business eller relatert studieprogram","Sterke ferdigheter i Excel og datamodellering","Forståelse av forretningsmarkeder","Analytisk tenkemåte med øye for detaljer","Kunnskap om dataanalyseverktøy (Python/R) er et pluss"],"benefits":["Eksponering for KI-drevet robotikk","Arbeid med erfarne fagfolk","Forlenget praksisperiode for dypere læring","Mulighet for samarbeid om masteroppgave","Konkurransedyktig månedlig stipend"]},"video-editor-intern":{"title":"Videoredigerer-praktikant","department":"Kreativ","location":"Geneve, Sveits","type":"Deltid (15–20 t/uke)","level":"Student","modalDescription":"Lag engasjerende videoinnhold for våre KI-produkter og markedsføringskampanjer.","responsibilities":["Redigere kortformat og langformat videoinnhold","Lage bevegelsesgrafikk og animasjoner","Samarbeide med markedsføringsteamet om kampanjer","Administrere arbeidsflyten for videoproduksjon","Optimalisere innhold for ulike plattformer"],"requirements":["For tiden innskrevet i film, media eller relatert studieprogram","Kompetanse i Adobe Premiere og After Effects","Kreativt øye for historiefortelling","Forståelse av videoformater for sosiale medier","Portefølje av videoarbeid"],"benefits":["Deltidsplan perfekt for studenter","Kreativ frihet på prosjekter","Tilgang til profesjonelt utstyr","Bygg portefølje med virkelige kundeoppdrag","Timebasert kompensasjon"]},"personal-assistant-intern":{"title":"Personlig assistent-praktikant","department":"Drift","location":"Geneve, Sveits","type":"3–6 måneder","level":"Student","modalDescription":"Støtt HR- og administrative funksjoner i et dynamisk oppstartsmiljø.","responsibilities":["Bistå med rekrutterings- og onboardingprosesser","Støtte daglige administrative operasjoner","Koordinere møter og administrere kalendere","Hjelpe til med å organisere bedriftsarrangementer og aktiviteter","Vedlikeholde HR-dokumentasjon og databaser"],"requirements":["For tiden innskrevet i business, HR eller relatert studieprogram","Utmerkede organisatoriske ferdigheter","Sterk kommunikasjon på engelsk og fransk","Kompetanse i MS Office Suite","Evne til å håndtere konfidensiell informasjon"],"benefits":["Omfattende HR-erfaring","Eksponering for oppstartsdrift","Nettverksmuligheter","Fleksibel timeplan","Månedlig stipend"]},"graphic-designer-intern":{"title":"Grafisk designer-praktikant","department":"Design","location":"Geneve, Sveits","type":"3–6 måneder","level":"Student","modalDescription":"Design visuelle ressurser for våre KI-produkter og markedsføringsmateriell.","responsibilities":["Lage visuelle design for digitale og trykte medier","Utvikle merkevareressurser og markedsføringsmateriell","Designe UI-elementer for applikasjoner","Samarbeide med produkt- og markedsføringsteam","Opprettholde merkevarekonsistens på tvers av alt materiell"],"requirements":["For tiden innskrevet i grafisk design eller relatert studieprogram","Kompetanse i Adobe Creative Suite","Erfaring med Figma eller lignende verktøy","Sterk portefølje som viser designferdigheter","Forståelse av prinsipper for merkevaredesign"],"benefits":["Arbeid med varierte designprosjekter","Veiledning fra seniordesignere","Bygg en profesjonell portefølje","Fleksible arbeidsordninger","Månedlig stipend"]}};
+    const jobData = {"senior-ai-developer":{"title":"Senior Python AI-utvikler","department":"KI og forskning","location":"Geneve, Sveits","type":"Heltid","level":"Seniornivå","modalDescription":"Vi ser etter en Senior Python AI-utvikler for å lede utviklingen av banebrytende KI-systemer for robotikkapplikasjoner.","responsibilities":["Arbeide med prosjekter som involverer rask systemprototyping og eksperimentering ved bruk av datasyns-programvare, robotikksystemer og maskinlæringsmodeller","Trene toppmoderne dype nevrale nettverk for prediksjon og forsterkningslæring","Designe robotoppsett i laboratorier og fysikksimulerings-miljøer","Identifisere muligheter og drive nye initiativer for anvendelse av maskinlæring","Bidra til tekniske blogginnlegg, artikler, foredrag og patentsøknader"],"requirements":["Utmerket kunnskap om teori og praksis innen maskinlæring","Dyktig i Python, Java og C++","Kunnskap om dyplæringsrammeverk (TensorFlow, Keras, PyTorch)","Erfaring med datasyn og robotikk","Erfaring med stordatateknologier (BigQuery, Spark, AWS)","Erfaring med Kubernetes, Docker og skyplattformer"],"benefits":["Konkurransedyktig lønn og aksjepakke","Fleksibel arbeidstid og mulighet for fjernarbeid","Budsjett for faglig utvikling","Helseforsikring og velværeprogrammer","Moderne kontor i Geneve sentrum"]},"blockchain-developer":{"title":"Blockchain-utvikler","department":"Utvikling","location":"Fjernarbeid","type":"Heltid","level":"Mellom-seniornivå","modalDescription":"Bli med i teamet vårt for å bygge fremtiden for desentralisert finans på Ethereum og Internet Computer Protocol.","responsibilities":["Utvikle og vedlikeholde smarte kontrakter på Ethereum og ICP","Designe og implementere blockchain-løsninger for IoT- og robotikkapplikasjoner","Sikre sikkerhet, skalerbarhet og effektivitet i blockchain-applikasjoner","Holde seg oppdatert på fremskritt innen blockchain-teknologi","Feilsøke og løse blockchain-implementeringsproblemer"],"requirements":["Sterk erfaring med Ethereum og Solidity","Kunnskap om Internet Computer Protocol (ICP)","Forståelse av blockchain-grunnprinsipper og kryptografi","Erfaring med DeFi-protokoller","Evne til å jobbe selvstendig i en fjernarbeidsetting"],"benefits":["Fullt fjernarbeid","Konkurransedyktig kompensasjon i krypto/fiat","Muligheter for tokenallokering","Fleksibel arbeidstid på tvers av tidssoner","Årlige teamsamlinger"]},"humanoid-locomotion-engineer":{"title":"Bevegelsesingeniør","department":"Robotikk-ingeniørfag","location":"Genève, Sveits","type":"Fulltid","level":"Seniornivå","modalDescription":"Bli med i kjernerobotikklaget for å utvikle bevegelse- og balanssystemene som gjør at robotene våre kan gå og navigere i den fysiske verden.","responsibilities":["Designe og implementere stabile tobente gangmønstre og balanseregulatorer","Utvikle fullkropps bevegelsesplanleggingsalgoritmer for komplekst terreng","Simulere, teste og validere bevegelssystemer i MuJoCo og Isaac Gym","Bygge bro over kløften mellom simulering og virkelighet","Samarbeide med persepsjons- og manipulasjonsteam","Dokumentere og publisere forskning på bevegelsessystemer"],"requirements":["MSc eller PhD innen robotikk, maskinteknikk eller beslektet felt","Sterk ekspertise innen regulationsteori, dynamikk og tobent bevegelse","Praktisk erfaring med ROS2, C++ og Python","Kjennskap til fysikk-simulatorer (MuJoCo, Isaac Gym, PyBullet)","Erfaring med å deploye regulatorer på ekte robotvare","Publikasjoner eller demonstrerbare prosjekter innen benet robotikk"],"benefits":["Arbeid direkte med humanoide roboter i verdensklasse","Tilgang til toppmoderne laboratorium og robotvare","Støtte til publikasjoner og konferanser","Konkurransedyktig lønn og aksjepaket","Basert i Genève med internasjonalt team"]},"humanoid-perception-engineer":{"title":"Robot-persepsjonsingeniør","department":"Robotikk-ingeniørfag","location":"Genève, Sveits","type":"Fulltid","level":"Seniornivå","modalDescription":"Skap øyne og romlig intelligens for robotene våre — ved å fusjonere kameraer, LiDAR og propriosepsjon til en samlet sanntids verdensmodell.","responsibilities":["Utvikle sanntids objektdeteksjon, sporing og sceneforståelses-pipelines","Implementere sensorfusjon mellom RGB-D-kameraer, LiDAR og IMU-er","Bygge og vedlikeholde SLAM-systemer for navigasjon","Designe menneskeoppdagelse og poseringsestimering","Optimere persepsjons-pipelines for innebygd robotvare","Integrere persepsjon med bevegelsesplanlegging"],"requirements":["MSc eller PhD innen robotikk, datamaskinvisjon eller beslektet felt","Kompetanse i C++ og Python med sanntidssystemerfaring","Sterk bakgrunn i datamaskinvisjon, SLAM og sensorfusjon","Erfaring med ROS2, OpenCV og dyp lærings-inferensrammeverk","Kjennskap til 3D punktsky-behandling (PCL, Open3D)","Tidligere arbeid med dybdesensorer, LiDAR eller stereokameraer"],"benefits":["Lede persepsjonsarkitektur for banebrytende humanoide roboter","Tilgang til premium sensorsett og beregningsvare","Samarbeide med et tverrfaglig robotikkteam","Konferanse- og publikasjonsstøtte","Konkurransedyktig kompensasjon i Genève"]},"humanoid-manipulation-engineer":{"title":"Manipulasjonsingeniør","department":"Robotikk-ingeniørfag","location":"Genève, Sveits","type":"Fulltid","level":"Mid-senior nivå","modalDescription":"Utvikle de ferdige manipulasjonsmulighetene som lar robotene våre håndtere gjenstander og samhandle fysisk med verden.","responsibilities":["Utvikle løsere for invers kinematikk og armbevegelsesplanlegging for tosarmssystemer","Implementere gripeplanlegging og in-hånd-manipulasjon","Integrere taktile og kraft-dreiemoment-sensorer","Programmere oppgaveutføringspipelines for repeterbare operasjoner","Teste og validere på ekte robotvare","Samarbeide med AI-teamet om læringsbaserte manipulasjonspolicyer"],"requirements":["BSc eller MSc innen robotikk, maskinteknikk eller beslektet felt","Erfaring med bevegelsesplanleggingsbiblioteker (MoveIt, OMPL)","Kompetanse i C++ og Python; kjennskap til ROS2","Bakgrunn i robotkinematikk, dynamikk og kraftstyring","Praktisk erfaring med robotarmer eller gripere","Lidenskap for humanoid robotikk"],"benefits":["Forme manipulasjonsmulighetene til neste generasjons humanoide roboter","Arbeide side om side med ledende robotikk-forskere","Moderne robotikklaboratorium i sentrum av Genève","Konkurransedyktig lønn og goder","Klar vei til senioringeniørstillinger"]},"deep-learning-developer":{"title":"KI-dyplæringsutvikler","department":"KI og forskning","location":"Geneve, Sveits","type":"Heltid","level":"Mellomnivå","modalDescription":"Utvikle og optimalisere dyplæringsmodeller for produksjonsmiljøer innen robotikk og automasjon.","responsibilities":["Designe og implementere toppmoderne dyplæringsmodeller","Optimalisere modeller for ytelse og skalerbarhet","Samarbeide med forskningsteamet om innovative KI-løsninger","Distribuere modeller til produksjonsmiljøer","Overvåke og forbedre modellytelse"],"requirements":["Sterke programmeringsferdigheter i Python","Erfaring med dyplæringsrammeverk","Forståelse av nevrale nettverksarkitekturer","Kunnskap om optimaliseringsteknikker","Lidenskap for KI-teknologi"],"benefits":["Arbeid med banebrytende KI-prosjekter","Tilgang til kraftige dataressurser","Konferansedeltakelse og opplæring","Samarbeidende forskningsmiljø","Publiseringsmuligheter"]},"data-analyst":{"title":"Dataanalytiker","department":"Forretningsanalyse","location":"Geneve, Sveits","type":"Heltid","level":"Mellomnivå","modalDescription":"Transformer komplekse datasett til handlingsrettede innsikter for å drive strategiske beslutninger.","responsibilities":["Analysere store datasett for å identifisere trender og mønstre","Lage datavisualiseringer og dashbord","Samarbeide med team for å forstå databehov","Sikre datanøyaktighet og -integritet","Utvikle datadrevne strategier"],"requirements":["Dokumentert erfaring som dataanalytiker","Sterk kompetanse i SQL og Excel","Erfaring med visualiseringsverktøy (Tableau, Power BI)","Ferdigheter innen statistisk analyse","Utmerkede kommunikasjonsevner"],"benefits":["Moderne analyseteknologi","Tverrfaglig samarbeid","Muligheter for faglig utvikling","Innvirkning på strategiske beslutninger","Konkurransedyktig kompensasjon"]},"hr-assistant":{"title":"Personalansvarlig / Personlig assistent","department":"Mennesker og kultur","location":"Geneve, Sveits","type":"Heltid","level":"Mellomnivå","modalDescription":"Form bedriftskulturen vår og bygg team i verdensklasse i en raskt voksende KI-oppstartsbedrift.","responsibilities":["Finne og tiltrekke topptalenter til ulike stillinger","Administrere hele rekrutteringsprosessen","Utvikle og vedlikeholde rekrutteringsdatabaser","Koordinere intervjuer og kandidatevaluering","Støtte onboarding og utvikling av medarbeidere"],"requirements":["Bachelor-/mastergrad med sterk akademisk bakgrunn","Utmerkede organisatoriske ferdigheter og evne til å håndtere flere oppgaver","Sterk muntlig og skriftlig kommunikasjon","Erfaring med MS Office Suite","Evne til å arbeide i et dynamisk miljø"],"benefits":["Forme bedriftskulturen fra tidlig fase","Jobbe med et mangfoldig, internasjonalt team","Muligheter for profesjonell vekst","Fleksible arbeidsordninger","Konkurransedyktig kompensasjonspakke"]},"video-editor":{"title":"Videoredigerer","department":"Kreativ","location":"Geneve / Fjernarbeid","type":"Heltid","level":"Mellomnivå","modalDescription":"Lag engasjerende videoinnhold som viser frem våre KI- og robotikkinnovasjoner. Du vil produsere alt fra produktdemoer til innhold for sosiale medier og dokumentariske produksjoner.","responsibilities":["Redigere og produsere videoinnhold av høy kvalitet for flere plattformer","Lage bevegelsesgrafikk og visuelle effekter for produktdemonstrasjoner","Samarbeide med markedsføringsteamet om videostrategi og kampanjer","Administrere videoprosjekter fra konsept til endelig levering","Vedlikeholde organiserte mediebiblioteker og prosjektarkiver","Holde seg oppdatert på videotrender og nye formater"],"requirements":["Dokumentert erfaring som videoredigerer med sterk portefølje","Ekspertkompetanse i Adobe Premiere Pro og After Effects","Erfaring med DaVinci Resolve for fargekorrigering","Sterk forståelse av historiefortelling og visuell komposisjon","Kunnskap om bevegelsesgrafikk og grunnleggende 3D-animasjon","Evne til å jobbe selvstendig og overholde tidsfrister"],"benefits":["Kreativ frihet og eierskap over prosjekter","Tilgang til profesjonelt utstyr og programvare","Fleksible muligheter for fjernarbeid","Mulighet til å fremvise banebrytende teknologi","Konkurransedyktig lønn og fordelspakke"]},"marketing-specialist":{"title":"Markedsføringsspesialist","department":"Markedsføring","location":"Geneve, Sveits","type":"Heltid","level":"Mellomnivå","modalDescription":"Driv merkevarebevissthet og leadgenerering for våre KI- og robotikkprodukter. Utvikle og gjennomføre markedsføringskampanjer på tvers av digitale og tradisjonelle kanaler.","responsibilities":["Utvikle og gjennomføre integrerte markedsføringskampanjer","Administrere tilstedeværelse på sosiale medier og innholdskalender","Lage engasjerende markedsføringsinnhold og tekster","Analysere kampanjeresultater og optimalisere strategier","Koordinere med salgsteamet om initiativer for leadgenerering","Representere selskapet på bransjearrangementer og messer"],"requirements":["Bachelorgrad i markedsføring, kommunikasjon eller relatert felt","Mer enn 3 års erfaring med B2B-markedsføring","Sterk forståelse av digitale markedsføringskanaler","Erfaring med verktøy for markedsføringsautomatisering","Utmerkede skriftlige og muntlige kommunikasjonsferdigheter","Lidenskap for teknologi og innovasjon"],"benefits":["Forme markedsføringsstrategien til et voksende selskap","Jobbe med banebrytende KI- og robotikkprodukter","Muligheter for faglig utvikling","Internasjonal eksponering og reisemuligheter","Konkurransedyktig kompensasjonspakke"]},"rl-specialist":{"title":"Spesialist innen forsterkningslæring","department":"KI og forskning","location":"Geneve, Sveits","type":"Heltid","level":"Seniornivå","modalDescription":"Design og implementer forsterkningslæringsalgoritmer for robotstyring og autonome beslutningssystemer. Flytt grensene for hva som er mulig innen robotlæring.","responsibilities":["Designe og implementere RL-algoritmer for robotmanipulering og bevegelse","Utvikle simuleringsmiljøer for trening og testing av RL-agenter","Overføre lærte strategier fra simulering til virkelige roboter (sim-to-real)","Samarbeide med robotikkteamet om maskinvare-programvare-integrasjon","Publisere forskningsresultater på toppkonferanser","Veilede juniorforskere og ingeniører"],"requirements":["Doktorgrad eller mastergrad i informatikk, robotikk eller relatert felt","Sterk publiseringshistorikk innen RL eller robotikk (ICML, NeurIPS, CoRL, RSS)","Ekspertkunnskap om RL-algoritmer (PPO, SAC, TD3, modellbasert RL)","Erfaring med robotikksimulatorer (MuJoCo, Isaac Gym, PyBullet)","Kompetanse i Python og dyplæringsrammeverk (PyTorch foretrukket)","Erfaring med virkelige robotsystemer er et stort pluss"],"benefits":["Arbeid med toppmoderne robotikkforskning","Tilgang til avansert robotmaskinvare og dataklynger","Støtte til publisering og konferansedeltakelse","Samarbeid med forskere i verdensklasse","Konkurransedyktig lønn med forskningsbonuser"]},"app-developer-intern":{"title":"Apputvikler-praktikant","department":"Utvikling","location":"Geneve, Sveits","type":"3–6 måneder","level":"Student","modalDescription":"Bli med i utviklingsteamet vårt som apputvikler-praktikant for å utvikle mobil- og webapplikasjoner for våre KI-produkter.","responsibilities":["Utvikle og vedlikeholde mobilapplikasjoner med React Native","Bygge webapplikasjoner med Node.js og PHP","Jobbe med MySQL-databaser og API-integrasjoner","Samarbeide med seniorutviklere på produksjonssystemer","Delta i kodegjennomganger og sprintplanlegging"],"requirements":["For tiden innskrevet i informatikk eller relatert studieprogram","Kunnskap om React Native eller mobilutvikling","Kjennskap til Node.js, PHP eller lignende teknologier","Forståelse av databasekonsepter","Sterke problemløsningsferdigheter"],"benefits":["Praktisk erfaring med produksjonssystemer","Veiledning fra seniorutviklere","Fleksibel timeplan tilpasset studier","Mulighet for fast ansettelse","Månedlig stipend"]},"web-designer-intern":{"title":"Webdesigner/SEO-spesialist-praktikant","department":"Design og markedsføring","location":"Geneve, Sveits","type":"3–6 måneder","level":"Student","modalDescription":"Design og optimaliser webgrensesnitt samtidig som du implementerer SEO-strategier for våre KI-plattformer.","responsibilities":["Designe responsive webgrensesnitt","Implementere SEO-beste praksis","Lage UI/UX-design for nye funksjoner","Optimalisere nettsideytelse og tilgjengelighet","Gjennomføre brukerundersøkelser og brukervennlighetstesting"],"requirements":["For tiden innskrevet i design, markedsføring eller relatert studieprogram","Kompetanse i HTML, CSS og JavaScript","Forståelse av SEO-prinsipper","Erfaring med designverktøy (Figma, Adobe XD)","Portefølje som viser designarbeid"],"benefits":["Arbeid med virkelige prosjekter med global innvirkning","Lær av erfarne designere","Fleksibel arbeidstid","Mulighet for fast stilling","Månedlig stipend"]},"financial-analyst-intern":{"title":"Forretningsanalytiker-praktikant","department":"Drift","location":"Geneve, Sveits","type":"6–12 måneder","level":"Student","modalDescription":"Støtt forretningsanalyse og prognoser for KI-drevne robotikkprodukter.","responsibilities":["Bistå med forretningsmodellering og prognoser","Analysere komplekse driftsdatasett","Støtte utarbeidelse av forretningsrapporter","Gjennomføre markedsundersøkelser og konkurranseanalyse","Hjelpe til med å utvikle dashbord for forretningsanalyse"],"requirements":["For tiden innskrevet i økonomi, business eller relatert studieprogram","Sterke ferdigheter i Excel og datamodellering","Forståelse av forretningsmarkeder","Analytisk tenkemåte med øye for detaljer","Kunnskap om dataanalyseverktøy (Python/R) er et pluss"],"benefits":["Eksponering for KI-drevet robotikk","Arbeid med erfarne fagfolk","Forlenget praksisperiode for dypere læring","Mulighet for samarbeid om masteroppgave","Konkurransedyktig månedlig stipend"]},"video-editor-intern":{"title":"Videoredigerer-praktikant","department":"Kreativ","location":"Geneve, Sveits","type":"Deltid (15–20 t/uke)","level":"Student","modalDescription":"Lag engasjerende videoinnhold for våre KI-produkter og markedsføringskampanjer.","responsibilities":["Redigere kortformat og langformat videoinnhold","Lage bevegelsesgrafikk og animasjoner","Samarbeide med markedsføringsteamet om kampanjer","Administrere arbeidsflyten for videoproduksjon","Optimalisere innhold for ulike plattformer"],"requirements":["For tiden innskrevet i film, media eller relatert studieprogram","Kompetanse i Adobe Premiere og After Effects","Kreativt øye for historiefortelling","Forståelse av videoformater for sosiale medier","Portefølje av videoarbeid"],"benefits":["Deltidsplan perfekt for studenter","Kreativ frihet på prosjekter","Tilgang til profesjonelt utstyr","Bygg portefølje med virkelige kundeoppdrag","Timebasert kompensasjon"]},"personal-assistant-intern":{"title":"Personlig assistent-praktikant","department":"Drift","location":"Geneve, Sveits","type":"3–6 måneder","level":"Student","modalDescription":"Støtt HR- og administrative funksjoner i et dynamisk oppstartsmiljø.","responsibilities":["Bistå med rekrutterings- og onboardingprosesser","Støtte daglige administrative operasjoner","Koordinere møter og administrere kalendere","Hjelpe til med å organisere bedriftsarrangementer og aktiviteter","Vedlikeholde HR-dokumentasjon og databaser"],"requirements":["For tiden innskrevet i business, HR eller relatert studieprogram","Utmerkede organisatoriske ferdigheter","Sterk kommunikasjon på engelsk og fransk","Kompetanse i MS Office Suite","Evne til å håndtere konfidensiell informasjon"],"benefits":["Omfattende HR-erfaring","Eksponering for oppstartsdrift","Nettverksmuligheter","Fleksibel timeplan","Månedlig stipend"]},"graphic-designer-intern":{"title":"Grafisk designer-praktikant","department":"Design","location":"Geneve, Sveits","type":"3–6 måneder","level":"Student","modalDescription":"Design visuelle ressurser for våre KI-produkter og markedsføringsmateriell.","responsibilities":["Lage visuelle design for digitale og trykte medier","Utvikle merkevareressurser og markedsføringsmateriell","Designe UI-elementer for applikasjoner","Samarbeide med produkt- og markedsføringsteam","Opprettholde merkevarekonsistens på tvers av alt materiell"],"requirements":["For tiden innskrevet i grafisk design eller relatert studieprogram","Kompetanse i Adobe Creative Suite","Erfaring med Figma eller lignende verktøy","Sterk portefølje som viser designferdigheter","Forståelse av prinsipper for merkevaredesign"],"benefits":["Arbeid med varierte designprosjekter","Veiledning fra seniordesignere","Bygg en profesjonell portefølje","Fleksible arbeidsordninger","Månedlig stipend"]}};
 
     // Filter jobs
     function filterJobs(category) {
@@ -1913,5 +1990,26 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>

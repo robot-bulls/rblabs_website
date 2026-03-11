@@ -51,10 +51,8 @@
     <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/news/">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../typography.css">
 
     <style>
         .visuallyhidden {
@@ -72,6 +70,9 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
             padding: 8px 0;
         }
         .nav-lang-trigger .fa-globe {
@@ -148,15 +149,16 @@
             text-decoration: none;
             color: #374151;
             font-size: 14px;
+            font-family: inherit;
             transition: background 0.15s ease;
         }
         .nav-lang-item:hover {
             background: #f3f4f6;
         }
         .nav-lang-item.active {
-            background: rgba(6, 67, 140, 0.06);
-            color: #06438c;
-            font-weight: 600;
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
         }
         .nav-lang-name {
             flex: 1;
@@ -169,11 +171,11 @@
             font-weight: 500;
         }
         .nav-lang-item.active .nav-lang-code {
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-item .fa-check {
             font-size: 12px;
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-empty {
             padding: 20px 16px;
@@ -513,7 +515,7 @@
         position: absolute;
         top: 30px;
         left: 30px;
-        background: #06438c;
+        background: #1d1d1f;
         color: white;
         padding: 6px 14px;
         border-radius: 6px;
@@ -558,7 +560,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        color: #06438c;
+        color: #1d1d1f;
         font-weight: 600;
         text-decoration: none;
         transition: gap 0.2s;
@@ -603,7 +605,7 @@
         top: 15px;
         left: 15px;
         background: white;
-        color: #06438c;
+        color: #1d1d1f;
         padding: 4px 10px;
         border-radius: 4px;
         font-size: 11px;
@@ -689,12 +691,7 @@
                 </div>
                 <h2>Robert the Robot på World Economic Forum i Davos</h2>
                 <p>RB Labs tok med Robert the Robot til World Economic Forum i Davos, Sveits, hvor han engasjerte seg med globale ledere, administrerende direktører og beslutningstakere om fremtiden for KI og robotikk i verdensøkonomien.</p>
-                <a href="/nb/news/robert-in-davos/" class="read-more-btn">
-                    Les mer →
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"/>
-                    </svg>
-                </a>
+                <a href="/nb/news/robert-in-davos/" class="read-more-btn">Les mer →</a>
             </div>
         </article>
 
@@ -702,7 +699,7 @@
         <div class="posts-grid">
             <article class="post-card">
                 <div class="post-card-image">
-                    <img src="featured/RB-Labs-Ben-Bandari-Damac.jpg" alt="Robot oppnår over 100 millioner visninger innen Dubai eiendom">
+                    <img src="../../featured/RB-Labs-Ben-Bandari-Damac.jpg" alt="Robot oppnår over 100 millioner visninger innen Dubai eiendom">
                     <span class="post-category">FEATURED</span>
                 </div>
                 <div class="post-card-content">
@@ -897,5 +894,26 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>

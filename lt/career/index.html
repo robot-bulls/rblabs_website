@@ -51,10 +51,8 @@
     <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/career/">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../typography.css">
 
     <style>
         .visuallyhidden {
@@ -72,6 +70,9 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
             padding: 8px 0;
         }
         .nav-lang-trigger .fa-globe {
@@ -148,15 +149,16 @@
             text-decoration: none;
             color: #374151;
             font-size: 14px;
+            font-family: inherit;
             transition: background 0.15s ease;
         }
         .nav-lang-item:hover {
             background: #f3f4f6;
         }
         .nav-lang-item.active {
-            background: rgba(6, 67, 140, 0.06);
-            color: #06438c;
-            font-weight: 600;
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
         }
         .nav-lang-name {
             flex: 1;
@@ -169,11 +171,11 @@
             font-weight: 500;
         }
         .nav-lang-item.active .nav-lang-code {
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-item .fa-check {
             font-size: 12px;
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-empty {
             padding: 20px 16px;
@@ -514,7 +516,7 @@
         display: flex;
         gap: 8px;
         padding: 4px;
-        background: #f3f4f6;
+        background: transparent;
         border-radius: 12px;
     }
 
@@ -522,7 +524,7 @@
         padding: 10px 20px;
         background: transparent;
         border: none;
-        border-radius: 8px;
+        border-radius: 999px;
         font-weight: 500;
         color: #6b7280;
         cursor: pointer;
@@ -552,15 +554,25 @@
     }
 
     .search-bar:focus-within {
-        border-color: #06438c;
-        background: white;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #e5e7eb;
+        background: #f9fafb;
+        box-shadow: none;
+        outline: none !important;
+    }
+
+    .search-bar *:focus {
+        outline: none !important;
+    }
+
+    #jobSearch:focus {
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     .search-bar input {
-        border: none;
-        background: none;
-        outline: none;
+        border: none !important;
+        background: none !important;
+        outline: none !important;
         flex: 1;
         font-size: 14px;
         color: #111827;
@@ -600,7 +612,7 @@
         left: 0;
         width: 4px;
         height: 100%;
-        background: linear-gradient(180deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         transform: translateX(-4px);
         transition: transform 0.3s;
     }
@@ -683,30 +695,31 @@
     }
 
     .apply-section {
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: white;
         padding: 80px 0;
         text-align: center;
-        color: white;
+        color: #1d1d1f;
     }
 
     .apply-title {
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
+        color: #1d1d1f;
     }
 
     .apply-description {
         font-size: 18px;
-        opacity: 0.9;
+        color: #6e6e73;
         margin-bottom: 32px;
     }
 
     .apply-btn {
         display: inline-block;
         padding: 14px 32px;
-        background: white;
-        color: #06438c;
-        border-radius: 10px;
+        background: #1d1d1f;
+        color: white;
+        border-radius: 999px;
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s;
@@ -849,8 +862,8 @@
     .form-input:focus,
     .form-textarea:focus {
         outline: none;
-        border-color: #06438c;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #1d1d1f;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
     }
 
     .form-textarea {
@@ -862,10 +875,10 @@
     .submit-btn {
         width: 100%;
         padding: 14px;
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         color: white;
         border: none;
-        border-radius: 10px;
+        border-radius: 999px;
         font-weight: 600;
         font-size: 16px;
         cursor: pointer;
@@ -874,7 +887,7 @@
 
     .submit-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(6, 67, 140, 0.3);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
     }
 
     @keyframes spin {
@@ -925,6 +938,7 @@
 
         .jobs-container {
             padding: 40px 0 80px;
+            background: transparent;
         }
 
         .job-header {
@@ -1136,6 +1150,69 @@
                     <span class="skill-tag">ICP</span>
                     <span class="skill-tag">Smart Contracts</span>
                     <span class="skill-tag">DeFi</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-locomotion-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Judėjimo sistemų inžinierius</h3>
+                        <span class="job-department">Robotikos inžinerija</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Ženeva, Šveicarija</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Visas etatas</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Vyresnysis lygis</span>
+                </div>
+                <p class="job-description">Kurkite ir diekite dvikojų judėjimo sistemas mūsų humanoidiniams robotams. Kurkite stabilius eisenos modelius, balanso valdiklius ir dinaminį judėjimo planavimą realiajam pasauliui.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Bipedal Locomotion</span>
+                    <span class="skill-tag">Control Theory</span>
+                    <span class="skill-tag">ROS2</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">MuJoCo</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-perception-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Roboto percepcijos inžinierius</h3>
+                        <span class="job-department">Robotikos inžinerija</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Ženeva, Šveicarija</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Visas etatas</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Vyresnysis lygis</span>
+                </div>
+                <p class="job-description">Kurkite suvokimo intelektą mūsų humanoidiniams robotams. Kurkite realaus laiko kompiuterinės regos, jutiklių suliejimo ir erdvinio suvokimo sistemas saugiam naršymui žmonių aplinkoje.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">Sensor Fusion</span>
+                    <span class="skill-tag">SLAM</span>
+                    <span class="skill-tag">LiDAR</span>
+                    <span class="skill-tag">ROS2</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-manipulation-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Manipuliavimo inžinierius</h3>
+                        <span class="job-department">Robotikos inžinerija</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Ženeva, Šveicarija</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Visas etatas</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Vidutinis-vyresnysis lygis</span>
+                </div>
+                <p class="job-description">Kurkite mūsų humanoidinių robotų rankas ir plaštakas. Dirbkite su kinematika, griebimo planavimu ir užduočių vykdymo sistemomis fizinėms sąveikoms įmonių aplinkose.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Robot Manipulation</span>
+                    <span class="skill-tag">Kinematics</span>
+                    <span class="skill-tag">Grasp Planning</span>
+                    <span class="skill-tag">MoveIt</span>
+                    <span class="skill-tag">ROS2</span>
                 </div>
             </div>
             <div class="job-card" data-category="ai" onclick="openJobModal('deep-learning-developer')">
@@ -1498,7 +1575,7 @@
 
 <script>
     // Job data loaded from career data files
-    const jobData = {"senior-ai-developer":{"title":"Vyresnysis Python AI programuotojas","department":"DI ir moksliniai tyrimai","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vyresniojo lygio","modalDescription":"Ieškome vyresniojo Python AI programuotojo, kuris vadovautų pažangiausių DI sistemų kūrimui robotikos taikymams.","responsibilities":["Dirbti su projektais, apimančiais greitą sistemų prototipavimą ir eksperimentavimą naudojant kompiuterinės regos programinę įrangą, robotikos sistemas ir mašininio mokymosi modelius","Mokyti naujausius giluminius neuroninius tinklus prognozavimui ir sustiprinimo mokymuisi","Projektuoti robotinius įrenginius laboratorijoje ir fizikos simuliacijos aplinkose","Identifikuoti galimybes ir skatinti naujas mašininio mokymosi taikymo iniciatyvas","Prisidėti prie techninių tinklaraščio įrašų, mokslinių straipsnių, pranešimų ir patentų paraiškų"],"requirements":["Puikios mašininio mokymosi teorijos ir praktikos žinios","Python, Java ir C++ įgūdžiai","Gilaus mokymosi karkasų išmanymas (TensorFlow, Keras, PyTorch)","Patirtis kompiuterinės regos ir robotikos srityse","Patirtis su didelių duomenų technologijomis (BigQuery, Spark, AWS)","Patirtis naudojant Kubernetes, Docker ir debesų platformas"],"benefits":["Konkurencingas atlyginimas ir akcijų paketas","Lankstus darbo laikas ir nuotolinio darbo galimybės","Profesinio tobulėjimo biudžetas","Sveikatos draudimas ir gerovės programos","Modernus biuras Ženevos miesto centre"]},"blockchain-developer":{"title":"Blockchain programuotojas","department":"Inžinerija","location":"Nuotolinis darbas","type":"Visas etatas","level":"Vidutinio-vyresniojo lygio","modalDescription":"Prisijunkite prie mūsų komandos ir kurkite decentralizuotų finansų ateitį Ethereum ir Internet Computer Protocol platformose.","responsibilities":["Kurti ir prižiūrėti išmaniąsias sutartis Ethereum ir ICP platformose","Projektuoti ir įgyvendinti blockchain sprendimus daiktų interneto ir robotikos taikymams","Užtikrinti blockchain programų saugumą, mastelį ir efektyvumą","Sekti blockchain technologijų pažangą","Derinti ir spręsti blockchain diegimo problemas"],"requirements":["Didelė patirtis su Ethereum ir Solidity","Internet Computer Protocol (ICP) išmanymas","Blockchain pagrindų ir kriptografijos supratimas","Patirtis su DeFi protokolais","Gebėjimas dirbti savarankiškai nuotoliniu būdu"],"benefits":["Visiškai nuotolinė pozicija","Konkurencingas atlygis kriptovaliuta / fiat valiuta","Žetonų paskirstymo galimybės","Lankstus darbo laikas skirtingose laiko zonose","Metiniai komandos susitikimai"]},"deep-learning-developer":{"title":"DI gilaus mokymosi programuotojas","department":"DI ir moksliniai tyrimai","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Kurkite ir optimizuokite gilaus mokymosi modelius gamybinėms aplinkoms robotikoje ir automatizavime.","responsibilities":["Projektuoti ir įgyvendinti naujausius gilaus mokymosi modelius","Optimizuoti modelius našumui ir mastelui","Bendradarbiauti su mokslinių tyrimų komanda kuriant inovatyvius DI sprendimus","Diegti modelius gamybinėse aplinkose","Stebėti ir gerinti modelių našumą"],"requirements":["Stiprūs programavimo įgūdžiai Python kalba","Patirtis su gilaus mokymosi karkasais","Neuroninių tinklų architektūrų supratimas","Optimizavimo technikų išmanymas","Aistra DI technologijoms"],"benefits":["Darbas su pažangiausiais DI projektais","Prieiga prie galingų skaičiavimo išteklių","Dalyvavimas konferencijose ir mokymai","Bendradarbiaujanti mokslinių tyrimų aplinka","Publikavimo galimybės"]},"data-analyst":{"title":"Duomenų analitikas","department":"Verslo analitika","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Paverskite sudėtingus duomenų rinkinius veiksmingomis įžvalgomis strateginiams sprendimams priimti.","responsibilities":["Analizuoti didelius duomenų rinkinius, nustatant tendencijas ir modelius","Kurti duomenų vizualizacijas ir valdymo skydelius","Bendradarbiauti su komandomis siekiant suprasti duomenų poreikius","Užtikrinti duomenų tikslumą ir vientisumą","Kurti duomenimis grįstas strategijas"],"requirements":["Įrodyta patirtis dirbant duomenų analitiku","Stiprūs SQL ir Excel įgūdžiai","Patirtis su vizualizacijos įrankiais (Tableau, Power BI)","Statistinės analizės įgūdžiai","Puikūs komunikacijos gebėjimai"],"benefits":["Modernus analitikos technologijų paketas","Tarpfunkcinis bendradarbiavimas","Profesinio tobulėjimo galimybės","Įtaka strateginiams sprendimams","Konkurencingas atlygis"]},"hr-assistant":{"title":"Žmogiškieji ištekliai / Asmeninis asistentas","department":"Žmonės ir kultūra","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Formuokite mūsų įmonės kultūrą ir kurkite pasaulinio lygio komandas sparčiai augančiame DI startuolyje.","responsibilities":["Ieškoti ir pritraukti geriausius talentus įvairioms pozicijoms","Valdyti visą įdarbinimo proceso ciklą","Kurti ir prižiūrėti įdarbinimo duomenų bazes","Koordinuoti pokalbius ir kandidatų vertinimą","Padėti darbuotojų adaptacijoje ir ugdyme"],"requirements":["Bakalauro / magistro laipsnis su stipriu akademiniu pagrindu","Puikūs organizaciniai ir daugiafunkciniai įgūdžiai","Stipri žodinė ir rašytinė komunikacija","Patirtis su MS Office Suite","Gebėjimas dirbti sparčiai kintančioje aplinkoje"],"benefits":["Formuoti įmonės kultūrą nuo ankstyvo etapo","Dirbti su įvairia, tarptautine komanda","Profesinio augimo galimybės","Lankstūs darbo susitarimai","Konkurencingas atlygio paketas"]},"video-editor":{"title":"Vaizdo įrašų montuotojas","department":"Kūryba","location":"Ženeva / Nuotolinis darbas","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Kurkite įtikinamą vaizdo turinį, pristatantį mūsų DI ir robotikos inovacijas. Gaminsite viską – nuo produktų demonstracijų iki socialinių tinklų turinio ir dokumentinio stiliaus kūrinių.","responsibilities":["Montuoti ir gaminti aukštos kokybės vaizdo turinį kelioms platformoms","Kurti judesio grafiką ir vizualinius efektus produktų demonstracijoms","Bendradarbiauti su rinkodaros komanda dėl vaizdo strategijos ir kampanijų","Valdyti vaizdo projektus nuo koncepcijos iki galutinio pristatymo","Tvarkyti organizuotas medijų bibliotekas ir projektų archyvus","Sekti vaizdo tendencijas ir naujus formatus"],"requirements":["Įrodyta patirtis kaip vaizdo montuotojas su stipriu portfolio","Aukšto lygio Adobe Premiere Pro ir After Effects įgūdžiai","Patirtis su DaVinci Resolve spalvų korekcijoje","Stiprus pasakojimo ir vizualinės kompozicijos supratimas","Judesio grafikos ir bazinės 3D animacijos žinios","Gebėjimas dirbti savarankiškai ir laikytis terminų"],"benefits":["Kūrybinė laisvė ir projektų nuosavybė","Prieiga prie profesionalios įrangos ir programinės įrangos","Lanksčios nuotolinio darbo galimybės","Galimybė pristatyti pažangiausias technologijas","Konkurencingas atlyginimas ir socialinių garantijų paketas"]},"marketing-specialist":{"title":"Rinkodaros specialistas","department":"Rinkodara","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Skatinkite prekės ženklo žinomumą ir potencialių klientų generavimą mūsų DI ir robotikos produktams. Kurkite ir vykdykite rinkodaros kampanijas skaitmeniniais ir tradiciniais kanalais.","responsibilities":["Kurti ir vykdyti integruotas rinkodaros kampanijas","Valdyti buvimą socialiniuose tinkluose ir turinio kalendorių","Kurti įtikinamą rinkodaros turinį ir tekstus","Analizuoti kampanijų rezultatus ir optimizuoti strategijas","Koordinuoti su pardavimų komanda potencialių klientų generavimo iniciatyvas","Atstovauti įmonei pramonės renginiuose ir parodose"],"requirements":["Bakalauro laipsnis rinkodaros, komunikacijos ar susijusioje srityje","Daugiau nei 3 metų B2B rinkodaros patirtis","Stiprus skaitmeninės rinkodaros kanalų supratimas","Patirtis su rinkodaros automatizavimo įrankiais","Puikūs rašytinės ir žodinės komunikacijos įgūdžiai","Aistra technologijoms ir inovacijoms"],"benefits":["Formuoti augančios įmonės rinkodaros strategiją","Dirbti su pažangiausiais DI ir robotikos produktais","Profesinio tobulėjimo galimybės","Tarptautinė patirtis ir kelionių galimybės","Konkurencingas atlygio paketas"]},"rl-specialist":{"title":"Sustiprinimo mokymosi specialistas","department":"DI ir moksliniai tyrimai","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vyresniojo lygio","modalDescription":"Projektuokite ir įgyvendinkite sustiprinimo mokymosi algoritmus robotų valdymui ir autonominėms sprendimų priėmimo sistemoms. Stumkite roboto mokymosi galimybių ribas.","responsibilities":["Projektuoti ir įgyvendinti RL algoritmus robotų manipuliavimui ir lokomocijai","Kurti simuliacijos aplinkas RL agentų mokymui ir testavimui","Perkelti išmoktas politikas iš simuliacijos į tikrus robotus (sim-to-real)","Bendradarbiauti su robotikos komanda dėl aparatinės ir programinės įrangos integracijos","Publikuoti tyrimų rezultatus aukščiausio lygio konferencijose","Mentoruoti jaunesniuosius tyrėjus ir inžinierius"],"requirements":["Daktaro arba magistro laipsnis informatikos, robotikos ar susijusioje srityje","Stiprus publikacijų sąrašas RL ar robotikos srityje (ICML, NeurIPS, CoRL, RSS)","Ekspertinės RL algoritmų žinios (PPO, SAC, TD3, modeliu pagrįstas RL)","Patirtis su robotikos simuliatoriais (MuJoCo, Isaac Gym, PyBullet)","Python ir gilaus mokymosi karkasų įgūdžiai (pirmenybė PyTorch)","Patirtis su tikrais robotų sistemomis yra didelis privalumas"],"benefits":["Darbas su naujausia robotikos moksline veikla","Prieiga prie pažangios robotų aparatūros ir skaičiavimo klasterių","Parama publikacijoms ir dalyvavimui konferencijose","Bendradarbiavimas su pasaulinio lygio tyrėjais","Konkurencingas atlyginimas su mokslinių tyrimų premijomis"]},"app-developer-intern":{"title":"Programėlių kūrėjas praktikantas","department":"Inžinerija","location":"Ženeva, Šveicarija","type":"3–6 mėnesiai","level":"Studentas","modalDescription":"Prisijunkite prie mūsų inžinerijos komandos kaip programėlių kūrėjas praktikantas ir kurkite mobilias bei žiniatinklio programas mūsų DI produktams.","responsibilities":["Kurti ir prižiūrėti mobilias programas naudojant React Native","Kurti žiniatinklio programas su Node.js ir PHP","Dirbti su MySQL duomenų bazėmis ir API integracijomis","Bendradarbiauti su vyresniaisiais programuotojais gamybinėse sistemose","Dalyvauti kodo peržiūrose ir sprinto planavime"],"requirements":["Šiuo metu studijuoja informatikos ar susijusią programą","React Native ar mobiliosios programavimo žinios","Susipažinimas su Node.js, PHP ar panašiomis technologijomis","Duomenų bazių koncepcijų supratimas","Stiprūs problemų sprendimo įgūdžiai"],"benefits":["Praktinė patirtis su gamybinėmis sistemomis","Vyresniųjų programuotojų mentorystė","Lankstus grafikas studijoms derinti","Galimybė įsidarbinti visam etatui","Mėnesinė stipendija"]},"web-designer-intern":{"title":"Žiniatinklio dizaineris / SEO specialistas praktikantas","department":"Dizainas ir rinkodara","location":"Ženeva, Šveicarija","type":"3–6 mėnesiai","level":"Studentas","modalDescription":"Projektuokite ir optimizuokite žiniatinklio sąsajas įgyvendindami SEO strategijas mūsų DI platformoms.","responsibilities":["Projektuoti adaptyviąsias žiniatinklio sąsajas","Įgyvendinti geriausias SEO praktikas","Kurti UI/UX dizainus naujoms funkcijoms","Optimizuoti svetainės našumą ir prieinamumą","Vykdyti naudotojų tyrimus ir patogumo testavimą"],"requirements":["Šiuo metu studijuoja dizaino, rinkodaros ar susijusią programą","HTML, CSS ir JavaScript įgūdžiai","SEO principų supratimas","Patirtis su dizaino įrankiais (Figma, Adobe XD)","Portfolio, demonstruojantis dizaino darbus"],"benefits":["Darbas su tikrais projektais, turinčiais globalinį poveikį","Mokymasis iš patyrusių dizainerių","Lankstus darbo laikas","Galimybė gauti nuolatinę poziciją","Mėnesinė stipendija"]},"financial-analyst-intern":{"title":"Verslo analitiko praktikantas","department":"Operacijos","location":"Ženeva, Šveicarija","type":"6–12 mėnesių","level":"Studentas","modalDescription":"Padėkite atlikti verslo analizę ir prognozes DI pagrįstiems robotikos produktams.","responsibilities":["Padėti verslo modeliavime ir prognozavime","Analizuoti sudėtingus veiklos duomenų rinkinius","Padėti rengti verslo ataskaitas","Atlikti rinkos tyrimus ir konkurencinę analizę","Padėti kurti verslo analitikos valdymo skydelius"],"requirements":["Šiuo metu studijuoja verslo, ekonomikos ar susijusią programą","Stiprūs Excel ir duomenų modeliavimo įgūdžiai","Verslo rinkų supratimas","Analitinis mąstymas su dėmesiu detalėms","Duomenų analizės įrankių (Python/R) žinios yra privalumas"],"benefits":["Susipažinimas su DI pagrįsta robotika","Darbas su patyrusiais profesionalais","Prailginta praktikos trukmė gilesniam mokymuisi","Galimybė bendradarbiauti rengiant baigiamąjį darbą","Konkurencinga mėnesinė stipendija"]},"video-editor-intern":{"title":"Vaizdo montuotojo praktikantas","department":"Kūryba","location":"Ženeva, Šveicarija","type":"Dalis etato (15–20 val./sav.)","level":"Studentas","modalDescription":"Kurkite patrauklų vaizdo turinį mūsų DI produktams ir rinkodaros kampanijoms.","responsibilities":["Montuoti trumpos ir ilgos formos vaizdo turinį","Kurti judesio grafiką ir animacijas","Bendradarbiauti su rinkodaros komanda dėl kampanijų","Valdyti vaizdo gamybos darbo eigą","Optimizuoti turinį įvairioms platformoms"],"requirements":["Šiuo metu studijuoja kino, medijų ar susijusią programą","Adobe Premiere ir After Effects įgūdžiai","Kūrybinis pasakojimo pojūtis","Socialinių tinklų vaizdo formatų supratimas","Vaizdo darbų portfolio"],"benefits":["Dalinio etato grafikas, puikiai tinkantis studentams","Kūrybinė laisvė projektuose","Prieiga prie profesionalios įrangos","Kurkite portfolio su tikrais klientų darbais","Valandinis atlygis"]},"personal-assistant-intern":{"title":"Asmeninio asistento praktikantas","department":"Operacijos","location":"Ženeva, Šveicarija","type":"3–6 mėnesiai","level":"Studentas","modalDescription":"Padėkite vykdyti personalo ir administracines funkcijas sparčiai besivystančioje startuolio aplinkoje.","responsibilities":["Padėti įdarbinimo ir adaptacijos procesuose","Padėti kasdienėse administracinėse operacijose","Koordinuoti susitikimus ir tvarkyti kalendorius","Padėti organizuoti įmonės renginius ir veiklą","Tvarkyti personalo dokumentaciją ir duomenų bazes"],"requirements":["Šiuo metu studijuoja verslo, personalo valdymo ar susijusią programą","Puikūs organizaciniai įgūdžiai","Stipri komunikacija anglų ir prancūzų kalbomis","MS Office Suite įgūdžiai","Gebėjimas tvarkyti konfidencialią informaciją"],"benefits":["Visapusiška personalo valdymo patirtis","Susipažinimas su startuolio operacijomis","Tinklaveikos galimybės","Lankstus grafikas","Mėnesinė stipendija"]},"graphic-designer-intern":{"title":"Grafikos dizainerio praktikantas","department":"Dizainas","location":"Ženeva, Šveicarija","type":"3–6 mėnesiai","level":"Studentas","modalDescription":"Kurkite vizualinius išteklius mūsų DI produktams ir rinkodaros medžiagai.","responsibilities":["Kurti vizualinius dizainus skaitmeninei ir spausdintinei medijai","Kurti prekės ženklo išteklius ir rinkodaros medžiagą","Projektuoti UI elementus programoms","Bendradarbiauti su produkto ir rinkodaros komandomis","Užtikrinti prekės ženklo nuoseklumą visoje medžiagoje"],"requirements":["Šiuo metu studijuoja grafikos dizaino ar susijusią programą","Adobe Creative Suite įgūdžiai","Patirtis su Figma ar panašiais įrankiais","Stiprus portfolio, demonstruojantis dizaino įgūdžius","Prekės ženklo dizaino principų supratimas"],"benefits":["Darbas su įvairiais dizaino projektais","Vyresniųjų dizainerių mentorystė","Profesionalaus portfolio kūrimas","Lankstūs darbo susitarimai","Mėnesinė stipendija"]}};
+    const jobData = {"senior-ai-developer":{"title":"Vyresnysis Python AI programuotojas","department":"DI ir moksliniai tyrimai","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vyresniojo lygio","modalDescription":"Ieškome vyresniojo Python AI programuotojo, kuris vadovautų pažangiausių DI sistemų kūrimui robotikos taikymams.","responsibilities":["Dirbti su projektais, apimančiais greitą sistemų prototipavimą ir eksperimentavimą naudojant kompiuterinės regos programinę įrangą, robotikos sistemas ir mašininio mokymosi modelius","Mokyti naujausius giluminius neuroninius tinklus prognozavimui ir sustiprinimo mokymuisi","Projektuoti robotinius įrenginius laboratorijoje ir fizikos simuliacijos aplinkose","Identifikuoti galimybes ir skatinti naujas mašininio mokymosi taikymo iniciatyvas","Prisidėti prie techninių tinklaraščio įrašų, mokslinių straipsnių, pranešimų ir patentų paraiškų"],"requirements":["Puikios mašininio mokymosi teorijos ir praktikos žinios","Python, Java ir C++ įgūdžiai","Gilaus mokymosi karkasų išmanymas (TensorFlow, Keras, PyTorch)","Patirtis kompiuterinės regos ir robotikos srityse","Patirtis su didelių duomenų technologijomis (BigQuery, Spark, AWS)","Patirtis naudojant Kubernetes, Docker ir debesų platformas"],"benefits":["Konkurencingas atlyginimas ir akcijų paketas","Lankstus darbo laikas ir nuotolinio darbo galimybės","Profesinio tobulėjimo biudžetas","Sveikatos draudimas ir gerovės programos","Modernus biuras Ženevos miesto centre"]},"blockchain-developer":{"title":"Blockchain programuotojas","department":"Inžinerija","location":"Nuotolinis darbas","type":"Visas etatas","level":"Vidutinio-vyresniojo lygio","modalDescription":"Prisijunkite prie mūsų komandos ir kurkite decentralizuotų finansų ateitį Ethereum ir Internet Computer Protocol platformose.","responsibilities":["Kurti ir prižiūrėti išmaniąsias sutartis Ethereum ir ICP platformose","Projektuoti ir įgyvendinti blockchain sprendimus daiktų interneto ir robotikos taikymams","Užtikrinti blockchain programų saugumą, mastelį ir efektyvumą","Sekti blockchain technologijų pažangą","Derinti ir spręsti blockchain diegimo problemas"],"requirements":["Didelė patirtis su Ethereum ir Solidity","Internet Computer Protocol (ICP) išmanymas","Blockchain pagrindų ir kriptografijos supratimas","Patirtis su DeFi protokolais","Gebėjimas dirbti savarankiškai nuotoliniu būdu"],"benefits":["Visiškai nuotolinė pozicija","Konkurencingas atlygis kriptovaliuta / fiat valiuta","Žetonų paskirstymo galimybės","Lankstus darbo laikas skirtingose laiko zonose","Metiniai komandos susitikimai"]},"humanoid-locomotion-engineer":{"title":"Judėjimo sistemų inžinierius","department":"Robotikos inžinerija","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vyresnysis lygis","modalDescription":"Prisijunkite prie pagrindinės robotikos komandos ir kurkite judėjimo bei balanso sistemas, leidžiančias mūsų robotams vaikščioti ir naršyti fiziniame pasaulyje.","responsibilities":["Kurti ir diegti stabilias dvikojų eisenos modelius ir balanso valdiklius","Kurti viso kūno judėjimo planavimo algoritmus sudėtingam reljefui","Modeliuoti, testuoti ir patvirtinti judėjimo sistemas MuJoCo ir Isaac Gym aplinkose","Sumažinti atotrūkį tarp simuliacijos ir realaus pasaulio derinant valdiklius","Bendradarbiauti su suvokimo ir manipuliavimo komandomis","Dokumentuoti ir skelbti judėjimo sistemų tyrimus"],"requirements":["Robotikos, mechanikos inžinerijos ar susijusios srities magistro ar daktaro laipsnis","Tvirtos žinios valdymo teorijos, dinamikos ir dvikojų judėjimo srityse","Praktinė patirtis su ROS2, C++ ir Python","Susipažinimas su fizikos simuliatoriais (MuJoCo, Isaac Gym, PyBullet)","Valdiklių diegimo ant realios aparatinės įrangos patirtis","Publikacijos arba demonstruojami projektai kojotų robotikos srityje"],"benefits":["Tiesioginis darbas su pasaulio klasės humanoidiniais robotais","Prieiga prie pažangiausių laboratorijų ir robotų įrangos","Paramos publikacijoms ir konferencijoms teikimas","Konkurencingas atlyginimas ir akcijų paketas","Biuras Ženevoje, tarptautinė komanda"]},"humanoid-perception-engineer":{"title":"Roboto percepcijos inžinierius","department":"Robotikos inžinerija","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vyresnysis lygis","modalDescription":"Kurkite mūsų robotų regą ir erdvinį intelektą — suliedami kameras, LiDAR ir propriocepciją į vieningą realaus laiko pasaulio modelį.","responsibilities":["Kurti realaus laiko objektų aptikimo, sekimo ir scenų supratimo vamzdynus","Įgyvendinti jutiklių suliejimą tarp RGB-D kamerų, LiDAR ir IMU","Kurti ir prižiūrėti SLAM sistemas navigacijai","Projektuoti žmonių aptikimą ir kūno padėties įvertinimą","Optimizuoti suvokimo vamzdynus integruotai aparatinei įrangai","Integruoti suvokimą su judėjimo planavimu"],"requirements":["Robotikos, kompiuterinės regos ar susijusios srities magistro ar daktaro laipsnis","C++ ir Python įgūdžiai su realaus laiko sistemų patirtimi","Tvirtas kompiuterinės regos, SLAM ir jutiklių suliejimo pagrindas","Patirtis su ROS2, OpenCV ir giluminio mokymosi išvadų sistemomis","Susipažinimas su 3D taškų debesų apdorojimo įrankiais (PCL, Open3D)","Ankstesnis darbas su gylio jutikliais, LiDAR ar stereo kameromis"],"benefits":["Vadovauti suvokimo architektūrai pažangiausiems humanoidiniams robotams","Prieiga prie aukščiausios klasės jutiklių rinkinių ir skaičiavimo įrangos","Bendradarbiavimas su daugiadalyke robotikos komanda","Konferencijų ir publikacijų parama","Konkurencingas atlygis Ženevoje"]},"humanoid-manipulation-engineer":{"title":"Manipuliavimo inžinierius","department":"Robotikos inžinerija","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vidutinis-vyresnysis lygis","modalDescription":"Kurkite robotų manipuliavimo galimybes, leidžiančias jiems tvarkyti objektus ir fiziškai sąveikauti su pasauliu.","responsibilities":["Kurti atvirkštinės kinematikos sprendiklius ir rankos judėjimo planavimą dviguboms rankinėms sistemoms","Įgyvendinti griebimo planavimą ir manipuliavimą ranka","Integruoti lytėjimo ir jėgos-momento jutiklius","Programuoti pakartojamų užduočių vykdymo vamzdynus","Testuoti ir patvirtinti ant realios aparatinės įrangos","Bendradarbiauti su DI komanda dėl mokymusi grįstų manipuliavimo strategijų"],"requirements":["Robotikos, mechanikos inžinerijos ar susijusios srities bakalauro ar magistro laipsnis","Patirtis su judėjimo planavimo bibliotekomis (MoveIt, OMPL)","C++ ir Python įgūdžiai; susipažinimas su ROS2","Robotų kinematikos, dinamikos ir jėgos valdymo pagrindas","Praktinė patirtis su robotinėmis rankomis ar griebikliais","Aistra humanoidinei robotikai"],"benefits":["Formuoti kitos kartos humanoidinių robotų manipuliavimo galimybes","Dirbti šalia pirmaujančių robotikos tyrėjų","Moderní robotikos laboratorija Ženevos centre","Konkurencingas atlyginimas ir išmokos","Aiškus kelias į vyresniosios inžinerijos pareigas"]},"deep-learning-developer":{"title":"DI gilaus mokymosi programuotojas","department":"DI ir moksliniai tyrimai","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Kurkite ir optimizuokite gilaus mokymosi modelius gamybinėms aplinkoms robotikoje ir automatizavime.","responsibilities":["Projektuoti ir įgyvendinti naujausius gilaus mokymosi modelius","Optimizuoti modelius našumui ir mastelui","Bendradarbiauti su mokslinių tyrimų komanda kuriant inovatyvius DI sprendimus","Diegti modelius gamybinėse aplinkose","Stebėti ir gerinti modelių našumą"],"requirements":["Stiprūs programavimo įgūdžiai Python kalba","Patirtis su gilaus mokymosi karkasais","Neuroninių tinklų architektūrų supratimas","Optimizavimo technikų išmanymas","Aistra DI technologijoms"],"benefits":["Darbas su pažangiausiais DI projektais","Prieiga prie galingų skaičiavimo išteklių","Dalyvavimas konferencijose ir mokymai","Bendradarbiaujanti mokslinių tyrimų aplinka","Publikavimo galimybės"]},"data-analyst":{"title":"Duomenų analitikas","department":"Verslo analitika","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Paverskite sudėtingus duomenų rinkinius veiksmingomis įžvalgomis strateginiams sprendimams priimti.","responsibilities":["Analizuoti didelius duomenų rinkinius, nustatant tendencijas ir modelius","Kurti duomenų vizualizacijas ir valdymo skydelius","Bendradarbiauti su komandomis siekiant suprasti duomenų poreikius","Užtikrinti duomenų tikslumą ir vientisumą","Kurti duomenimis grįstas strategijas"],"requirements":["Įrodyta patirtis dirbant duomenų analitiku","Stiprūs SQL ir Excel įgūdžiai","Patirtis su vizualizacijos įrankiais (Tableau, Power BI)","Statistinės analizės įgūdžiai","Puikūs komunikacijos gebėjimai"],"benefits":["Modernus analitikos technologijų paketas","Tarpfunkcinis bendradarbiavimas","Profesinio tobulėjimo galimybės","Įtaka strateginiams sprendimams","Konkurencingas atlygis"]},"hr-assistant":{"title":"Žmogiškieji ištekliai / Asmeninis asistentas","department":"Žmonės ir kultūra","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Formuokite mūsų įmonės kultūrą ir kurkite pasaulinio lygio komandas sparčiai augančiame DI startuolyje.","responsibilities":["Ieškoti ir pritraukti geriausius talentus įvairioms pozicijoms","Valdyti visą įdarbinimo proceso ciklą","Kurti ir prižiūrėti įdarbinimo duomenų bazes","Koordinuoti pokalbius ir kandidatų vertinimą","Padėti darbuotojų adaptacijoje ir ugdyme"],"requirements":["Bakalauro / magistro laipsnis su stipriu akademiniu pagrindu","Puikūs organizaciniai ir daugiafunkciniai įgūdžiai","Stipri žodinė ir rašytinė komunikacija","Patirtis su MS Office Suite","Gebėjimas dirbti sparčiai kintančioje aplinkoje"],"benefits":["Formuoti įmonės kultūrą nuo ankstyvo etapo","Dirbti su įvairia, tarptautine komanda","Profesinio augimo galimybės","Lankstūs darbo susitarimai","Konkurencingas atlygio paketas"]},"video-editor":{"title":"Vaizdo įrašų montuotojas","department":"Kūryba","location":"Ženeva / Nuotolinis darbas","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Kurkite įtikinamą vaizdo turinį, pristatantį mūsų DI ir robotikos inovacijas. Gaminsite viską – nuo produktų demonstracijų iki socialinių tinklų turinio ir dokumentinio stiliaus kūrinių.","responsibilities":["Montuoti ir gaminti aukštos kokybės vaizdo turinį kelioms platformoms","Kurti judesio grafiką ir vizualinius efektus produktų demonstracijoms","Bendradarbiauti su rinkodaros komanda dėl vaizdo strategijos ir kampanijų","Valdyti vaizdo projektus nuo koncepcijos iki galutinio pristatymo","Tvarkyti organizuotas medijų bibliotekas ir projektų archyvus","Sekti vaizdo tendencijas ir naujus formatus"],"requirements":["Įrodyta patirtis kaip vaizdo montuotojas su stipriu portfolio","Aukšto lygio Adobe Premiere Pro ir After Effects įgūdžiai","Patirtis su DaVinci Resolve spalvų korekcijoje","Stiprus pasakojimo ir vizualinės kompozicijos supratimas","Judesio grafikos ir bazinės 3D animacijos žinios","Gebėjimas dirbti savarankiškai ir laikytis terminų"],"benefits":["Kūrybinė laisvė ir projektų nuosavybė","Prieiga prie profesionalios įrangos ir programinės įrangos","Lanksčios nuotolinio darbo galimybės","Galimybė pristatyti pažangiausias technologijas","Konkurencingas atlyginimas ir socialinių garantijų paketas"]},"marketing-specialist":{"title":"Rinkodaros specialistas","department":"Rinkodara","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vidutinio lygio","modalDescription":"Skatinkite prekės ženklo žinomumą ir potencialių klientų generavimą mūsų DI ir robotikos produktams. Kurkite ir vykdykite rinkodaros kampanijas skaitmeniniais ir tradiciniais kanalais.","responsibilities":["Kurti ir vykdyti integruotas rinkodaros kampanijas","Valdyti buvimą socialiniuose tinkluose ir turinio kalendorių","Kurti įtikinamą rinkodaros turinį ir tekstus","Analizuoti kampanijų rezultatus ir optimizuoti strategijas","Koordinuoti su pardavimų komanda potencialių klientų generavimo iniciatyvas","Atstovauti įmonei pramonės renginiuose ir parodose"],"requirements":["Bakalauro laipsnis rinkodaros, komunikacijos ar susijusioje srityje","Daugiau nei 3 metų B2B rinkodaros patirtis","Stiprus skaitmeninės rinkodaros kanalų supratimas","Patirtis su rinkodaros automatizavimo įrankiais","Puikūs rašytinės ir žodinės komunikacijos įgūdžiai","Aistra technologijoms ir inovacijoms"],"benefits":["Formuoti augančios įmonės rinkodaros strategiją","Dirbti su pažangiausiais DI ir robotikos produktais","Profesinio tobulėjimo galimybės","Tarptautinė patirtis ir kelionių galimybės","Konkurencingas atlygio paketas"]},"rl-specialist":{"title":"Sustiprinimo mokymosi specialistas","department":"DI ir moksliniai tyrimai","location":"Ženeva, Šveicarija","type":"Visas etatas","level":"Vyresniojo lygio","modalDescription":"Projektuokite ir įgyvendinkite sustiprinimo mokymosi algoritmus robotų valdymui ir autonominėms sprendimų priėmimo sistemoms. Stumkite roboto mokymosi galimybių ribas.","responsibilities":["Projektuoti ir įgyvendinti RL algoritmus robotų manipuliavimui ir lokomocijai","Kurti simuliacijos aplinkas RL agentų mokymui ir testavimui","Perkelti išmoktas politikas iš simuliacijos į tikrus robotus (sim-to-real)","Bendradarbiauti su robotikos komanda dėl aparatinės ir programinės įrangos integracijos","Publikuoti tyrimų rezultatus aukščiausio lygio konferencijose","Mentoruoti jaunesniuosius tyrėjus ir inžinierius"],"requirements":["Daktaro arba magistro laipsnis informatikos, robotikos ar susijusioje srityje","Stiprus publikacijų sąrašas RL ar robotikos srityje (ICML, NeurIPS, CoRL, RSS)","Ekspertinės RL algoritmų žinios (PPO, SAC, TD3, modeliu pagrįstas RL)","Patirtis su robotikos simuliatoriais (MuJoCo, Isaac Gym, PyBullet)","Python ir gilaus mokymosi karkasų įgūdžiai (pirmenybė PyTorch)","Patirtis su tikrais robotų sistemomis yra didelis privalumas"],"benefits":["Darbas su naujausia robotikos moksline veikla","Prieiga prie pažangios robotų aparatūros ir skaičiavimo klasterių","Parama publikacijoms ir dalyvavimui konferencijose","Bendradarbiavimas su pasaulinio lygio tyrėjais","Konkurencingas atlyginimas su mokslinių tyrimų premijomis"]},"app-developer-intern":{"title":"Programėlių kūrėjas praktikantas","department":"Inžinerija","location":"Ženeva, Šveicarija","type":"3–6 mėnesiai","level":"Studentas","modalDescription":"Prisijunkite prie mūsų inžinerijos komandos kaip programėlių kūrėjas praktikantas ir kurkite mobilias bei žiniatinklio programas mūsų DI produktams.","responsibilities":["Kurti ir prižiūrėti mobilias programas naudojant React Native","Kurti žiniatinklio programas su Node.js ir PHP","Dirbti su MySQL duomenų bazėmis ir API integracijomis","Bendradarbiauti su vyresniaisiais programuotojais gamybinėse sistemose","Dalyvauti kodo peržiūrose ir sprinto planavime"],"requirements":["Šiuo metu studijuoja informatikos ar susijusią programą","React Native ar mobiliosios programavimo žinios","Susipažinimas su Node.js, PHP ar panašiomis technologijomis","Duomenų bazių koncepcijų supratimas","Stiprūs problemų sprendimo įgūdžiai"],"benefits":["Praktinė patirtis su gamybinėmis sistemomis","Vyresniųjų programuotojų mentorystė","Lankstus grafikas studijoms derinti","Galimybė įsidarbinti visam etatui","Mėnesinė stipendija"]},"web-designer-intern":{"title":"Žiniatinklio dizaineris / SEO specialistas praktikantas","department":"Dizainas ir rinkodara","location":"Ženeva, Šveicarija","type":"3–6 mėnesiai","level":"Studentas","modalDescription":"Projektuokite ir optimizuokite žiniatinklio sąsajas įgyvendindami SEO strategijas mūsų DI platformoms.","responsibilities":["Projektuoti adaptyviąsias žiniatinklio sąsajas","Įgyvendinti geriausias SEO praktikas","Kurti UI/UX dizainus naujoms funkcijoms","Optimizuoti svetainės našumą ir prieinamumą","Vykdyti naudotojų tyrimus ir patogumo testavimą"],"requirements":["Šiuo metu studijuoja dizaino, rinkodaros ar susijusią programą","HTML, CSS ir JavaScript įgūdžiai","SEO principų supratimas","Patirtis su dizaino įrankiais (Figma, Adobe XD)","Portfolio, demonstruojantis dizaino darbus"],"benefits":["Darbas su tikrais projektais, turinčiais globalinį poveikį","Mokymasis iš patyrusių dizainerių","Lankstus darbo laikas","Galimybė gauti nuolatinę poziciją","Mėnesinė stipendija"]},"financial-analyst-intern":{"title":"Verslo analitiko praktikantas","department":"Operacijos","location":"Ženeva, Šveicarija","type":"6–12 mėnesių","level":"Studentas","modalDescription":"Padėkite atlikti verslo analizę ir prognozes DI pagrįstiems robotikos produktams.","responsibilities":["Padėti verslo modeliavime ir prognozavime","Analizuoti sudėtingus veiklos duomenų rinkinius","Padėti rengti verslo ataskaitas","Atlikti rinkos tyrimus ir konkurencinę analizę","Padėti kurti verslo analitikos valdymo skydelius"],"requirements":["Šiuo metu studijuoja verslo, ekonomikos ar susijusią programą","Stiprūs Excel ir duomenų modeliavimo įgūdžiai","Verslo rinkų supratimas","Analitinis mąstymas su dėmesiu detalėms","Duomenų analizės įrankių (Python/R) žinios yra privalumas"],"benefits":["Susipažinimas su DI pagrįsta robotika","Darbas su patyrusiais profesionalais","Prailginta praktikos trukmė gilesniam mokymuisi","Galimybė bendradarbiauti rengiant baigiamąjį darbą","Konkurencinga mėnesinė stipendija"]},"video-editor-intern":{"title":"Vaizdo montuotojo praktikantas","department":"Kūryba","location":"Ženeva, Šveicarija","type":"Dalis etato (15–20 val./sav.)","level":"Studentas","modalDescription":"Kurkite patrauklų vaizdo turinį mūsų DI produktams ir rinkodaros kampanijoms.","responsibilities":["Montuoti trumpos ir ilgos formos vaizdo turinį","Kurti judesio grafiką ir animacijas","Bendradarbiauti su rinkodaros komanda dėl kampanijų","Valdyti vaizdo gamybos darbo eigą","Optimizuoti turinį įvairioms platformoms"],"requirements":["Šiuo metu studijuoja kino, medijų ar susijusią programą","Adobe Premiere ir After Effects įgūdžiai","Kūrybinis pasakojimo pojūtis","Socialinių tinklų vaizdo formatų supratimas","Vaizdo darbų portfolio"],"benefits":["Dalinio etato grafikas, puikiai tinkantis studentams","Kūrybinė laisvė projektuose","Prieiga prie profesionalios įrangos","Kurkite portfolio su tikrais klientų darbais","Valandinis atlygis"]},"personal-assistant-intern":{"title":"Asmeninio asistento praktikantas","department":"Operacijos","location":"Ženeva, Šveicarija","type":"3–6 mėnesiai","level":"Studentas","modalDescription":"Padėkite vykdyti personalo ir administracines funkcijas sparčiai besivystančioje startuolio aplinkoje.","responsibilities":["Padėti įdarbinimo ir adaptacijos procesuose","Padėti kasdienėse administracinėse operacijose","Koordinuoti susitikimus ir tvarkyti kalendorius","Padėti organizuoti įmonės renginius ir veiklą","Tvarkyti personalo dokumentaciją ir duomenų bazes"],"requirements":["Šiuo metu studijuoja verslo, personalo valdymo ar susijusią programą","Puikūs organizaciniai įgūdžiai","Stipri komunikacija anglų ir prancūzų kalbomis","MS Office Suite įgūdžiai","Gebėjimas tvarkyti konfidencialią informaciją"],"benefits":["Visapusiška personalo valdymo patirtis","Susipažinimas su startuolio operacijomis","Tinklaveikos galimybės","Lankstus grafikas","Mėnesinė stipendija"]},"graphic-designer-intern":{"title":"Grafikos dizainerio praktikantas","department":"Dizainas","location":"Ženeva, Šveicarija","type":"3–6 mėnesiai","level":"Studentas","modalDescription":"Kurkite vizualinius išteklius mūsų DI produktams ir rinkodaros medžiagai.","responsibilities":["Kurti vizualinius dizainus skaitmeninei ir spausdintinei medijai","Kurti prekės ženklo išteklius ir rinkodaros medžiagą","Projektuoti UI elementus programoms","Bendradarbiauti su produkto ir rinkodaros komandomis","Užtikrinti prekės ženklo nuoseklumą visoje medžiagoje"],"requirements":["Šiuo metu studijuoja grafikos dizaino ar susijusią programą","Adobe Creative Suite įgūdžiai","Patirtis su Figma ar panašiais įrankiais","Stiprus portfolio, demonstruojantis dizaino įgūdžius","Prekės ženklo dizaino principų supratimas"],"benefits":["Darbas su įvairiais dizaino projektais","Vyresniųjų dizainerių mentorystė","Profesionalaus portfolio kūrimas","Lankstūs darbo susitarimai","Mėnesinė stipendija"]}};
 
     // Filter jobs
     function filterJobs(category) {
@@ -1913,5 +1990,26 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>

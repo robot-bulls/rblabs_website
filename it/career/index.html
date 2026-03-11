@@ -51,10 +51,8 @@
     <link rel="alternate" hreflang="x-default" href="https://www.rblabs.ai/career/">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../typography.css">
 
     <style>
         .visuallyhidden {
@@ -72,6 +70,9 @@
             border: none;
             cursor: pointer;
             font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
             padding: 8px 0;
         }
         .nav-lang-trigger .fa-globe {
@@ -148,15 +149,16 @@
             text-decoration: none;
             color: #374151;
             font-size: 14px;
+            font-family: inherit;
             transition: background 0.15s ease;
         }
         .nav-lang-item:hover {
             background: #f3f4f6;
         }
         .nav-lang-item.active {
-            background: rgba(6, 67, 140, 0.06);
-            color: #06438c;
-            font-weight: 600;
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
         }
         .nav-lang-name {
             flex: 1;
@@ -169,11 +171,11 @@
             font-weight: 500;
         }
         .nav-lang-item.active .nav-lang-code {
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-item .fa-check {
             font-size: 12px;
-            color: #06438c;
+            color: #1d1d1f;
         }
         .nav-lang-empty {
             padding: 20px 16px;
@@ -514,7 +516,7 @@
         display: flex;
         gap: 8px;
         padding: 4px;
-        background: #f3f4f6;
+        background: transparent;
         border-radius: 12px;
     }
 
@@ -522,7 +524,7 @@
         padding: 10px 20px;
         background: transparent;
         border: none;
-        border-radius: 8px;
+        border-radius: 999px;
         font-weight: 500;
         color: #6b7280;
         cursor: pointer;
@@ -552,15 +554,25 @@
     }
 
     .search-bar:focus-within {
-        border-color: #06438c;
-        background: white;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #e5e7eb;
+        background: #f9fafb;
+        box-shadow: none;
+        outline: none !important;
+    }
+
+    .search-bar *:focus {
+        outline: none !important;
+    }
+
+    #jobSearch:focus {
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     .search-bar input {
-        border: none;
-        background: none;
-        outline: none;
+        border: none !important;
+        background: none !important;
+        outline: none !important;
         flex: 1;
         font-size: 14px;
         color: #111827;
@@ -600,7 +612,7 @@
         left: 0;
         width: 4px;
         height: 100%;
-        background: linear-gradient(180deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         transform: translateX(-4px);
         transition: transform 0.3s;
     }
@@ -683,30 +695,31 @@
     }
 
     .apply-section {
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: white;
         padding: 80px 0;
         text-align: center;
-        color: white;
+        color: #1d1d1f;
     }
 
     .apply-title {
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 16px;
+        color: #1d1d1f;
     }
 
     .apply-description {
         font-size: 18px;
-        opacity: 0.9;
+        color: #6e6e73;
         margin-bottom: 32px;
     }
 
     .apply-btn {
         display: inline-block;
         padding: 14px 32px;
-        background: white;
-        color: #06438c;
-        border-radius: 10px;
+        background: #1d1d1f;
+        color: white;
+        border-radius: 999px;
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s;
@@ -849,8 +862,8 @@
     .form-input:focus,
     .form-textarea:focus {
         outline: none;
-        border-color: #06438c;
-        box-shadow: 0 0 0 3px rgba(6, 67, 140, 0.1);
+        border-color: #1d1d1f;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
     }
 
     .form-textarea {
@@ -862,10 +875,10 @@
     .submit-btn {
         width: 100%;
         padding: 14px;
-        background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+        background: #1d1d1f;
         color: white;
         border: none;
-        border-radius: 10px;
+        border-radius: 999px;
         font-weight: 600;
         font-size: 16px;
         cursor: pointer;
@@ -874,7 +887,7 @@
 
     .submit-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(6, 67, 140, 0.3);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
     }
 
     @keyframes spin {
@@ -925,6 +938,7 @@
 
         .jobs-container {
             padding: 40px 0 80px;
+            background: transparent;
         }
 
         .job-header {
@@ -1136,6 +1150,69 @@
                     <span class="skill-tag">ICP</span>
                     <span class="skill-tag">Smart Contracts</span>
                     <span class="skill-tag">DeFi</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-locomotion-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Ingegnere Sistemi di Locomozione</h3>
+                        <span class="job-department">Ingegneria Robotica</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Ginevra, Svizzera</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Tempo pieno</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Livello Senior</span>
+                </div>
+                <p class="job-description">Progetta e implementa sistemi di locomozione bipede per i nostri robot umanoidi. Sviluppa andature stabili, controllori di equilibrio e pianificazione dinamica del movimento per il dispiegamento nel mondo reale.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Locomozione Bipede</span>
+                    <span class="skill-tag">Teoria del Controllo</span>
+                    <span class="skill-tag">ROS2</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">MuJoCo</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-perception-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Ingegnere Percezione Robotica</h3>
+                        <span class="job-department">Ingegneria Robotica</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Ginevra, Svizzera</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Tempo pieno</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Livello Senior</span>
+                </div>
+                <p class="job-description">Costruisci l&#x27;intelligenza percettiva dei nostri robot umanoidi. Sviluppa sistemi di visione artificiale in tempo reale, fusione di sensori e consapevolezza spaziale per una navigazione sicura negli ambienti umani.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Visione Artificiale</span>
+                    <span class="skill-tag">Fusione Sensori</span>
+                    <span class="skill-tag">SLAM</span>
+                    <span class="skill-tag">LiDAR</span>
+                    <span class="skill-tag">ROS2</span>
+                </div>
+            </div>
+            <div class="job-card" data-category="engineering" onclick="openJobModal('humanoid-manipulation-engineer')">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Ingegnere Manipolazione Robotica</h3>
+                        <span class="job-department">Ingegneria Robotica</span>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Ginevra, Svizzera</span>
+                    <span class="job-meta-item"><i class="fas fa-clock"></i> Tempo pieno</span>
+                    <span class="job-meta-item"><i class="fas fa-layer-group"></i> Livello Mid-Senior</span>
+                </div>
+                <p class="job-description">Sviluppa le braccia e le mani destramente abili dei nostri robot umanoidi. Lavora su cinematica, pianificazione della presa e sistemi di esecuzione dei compiti per interazioni fisiche in ambienti aziendali.</p>
+                <div class="job-skills">
+                    <span class="skill-tag">Manipolazione Robotica</span>
+                    <span class="skill-tag">Cinematica</span>
+                    <span class="skill-tag">Pianificazione Presa</span>
+                    <span class="skill-tag">MoveIt</span>
+                    <span class="skill-tag">ROS2</span>
                 </div>
             </div>
             <div class="job-card" data-category="ai" onclick="openJobModal('deep-learning-developer')">
@@ -1498,7 +1575,7 @@
 
 <script>
     // Job data loaded from career data files
-    const jobData = {"senior-ai-developer":{"title":"Sviluppatore Senior Python AI","department":"IA e Ricerca","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Senior","modalDescription":"Cerchiamo uno Sviluppatore Senior Python AI per guidare lo sviluppo di sistemi di IA all'avanguardia per applicazioni robotiche.","responsibilities":["Lavorare su progetti che coinvolgono la prototipazione rapida di sistemi e la sperimentazione utilizzando software di visione artificiale, sistemi robotici e modelli di apprendimento automatico","Addestrare reti neurali profonde allo stato dell'arte per la previsione e l'apprendimento per rinforzo","Progettare configurazioni robotiche in laboratorio e ambienti di simulazione fisica","Identificare opportunità e promuovere nuove iniziative per l'applicazione dell'apprendimento automatico","Contribuire a post tecnici sul blog, articoli scientifici, presentazioni e domande di brevetto"],"requirements":["Eccellente conoscenza della teoria e della pratica dell'apprendimento automatico","Competenza in Python, Java e C++","Conoscenza dei framework di deep learning (TensorFlow, Keras, PyTorch)","Esperienza con la visione artificiale e la robotica","Esperienza con tecnologie big data (BigQuery, Spark, AWS)","Esperienza nell'utilizzo di Kubernetes, Docker e piattaforme Cloud"],"benefits":["Stipendio competitivo e pacchetto azionario","Orari di lavoro flessibili e opzioni di lavoro da remoto","Budget per lo sviluppo professionale","Assicurazione sanitaria e programmi di benessere","Ufficio moderno nel centro di Ginevra"]},"blockchain-developer":{"title":"Sviluppatore Blockchain","department":"Ingegneria","location":"Da remoto","type":"Tempo pieno","level":"Livello Medio-Senior","modalDescription":"Unisciti al nostro team per costruire il futuro della finanza decentralizzata su Ethereum e Internet Computer Protocol.","responsibilities":["Sviluppare e mantenere smart contract su Ethereum e ICP","Progettare e implementare soluzioni blockchain per applicazioni IoT e robotica","Garantire sicurezza, scalabilità ed efficienza delle applicazioni blockchain","Restare aggiornato sui progressi della tecnologia blockchain","Eseguire il debug e risolvere problemi di implementazione blockchain"],"requirements":["Forte esperienza con Ethereum e Solidity","Conoscenza di Internet Computer Protocol (ICP)","Comprensione dei fondamenti della blockchain e della crittografia","Esperienza con protocolli DeFi","Capacità di lavorare in modo indipendente in un contesto remoto"],"benefits":["Posizione completamente da remoto","Compenso competitivo in criptovalute/valuta fiat","Opportunità di allocazione di token","Orari di lavoro flessibili su diversi fusi orari","Raduni annuali del team"]},"deep-learning-developer":{"title":"Sviluppatore AI Deep Learning","department":"IA e Ricerca","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Sviluppa e ottimizza modelli di deep learning per ambienti di produzione nella robotica e nell'automazione.","responsibilities":["Progettare e implementare modelli di deep learning allo stato dell'arte","Ottimizzare i modelli per prestazioni e scalabilità","Collaborare con il team di ricerca su soluzioni di IA innovative","Distribuire i modelli in ambienti di produzione","Monitorare e migliorare le prestazioni dei modelli"],"requirements":["Forti competenze di programmazione in Python","Esperienza con framework di deep learning","Comprensione delle architetture di reti neurali","Conoscenza delle tecniche di ottimizzazione","Passione per la tecnologia dell'IA"],"benefits":["Lavora su progetti di IA all'avanguardia","Accesso a potenti risorse di calcolo","Partecipazione a conferenze e formazione","Ambiente di ricerca collaborativo","Opportunità di pubblicazione"]},"data-analyst":{"title":"Analista Dati","department":"Business Intelligence","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Trasforma dataset complessi in informazioni utili e operative per guidare le decisioni strategiche.","responsibilities":["Analizzare grandi dataset per identificare tendenze e modelli","Creare visualizzazioni di dati e dashboard","Collaborare con i team per comprendere le esigenze relative ai dati","Garantire l'accuratezza e l'integrità dei dati","Sviluppare strategie basate sui dati"],"requirements":["Comprovata esperienza come Analista Dati","Forte competenza in SQL ed Excel","Esperienza con strumenti di visualizzazione (Tableau, Power BI)","Competenze di analisi statistica","Eccellenti capacità comunicative"],"benefits":["Stack di analisi moderno","Collaborazione interfunzionale","Opportunità di sviluppo professionale","Impatto sulle decisioni strategiche","Compenso competitivo"]},"hr-assistant":{"title":"Risorse Umane / Assistente Personale","department":"Persone e Cultura","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Plasma la cultura aziendale e costruisci team di livello mondiale in una startup di IA in rapida crescita.","responsibilities":["Ricercare e attrarre i migliori talenti per varie posizioni","Gestire l'intero ciclo del processo di reclutamento","Sviluppare e mantenere i database di reclutamento","Coordinare i colloqui e la valutazione dei candidati","Supportare l'inserimento e lo sviluppo dei dipendenti"],"requirements":["Laurea triennale/magistrale con solida formazione accademica","Eccellenti capacità organizzative e di multitasking","Forte comunicazione verbale e scritta","Esperienza con MS Office Suite","Capacità di lavorare in un ambiente dinamico"],"benefits":["Plasmare la cultura aziendale fin dalle prime fasi","Lavorare con un team diversificato e internazionale","Opportunità di crescita professionale","Modalità di lavoro flessibili","Pacchetto retributivo competitivo"]},"video-editor":{"title":"Montatore Video","department":"Creativo","location":"Ginevra / Da remoto","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Crea contenuti video coinvolgenti per presentare le nostre innovazioni nell'IA e nella robotica. Produrrai di tutto, dalle demo dei prodotti ai contenuti per i social media e pezzi in stile documentaristico.","responsibilities":["Montare e produrre contenuti video di alta qualità per più piattaforme","Creare motion graphics ed effetti visivi per dimostrazioni di prodotto","Collaborare con il team marketing sulla strategia video e le campagne","Gestire i progetti video dal concept alla consegna finale","Mantenere librerie multimediali organizzate e archivi dei progetti","Restare aggiornato sulle tendenze video e i formati emergenti"],"requirements":["Comprovata esperienza come montatore video con portfolio solido","Competenza avanzata in Adobe Premiere Pro e After Effects","Esperienza con DaVinci Resolve per la color correction","Forte comprensione della narrazione e della composizione visiva","Conoscenza di motion graphics e animazione 3D di base","Capacità di lavorare in autonomia e rispettare le scadenze"],"benefits":["Libertà creativa e proprietà dei progetti","Accesso ad attrezzature e software professionali","Opzioni flessibili di lavoro da remoto","Opportunità di presentare tecnologie all'avanguardia","Stipendio competitivo e pacchetto di benefit"]},"marketing-specialist":{"title":"Specialista Marketing","department":"Marketing","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Promuovi la notorietà del marchio e la generazione di contatti per i nostri prodotti di IA e robotica. Sviluppa ed esegui campagne di marketing su canali digitali e tradizionali.","responsibilities":["Sviluppare ed eseguire campagne di marketing integrate","Gestire la presenza sui social media e il calendario dei contenuti","Creare contenuti e testi di marketing coinvolgenti","Analizzare le prestazioni delle campagne e ottimizzare le strategie","Coordinarsi con il team vendite per le iniziative di generazione contatti","Rappresentare l'azienda a eventi di settore e fiere"],"requirements":["Laurea in Marketing, Comunicazione o campo correlato","Oltre 3 anni di esperienza nel marketing B2B","Forte comprensione dei canali di marketing digitale","Esperienza con strumenti di automazione del marketing","Eccellenti capacità di comunicazione scritta e verbale","Passione per la tecnologia e l'innovazione"],"benefits":["Definire la strategia di marketing di un'azienda in crescita","Lavorare con prodotti di IA e robotica all'avanguardia","Opportunità di sviluppo professionale","Visibilità internazionale e opportunità di viaggio","Pacchetto retributivo competitivo"]},"rl-specialist":{"title":"Specialista in Apprendimento per Rinforzo","department":"IA e Ricerca","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Senior","modalDescription":"Progetta e implementa algoritmi di apprendimento per rinforzo per il controllo robotico e i sistemi decisionali autonomi. Spingi i confini di ciò che è possibile nell'apprendimento dei robot.","responsibilities":["Progettare e implementare algoritmi di RL per la manipolazione e la locomozione robotica","Sviluppare ambienti di simulazione per l'addestramento e il test di agenti RL","Trasferire le politiche apprese dalla simulazione ai robot reali (sim-to-real)","Collaborare con il team di robotica sull'integrazione hardware-software","Pubblicare i risultati della ricerca presso conferenze di alto livello","Fare da mentore a ricercatori e ingegneri junior"],"requirements":["Dottorato o Master in Informatica, Robotica o campo correlato","Solido curriculum di pubblicazioni in RL o robotica (ICML, NeurIPS, CoRL, RSS)","Conoscenza approfondita degli algoritmi di RL (PPO, SAC, TD3, RL basato su modelli)","Esperienza con simulatori di robotica (MuJoCo, Isaac Gym, PyBullet)","Competenza in Python e framework di deep learning (PyTorch preferito)","L'esperienza con sistemi robotici reali è un forte vantaggio"],"benefits":["Lavora su ricerca robotica allo stato dell'arte","Accesso a hardware robotico avanzato e cluster di calcolo","Supporto per pubblicazioni e partecipazione a conferenze","Collaborazione con ricercatori di livello mondiale","Stipendio competitivo con bonus per la ricerca"]},"app-developer-intern":{"title":"Stagista Sviluppatore App","department":"Ingegneria","location":"Ginevra, Svizzera","type":"3-6 mesi","level":"Studente","modalDescription":"Unisciti al nostro team di ingegneria come Stagista Sviluppatore App per sviluppare applicazioni mobile e web per i nostri prodotti di IA.","responsibilities":["Sviluppare e mantenere applicazioni mobile con React Native","Costruire applicazioni web con Node.js e PHP","Lavorare con database MySQL e integrazioni API","Collaborare con sviluppatori senior su sistemi di produzione","Partecipare alle revisioni del codice e alla pianificazione degli sprint"],"requirements":["Attualmente iscritto a un programma di Informatica o affine","Conoscenza di React Native o sviluppo mobile","Familiarità con Node.js, PHP o tecnologie simili","Comprensione dei concetti di database","Forti capacità di problem-solving"],"benefits":["Esperienza pratica con sistemi di produzione","Tutoraggio da sviluppatori senior","Orario flessibile per conciliare gli studi","Possibilità di impiego a tempo pieno","Compenso mensile"]},"web-designer-intern":{"title":"Stagista Web Designer/Specialista SEO","department":"Design e Marketing","location":"Ginevra, Svizzera","type":"3-6 mesi","level":"Studente","modalDescription":"Progetta e ottimizza interfacce web implementando strategie SEO per le nostre piattaforme di IA.","responsibilities":["Progettare interfacce web responsive","Implementare le migliori pratiche SEO","Creare design UI/UX per nuove funzionalità","Ottimizzare le prestazioni e l'accessibilità del sito web","Condurre ricerche sugli utenti e test di usabilità"],"requirements":["Attualmente iscritto a un programma di Design, Marketing o affine","Competenza in HTML, CSS e JavaScript","Comprensione dei principi SEO","Esperienza con strumenti di design (Figma, Adobe XD)","Portfolio che dimostri lavori di design"],"benefits":["Lavorare su progetti reali con impatto globale","Imparare da designer esperti","Orari di lavoro flessibili","Opportunità di posizione permanente","Compenso mensile"]},"financial-analyst-intern":{"title":"Stagista Analista Aziendale","department":"Operazioni","location":"Ginevra, Svizzera","type":"6-12 mesi","level":"Studente","modalDescription":"Supporta l'analisi aziendale e le previsioni per i prodotti di robotica basata sull'IA.","responsibilities":["Assistere nella modellazione aziendale e nelle previsioni","Analizzare dataset operativi complessi","Supportare la preparazione di report aziendali","Condurre ricerche di mercato e analisi della concorrenza","Contribuire allo sviluppo di dashboard di business intelligence"],"requirements":["Attualmente iscritto a un programma di Economia, Business o affine","Forti competenze in Excel e modellazione dati","Comprensione dei mercati aziendali","Mentalità analitica con attenzione ai dettagli","La conoscenza di strumenti di analisi dati (Python/R) è un plus"],"benefits":["Esposizione alla robotica basata sull'IA","Lavorare con professionisti esperti","Durata dello stage estesa per un apprendimento approfondito","Possibilità di collaborazione per la tesi","Compenso mensile competitivo"]},"video-editor-intern":{"title":"Stagista Montatore Video","department":"Creativo","location":"Ginevra, Svizzera","type":"Part-time (15-20 ore/settimana)","level":"Studente","modalDescription":"Crea contenuti video coinvolgenti per i nostri prodotti di IA e le campagne di marketing.","responsibilities":["Montare contenuti video brevi e lunghi","Creare motion graphics e animazioni","Collaborare con il team marketing sulle campagne","Gestire il flusso di lavoro della produzione video","Ottimizzare i contenuti per varie piattaforme"],"requirements":["Attualmente iscritto a un programma di Cinema, Media o affine","Competenza in Adobe Premiere e After Effects","Occhio creativo per la narrazione","Comprensione dei formati video per i social media","Portfolio di lavori video"],"benefits":["Orario part-time perfetto per gli studenti","Libertà creativa sui progetti","Accesso ad attrezzature professionali","Costruisci il portfolio con lavori reali per clienti","Compenso orario"]},"personal-assistant-intern":{"title":"Stagista Assistente Personale","department":"Operazioni","location":"Ginevra, Svizzera","type":"3-6 mesi","level":"Studente","modalDescription":"Supporta le funzioni HR e amministrative in un ambiente startup dinamico.","responsibilities":["Assistere nei processi di reclutamento e inserimento","Supportare le operazioni amministrative quotidiane","Coordinare riunioni e gestire calendari","Aiutare nell'organizzazione di eventi e attività aziendali","Mantenere la documentazione HR e i database"],"requirements":["Attualmente iscritto a un programma di Business, Risorse Umane o affine","Eccellenti capacità organizzative","Forte comunicazione in inglese e francese","Competenza in MS Office Suite","Capacità di gestire informazioni riservate"],"benefits":["Esperienza HR completa","Esposizione alle operazioni di una startup","Opportunità di networking","Orario flessibile","Compenso mensile"]},"graphic-designer-intern":{"title":"Stagista Graphic Designer","department":"Design","location":"Ginevra, Svizzera","type":"3-6 mesi","level":"Studente","modalDescription":"Progetta risorse visive per i nostri prodotti di IA e materiali di marketing.","responsibilities":["Creare design visivi per media digitali e stampati","Sviluppare risorse del brand e materiali di marketing","Progettare elementi UI per le applicazioni","Collaborare con i team di prodotto e marketing","Mantenere la coerenza del brand su tutti i materiali"],"requirements":["Attualmente iscritto a un programma di Graphic Design o affine","Competenza in Adobe Creative Suite","Esperienza con Figma o strumenti simili","Portfolio solido che dimostri competenze di design","Comprensione dei principi del brand design"],"benefits":["Lavorare su progetti di design diversificati","Tutoraggio da designer senior","Costruire un portfolio professionale","Modalità di lavoro flessibili","Compenso mensile"]}};
+    const jobData = {"senior-ai-developer":{"title":"Sviluppatore Senior Python AI","department":"IA e Ricerca","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Senior","modalDescription":"Cerchiamo uno Sviluppatore Senior Python AI per guidare lo sviluppo di sistemi di IA all'avanguardia per applicazioni robotiche.","responsibilities":["Lavorare su progetti che coinvolgono la prototipazione rapida di sistemi e la sperimentazione utilizzando software di visione artificiale, sistemi robotici e modelli di apprendimento automatico","Addestrare reti neurali profonde allo stato dell'arte per la previsione e l'apprendimento per rinforzo","Progettare configurazioni robotiche in laboratorio e ambienti di simulazione fisica","Identificare opportunità e promuovere nuove iniziative per l'applicazione dell'apprendimento automatico","Contribuire a post tecnici sul blog, articoli scientifici, presentazioni e domande di brevetto"],"requirements":["Eccellente conoscenza della teoria e della pratica dell'apprendimento automatico","Competenza in Python, Java e C++","Conoscenza dei framework di deep learning (TensorFlow, Keras, PyTorch)","Esperienza con la visione artificiale e la robotica","Esperienza con tecnologie big data (BigQuery, Spark, AWS)","Esperienza nell'utilizzo di Kubernetes, Docker e piattaforme Cloud"],"benefits":["Stipendio competitivo e pacchetto azionario","Orari di lavoro flessibili e opzioni di lavoro da remoto","Budget per lo sviluppo professionale","Assicurazione sanitaria e programmi di benessere","Ufficio moderno nel centro di Ginevra"]},"blockchain-developer":{"title":"Sviluppatore Blockchain","department":"Ingegneria","location":"Da remoto","type":"Tempo pieno","level":"Livello Medio-Senior","modalDescription":"Unisciti al nostro team per costruire il futuro della finanza decentralizzata su Ethereum e Internet Computer Protocol.","responsibilities":["Sviluppare e mantenere smart contract su Ethereum e ICP","Progettare e implementare soluzioni blockchain per applicazioni IoT e robotica","Garantire sicurezza, scalabilità ed efficienza delle applicazioni blockchain","Restare aggiornato sui progressi della tecnologia blockchain","Eseguire il debug e risolvere problemi di implementazione blockchain"],"requirements":["Forte esperienza con Ethereum e Solidity","Conoscenza di Internet Computer Protocol (ICP)","Comprensione dei fondamenti della blockchain e della crittografia","Esperienza con protocolli DeFi","Capacità di lavorare in modo indipendente in un contesto remoto"],"benefits":["Posizione completamente da remoto","Compenso competitivo in criptovalute/valuta fiat","Opportunità di allocazione di token","Orari di lavoro flessibili su diversi fusi orari","Raduni annuali del team"]},"humanoid-locomotion-engineer":{"title":"Ingegnere Sistemi di Locomozione","department":"Ingegneria Robotica","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Senior","modalDescription":"Unisciti al team di robotica centrale per progettare i sistemi di movimento ed equilibrio che permettono ai nostri robot umanoidi di camminare e navigare nel mondo fisico.","responsibilities":["Progettare e implementare andature bipedi stabili e controllori di equilibrio","Sviluppare algoritmi di pianificazione del movimento per terreni complessi","Simulare, testare e validare sistemi di locomozione in MuJoCo e Isaac Gym","Colmare il divario sim-to-real regolando i sistemi di controllo sull'hardware reale","Collaborare con i team di percezione e manipolazione","Documentare e pubblicare ricerche sulla locomozione"],"requirements":["MSc o PhD in Robotica, Ingegneria Meccanica o campo correlato","Solida competenza in teoria del controllo, dinamica e locomozione bipede","Esperienza pratica con ROS2, C++ e Python","Familiarità con simulatori fisici (MuJoCo, Isaac Gym, PyBullet)","Esperienza nel dispiegamento di controllori su hardware reale","Pubblicazioni o progetti dimostrabili in robotica con gambe"],"benefits":["Lavorare direttamente su robot umanoidi di classe mondiale","Accesso a laboratorio e hardware all'avanguardia","Supporto per pubblicazioni e conferenze","Pacchetto retributivo competitivo","Con sede a Ginevra con team internazionale"]},"humanoid-perception-engineer":{"title":"Ingegnere Percezione Robotica","department":"Ingegneria Robotica","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Senior","modalDescription":"Crea gli occhi e l'intelligenza spaziale dei nostri robot — fondendo telecamere, LiDAR e propriocezione in un modello del mondo unificato in tempo reale.","responsibilities":["Sviluppare pipeline di rilevamento oggetti e comprensione delle scene in tempo reale","Implementare la fusione di sensori tra telecamere RGB-D, LiDAR e IMU","Costruire e mantenere sistemi SLAM per la navigazione","Progettare il rilevamento umano e la stima della posa","Ottimizzare i pipeline di percezione per hardware integrato","Integrare la percezione con la pianificazione del movimento"],"requirements":["MSc o PhD in Robotica, Visione Artificiale o campo correlato","Padronanza di C++ e Python con esperienza in sistemi in tempo reale","Solida base in visione artificiale, SLAM e fusione di sensori","Esperienza con ROS2, OpenCV e framework di inferenza deep learning","Familiarità con l'elaborazione di nuvole di punti 3D (PCL, Open3D)","Esperienza precedente con sensori di profondità, LiDAR o telecamere stereo"],"benefits":["Guidare l'architettura di percezione per robot umanoidi all'avanguardia","Accesso a suite di sensori premium e hardware di calcolo","Collaborare con un team robotico multidisciplinare","Supporto per conferenze e pubblicazioni","Compensazione competitiva a Ginevra"]},"humanoid-manipulation-engineer":{"title":"Ingegnere Manipolazione Robotica","department":"Ingegneria Robotica","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Mid-Senior","modalDescription":"Sviluppa le capacità di manipolazione destramente abili che permettono ai nostri robot umanoidi di gestire oggetti e interagire fisicamente con il mondo.","responsibilities":["Sviluppare solutori di cinematica inversa e pianificazione del movimento per sistemi a braccio doppio","Implementare la pianificazione della presa e la manipolazione in mano","Integrare la sensoristica tattile e forza-coppia","Programmare pipeline di esecuzione di compiti ripetibili","Testare e validare su hardware reale","Collaborare con il team AI per politiche di manipolazione basate sull'apprendimento"],"requirements":["BSc o MSc in Robotica, Ingegneria Meccanica o campo correlato","Esperienza con librerie di pianificazione del movimento (MoveIt, OMPL)","Padronanza di C++ e Python; familiarità con ROS2","Background in cinematica, dinamica e controllo di forza","Esperienza pratica con bracci robotici o gripper","Passione per la robotica umanoide"],"benefits":["Plasmare le capacità di manipolazione dei robot umanoidi di prossima generazione","Lavorare accanto a ricercatori robotici di spicco","Laboratorio robotico moderno nel centro di Ginevra","Stipendio e benefit competitivi","Percorso verso ruoli senior"]},"deep-learning-developer":{"title":"Sviluppatore AI Deep Learning","department":"IA e Ricerca","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Sviluppa e ottimizza modelli di deep learning per ambienti di produzione nella robotica e nell'automazione.","responsibilities":["Progettare e implementare modelli di deep learning allo stato dell'arte","Ottimizzare i modelli per prestazioni e scalabilità","Collaborare con il team di ricerca su soluzioni di IA innovative","Distribuire i modelli in ambienti di produzione","Monitorare e migliorare le prestazioni dei modelli"],"requirements":["Forti competenze di programmazione in Python","Esperienza con framework di deep learning","Comprensione delle architetture di reti neurali","Conoscenza delle tecniche di ottimizzazione","Passione per la tecnologia dell'IA"],"benefits":["Lavora su progetti di IA all'avanguardia","Accesso a potenti risorse di calcolo","Partecipazione a conferenze e formazione","Ambiente di ricerca collaborativo","Opportunità di pubblicazione"]},"data-analyst":{"title":"Analista Dati","department":"Business Intelligence","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Trasforma dataset complessi in informazioni utili e operative per guidare le decisioni strategiche.","responsibilities":["Analizzare grandi dataset per identificare tendenze e modelli","Creare visualizzazioni di dati e dashboard","Collaborare con i team per comprendere le esigenze relative ai dati","Garantire l'accuratezza e l'integrità dei dati","Sviluppare strategie basate sui dati"],"requirements":["Comprovata esperienza come Analista Dati","Forte competenza in SQL ed Excel","Esperienza con strumenti di visualizzazione (Tableau, Power BI)","Competenze di analisi statistica","Eccellenti capacità comunicative"],"benefits":["Stack di analisi moderno","Collaborazione interfunzionale","Opportunità di sviluppo professionale","Impatto sulle decisioni strategiche","Compenso competitivo"]},"hr-assistant":{"title":"Risorse Umane / Assistente Personale","department":"Persone e Cultura","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Plasma la cultura aziendale e costruisci team di livello mondiale in una startup di IA in rapida crescita.","responsibilities":["Ricercare e attrarre i migliori talenti per varie posizioni","Gestire l'intero ciclo del processo di reclutamento","Sviluppare e mantenere i database di reclutamento","Coordinare i colloqui e la valutazione dei candidati","Supportare l'inserimento e lo sviluppo dei dipendenti"],"requirements":["Laurea triennale/magistrale con solida formazione accademica","Eccellenti capacità organizzative e di multitasking","Forte comunicazione verbale e scritta","Esperienza con MS Office Suite","Capacità di lavorare in un ambiente dinamico"],"benefits":["Plasmare la cultura aziendale fin dalle prime fasi","Lavorare con un team diversificato e internazionale","Opportunità di crescita professionale","Modalità di lavoro flessibili","Pacchetto retributivo competitivo"]},"video-editor":{"title":"Montatore Video","department":"Creativo","location":"Ginevra / Da remoto","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Crea contenuti video coinvolgenti per presentare le nostre innovazioni nell'IA e nella robotica. Produrrai di tutto, dalle demo dei prodotti ai contenuti per i social media e pezzi in stile documentaristico.","responsibilities":["Montare e produrre contenuti video di alta qualità per più piattaforme","Creare motion graphics ed effetti visivi per dimostrazioni di prodotto","Collaborare con il team marketing sulla strategia video e le campagne","Gestire i progetti video dal concept alla consegna finale","Mantenere librerie multimediali organizzate e archivi dei progetti","Restare aggiornato sulle tendenze video e i formati emergenti"],"requirements":["Comprovata esperienza come montatore video con portfolio solido","Competenza avanzata in Adobe Premiere Pro e After Effects","Esperienza con DaVinci Resolve per la color correction","Forte comprensione della narrazione e della composizione visiva","Conoscenza di motion graphics e animazione 3D di base","Capacità di lavorare in autonomia e rispettare le scadenze"],"benefits":["Libertà creativa e proprietà dei progetti","Accesso ad attrezzature e software professionali","Opzioni flessibili di lavoro da remoto","Opportunità di presentare tecnologie all'avanguardia","Stipendio competitivo e pacchetto di benefit"]},"marketing-specialist":{"title":"Specialista Marketing","department":"Marketing","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Medio","modalDescription":"Promuovi la notorietà del marchio e la generazione di contatti per i nostri prodotti di IA e robotica. Sviluppa ed esegui campagne di marketing su canali digitali e tradizionali.","responsibilities":["Sviluppare ed eseguire campagne di marketing integrate","Gestire la presenza sui social media e il calendario dei contenuti","Creare contenuti e testi di marketing coinvolgenti","Analizzare le prestazioni delle campagne e ottimizzare le strategie","Coordinarsi con il team vendite per le iniziative di generazione contatti","Rappresentare l'azienda a eventi di settore e fiere"],"requirements":["Laurea in Marketing, Comunicazione o campo correlato","Oltre 3 anni di esperienza nel marketing B2B","Forte comprensione dei canali di marketing digitale","Esperienza con strumenti di automazione del marketing","Eccellenti capacità di comunicazione scritta e verbale","Passione per la tecnologia e l'innovazione"],"benefits":["Definire la strategia di marketing di un'azienda in crescita","Lavorare con prodotti di IA e robotica all'avanguardia","Opportunità di sviluppo professionale","Visibilità internazionale e opportunità di viaggio","Pacchetto retributivo competitivo"]},"rl-specialist":{"title":"Specialista in Apprendimento per Rinforzo","department":"IA e Ricerca","location":"Ginevra, Svizzera","type":"Tempo pieno","level":"Livello Senior","modalDescription":"Progetta e implementa algoritmi di apprendimento per rinforzo per il controllo robotico e i sistemi decisionali autonomi. Spingi i confini di ciò che è possibile nell'apprendimento dei robot.","responsibilities":["Progettare e implementare algoritmi di RL per la manipolazione e la locomozione robotica","Sviluppare ambienti di simulazione per l'addestramento e il test di agenti RL","Trasferire le politiche apprese dalla simulazione ai robot reali (sim-to-real)","Collaborare con il team di robotica sull'integrazione hardware-software","Pubblicare i risultati della ricerca presso conferenze di alto livello","Fare da mentore a ricercatori e ingegneri junior"],"requirements":["Dottorato o Master in Informatica, Robotica o campo correlato","Solido curriculum di pubblicazioni in RL o robotica (ICML, NeurIPS, CoRL, RSS)","Conoscenza approfondita degli algoritmi di RL (PPO, SAC, TD3, RL basato su modelli)","Esperienza con simulatori di robotica (MuJoCo, Isaac Gym, PyBullet)","Competenza in Python e framework di deep learning (PyTorch preferito)","L'esperienza con sistemi robotici reali è un forte vantaggio"],"benefits":["Lavora su ricerca robotica allo stato dell'arte","Accesso a hardware robotico avanzato e cluster di calcolo","Supporto per pubblicazioni e partecipazione a conferenze","Collaborazione con ricercatori di livello mondiale","Stipendio competitivo con bonus per la ricerca"]},"app-developer-intern":{"title":"Stagista Sviluppatore App","department":"Ingegneria","location":"Ginevra, Svizzera","type":"3-6 mesi","level":"Studente","modalDescription":"Unisciti al nostro team di ingegneria come Stagista Sviluppatore App per sviluppare applicazioni mobile e web per i nostri prodotti di IA.","responsibilities":["Sviluppare e mantenere applicazioni mobile con React Native","Costruire applicazioni web con Node.js e PHP","Lavorare con database MySQL e integrazioni API","Collaborare con sviluppatori senior su sistemi di produzione","Partecipare alle revisioni del codice e alla pianificazione degli sprint"],"requirements":["Attualmente iscritto a un programma di Informatica o affine","Conoscenza di React Native o sviluppo mobile","Familiarità con Node.js, PHP o tecnologie simili","Comprensione dei concetti di database","Forti capacità di problem-solving"],"benefits":["Esperienza pratica con sistemi di produzione","Tutoraggio da sviluppatori senior","Orario flessibile per conciliare gli studi","Possibilità di impiego a tempo pieno","Compenso mensile"]},"web-designer-intern":{"title":"Stagista Web Designer/Specialista SEO","department":"Design e Marketing","location":"Ginevra, Svizzera","type":"3-6 mesi","level":"Studente","modalDescription":"Progetta e ottimizza interfacce web implementando strategie SEO per le nostre piattaforme di IA.","responsibilities":["Progettare interfacce web responsive","Implementare le migliori pratiche SEO","Creare design UI/UX per nuove funzionalità","Ottimizzare le prestazioni e l'accessibilità del sito web","Condurre ricerche sugli utenti e test di usabilità"],"requirements":["Attualmente iscritto a un programma di Design, Marketing o affine","Competenza in HTML, CSS e JavaScript","Comprensione dei principi SEO","Esperienza con strumenti di design (Figma, Adobe XD)","Portfolio che dimostri lavori di design"],"benefits":["Lavorare su progetti reali con impatto globale","Imparare da designer esperti","Orari di lavoro flessibili","Opportunità di posizione permanente","Compenso mensile"]},"financial-analyst-intern":{"title":"Stagista Analista Aziendale","department":"Operazioni","location":"Ginevra, Svizzera","type":"6-12 mesi","level":"Studente","modalDescription":"Supporta l'analisi aziendale e le previsioni per i prodotti di robotica basata sull'IA.","responsibilities":["Assistere nella modellazione aziendale e nelle previsioni","Analizzare dataset operativi complessi","Supportare la preparazione di report aziendali","Condurre ricerche di mercato e analisi della concorrenza","Contribuire allo sviluppo di dashboard di business intelligence"],"requirements":["Attualmente iscritto a un programma di Economia, Business o affine","Forti competenze in Excel e modellazione dati","Comprensione dei mercati aziendali","Mentalità analitica con attenzione ai dettagli","La conoscenza di strumenti di analisi dati (Python/R) è un plus"],"benefits":["Esposizione alla robotica basata sull'IA","Lavorare con professionisti esperti","Durata dello stage estesa per un apprendimento approfondito","Possibilità di collaborazione per la tesi","Compenso mensile competitivo"]},"video-editor-intern":{"title":"Stagista Montatore Video","department":"Creativo","location":"Ginevra, Svizzera","type":"Part-time (15-20 ore/settimana)","level":"Studente","modalDescription":"Crea contenuti video coinvolgenti per i nostri prodotti di IA e le campagne di marketing.","responsibilities":["Montare contenuti video brevi e lunghi","Creare motion graphics e animazioni","Collaborare con il team marketing sulle campagne","Gestire il flusso di lavoro della produzione video","Ottimizzare i contenuti per varie piattaforme"],"requirements":["Attualmente iscritto a un programma di Cinema, Media o affine","Competenza in Adobe Premiere e After Effects","Occhio creativo per la narrazione","Comprensione dei formati video per i social media","Portfolio di lavori video"],"benefits":["Orario part-time perfetto per gli studenti","Libertà creativa sui progetti","Accesso ad attrezzature professionali","Costruisci il portfolio con lavori reali per clienti","Compenso orario"]},"personal-assistant-intern":{"title":"Stagista Assistente Personale","department":"Operazioni","location":"Ginevra, Svizzera","type":"3-6 mesi","level":"Studente","modalDescription":"Supporta le funzioni HR e amministrative in un ambiente startup dinamico.","responsibilities":["Assistere nei processi di reclutamento e inserimento","Supportare le operazioni amministrative quotidiane","Coordinare riunioni e gestire calendari","Aiutare nell'organizzazione di eventi e attività aziendali","Mantenere la documentazione HR e i database"],"requirements":["Attualmente iscritto a un programma di Business, Risorse Umane o affine","Eccellenti capacità organizzative","Forte comunicazione in inglese e francese","Competenza in MS Office Suite","Capacità di gestire informazioni riservate"],"benefits":["Esperienza HR completa","Esposizione alle operazioni di una startup","Opportunità di networking","Orario flessibile","Compenso mensile"]},"graphic-designer-intern":{"title":"Stagista Graphic Designer","department":"Design","location":"Ginevra, Svizzera","type":"3-6 mesi","level":"Studente","modalDescription":"Progetta risorse visive per i nostri prodotti di IA e materiali di marketing.","responsibilities":["Creare design visivi per media digitali e stampati","Sviluppare risorse del brand e materiali di marketing","Progettare elementi UI per le applicazioni","Collaborare con i team di prodotto e marketing","Mantenere la coerenza del brand su tutti i materiali"],"requirements":["Attualmente iscritto a un programma di Graphic Design o affine","Competenza in Adobe Creative Suite","Esperienza con Figma o strumenti simili","Portfolio solido che dimostri competenze di design","Comprensione dei principi del brand design"],"benefits":["Lavorare su progetti di design diversificati","Tutoraggio da designer senior","Costruire un portfolio professionale","Modalità di lavoro flessibili","Compenso mensile"]}};
 
     // Filter jobs
     function filterJobs(category) {
@@ -1913,5 +1990,26 @@
     </footer>
 
     <script src="../../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
 </body>
 </html>

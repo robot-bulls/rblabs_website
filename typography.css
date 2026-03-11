@@ -1,0 +1,255 @@
+/* ============================================================
+   RB Labs — Clean neutral palette + Liquid Glass design system
+   ============================================================ */
+
+/* --- Colour variables ---------------------------------------- */
+:root {
+    --primary-color:  #1d1d1f;
+    --primary-dark:   #000000;
+    --primary-light:  #6e6e73;
+    --primary-alpha:  rgba(0, 0, 0, 0.04);
+    --bg-gradient:    #1d1d1f;
+    --text-gray:      #6e6e73;
+    --bg-light:       #f2f2f4;
+    --border-radius:  14px;
+
+    /* Glass tokens */
+    --glass-bg:       rgba(255, 255, 255, 0.62);
+    --glass-border:   rgba(255, 255, 255, 0.85);
+    --glass-shadow:   0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --glass-blur:     blur(18px) saturate(180%);
+}
+
+/* --- Base ----------------------------------------------- */
+html {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force all text elements to the same font — overrides any hardcoded 'Inter' declarations */
+body, h1, h2, h3, h4, h5, h6,
+p, a, span, li, td, th, label,
+button, input, textarea, select,
+.form-input, .nav-link, .nav-lang-item,
+.nav-lang-trigger, .btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Normalise browser defaults for buttons — they often render bold or at a different size */
+button {
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+}
+
+/* --- Typography ------------------------------------------ */
+.nav-link        { font-weight: 400; font-size: 0.9375rem; letter-spacing: 0; color: inherit; }
+.hero-title      { font-weight: 600; line-height: 1.08; letter-spacing: -0.03em; }
+.hero-welcome    { font-weight: 300; letter-spacing: -0.01em; }
+.hero-description{ font-size: 1.1875rem; line-height: 1.6; font-weight: 400; }
+
+.section-label {
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    color: #6e6e73;
+}
+
+.section-title   { font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; }
+.section-subtitle{ font-size: 1.125rem; line-height: 1.6; font-weight: 400; }
+.product-title   { font-weight: 600; letter-spacing: -0.015em; }
+.product-description { line-height: 1.6; }
+
+.hero-stat .stat-value,
+.stat-value,
+.about-stat .stat-value { font-weight: 600; letter-spacing: -0.02em; }
+
+.hero-stat .stat-label,
+.stat-label,
+.about-stat .stat-label { font-size: 0.8125rem; letter-spacing: 0.02em; font-weight: 400; }
+
+.btn { font-weight: 500; letter-spacing: 0; font-size: 0.9375rem; }
+
+/* --- Section backgrounds (give glass something to sit on) --- */
+.products,
+.why-choose,
+.llms-section,
+.about-section,
+.news-section,
+.team-section,
+.contact-section,
+.career-section {
+    background: linear-gradient(145deg, #ececee 0%, #f7f7f9 60%, #eaeaec 100%);
+}
+
+/* --- Glass card mixin --------------------------------------- */
+.product-card,
+.why-card,
+.service-card,
+.innovation-card,
+.news-card,
+.news-article-card,
+.contact-card,
+.career-card,
+.job-card,
+.feature-card {
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: var(--glass-shadow) !important;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover,
+.why-card:hover,
+.service-card:hover,
+.innovation-card:hover,
+.news-card:hover,
+.news-article-card:hover,
+.feature-card:hover {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+    transform: translateY(-3px);
+}
+
+/* --- Buttons ----------------------------------------------- */
+
+/* Primary button — clean light glass */
+.btn-primary {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 1);
+    color: #1d1d1f !important;
+}
+
+.btn-primary:hover {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(0, 0, 0, 0.16) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.09), inset 0 1px 0 rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+}
+
+/* Secondary button — same light glass, slightly more transparent */
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #1d1d1f;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.78);
+    border-color: rgba(0, 0, 0, 0.16) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+}
+
+/* Hero button (on video) — keep light glass, override btn-primary */
+.btn.btn-minimal {
+    background: rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(4px) saturate(180%);
+    -webkit-backdrop-filter: blur(4px) saturate(180%);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.btn.btn-minimal:hover {
+    background: rgba(255, 255, 255, 0.28) !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+/* --- Navbar glass ------------------------------------------ */
+.navbar {
+    background: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: saturate(180%) blur(20px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Transparent only on pages with background video */
+.navbar.navbar-transparent {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: saturate(180%) blur(20px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* --- Form inputs glass ------------------------------------- */
+input, textarea, select {
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-radius: 10px !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06) !important;
+    outline: none;
+}
+
+.nav-lang-search input,
+.nav-lang-search input:focus {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    outline: none !important;
+}
+
+/* --- Badges / labels --------------------------------------- */
+.about-badge,
+.hero-badge {
+    background: rgba(255, 255, 255, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #1d1d1f !important;
+}
+
+/* --- Banner / CTA sections --------------------------------- */
+.speaker-banner-card {
+    background: rgb(7, 69, 141) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: 0 10px 40px rgba(7, 69, 141, 0.25) !important;
+}
+
+/* Innovation card — no image zoom on hover */
+.innovation-card:hover .innovation-card-image img {
+    transform: none;
+}
+
+/* Innovation card — learn more link */
+.innovation-link {
+    color: rgb(7, 69, 141) !important;
+    font-weight: 500;
+}

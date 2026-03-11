@@ -7,7 +7,7 @@
     position: relative;
     padding-top: 100px;
     overflow: hidden;
-    background: rgb(132, 152, 208);
+    background: rgb(110 110 115 / 45%);
 }
 
 /* Tech background image */
@@ -182,8 +182,8 @@
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(ellipse 800px 600px at 20% 40%, rgba(6, 67, 140, 0.015), transparent),
-        radial-gradient(ellipse 600px 800px at 80% 60%, rgba(8, 86, 179, 0.015), transparent);
+        radial-gradient(ellipse 800px 600px at 20% 40%, rgba(0, 0, 0, 0.01), transparent),
+        radial-gradient(ellipse 600px 800px at 80% 60%, rgba(0, 0, 0, 0.01), transparent);
 }
 
 /* Animated grid lines */
@@ -196,7 +196,7 @@
 
 .grid-line {
     position: absolute;
-    background: linear-gradient(90deg, transparent, rgba(6, 67, 140, 0.02), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.015), transparent);
     animation: gridFade 10s infinite;
 }
 
@@ -272,7 +272,7 @@
 .hero-brand {
     display: block;
     /*
-    background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);
+    background: #1d1d1f;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -332,8 +332,8 @@
 
 .btn-ghost {
     background: transparent;
-    color: #06438c;
-    border: 1px solid #06438c;
+    color: #1d1d1f;
+    border: 1px solid #1d1d1f;
     padding: 14px 32px;
     font-weight: 500;
     transition: all 0.2s ease;
@@ -341,8 +341,8 @@
 }
 
 .btn-ghost:hover {
-    background: rgba(6, 67, 140, 0.05);
-    border-color: #043366;
+    background: rgba(0, 0, 0, 0.04);
+    border-color: #000000;
 }
 
 /* Metrics bar */
@@ -364,7 +364,7 @@
 .metric-value {
     font-size: 1.75rem;
     font-weight: 600;
-    color: #06438c;
+    color: #1d1d1f;
     margin-bottom: 0.25rem;
 }
 

@@ -1145,6 +1145,12 @@
     }
 }
 
+/* Remove browser focus outline on anchor scroll targets */
+#contact-form:focus,
+#contact-form:focus-visible {
+    outline: none;
+}
+
 /* Mobile Landscape & Small Tablets */
 @media (max-width: 768px) {
     .product-hero {
@@ -1254,7 +1260,7 @@
         padding: 20px 0;
         border-radius: 0;
         margin: 20px 0;
-        background: transparent;
+        background: transparent !important;
     }
 
     .contact-form {
