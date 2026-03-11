@@ -295,7 +295,7 @@
 .btn-minimal {
     /*background: linear-gradient(135deg, #06438c 0%, #0856b3 100%);*/
     background: white;
-    color: #06438c;
+    color: #000000;
     border: none;
     padding: 14px 32px;
     font-weight: 500;
@@ -306,7 +306,7 @@
 .btn-minimal:hover {
     background: white;
     transform: translateY(-1px);
-    box-shadow: 0 10px 25px rgba(6, 67, 140, 0.25);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .btn-minimal i {
