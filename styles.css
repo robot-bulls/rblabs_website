@@ -2795,7 +2795,7 @@ body {
     }
 
     .nav-link {
-        font-size: clamp(2rem, 5.5vh, 3rem) !important;
+        font-size: 2rem !important;
         font-weight: 600;
         letter-spacing: -0.03em;
         color: #1d1d1f;
@@ -2845,6 +2845,14 @@ body {
 
     .nav-menu.active .nav-link:nth-child(4) {
         transition-delay: 0.25s;
+    }
+
+    .nav-menu.active .nav-link:nth-child(5) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-menu.active .nav-link:nth-child(6) {
+        transition-delay: 0.35s;
     }
 
     /* Hero Mobile */

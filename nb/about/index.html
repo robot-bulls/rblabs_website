@@ -59,6 +59,14 @@
             position: absolute;
             clip: rect(1px, 1px, 1px, 1px);
         }
+        .nav-mobile-only { display: none; }
+        .nav-mobile-text { display: none; }
+        .nav-desktop-text { display: inline; }
+        @media (max-width: 768px) {
+            .nav-mobile-only { display: flex; }
+            .nav-mobile-text { display: inline; }
+            .nav-desktop-text { display: none; }
+        }
         .nav-lang-dropdown {
             position: relative;
         }
@@ -201,7 +209,7 @@
                 width: 100%;
                 justify-content: center;
                 padding: clamp(0.4rem, 1vh, 0.8rem) 0 !important;
-                font-size: 1rem !important;
+                font-size: 15px !important;
             }
             .nav-lang-trigger .fa-globe {
                 font-size: 1.1rem !important;
@@ -258,7 +266,11 @@
                     <a href="/nb/about/" class="nav-link">Om oss</a>
                     <a href="/nb/career/" class="nav-link">Karriere</a>
                     <a href="/nb/news/" class="nav-link">Nyheter</a>
-                    <a href="/nb/book/" class="nav-link">Book</a>
+                    <a href="/nb/book/" class="nav-link">
+                        <span class="nav-desktop-text">Book</span>
+                        <span class="nav-mobile-text">Bestill Robert</span>
+                    </a>
+                    <a href="/nb/robot/" class="nav-link nav-mobile-only">Egendefinert Robot</a>
                     <div class="nav-lang-dropdown">
                         <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
                             <i class="fas fa-globe"></i>
