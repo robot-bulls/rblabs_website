@@ -2795,7 +2795,7 @@ body {
     }
 
     .nav-link {
-        font-size: clamp(1.9rem, 5.5vh, 2.8rem);
+        font-size: clamp(2rem, 5.5vh, 3rem) !important;
         font-weight: 600;
         letter-spacing: -0.03em;
         color: #1d1d1f;
