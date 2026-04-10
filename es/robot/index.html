@@ -473,16 +473,39 @@
 <section class="product-hero">
     <div class="hero-background">
         <video
+            id="robot-hero-video"
             class="hero-video"
-            autoplay
-            muted
-            playsinline
-            loop
-            preload="auto"
-            poster="../../featured/your-robot.webp"
-        >
-            <source src="../../featured/your-robot.mp4" type="video/mp4">
-        </video>
+            autoplay muted playsinline loop
+            preload="metadata"
+        ></video>
+        <script>
+            (function() {
+                var v = document.getElementById('robot-hero-video');
+                var srcMobile     = '../../featured/buy-robot-mobile.mp4';
+                var srcDesktop    = '../../featured/buy-robot.mp4';
+                var posterMobile  = '../../featured/buy-robot-mobile-poster.jpg';
+                var posterDesktop = '../../featured/buy-robot-poster.jpg';
+                var current = null;
+
+                function loadVideo() {
+                    var isMobile = window.innerWidth <= 768;
+                    var target = isMobile ? 'mobile' : 'desktop';
+                    if (target === current) return;
+                    current = target;
+                    v.poster = isMobile ? posterMobile : posterDesktop;
+                    v.src    = isMobile ? srcMobile    : srcDesktop;
+                    v.load();
+                }
+
+                loadVideo();
+
+                var resizeTimer;
+                window.addEventListener('resize', function() {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(loadVideo, 200);
+                });
+            })();
+        </script>
     </div>
     <div class="product-hero-content">
         <div class="hero-title">
