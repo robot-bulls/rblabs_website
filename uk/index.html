@@ -593,7 +593,7 @@
                 <a href="/uk/book/" class="btn btn-primary">Знайомтеся з Робертом</a>
             </div>
             <div class="llms-visual">
-                <video autoplay loop muted playsinline class="llms-video">
+                <video loop muted playsinline class="llms-video">
                     <source src="../featured/robert-finance.mp4" type="video/mp4">
                     <img src="../featured/robert.jpg" alt="Robert the Robot" class="llms-img">
                 </video>
@@ -751,6 +751,22 @@
         }
     }
 </style>
+<script>
+    (function () {
+        var video = document.querySelector('.llms-video');
+        if (!video) return;
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.25 });
+        observer.observe(video);
+    })();
+</script>
 
 
     <footer class="footer">
