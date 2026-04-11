@@ -532,6 +532,12 @@
                         clearTimeout(resizeTimer);
                         resizeTimer = setTimeout(loadVideo, 200);
                     });
+
+                    document.addEventListener('visibilitychange', function() {
+                        if (!document.hidden) {
+                            v.play().catch(function() {});
+                        }
+                    });
                 })();
             </script>
         </div>
