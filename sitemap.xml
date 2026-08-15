@@ -2144,6 +2144,9 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://www.rblabs.ai/uk/book/"/>
   </url>
   <url>
+    <loc>https://www.rblabs.ai/book-a-call/</loc>
+  </url>
+  <url>
     <loc>https://www.rblabs.ai/news/robert-in-davos/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rblabs.ai/news/robert-in-davos/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.rblabs.ai/ar/news/robert-in-davos/"/>

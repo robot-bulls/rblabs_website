@@ -253,3 +253,94 @@ input:focus, textarea:focus, select:focus {
     color: rgb(7, 69, 141) !important;
     font-weight: 500;
 }
+
+/* Nav "Book a Call" button — smaller padding to fit the navbar */
+.nav-menu > .btn.btn-primary {
+    padding: 0.6rem 1.4rem;
+}
+
+/* Nav "Book a Call" button — glass look while navbar is transparent (over video), solid once scrolled */
+.navbar.navbar-transparent .nav-menu > .btn.btn-primary {
+    background: rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(4px) saturate(180%);
+    -webkit-backdrop-filter: blur(4px) saturate(180%);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.navbar.navbar-transparent .nav-menu > .btn.btn-primary:hover {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Nav "Book a Call" button — below desktop, match the plain nav-link style instead of a pill */
+@media (max-width: 1024px) {
+    .nav-menu > .btn.btn-primary,
+    .navbar.navbar-transparent .nav-menu > .btn.btn-primary {
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        text-shadow: none !important;
+        padding: 0.5rem 0 !important;
+        font-size: 0.9375rem !important;
+        font-weight: 400 !important;
+    }
+
+    .nav-menu > .btn.btn-primary {
+        color: inherit !important;
+    }
+
+    .navbar.navbar-transparent .nav-menu > .btn.btn-primary {
+        color: #ffffff !important;
+    }
+
+    .nav-menu > .btn.btn-primary:hover {
+        color: var(--primary-color) !important;
+        transform: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu > .btn.btn-primary,
+    .navbar.navbar-transparent .nav-menu > .btn.btn-primary {
+        color: #1d1d1f !important;
+        padding: clamp(0.6rem, 1.5vh, 1.5rem) 0 !important;
+        font-size: 2rem !important;
+        font-weight: 400 !important;
+        width: 100%;
+        text-align: left;
+        justify-content: flex-start;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* Match the drawer's fade-in stagger animation (normally scoped to .nav-link only) */
+    .nav-menu > .btn.btn-primary {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-menu.active > .btn.btn-primary {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.4s;
+    }
+
+    .nav-menu > .btn.btn-primary:hover {
+        color: var(--primary-color) !important;
+        transform: translateX(10px);
+    }
+}
+
+/* Nav "Book a Call" button — on desktop only, visually reorder to sit after the language dropdown
+   (DOM position stays right after "Custom Robot" so mobile/tablet ordering is unaffected) */
+@media (min-width: 1025px) {
+    .nav-menu > .btn.btn-primary {
+        order: 2;
+    }
+}
