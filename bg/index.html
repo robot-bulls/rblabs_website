@@ -555,7 +555,7 @@
                 <span style="position: absolute; left: -9999px;">RB Labs</span> RB Labs интегрира авангарден AI с напреднала роботика, за да трансформира начина, по който бизнесът работи и автоматизира процеси.
             </p>
             <div class="hero-cta">
-                <a href="/bg/book/#rent-form-section" class="btn btn-primary btn-large btn-minimal">
+                <a href="/bg/book/?scrollTo=rent-form-section" class="btn btn-primary btn-large btn-minimal">
                     <span>Резервирайте Робърт</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -848,6 +848,55 @@
                 update();
                 window.addEventListener('scroll', update, { passive: true });
             }
+        })();
+    </script>
+    <script>
+        // Slow, custom-duration scroll to a section requested via ?scrollTo=<id>
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            var targetId = params.get('scrollTo');
+            if (!targetId) return;
+
+            function easeInOutSine(t) {
+                return -(Math.cos(Math.PI * t) - 1) / 2;
+            }
+
+            function scrollToTarget() {
+                var target = document.getElementById(targetId);
+                if (!target) return;
+                var startY = window.pageYOffset;
+                var marginTop = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+                var targetY = target.getBoundingClientRect().top + startY - marginTop;
+                var distance = targetY - startY;
+                var duration = 4000;
+                var startTime = null;
+
+                // The site sets html { scroll-behavior: smooth } globally, which would
+                // otherwise smooth-animate each of our per-frame scrollTo() calls on top
+                // of our own easing, fighting it and producing a stall-then-jump effect.
+                // Override it to 'auto' for the duration of this animation so our manual
+                // easing has full control, then restore it.
+                var htmlEl = document.documentElement;
+                var previousScrollBehavior = htmlEl.style.scrollBehavior;
+                htmlEl.style.scrollBehavior = 'auto';
+
+                function step(timestamp) {
+                    if (startTime === null) startTime = timestamp;
+                    var elapsed = timestamp - startTime;
+                    var progress = Math.min(elapsed / duration, 1);
+                    window.scrollTo(0, startY + distance * easeInOutSine(progress));
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        htmlEl.style.scrollBehavior = previousScrollBehavior;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
+            window.addEventListener('load', function() {
+                setTimeout(scrollToTarget, 150);
+            });
         })();
     </script>
 </body>
