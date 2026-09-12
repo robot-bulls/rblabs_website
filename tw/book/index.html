@@ -849,7 +849,6 @@
         padding: 100px 0;
         background: white;
         border-top: 1px solid #e5e7eb;
-        scroll-margin-top: 90px;
     }
 
     .rent-container {
@@ -908,6 +907,7 @@
         border-radius: 12px;
         padding: 50px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        scroll-margin-top: 90px;
     }
 
     .rent-form-header {
@@ -1296,7 +1296,7 @@
 </section>
 
 <!-- Rental Form Section -->
-<section class="rent-form-section" id="rent-form-section">
+<section class="rent-form-section">
     <div class="container">
         <div class="rent-container">
             <!-- Info Sidebar -->
@@ -1320,7 +1320,7 @@
             </div>
 
             <!-- Rental Form -->
-            <div class="rent-form-wrapper">
+            <div class="rent-form-wrapper" id="rent-form-section">
                 <div class="rent-form-header">
                     <h2>請求預約報價</h2>
                     <p>填寫下方表格，我們的活動團隊將在24小時內與您聯繫。</p>
@@ -1350,25 +1350,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentCompany">公司 / 組織 *</label>
+                        <label for="rentCompany">公司 / 組織 <span class="required">*</span></label>
                         <input type="text" id="rentCompany" name="company" required>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentEventDate">活動日期 <span class="required">*</span></label>
-                            <input type="date" id="rentEventDate" name="eventDate" required>
+                            <label for="rentEventDate">活動日期</label>
+                            <input type="date" id="rentEventDate" name="eventDate">
                         </div>
                         <div class="form-group">
-                            <label for="rentLocation">活動地點 <span class="required">*</span></label>
-                            <input type="text" id="rentLocation" name="eventLocation" required>
+                            <label for="rentLocation">活動地點</label>
+                            <input type="text" id="rentLocation" name="eventLocation">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentDuration">活動時長 <span class="required">*</span></label>
-                            <select id="rentDuration" name="duration" required>
+                            <label for="rentDuration">活動時長</label>
+                            <select id="rentDuration" name="duration">
                                 <option value="">選擇時長</option>
                                 <option value="half-day">半天（最多4小時）</option>
                                 <option value="full-day">全天（最多8小時）</option>
@@ -1397,8 +1397,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentMessage">留言 / 需求</label>
-                        <textarea id="rentMessage" name="message" placeholder="告訴我們關於您的活動以及您希望Robert做什麼..."></textarea>
+                        <label for="rentMessage">留言 / 需求 <span class="required">*</span></label>
+                        <textarea id="rentMessage" name="message" placeholder="告訴我們關於您的活動以及您希望Robert做什麼..." required></textarea>
                     </div>
 
                     <div class="form-footer">

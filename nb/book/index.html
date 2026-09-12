@@ -849,7 +849,6 @@
         padding: 100px 0;
         background: white;
         border-top: 1px solid #e5e7eb;
-        scroll-margin-top: 90px;
     }
 
     .rent-container {
@@ -908,6 +907,7 @@
         border-radius: 12px;
         padding: 50px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        scroll-margin-top: 90px;
     }
 
     .rent-form-header {
@@ -1296,7 +1296,7 @@
 </section>
 
 <!-- Rental Form Section -->
-<section class="rent-form-section" id="rent-form-section">
+<section class="rent-form-section">
     <div class="container">
         <div class="rent-container">
             <!-- Info Sidebar -->
@@ -1320,7 +1320,7 @@
             </div>
 
             <!-- Rental Form -->
-            <div class="rent-form-wrapper">
+            <div class="rent-form-wrapper" id="rent-form-section">
                 <div class="rent-form-header">
                     <h2>Be om bestillingstilbud</h2>
                     <p>Fyll ut skjemaet nedenfor, så kontakter arrangementsteamet vårt deg innen 24 timer.</p>
@@ -1350,25 +1350,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentCompany">Selskap / Organisasjon *</label>
+                        <label for="rentCompany">Selskap / Organisasjon <span class="required">*</span></label>
                         <input type="text" id="rentCompany" name="company" required>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentEventDate">Arrangementsdato <span class="required">*</span></label>
-                            <input type="date" id="rentEventDate" name="eventDate" required>
+                            <label for="rentEventDate">Arrangementsdato</label>
+                            <input type="date" id="rentEventDate" name="eventDate">
                         </div>
                         <div class="form-group">
-                            <label for="rentLocation">Arrangementssted <span class="required">*</span></label>
-                            <input type="text" id="rentLocation" name="eventLocation" required>
+                            <label for="rentLocation">Arrangementssted</label>
+                            <input type="text" id="rentLocation" name="eventLocation">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentDuration">Arrangementsvarighet <span class="required">*</span></label>
-                            <select id="rentDuration" name="duration" required>
+                            <label for="rentDuration">Arrangementsvarighet</label>
+                            <select id="rentDuration" name="duration">
                                 <option value="">Velg varighet</option>
                                 <option value="half-day">Halv dag (opptil 4 timer)</option>
                                 <option value="full-day">Hel dag (opptil 8 timer)</option>
@@ -1397,8 +1397,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentMessage">Melding / Krav</label>
-                        <textarea id="rentMessage" name="message" placeholder="Fortell oss om arrangementet ditt og hva du ønsker at Robert skal gjøre..."></textarea>
+                        <label for="rentMessage">Melding / Krav <span class="required">*</span></label>
+                        <textarea id="rentMessage" name="message" placeholder="Fortell oss om arrangementet ditt og hva du ønsker at Robert skal gjøre..." required></textarea>
                     </div>
 
                     <div class="form-footer">

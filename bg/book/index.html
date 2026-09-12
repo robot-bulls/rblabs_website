@@ -849,7 +849,6 @@
         padding: 100px 0;
         background: white;
         border-top: 1px solid #e5e7eb;
-        scroll-margin-top: 90px;
     }
 
     .rent-container {
@@ -908,6 +907,7 @@
         border-radius: 12px;
         padding: 50px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        scroll-margin-top: 90px;
     }
 
     .rent-form-header {
@@ -1296,7 +1296,7 @@
 </section>
 
 <!-- Rental Form Section -->
-<section class="rent-form-section" id="rent-form-section">
+<section class="rent-form-section">
     <div class="container">
         <div class="rent-container">
             <!-- Info Sidebar -->
@@ -1320,7 +1320,7 @@
             </div>
 
             <!-- Rental Form -->
-            <div class="rent-form-wrapper">
+            <div class="rent-form-wrapper" id="rent-form-section">
                 <div class="rent-form-header">
                     <h2>Заявка за резервация</h2>
                     <p>Попълнете формуляра и нашият екип за събития ще се свърже с вас в рамките на 24 часа.</p>
@@ -1350,25 +1350,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentCompany">Компания / Организация *</label>
+                        <label for="rentCompany">Компания / Организация <span class="required">*</span></label>
                         <input type="text" id="rentCompany" name="company" required>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentEventDate">Дата на събитието <span class="required">*</span></label>
-                            <input type="date" id="rentEventDate" name="eventDate" required>
+                            <label for="rentEventDate">Дата на събитието</label>
+                            <input type="date" id="rentEventDate" name="eventDate">
                         </div>
                         <div class="form-group">
-                            <label for="rentLocation">Място на събитието <span class="required">*</span></label>
-                            <input type="text" id="rentLocation" name="eventLocation" required>
+                            <label for="rentLocation">Място на събитието</label>
+                            <input type="text" id="rentLocation" name="eventLocation">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentDuration">Продължителност на събитието <span class="required">*</span></label>
-                            <select id="rentDuration" name="duration" required>
+                            <label for="rentDuration">Продължителност на събитието</label>
+                            <select id="rentDuration" name="duration">
                                 <option value="">Изберете продължителност</option>
                                 <option value="half-day">Половин ден (до 4 часа)</option>
                                 <option value="full-day">Цял ден (до 8 часа)</option>
@@ -1397,8 +1397,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentMessage">Съобщение / Изисквания</label>
-                        <textarea id="rentMessage" name="message" placeholder="Разкажете ни за вашето събитие и какво искате Робърт да прави..."></textarea>
+                        <label for="rentMessage">Съобщение / Изисквания <span class="required">*</span></label>
+                        <textarea id="rentMessage" name="message" placeholder="Разкажете ни за вашето събитие и какво искате Робърт да прави..." required></textarea>
                     </div>
 
                     <div class="form-footer">

@@ -850,7 +850,6 @@
         padding: 100px 0;
         background: white;
         border-top: 1px solid #e5e7eb;
-        scroll-margin-top: 90px;
     }
 
     .rent-container {
@@ -909,6 +908,7 @@
         border-radius: 12px;
         padding: 50px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        scroll-margin-top: 90px;
     }
 
     .rent-form-header {
@@ -1297,7 +1297,7 @@
 </section>
 
 <!-- Rental Form Section -->
-<section class="rent-form-section" id="rent-form-section">
+<section class="rent-form-section">
     <div class="container">
         <div class="rent-container">
             <!-- Info Sidebar -->
@@ -1321,7 +1321,7 @@
             </div>
 
             <!-- Rental Form -->
-            <div class="rent-form-wrapper">
+            <div class="rent-form-wrapper" id="rent-form-section">
                 <div class="rent-form-header">
                     <h2>اطلب عرض سعر للحجز</h2>
                     <p>املأ النموذج أدناه وسيتواصل معك فريق الفعاليات خلال 24 ساعة.</p>
@@ -1351,25 +1351,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentCompany">الشركة / المنظمة *</label>
+                        <label for="rentCompany">الشركة / المنظمة <span class="required">*</span></label>
                         <input type="text" id="rentCompany" name="company" required>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentEventDate">تاريخ الحدث <span class="required">*</span></label>
-                            <input type="date" id="rentEventDate" name="eventDate" required>
+                            <label for="rentEventDate">تاريخ الحدث</label>
+                            <input type="date" id="rentEventDate" name="eventDate">
                         </div>
                         <div class="form-group">
-                            <label for="rentLocation">موقع الحدث <span class="required">*</span></label>
-                            <input type="text" id="rentLocation" name="eventLocation" required>
+                            <label for="rentLocation">موقع الحدث</label>
+                            <input type="text" id="rentLocation" name="eventLocation">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentDuration">مدة الحدث <span class="required">*</span></label>
-                            <select id="rentDuration" name="duration" required>
+                            <label for="rentDuration">مدة الحدث</label>
+                            <select id="rentDuration" name="duration">
                                 <option value="">اختر المدة</option>
                                 <option value="half-day">نصف يوم (حتى 4 ساعات)</option>
                                 <option value="full-day">يوم كامل (حتى 8 ساعات)</option>
@@ -1398,8 +1398,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentMessage">الرسالة / المتطلبات</label>
-                        <textarea id="rentMessage" name="message" placeholder="أخبرنا عن حدثك وما تريد أن يفعله روبرت..."></textarea>
+                        <label for="rentMessage">الرسالة / المتطلبات <span class="required">*</span></label>
+                        <textarea id="rentMessage" name="message" placeholder="أخبرنا عن حدثك وما تريد أن يفعله روبرت..." required></textarea>
                     </div>
 
                     <div class="form-footer">

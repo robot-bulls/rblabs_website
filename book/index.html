@@ -850,7 +850,6 @@
         padding: 100px 0;
         background: white;
         border-top: 1px solid #e5e7eb;
-        scroll-margin-top: 90px;
     }
 
     .rent-container {
@@ -909,6 +908,7 @@
         border-radius: 12px;
         padding: 50px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        scroll-margin-top: 90px;
     }
 
     .rent-form-header {
@@ -1297,7 +1297,7 @@
 </section>
 
 <!-- Rental Form Section -->
-<section class="rent-form-section" id="rent-form-section">
+<section class="rent-form-section">
     <div class="container">
         <div class="rent-container">
             <!-- Info Sidebar -->
@@ -1321,7 +1321,7 @@
             </div>
 
             <!-- Rental Form -->
-            <div class="rent-form-wrapper">
+            <div class="rent-form-wrapper" id="rent-form-section">
                 <div class="rent-form-header">
                     <h2>Request a Booking Quote</h2>
                     <p>Fill out the form below and our events team will get back to you within 24 hours.</p>
@@ -1351,25 +1351,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentCompany">Company / Organization *</label>
+                        <label for="rentCompany">Company / Organization <span class="required">*</span></label>
                         <input type="text" id="rentCompany" name="company" required>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentEventDate">Event Date <span class="required">*</span></label>
-                            <input type="date" id="rentEventDate" name="eventDate" required>
+                            <label for="rentEventDate">Event Date</label>
+                            <input type="date" id="rentEventDate" name="eventDate">
                         </div>
                         <div class="form-group">
-                            <label for="rentLocation">Event Location <span class="required">*</span></label>
-                            <input type="text" id="rentLocation" name="eventLocation" required>
+                            <label for="rentLocation">Event Location</label>
+                            <input type="text" id="rentLocation" name="eventLocation">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="rentDuration">Event Duration <span class="required">*</span></label>
-                            <select id="rentDuration" name="duration" required>
+                            <label for="rentDuration">Event Duration</label>
+                            <select id="rentDuration" name="duration">
                                 <option value="">Select duration</option>
                                 <option value="half-day">Half day (up to 4 hours)</option>
                                 <option value="full-day">Full day (up to 8 hours)</option>
@@ -1398,8 +1398,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rentMessage">Message / Requirements</label>
-                        <textarea id="rentMessage" name="message" placeholder="Tell us about your event and what you&#x27;d like Robert to do..."></textarea>
+                        <label for="rentMessage">Message / Requirements <span class="required">*</span></label>
+                        <textarea id="rentMessage" name="message" placeholder="Tell us about your event and what you&#x27;d like Robert to do..." required></textarea>
                     </div>
 
                     <div class="form-footer">
