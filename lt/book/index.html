@@ -992,6 +992,59 @@
         padding-right: 40px;
     }
 
+    .phone-input-group {
+        display: flex;
+        gap: 8px;
+    }
+
+    .country-code-field {
+        flex: 0 0 auto;
+        width: 88px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 12px 10px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        background: white;
+        transition: all 0.3s ease;
+    }
+
+    .country-code-field:focus-within {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .country-flag {
+        font-size: 1.1rem;
+        line-height: 1;
+        flex-shrink: 0;
+    }
+
+    .form-group .country-code-field input {
+        -webkit-appearance: none;
+        appearance: none;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0;
+        width: 100%;
+        min-width: 0;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .form-group .country-code-field input:focus {
+        outline: none;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    .phone-input-group input[type="tel"] {
+        flex: 1;
+        min-width: 0;
+    }
+
     .form-footer {
         margin-top: 32px;
         display: flex;
@@ -1127,6 +1180,11 @@
         .form-group textarea {
             font-size: 16px;
             padding: 14px 12px;
+        }
+
+        .country-code-field {
+            width: 80px;
+            padding: 14px 8px;
         }
 
     }
@@ -1345,7 +1403,13 @@
                         </div>
                         <div class="form-group">
                             <label for="rentPhone">Telefono numeris</label>
-                            <input type="tel" id="rentPhone" name="phone">
+                            <div class="phone-input-group">
+                                <div class="country-code-field">
+                                    <span class="country-flag" id="rentCountryFlag" aria-hidden="true">🇺🇸</span>
+                                    <input type="text" id="rentCountryCode" name="countryCode" value="+1" inputmode="tel" maxlength="5" autocomplete="off" aria-label="Country code">
+                                </div>
+                                <input type="tel" id="rentPhone" name="phone">
+                            </div>
                         </div>
                     </div>
 
@@ -1503,6 +1567,55 @@
 </script>
 
 <script>
+    (function() {
+        var codeToFlag = {
+            '+93': '🇦🇫', '+355': '🇦🇱', '+213': '🇩🇿', '+376': '🇦🇩', '+244': '🇦🇴',
+            '+54': '🇦🇷', '+374': '🇦🇲', '+61': '🇦🇺', '+43': '🇦🇹', '+994': '🇦🇿',
+            '+973': '🇧🇭', '+880': '🇧🇩', '+375': '🇧🇾', '+32': '🇧🇪', '+591': '🇧🇴',
+            '+387': '🇧🇦', '+267': '🇧🇼', '+55': '🇧🇷', '+673': '🇧🇳', '+359': '🇧🇬',
+            '+855': '🇰🇭', '+237': '🇨🇲', '+1': '🇺🇸', '+56': '🇨🇱', '+86': '🇨🇳',
+            '+57': '🇨🇴', '+506': '🇨🇷', '+385': '🇭🇷', '+357': '🇨🇾', '+420': '🇨🇿',
+            '+45': '🇩🇰', '+20': '🇪🇬', '+372': '🇪🇪', '+251': '🇪🇹', '+358': '🇫🇮',
+            '+33': '🇫🇷', '+995': '🇬🇪', '+49': '🇩🇪', '+233': '🇬🇭', '+30': '🇬🇷',
+            '+852': '🇭🇰', '+36': '🇭🇺', '+354': '🇮🇸', '+91': '🇮🇳', '+62': '🇮🇩',
+            '+98': '🇮🇷', '+964': '🇮🇶', '+353': '🇮🇪', '+972': '🇮🇱', '+39': '🇮🇹',
+            '+225': '🇨🇮', '+81': '🇯🇵', '+962': '🇯🇴', '+7': '🇷🇺', '+254': '🇰🇪',
+            '+965': '🇰🇼', '+371': '🇱🇻', '+961': '🇱🇧', '+218': '🇱🇾', '+423': '🇱🇮',
+            '+370': '🇱🇹', '+352': '🇱🇺', '+853': '🇲🇴', '+60': '🇲🇾', '+356': '🇲🇹',
+            '+230': '🇲🇺', '+52': '🇲🇽', '+373': '🇲🇩', '+377': '🇲🇨', '+212': '🇲🇦',
+            '+95': '🇲🇲', '+264': '🇳🇦', '+977': '🇳🇵', '+31': '🇳🇱', '+64': '🇳🇿',
+            '+234': '🇳🇬', '+389': '🇲🇰', '+47': '🇳🇴', '+968': '🇴🇲', '+92': '🇵🇰',
+            '+507': '🇵🇦', '+595': '🇵🇾', '+51': '🇵🇪', '+63': '🇵🇭', '+48': '🇵🇱',
+            '+351': '🇵🇹', '+974': '🇶🇦', '+40': '🇷🇴', '+250': '🇷🇼', '+966': '🇸🇦',
+            '+381': '🇷🇸', '+65': '🇸🇬', '+421': '🇸🇰', '+386': '🇸🇮', '+27': '🇿🇦',
+            '+82': '🇰🇷', '+34': '🇪🇸', '+94': '🇱🇰', '+46': '🇸🇪', '+41': '🇨🇭',
+            '+886': '🇹🇼', '+255': '🇹🇿', '+66': '🇹🇭', '+216': '🇹🇳', '+90': '🇹🇷',
+            '+256': '🇺🇬', '+380': '🇺🇦', '+971': '🇦🇪', '+44': '🇬🇧', '+598': '🇺🇾',
+            '+998': '🇺🇿', '+58': '🇻🇪', '+84': '🇻🇳', '+967': '🇾🇪', '+260': '🇿🇲',
+            '+263': '🇿🇼'
+        };
+
+        var codeInput = document.getElementById('rentCountryCode');
+        var flagEl = document.getElementById('rentCountryFlag');
+        if (!codeInput || !flagEl) return;
+
+        function updateFlag() {
+            var flag = codeToFlag[codeInput.value];
+            flagEl.textContent = flag || '🌐';
+        }
+
+        codeInput.addEventListener('input', function() {
+            var cleaned = codeInput.value.replace(/[^\d+]/g, '');
+            cleaned = '+' + cleaned.replace(/\+/g, '');
+            codeInput.value = cleaned;
+            updateFlag();
+        });
+
+        updateFlag();
+    })();
+</script>
+
+<script>
     document.getElementById('rentForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
@@ -1550,7 +1663,9 @@
             var firstName = document.getElementById('rentFirstName').value.trim();
             var lastName = document.getElementById('rentLastName').value.trim();
             var email = document.getElementById('rentEmail').value.trim();
-            var phone = document.getElementById('rentPhone').value.trim();
+            var countryCode = document.getElementById('rentCountryCode').value;
+            var phoneNumber = document.getElementById('rentPhone').value.trim();
+            var phone = phoneNumber ? (countryCode + ' ' + phoneNumber) : '';
             var company = document.getElementById('rentCompany').value.trim();
             var eventDate = document.getElementById('rentEventDate').value;
             var location = document.getElementById('rentLocation').value.trim();
