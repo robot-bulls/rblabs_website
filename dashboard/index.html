@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>RB Labs — Requests Dashboard</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --border: #e2e4e9;
+      --text: #1f2330;
+      --muted: #6b7280;
+      --primary: #1f2937;
+      --primary-hover: #111827;
+      --new: #2563eb;
+      --treated: #16a34a;
+      --danger: #dc2626;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ---- Login screen ---- */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .login-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .login-card h1 {
+      font-size: 1.25rem;
+      margin: 0 0 24px;
+    }
+    .field { margin-bottom: 16px; }
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .field input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 10px 16px;
+    }
+    .btn-primary {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      padding: 12px;
+    }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-primary:disabled { opacity: 0.6; cursor: default; }
+    .error-text {
+      color: var(--danger);
+      font-size: 0.85rem;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* ---- Dashboard screen ---- */
+    #dashboardScreen { display: none; }
+    #resumeLoading {
+      display: none;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    #resumeLoading.visible { display: flex; }
+    header.topbar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header.topbar h1 { font-size: 1.1rem; margin: 0; }
+    .who { font-size: 0.85rem; color: var(--muted); }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: #f0f1f3; }
+
+    .admin-panel {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+    .admin-panel form {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    .admin-panel .field { margin-bottom: 0; }
+    .admin-panel .field input,
+    .admin-panel .field select {
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    .user-list {
+      margin-top: 16px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .user-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+    .user-row .user-name { font-weight: 600; }
+    .user-row .user-role { color: var(--muted); }
+    .user-row .row-spacer { flex: 1; }
+    .user-row .btn-delete-sm {
+      background: var(--danger);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding: 16px 24px 0;
+    }
+    .tabs { display: flex; gap: 6px; }
+    .tab-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    select, input[type="search"] {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      background: var(--card);
+    }
+    input[type="search"] { flex: 1; min-width: 160px; }
+
+    .list { padding: 16px 24px 40px; display: flex; flex-direction: column; gap: 10px; }
+    .empty { color: var(--muted); padding: 40px; text-align: center; }
+
+    .row-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .row-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .badge.status-new { background: var(--new); }
+    .badge.status-treated { background: var(--treated); }
+    .badge.status-deleted { background: var(--danger); }
+    .badge.source { background: #eef0f3; color: var(--text); }
+
+    .row-name { font-weight: 600; }
+    .row-meta { color: var(--muted); font-size: 0.82rem; }
+    .row-spacer { flex: 1; }
+    .row-date { color: var(--muted); font-size: 0.78rem; white-space: nowrap; }
+
+    .row-detail {
+      display: none;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .row-detail.open { display: block; }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 20px;
+      margin-bottom: 10px;
+    }
+    .detail-grid div span { color: var(--muted); }
+    .detail-message {
+      white-space: pre-wrap;
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+    .comment-block { margin-bottom: 12px; }
+    .comment-block label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .comment-input {
+      width: 100%;
+      resize: vertical;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      background: #fff;
+    }
+    .comment-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .comment-text {
+      white-space: pre-wrap;
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+    .comment-meta {
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin: 6px 0;
+    }
+    .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-sm { padding: 7px 12px; font-size: 0.82rem; }
+    .btn-treat { background: var(--treated); color: #fff; }
+    .btn-delete { background: var(--danger); color: #fff; }
+    .btn-undo { background: #eef0f3; color: var(--text); }
+
+    /* ---- Mobile ---- */
+    @media (max-width: 640px) {
+      /* iOS Safari auto-zooms into any focused input/select/textarea
+         under 16px, which is what causes the whole page to appear
+         "zoomed in" until you pinch back out. Keeping every form
+         control at 16px+ prevents that entirely. */
+      .field input,
+      .admin-panel .field input,
+      .admin-panel .field select,
+      select,
+      input[type="search"],
+      .comment-input {
+        font-size: 16px;
+      }
+
+      header.topbar {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 14px 16px;
+      }
+      header.topbar h1 { font-size: 1rem; }
+      header.topbar > div { flex-wrap: wrap; gap: 8px; }
+      .who { width: 100%; order: -1; }
+
+      .admin-panel { padding: 14px 16px; }
+      .admin-panel form { flex-direction: column; align-items: stretch; }
+      .admin-panel .field { width: 100%; }
+      .admin-panel form button { width: 100%; }
+
+      .user-row { flex-wrap: wrap; }
+
+      .toolbar { padding: 14px 16px 0; }
+      .tabs { width: 100%; }
+      .tab-btn { flex: 1; text-align: center; }
+      #sourceFilter { flex: 1; min-width: 0; }
+      input[type="search"] { flex-basis: 100%; }
+      #refreshBtn { flex: 1; }
+
+      .list { padding: 14px 16px 32px; }
+      .row-card { padding: 12px; }
+      .row-date { width: 100%; order: 1; white-space: normal; }
+
+      .detail-grid { grid-template-columns: 1fr; }
+
+      .row-actions button { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== LOGIN ===================== -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <h1>RB Labs — Requests</h1>
+      <form id="loginForm">
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn-primary" id="loginBtn">Log in</button>
+        <div class="error-text" id="loginError"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================== RESUME LOADING ===================== -->
+  <div id="resumeLoading">Checking session…</div>
+
+  <!-- ===================== DASHBOARD ===================== -->
+  <div id="dashboardScreen">
+    <header class="topbar">
+      <h1>RB Labs — Requests</h1>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span class="who" id="whoami"></span>
+        <button class="btn-ghost btn-sm" id="addUserBtn" hidden>+ Add team member</button>
+        <button class="btn-ghost btn-sm" id="logoutBtn">Log out</button>
+      </div>
+    </header>
+
+    <div class="admin-panel" id="adminPanel" hidden>
+      <form id="addUserForm">
+        <div class="field">
+          <label for="newUsername">Username</label>
+          <input type="text" id="newUsername" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label for="newPassword">Password</label>
+          <input type="text" id="newPassword" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label for="newRole">Role</label>
+          <select id="newRole">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-ghost btn-sm" id="addUserSubmit">Create account</button>
+        <button type="button" class="btn-ghost btn-sm" id="addUserCancel">Cancel</button>
+      </form>
+      <div class="error-text" id="addUserMessage"></div>
+      <div class="user-list" id="userList"></div>
+    </div>
+
+    <div class="toolbar">
+      <div class="tabs" id="statusTabs">
+        <button class="tab-btn active" data-status="new">New</button>
+        <button class="tab-btn" data-status="treated">Treated</button>
+        <button class="tab-btn" data-status="deleted">Deleted</button>
+      </div>
+      <select id="sourceFilter">
+        <option value="">All sources</option>
+      </select>
+      <input type="search" id="searchBox" placeholder="Search name, email, message...">
+      <button class="btn-ghost btn-sm" id="refreshBtn">Refresh</button>
+    </div>
+
+    <div class="list" id="list"></div>
+  </div>
+
+<script>
+  var API_URL = 'https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec';
+
+  var TOKEN = null;
+  var ME = null;
+  var ME_ROLE = null;
+  var ALL_ROWS = [];
+  var currentStatusTab = 'new';
+
+  function callApi(action, params) {
+    var body = Object.assign({ action: action }, params || {});
+    return fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(body)
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data.ok) throw new Error(data.error || 'Request failed.');
+        return data;
+      });
+  }
+
+  // ---------- Login ----------
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var username = document.getElementById('username').value.trim();
+    var password = document.getElementById('password').value;
+    var btn = document.getElementById('loginBtn');
+    var errEl = document.getElementById('loginError');
+    errEl.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Logging in...';
+
+    callApi('login', { username: username, password: password })
+      .then(function (data) {
+        TOKEN = data.token;
+        ME = data.username;
+        ME_ROLE = data.role;
+        localStorage.setItem('rb_dash_token', TOKEN);
+        localStorage.setItem('rb_dash_user', ME);
+        localStorage.setItem('rb_dash_role', ME_ROLE);
+        enterDashboard();
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        btn.textContent = 'Log in';
+        errEl.textContent = err.message || 'Login failed.';
+        errEl.style.display = 'block';
+      });
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', function () {
+    callApi('logout', { token: TOKEN }).catch(function () {});
+    localStorage.removeItem('rb_dash_token');
+    localStorage.removeItem('rb_dash_user');
+    localStorage.removeItem('rb_dash_role');
+    TOKEN = null;
+    document.getElementById('dashboardScreen').style.display = 'none';
+    document.getElementById('loginScreen').style.display = 'flex';
+  });
+
+  function enterDashboard() {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('resumeLoading').classList.remove('visible');
+    document.getElementById('dashboardScreen').style.display = 'block';
+    document.getElementById('whoami').textContent = ME + (ME_ROLE === 'admin' ? ' (admin)' : '');
+    document.getElementById('addUserBtn').hidden = (ME_ROLE !== 'admin');
+    loadSubmissions();
+  }
+
+  // Try to resume a saved session on page load. The login form is hidden
+  // immediately (before the async check even starts) so it never flashes
+  // on screen while we're silently verifying the saved token.
+  (function tryResume() {
+    var savedToken = localStorage.getItem('rb_dash_token');
+    var savedUser = localStorage.getItem('rb_dash_user');
+    var savedRole = localStorage.getItem('rb_dash_role');
+
+    if (!savedToken || !savedUser) return;
+
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('resumeLoading').classList.add('visible');
+
+    TOKEN = savedToken;
+    ME = savedUser;
+    ME_ROLE = savedRole;
+
+    callApi('getSubmissions', { token: TOKEN })
+      .then(function (data) {
+        ALL_ROWS = data.rows;
+        updateSourceFilterOptions();
+        enterDashboard();
+        render();
+      })
+      .catch(function (err) {
+        console.error('Session resume failed:', err);
+        localStorage.removeItem('rb_dash_token');
+        localStorage.removeItem('rb_dash_user');
+        localStorage.removeItem('rb_dash_role');
+        document.getElementById('resumeLoading').classList.remove('visible');
+        document.getElementById('loginScreen').style.display = 'flex';
+      });
+  })();
+
+  // ---------- Admin: create/remove users ----------
+  document.getElementById('addUserBtn').addEventListener('click', function () {
+    document.getElementById('adminPanel').hidden = false;
+    loadUserList();
+  });
+  document.getElementById('addUserCancel').addEventListener('click', function () {
+    document.getElementById('adminPanel').hidden = true;
+  });
+  document.getElementById('addUserForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var newUsername = document.getElementById('newUsername').value.trim();
+    var newPassword = document.getElementById('newPassword').value;
+    var newRole = document.getElementById('newRole').value;
+    var btn = document.getElementById('addUserSubmit');
+    var msgEl = document.getElementById('addUserMessage');
+    msgEl.style.display = 'none';
+    btn.disabled = true;
+
+    callApi('createUser', { token: TOKEN, username: newUsername, password: newPassword, role: newRole })
+      .then(function () {
+        btn.disabled = false;
+        document.getElementById('addUserForm').reset();
+        loadUserList();
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        msgEl.textContent = err.message || 'Failed to create account.';
+        msgEl.style.display = 'block';
+      });
+  });
+
+  function loadUserList() {
+    var listEl = document.getElementById('userList');
+    listEl.innerHTML = '<div class="user-row">Loading…</div>';
+
+    callApi('listUsers', { token: TOKEN })
+      .then(function (data) {
+        renderUserList(data.users);
+      })
+      .catch(function (err) {
+        listEl.innerHTML = '<div class="user-row">' + (err.message || 'Failed to load users.') + '</div>';
+      });
+  }
+
+  function renderUserList(users) {
+    var listEl = document.getElementById('userList');
+    listEl.innerHTML = users.map(function (u) {
+      var isSelf = (u.username === ME);
+      var removeBtn = isSelf
+        ? ''
+        : '<button type="button" class="btn-delete-sm" data-username="' + escapeHtml(u.username) + '">Remove</button>';
+      return (
+        '<div class="user-row">' +
+          '<span class="user-name">' + escapeHtml(u.username) + '</span>' +
+          '<span class="user-role">' + escapeHtml(u.role) + (isSelf ? ' — you' : '') + '</span>' +
+          '<span class="row-spacer"></span>' +
+          removeBtn +
+        '</div>'
+      );
+    }).join('');
+
+    listEl.querySelectorAll('.btn-delete-sm').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var username = btn.dataset.username;
+        if (!confirm('Remove ' + username + '’s access?')) return;
+        btn.disabled = true;
+
+        callApi('deleteUser', { token: TOKEN, username: username })
+          .then(function () {
+            loadUserList();
+          })
+          .catch(function (err) {
+            alert(err.message || 'Failed to remove user.');
+            btn.disabled = false;
+          });
+      });
+    });
+  }
+
+  // ---------- Data ----------
+  function loadSubmissions() {
+    document.getElementById('list').innerHTML = '<div class="empty">Loading…</div>';
+    callApi('getSubmissions', { token: TOKEN })
+      .then(function (data) {
+        ALL_ROWS = data.rows;
+        updateSourceFilterOptions();
+        render();
+      })
+      .catch(function (err) {
+        document.getElementById('list').innerHTML = '<div class="empty">' + (err.message || 'Failed to load.') + '</div>';
+      });
+  }
+
+  function updateSourceFilterOptions() {
+    var select = document.getElementById('sourceFilter');
+    var current = select.value;
+    var sources = [];
+    ALL_ROWS.forEach(function (r) {
+      if (r.source && sources.indexOf(r.source) === -1) sources.push(r.source);
+    });
+    sources.sort();
+
+    select.innerHTML = '<option value="">All sources</option>' +
+      sources.map(function (s) {
+        return '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + '</option>';
+      }).join('');
+
+    if (sources.indexOf(current) !== -1) select.value = current;
+  }
+
+  document.getElementById('refreshBtn').addEventListener('click', loadSubmissions);
+
+  document.querySelectorAll('.tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentStatusTab = btn.dataset.status;
+      render();
+    });
+  });
+  document.getElementById('sourceFilter').addEventListener('change', render);
+  document.getElementById('searchBox').addEventListener('input', render);
+
+  // ---------- Render ----------
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function displayPhone(phone) {
+    var p = (phone === undefined || phone === null) ? '' : String(phone);
+    if (p.charAt(0) === '(' && p.charAt(p.length - 1) === ')') {
+      return p.slice(1, -1);
+    }
+    return p;
+  }
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return String(iso);
+
+    var parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Zurich',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23'
+    }).formatToParts(d);
+
+    var map = {};
+    parts.forEach(function (p) { map[p.type] = p.value; });
+    return map.day + '/' + map.month + '/' + map.year + ' ' + map.hour + ':' + map.minute;
+  }
+
+  function render() {
+    var source = document.getElementById('sourceFilter').value;
+    var search = document.getElementById('searchBox').value.trim().toLowerCase();
+
+    var rows = ALL_ROWS.filter(function (r) { return r.status === currentStatusTab; });
+    if (source) rows = rows.filter(function (r) { return r.source === source; });
+    if (search) {
+      rows = rows.filter(function (r) {
+        var hay = [r.name, r.email, r.phone, r.message, r.position].join(' ').toLowerCase();
+        return hay.indexOf(search) !== -1;
+      });
+    }
+
+    var listEl = document.getElementById('list');
+    if (rows.length === 0) {
+      listEl.innerHTML = '<div class="empty">Nothing here.</div>';
+      return;
+    }
+
+    listEl.innerHTML = rows.map(function (r, idx) {
+      var key = r.sheet + '_' + r.row;
+      var fieldsHtml = Object.keys(r.fields || {}).map(function (k) {
+        return '<div><span>' + escapeHtml(k) + ':</span> ' + escapeHtml(r.fields[k]) + '</div>';
+      }).join('');
+
+      var actions;
+      if (r.status === 'new') {
+        actions = '<button class="btn-sm btn-treat" data-action="treated" data-key="' + key + '">Mark treated</button>' +
+          '<button class="btn-sm btn-delete" data-action="deleted" data-key="' + key + '">Delete</button>';
+      } else if (r.status === 'treated') {
+        actions = '<button class="btn-sm btn-undo" data-action="new" data-key="' + key + '">Move back to new</button>' +
+          '<button class="btn-sm btn-delete" data-action="deleted" data-key="' + key + '">Delete</button>';
+      } else {
+        actions = '<button class="btn-sm btn-undo" data-action="new" data-key="' + key + '">Restore</button>';
+      }
+
+      return (
+        '<div class="row-card" data-sheet="' + escapeHtml(r.sheet) + '" data-row="' + r.row + '">' +
+          '<div class="row-head" data-toggle="' + key + '">' +
+            '<span class="badge status-' + r.status + '">' + escapeHtml(r.status) + '</span>' +
+            '<span class="badge source">' + escapeHtml(r.source) + '</span>' +
+            '<span class="row-name">' + escapeHtml(r.name || r.email || 'Unknown') + '</span>' +
+            (r.position ? '<span class="row-meta">— ' + escapeHtml(r.position) + '</span>' : '') +
+            '<span class="row-spacer"></span>' +
+            '<span class="row-date">' + escapeHtml(formatDate(r.created_at)) + '</span>' +
+          '</div>' +
+          '<div class="row-detail" id="detail_' + key + '">' +
+            '<div class="detail-grid">' +
+              '<div><span>Email:</span> ' + escapeHtml(r.email) + '</div>' +
+              '<div><span>Phone:</span> ' + escapeHtml(displayPhone(r.phone)) + '</div>' +
+              fieldsHtml +
+              '<div><span>IP / Country:</span> ' + escapeHtml(r.ip) + ' / ' + escapeHtml(r.country) + '</div>' +
+              '<div><span>Browser:</span> ' + escapeHtml(r.browser) + '</div>' +
+              (r.fileUrl ? '<div><span>Attachment:</span> <a href="' + escapeHtml(r.fileUrl) + '" target="_blank">Open file</a></div>' : '') +
+              (r.handledBy ? '<div><span>Handled by:</span> ' + escapeHtml(r.handledBy) + '</div>' : '') +
+              (r.handledAt ? '<div><span>Handled at:</span> ' + escapeHtml(formatDate(r.handledAt)) + '</div>' : '') +
+            '</div>' +
+            (r.message ? '<div class="detail-message">' + escapeHtml(r.message) + '</div>' : '') +
+            '<div class="comment-block">' +
+              '<label>Internal comment</label>' +
+              '<div class="comment-view" style="display:' + (r.comment ? 'block' : 'none') + '">' +
+                '<div class="comment-text">' + escapeHtml(r.comment) + '</div>' +
+                '<div class="comment-meta">' + (r.commentBy ? '— commented by ' + escapeHtml(r.commentBy) : '') + '</div>' +
+                '<button type="button" class="btn-sm btn-ghost btn-edit-comment">Edit</button>' +
+              '</div>' +
+              '<div class="comment-edit" style="display:' + (r.comment ? 'none' : 'block') + '">' +
+                '<textarea id="comment_' + key + '" class="comment-input" rows="2" placeholder="Add a note for the team...">' + escapeHtml(r.comment) + '</textarea>' +
+                '<div class="comment-footer">' +
+                  '<button type="button" class="btn-sm btn-ghost btn-save-comment">Save comment</button>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="row-actions">' + actions + '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+
+    // Toggle expand
+    listEl.querySelectorAll('[data-toggle]').forEach(function (head) {
+      head.addEventListener('click', function () {
+        var el = document.getElementById('detail_' + head.dataset.toggle);
+        el.classList.toggle('open');
+      });
+    });
+
+    // Status actions
+    listEl.querySelectorAll('[data-action]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var card = btn.closest('.row-card');
+        var sheet = card.dataset.sheet;
+        var rowNum = Number(card.dataset.row);
+        var newStatus = btn.dataset.action;
+
+        btn.disabled = true;
+        callApi('updateStatus', { token: TOKEN, sheet: sheet, row: rowNum, status: newStatus })
+          .then(function () {
+            loadSubmissions();
+          })
+          .catch(function (err) {
+            alert(err.message || 'Failed to update.');
+            btn.disabled = false;
+          });
+      });
+    });
+
+    // Comment: switch to edit mode
+    listEl.querySelectorAll('.btn-edit-comment').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var block = btn.closest('.comment-block');
+        block.querySelector('.comment-view').style.display = 'none';
+        block.querySelector('.comment-edit').style.display = 'block';
+        block.querySelector('.comment-input').focus();
+      });
+    });
+
+    // Comment: save
+    listEl.querySelectorAll('.btn-save-comment').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var card = btn.closest('.row-card');
+        var block = btn.closest('.comment-block');
+        var sheet = card.dataset.sheet;
+        var rowNum = Number(card.dataset.row);
+        var commentText = block.querySelector('.comment-input').value;
+
+        btn.disabled = true;
+        callApi('updateComment', { token: TOKEN, sheet: sheet, row: rowNum, comment: commentText })
+          .then(function () {
+            btn.disabled = false;
+
+            var savedRow = ALL_ROWS.find(function (r) { return r.sheet === sheet && r.row === rowNum; });
+            if (savedRow) {
+              savedRow.comment = commentText;
+              savedRow.commentBy = commentText ? ME : '';
+            }
+
+            if (commentText) {
+              block.querySelector('.comment-text').textContent = commentText;
+              block.querySelector('.comment-meta').textContent = '— commented by ' + ME;
+              block.querySelector('.comment-view').style.display = 'block';
+              block.querySelector('.comment-edit').style.display = 'none';
+            }
+          })
+          .catch(function (err) {
+            btn.disabled = false;
+            alert(err.message || 'Failed to save comment.');
+          });
+      });
+    });
+  }
+</script>
+</body>
+</html>

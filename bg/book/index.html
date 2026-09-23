@@ -1665,7 +1665,7 @@
             var email = document.getElementById('rentEmail').value.trim();
             var countryCode = document.getElementById('rentCountryCode').value;
             var phoneNumber = document.getElementById('rentPhone').value.trim();
-            var phone = phoneNumber ? (countryCode + ' ' + phoneNumber) : '';
+            var phone = phoneNumber ? ('(' + countryCode + ') ' + phoneNumber) : '';
             var company = document.getElementById('rentCompany').value.trim();
             var eventDate = document.getElementById('rentEventDate').value;
             var location = document.getElementById('rentLocation').value.trim();
