@@ -707,6 +707,13 @@
     font-family: inherit;
 }
 
+.char-counter {
+    font-size: 0.78rem;
+    color: #6b7280;
+    text-align: right;
+    margin-top: 4px;
+}
+
 .contact-preferences {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

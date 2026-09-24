@@ -1061,6 +1061,13 @@
         max-width: 350px;
     }
 
+    .char-counter {
+        font-size: 0.78rem;
+        color: #6b7280;
+        text-align: right;
+        margin-top: 4px;
+    }
+
     .submit-btn {
         cursor: pointer;
         font-family: inherit;
@@ -1462,7 +1469,8 @@
 
                     <div class="form-group">
                         <label for="rentMessage">Съобщение / Изисквания <span class="required">*</span></label>
-                        <textarea id="rentMessage" name="message" placeholder="Разкажете ни за вашето събитие и какво искате Робърт да прави..." required></textarea>
+                        <textarea id="rentMessage" name="message" placeholder="Разкажете ни за вашето събитие и какво искате Робърт да прави..." maxlength="2000" required></textarea>
+                        <div class="char-counter" id="rentMessageCounter">0 / 2000</div>
                     </div>
 
                     <div class="form-footer">
@@ -1612,6 +1620,19 @@
         });
 
         updateFlag();
+    })();
+
+    (function () {
+        var textarea = document.getElementById('rentMessage');
+        var counter = document.getElementById('rentMessageCounter');
+        if (!textarea || !counter) return;
+
+        function updateCounter() {
+            counter.textContent = textarea.value.length + ' / 2000';
+        }
+
+        textarea.addEventListener('input', updateCounter);
+        updateCounter();
     })();
 </script>
 

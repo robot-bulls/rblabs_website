@@ -710,6 +710,13 @@
         max-width: 350px;
     }
 
+    .char-counter {
+        font-size: 0.78rem;
+        color: #6b7280;
+        text-align: right;
+        margin-top: 4px;
+    }
+
     .submit-btn {
         background: var(--primary-color);
         color: white;
@@ -1012,7 +1019,8 @@
 
                     <div class="form-group">
                         <label for="message">Jūsų žinutė <span class="required">*</span></label>
-                        <textarea id="message" name="message" placeholder="Prašome pateikti informaciją apie jūsų užklausą..." required></textarea>
+                        <textarea id="message" name="message" placeholder="Prašome pateikti informaciją apie jūsų užklausą..." maxlength="2000" required></textarea>
+                        <div class="char-counter" id="messageCounter">0 / 2000</div>
                     </div>
 
                     <div class="form-footer">
@@ -1066,6 +1074,19 @@
 </section>
 
 <script>
+    (function () {
+        var textarea = document.getElementById('message');
+        var counter = document.getElementById('messageCounter');
+        if (!textarea || !counter) return;
+
+        function updateCounter() {
+            counter.textContent = textarea.value.length + ' / 2000';
+        }
+
+        textarea.addEventListener('input', updateCounter);
+        updateCounter();
+    })();
+
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 

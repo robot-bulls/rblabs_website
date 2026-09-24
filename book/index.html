@@ -1062,6 +1062,13 @@
         max-width: 350px;
     }
 
+    .char-counter {
+        font-size: 0.78rem;
+        color: #6b7280;
+        text-align: right;
+        margin-top: 4px;
+    }
+
     .submit-btn {
         cursor: pointer;
         font-family: inherit;
@@ -1463,7 +1470,8 @@
 
                     <div class="form-group">
                         <label for="rentMessage">Message / Requirements <span class="required">*</span></label>
-                        <textarea id="rentMessage" name="message" placeholder="Tell us about your event and what you&#x27;d like Robert to do..." required></textarea>
+                        <textarea id="rentMessage" name="message" placeholder="Tell us about your event and what you&#x27;d like Robert to do..." maxlength="2000" required></textarea>
+                        <div class="char-counter" id="rentMessageCounter">0 / 2000</div>
                     </div>
 
                     <div class="form-footer">
@@ -1613,6 +1621,19 @@
         });
 
         updateFlag();
+    })();
+
+    (function () {
+        var textarea = document.getElementById('rentMessage');
+        var counter = document.getElementById('rentMessageCounter');
+        if (!textarea || !counter) return;
+
+        function updateCounter() {
+            counter.textContent = textarea.value.length + ' / 2000';
+        }
+
+        textarea.addEventListener('input', updateCounter);
+        updateCounter();
     })();
 </script>
 

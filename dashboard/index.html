@@ -1,830 +1,2823 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>RB Labs — Requests Dashboard</title>
-  <style>
-    :root {
-      --bg: #f5f6f8;
-      --card: #ffffff;
-      --border: #e2e4e9;
-      --text: #1f2330;
-      --muted: #6b7280;
-      --primary: #1f2937;
-      --primary-hover: #111827;
-      --new: #2563eb;
-      --treated: #16a34a;
-      --danger: #dc2626;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>RB Labs Dashboard</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/dashboard/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/dashboard/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="RB Dashboard" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+    <style>
+      /* ===================== Tokens ===================== */
+      :root {
+        --bg: #f5f6f9;
+        --card: #ffffff;
+        --border: #e6e8ee;
+        --border-strong: #d7dbe4;
+        --text: #161a25;
+        --text-soft: #4b5568;
+        --muted: #8891a3;
 
-    /* ---- Login screen ---- */
-    #loginScreen {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .login-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 40px;
-      width: 100%;
-      max-width: 320px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-    }
-    .login-card h1 {
-      font-size: 1.25rem;
-      margin: 0 0 24px;
-    }
-    .field { margin-bottom: 16px; }
-    .field label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .field input {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.95rem;
-    }
-    button {
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 10px 16px;
-    }
-    .btn-primary {
-      width: 100%;
-      background: var(--primary);
-      color: #fff;
-      padding: 12px;
-    }
-    .btn-primary:hover { background: var(--primary-hover); }
-    .btn-primary:disabled { opacity: 0.6; cursor: default; }
-    .error-text {
-      color: var(--danger);
-      font-size: 0.85rem;
-      margin-top: 12px;
-      display: none;
-    }
+        --primary: #262b52;
+        --primary-hover: #1a1e3d;
+        --accent: #4f46e5;
+        --accent-soft: #eef0fe;
 
-    /* ---- Dashboard screen ---- */
-    #dashboardScreen { display: none; }
-    #resumeLoading {
-      display: none;
-      min-height: 100vh;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-    #resumeLoading.visible { display: flex; }
-    header.topbar {
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header.topbar h1 { font-size: 1.1rem; margin: 0; }
-    .who { font-size: 0.85rem; color: var(--muted); }
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-    .btn-ghost:hover { background: #f0f1f3; }
+        --new: #2563eb;
+        --new-bg: #eaf1ff;
+        --treated: #15803d;
+        --treated-bg: #eafaf0;
+        --deleted: #b91c1c;
+        --deleted-bg: #fdedec;
+        --danger: #dc2626;
+        --danger-hover: #b91c1c;
 
-    .admin-panel {
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
-    }
-    .admin-panel form {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      gap: 12px;
-    }
-    .admin-panel .field { margin-bottom: 0; }
-    .admin-panel .field input,
-    .admin-panel .field select {
-      padding: 8px 10px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.85rem;
-    }
-    .user-list {
-      margin-top: 16px;
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .user-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-    }
-    .user-row .user-name { font-weight: 600; }
-    .user-row .user-role { color: var(--muted); }
-    .user-row .row-spacer { flex: 1; }
-    .user-row .btn-delete-sm {
-      background: var(--danger);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 4px 10px;
-      font-size: 0.78rem;
-      cursor: pointer;
-    }
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+        --shadow-sm: 0 1px 2px rgba(20, 24, 38, 0.04);
+        --shadow-md: 0 6px 20px rgba(20, 24, 38, 0.07);
+        --shadow-lg: 0 20px 45px rgba(20, 24, 38, 0.12);
+      }
 
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      padding: 16px 24px 0;
-    }
-    .tabs { display: flex; gap: 6px; }
-    .tab-btn {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-    }
-    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
 
-    select, input[type="search"] {
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.85rem;
-      background: var(--card);
-    }
-    input[type="search"] { flex: 1; min-width: 160px; }
+      /* ===================== Shared bits ===================== */
+      .brand-mark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: linear-gradient(155deg, var(--primary), #4a4f8a);
+        color: #fff;
+        font-weight: 800;
+        font-size: 0.78rem;
+        letter-spacing: 0.02em;
+        box-shadow: var(--shadow-sm);
+      }
 
-    .list { padding: 16px 24px 40px; display: flex; flex-direction: column; gap: 10px; }
-    .empty { color: var(--muted); padding: 40px; text-align: center; }
+      button {
+        cursor: pointer;
+        border: none;
+        border-radius: var(--radius-sm);
+        font-family: inherit;
+        font-size: 0.88rem;
+        font-weight: 600;
+        padding: 10px 16px;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease,
+          box-shadow 0.15s ease,
+          transform 0.1s ease,
+          opacity 0.15s ease;
+      }
+      button:active {
+        transform: translateY(1px);
+      }
+      button:disabled {
+        opacity: 0.55;
+        cursor: default;
+        transform: none;
+      }
 
-    .row-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-    }
-    .row-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      flex-wrap: wrap;
-    }
-    .badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      padding: 3px 8px;
-      border-radius: 999px;
-      color: #fff;
-      flex-shrink: 0;
-    }
-    .badge.status-new { background: var(--new); }
-    .badge.status-treated { background: var(--treated); }
-    .badge.status-deleted { background: var(--danger); }
-    .badge.source { background: #eef0f3; color: var(--text); }
+      .btn-primary {
+        width: 100%;
+        background: var(--primary);
+        color: #fff;
+        padding: 12px;
+        box-shadow: var(--shadow-sm);
+      }
+      .btn-primary:hover:not(:disabled) {
+        background: var(--primary-hover);
+      }
 
-    .row-name { font-weight: 600; }
-    .row-meta { color: var(--muted); font-size: 0.82rem; }
-    .row-spacer { flex: 1; }
-    .row-date { color: var(--muted); font-size: 0.78rem; white-space: nowrap; }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--border-strong);
+        color: var(--text-soft);
+      }
+      .btn-ghost:hover:not(:disabled) {
+        background: var(--card);
+        border-color: var(--muted);
+        color: var(--text);
+      }
 
-    .row-detail {
-      display: none;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-    .row-detail.open { display: block; }
-    .detail-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px 20px;
-      margin-bottom: 10px;
-    }
-    .detail-grid div span { color: var(--muted); }
-    .detail-message {
-      white-space: pre-wrap;
-      background: #f9fafb;
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin-bottom: 12px;
-    }
-    .comment-block { margin-bottom: 12px; }
-    .comment-block label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .comment-input {
-      width: 100%;
-      resize: vertical;
-      padding: 8px 10px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-family: inherit;
-      background: #fff;
-    }
-    .comment-footer {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 6px;
-    }
-    .comment-text {
-      white-space: pre-wrap;
-      background: #f9fafb;
-      border-radius: 8px;
-      padding: 8px 10px;
-    }
-    .comment-meta {
-      color: var(--muted);
-      font-size: 0.78rem;
-      margin: 6px 0;
-    }
-    .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-    .btn-sm { padding: 7px 12px; font-size: 0.82rem; }
-    .btn-treat { background: var(--treated); color: #fff; }
-    .btn-delete { background: var(--danger); color: #fff; }
-    .btn-undo { background: #eef0f3; color: var(--text); }
+      .btn-sm {
+        padding: 7px 13px;
+        font-size: 0.8rem;
+        border-radius: var(--radius-sm);
+        width: auto;
+      }
+      .btn-treat {
+        background: var(--treated-bg);
+        color: var(--treated);
+      }
+      .btn-treat:hover:not(:disabled) {
+        background: var(--treated);
+        color: #fff;
+      }
+      .btn-delete {
+        background: var(--deleted-bg);
+        color: var(--deleted);
+      }
+      .btn-delete:hover:not(:disabled) {
+        background: var(--danger);
+        color: #fff;
+      }
+      .btn-undo {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        color: var(--text-soft);
+      }
+      .btn-undo:hover:not(:disabled) {
+        border-color: var(--border-strong);
+        color: var(--text);
+      }
 
-    /* ---- Mobile ---- */
-    @media (max-width: 640px) {
-      /* iOS Safari auto-zooms into any focused input/select/textarea
+      input,
+      select,
+      textarea {
+        font-family: inherit;
+        color: var(--text);
+      }
+      input[type="text"],
+      input[type="password"],
+      input[type="search"],
+      select,
+      textarea {
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-sm);
+        background: var(--card);
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      input[type="text"]:focus,
+      input[type="password"]:focus,
+      input[type="search"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-soft);
+      }
+
+      .error-text {
+        color: var(--danger);
+        font-size: 0.83rem;
+        margin-top: 12px;
+        display: none;
+      }
+      .success-text {
+        color: var(--treated);
+        font-size: 0.83rem;
+        margin-top: 12px;
+        display: none;
+      }
+
+      /* ===================== Login screen ===================== */
+      #loginScreen {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background:
+          radial-gradient(
+            circle at 15% 10%,
+            rgba(79, 70, 229, 0.08),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 85% 90%,
+            rgba(38, 43, 82, 0.06),
+            transparent 45%
+          ),
+          var(--bg);
+      }
+      .login-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 40px 36px;
+        width: 100%;
+        max-width: 340px;
+        box-shadow: var(--shadow-lg);
+        text-align: center;
+      }
+      .login-card .brand-mark {
+        width: 46px;
+        height: 46px;
+        font-size: 1rem;
+        border-radius: 13px;
+        margin: 0 auto 18px;
+      }
+      .login-card h1 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin: 0 0 4px;
+      }
+      .login-card .subtitle {
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin: 0 0 28px;
+      }
+      .login-card form {
+        text-align: left;
+      }
+      .field {
+        margin-bottom: 16px;
+      }
+      .field label {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text-soft);
+        margin-bottom: 6px;
+      }
+      .field input {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 0.92rem;
+      }
+
+      .password-field {
+        position: relative;
+      }
+      .password-field input {
+        padding-right: 42px;
+      }
+      .password-toggle {
+        position: absolute;
+        top: 50%;
+        right: 4px;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        padding: 0;
+        color: var(--muted);
+        border-radius: 6px;
+      }
+      .password-toggle:hover {
+        color: var(--text-soft);
+        background: var(--bg);
+      }
+      .eye-icon {
+        display: inline-flex;
+        width: 18px;
+        height: 18px;
+      }
+      .eye-icon[hidden] {
+        display: none;
+      }
+      .eye-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ===================== Confirm modal ===================== */
+      .confirm-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 18, 30, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 100;
+      }
+      .confirm-overlay[hidden] {
+        display: none;
+      }
+      .confirm-card {
+        background: var(--card);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: 28px 26px;
+        width: 100%;
+        max-width: 380px;
+      }
+      .confirm-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--deleted-bg);
+        color: var(--deleted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+      }
+      .confirm-icon svg {
+        width: 22px;
+        height: 22px;
+      }
+      .confirm-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+      .confirm-card p {
+        margin: 0 0 22px;
+        color: var(--text-soft);
+        font-size: 0.88rem;
+        line-height: 1.55;
+      }
+      .confirm-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+      .confirm-actions button {
+        width: auto;
+      }
+
+      /* ===================== Dashboard shell ===================== */
+      #dashboardScreen {
+        display: none;
+      }
+      #resumeLoading {
+        display: none;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      #resumeLoading.visible {
+        display: flex;
+      }
+
+      .shell {
+        display: flex;
+        align-items: stretch;
+        min-height: 100vh;
+      }
+
+      /* ===================== Side navigation ===================== */
+      .side-nav {
+        flex-shrink: 0;
+        width: 232px;
+        background: var(--card);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        padding: 20px 14px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        z-index: 10;
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 2px 10px 22px;
+      }
+      .nav-brand-text {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .nav-items {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-radius: var(--radius-sm);
+        padding: 10px 12px;
+        color: var(--text-soft);
+        font-size: 0.87rem;
+        font-weight: 600;
+        text-align: left;
+      }
+      .nav-item[hidden] {
+        display: none;
+      }
+      .nav-item:hover:not(.active) {
+        background: var(--bg);
+        color: var(--text);
+      }
+      .nav-item.active {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+      .nav-icon {
+        display: inline-flex;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+      .nav-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+      .nav-footer {
+        margin-top: auto;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .nav-footer .who {
+        margin: 0;
+        padding: 0 12px;
+        display: block;
+      }
+      .nav-footer button {
+        width: 100%;
+      }
+
+      /* ===================== Main area / views ===================== */
+      .main-area {
+        flex: 1;
+        min-width: 0;
+      }
+      .view {
+        display: flex;
+        flex-direction: column;
+      }
+      .view[hidden] {
+        display: none;
+      }
+      .view-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 26px 28px 4px;
+      }
+      .view-header h2 {
+        margin: 0;
+        font-size: 1.22rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .view-subtitle {
+        margin: 3px 0 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      /* ===================== Panel cards (forms) ===================== */
+      .panel-card {
+        margin: 16px 28px 0;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 18px 20px;
+      }
+      .panel-card form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 12px;
+      }
+      .panel-card .field {
+        margin-bottom: 0;
+      }
+      .panel-card .field input,
+      .panel-card .field select {
+        padding: 8px 11px;
+        font-size: 0.85rem;
+      }
+
+      .user-list {
+        margin: 18px 28px 40px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .user-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.85rem;
+        padding: 10px 12px;
+        border-radius: var(--radius-sm);
+      }
+      .user-row:hover {
+        background: var(--bg);
+      }
+      .user-row .user-name {
+        font-weight: 600;
+      }
+      .user-row .user-role {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+      .role-toggle {
+        display: flex;
+        gap: 2px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 2px;
+        flex-shrink: 0;
+      }
+      .role-btn {
+        background: transparent;
+        border: none;
+        color: var(--muted);
+        padding: 4px 11px;
+        border-radius: 999px;
+        font-size: 0.74rem;
+        font-weight: 600;
+      }
+      .role-btn:hover:not(.active):not(:disabled) {
+        color: var(--text);
+      }
+      .role-btn.active {
+        background: var(--card);
+        color: var(--text);
+        box-shadow: var(--shadow-sm);
+      }
+      .user-row .row-spacer {
+        flex: 1;
+      }
+      .user-row .btn-delete-sm {
+        background: var(--deleted-bg);
+        color: var(--deleted);
+        border: none;
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-size: 0.76rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      .user-row .btn-delete-sm:hover:not(:disabled) {
+        background: var(--danger);
+        color: #fff;
+      }
+
+      /* ===================== Toolbar (Requests view) ===================== */
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        padding: 18px 28px 0;
+      }
+      .tabs {
+        display: flex;
+        gap: 3px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 3px;
+      }
+      .tab-btn {
+        background: transparent;
+        border: none;
+        color: var(--muted);
+        padding: 7px 15px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+      .tab-btn:hover:not(.active) {
+        color: var(--text);
+      }
+      .tab-btn.active {
+        background: var(--card);
+        color: var(--text);
+        box-shadow: var(--shadow-sm);
+      }
+
+      select,
+      input[type="search"] {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+      }
+      input[type="search"] {
+        flex: 1;
+        min-width: 180px;
+      }
+
+      /* Custom dropdown (replaces native <select> for the source filter —
+         a native popup's on-screen position is controlled by the browser/OS,
+         not CSS, and renders inconsistently across devices; this one is
+         entirely our own markup, so it always opens right under its
+         trigger). */
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .dropdown-caret {
+        width: 7px;
+        height: 7px;
+        border-right: 2px solid var(--muted);
+        border-bottom: 2px solid var(--muted);
+        transform: rotate(45deg);
+        margin-top: -3px;
+        flex-shrink: 0;
+        transition: transform 0.15s ease;
+      }
+      .dropdown.open .dropdown-caret {
+        transform: rotate(-135deg);
+        margin-top: 3px;
+      }
+      .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        min-width: 180px;
+        max-width: min(320px, 90vw);
+        max-height: 280px;
+        overflow-y: auto;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow-lg);
+        padding: 4px;
+        z-index: 30;
+      }
+      .dropdown-menu.align-top {
+        top: auto;
+        bottom: calc(100% + 6px);
+      }
+      .dropdown-menu[hidden] {
+        display: none;
+      }
+      .dropdown-option {
+        display: block;
+        width: 100%;
+        text-align: left;
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-soft);
+        white-space: normal;
+      }
+      .dropdown-option:hover {
+        background: var(--bg);
+        color: var(--text);
+      }
+      .dropdown-option.active {
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* Sources dropdown reuses .dropdown/.dropdown-trigger/.dropdown-caret
+         but is multi-select (checkboxes + explicit Save), unlike the
+         single-select source filter. */
+      .sources-trigger .sources-label {
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .source-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        color: var(--text-soft);
+        cursor: pointer;
+      }
+      .source-option:hover {
+        background: var(--bg);
+        color: var(--text);
+      }
+      .source-option input {
+        accent-color: var(--accent);
+      }
+      .sources-menu-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 6px;
+        padding-top: 8px;
+        border-top: 1px solid var(--border);
+      }
+      .sources-menu-footer button {
+        width: auto;
+      }
+      .user-row .scope-note {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .result-count {
+        color: var(--muted);
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+
+      /* ===================== Bulk-select toolbar (Deleted tab, admin) ===================== */
+      .select-toolbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 14px 28px 0;
+        padding: 10px 16px;
+        background: var(--accent-soft);
+        border: 1px solid var(--accent);
+        border-radius: var(--radius-sm);
+      }
+      .select-toolbar[hidden] {
+        display: none;
+      }
+      .select-count {
+        flex: 1;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .row-select {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        border: 2px solid var(--border-strong);
+        border-radius: 6px;
+        background: var(--card);
+      }
+      .list.selection-mode .row-select {
+        display: flex;
+      }
+      .row-select.checked {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+      .row-select.checked::after {
+        content: "";
+        width: 5px;
+        height: 9px;
+        border-right: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(45deg) translate(-1px, -1px);
+      }
+      .list.selection-mode .row-card {
+        cursor: default;
+      }
+
+      /* ===================== Request list ===================== */
+      .list {
+        padding: 16px 28px 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 1100px;
+      }
+      .empty {
+        color: var(--muted);
+        padding: 56px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      .load-more-btn {
+        align-self: center;
+        margin-top: 6px;
+      }
+
+      .row-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 4px 18px;
+        transition:
+          box-shadow 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .row-card:hover {
+        box-shadow: var(--shadow-md);
+        border-color: var(--border-strong);
+      }
+      .row-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        flex-wrap: wrap;
+        padding: 14px 0;
+      }
+      .row-head::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid var(--muted);
+        border-bottom: 2px solid var(--muted);
+        transform: rotate(45deg);
+        margin-left: 4px;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+      }
+      .row-head:has(+ .row-detail.open)::after {
+        transform: rotate(-135deg);
+      }
+
+      .badge {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding: 4px 9px;
+        border-radius: 999px;
+        flex-shrink: 0;
+      }
+      .badge.status-new {
+        background: var(--new-bg);
+        color: var(--new);
+      }
+      .badge.status-treated {
+        background: var(--treated-bg);
+        color: var(--treated);
+      }
+      .badge.status-deleted {
+        background: var(--deleted-bg);
+        color: var(--deleted);
+      }
+      .badge.source {
+        background: var(--bg);
+        color: var(--text-soft);
+        border: 1px solid var(--border);
+      }
+      .badge.source-career {
+        background: var(--accent-soft);
+        color: var(--accent);
+        border: none;
+      }
+
+      .row-name {
+        font-weight: 600;
+        font-size: 0.94rem;
+      }
+      .row-meta {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+      .row-spacer {
+        flex: 1;
+      }
+      .row-date {
+        color: var(--muted);
+        font-size: 0.78rem;
+        white-space: nowrap;
+      }
+
+      /* Smooth expand/collapse using a grid-row trick, so no fixed
+         height is ever needed — it just animates to its natural size. */
+      .row-detail {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition:
+          grid-template-rows 0.25s ease,
+          opacity 0.2s ease;
+      }
+      .row-detail.open {
+        grid-template-rows: 1fr;
+        opacity: 1;
+      }
+      .row-detail-inner {
+        overflow: hidden;
+        min-height: 0;
+      }
+      .row-detail-content {
+        padding: 4px 0 18px;
+        margin-top: 2px;
+        border-top: 1px solid var(--border);
+        padding-top: 16px;
+        font-size: 0.87rem;
+        line-height: 1.6;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 24px;
+        margin-bottom: 12px;
+      }
+      .detail-grid div span {
+        color: var(--muted);
+        margin-right: 2px;
+      }
+      .detail-message {
+        white-space: pre-wrap;
+        background: var(--bg);
+        border-radius: var(--radius-sm);
+        padding: 12px 14px;
+        margin-bottom: 14px;
+      }
+
+      .comment-block {
+        margin-bottom: 14px;
+      }
+      .comment-block label {
+        display: block;
+        font-size: 0.76rem;
+        font-weight: 600;
+        color: var(--text-soft);
+        margin-bottom: 6px;
+      }
+      .comment-input {
+        width: 100%;
+        resize: vertical;
+        padding: 9px 11px;
+        font-size: 0.85rem;
+        font-family: inherit;
+      }
+      .comment-footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .comment-text {
+        white-space: pre-wrap;
+        background: var(--bg);
+        border-radius: var(--radius-sm);
+        padding: 10px 12px;
+      }
+      .comment-meta {
+        color: var(--muted);
+        font-size: 0.77rem;
+        margin: 7px 0;
+      }
+
+      .row-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      /* ===================== Nav collapses to a top strip below 1024px ===================== */
+      @media (max-width: 1023px) {
+        .shell {
+          flex-direction: column;
+          min-height: 0;
+        }
+        .side-nav {
+          width: 100%;
+          height: auto;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          padding: 12px 16px;
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+          gap: 8px 14px;
+        }
+        .nav-brand {
+          padding: 0;
+          margin-right: auto;
+        }
+        .nav-items {
+          order: 3;
+          flex-direction: row;
+          width: 100%;
+          gap: 6px;
+          overflow-x: auto;
+        }
+        .nav-item {
+          flex: 1;
+          justify-content: center;
+          white-space: nowrap;
+        }
+        .nav-footer {
+          order: 2;
+          margin-top: 0;
+          padding-top: 0;
+          border-top: none;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+        }
+        .nav-footer .who {
+          padding: 0;
+        }
+        .nav-footer button {
+          width: auto;
+        }
+      }
+
+      /* ===================== Mobile ===================== */
+      @media (max-width: 640px) {
+        /* iOS Safari auto-zooms into any focused input/select/textarea
          under 16px, which is what causes the whole page to appear
          "zoomed in" until you pinch back out. Keeping every form
          control at 16px+ prevents that entirely. */
-      .field input,
-      .admin-panel .field input,
-      .admin-panel .field select,
-      select,
-      input[type="search"],
-      .comment-input {
-        font-size: 16px;
+        .field input,
+        .panel-card .field input,
+        .panel-card .field select,
+        select,
+        input[type="search"],
+        .comment-input {
+          font-size: 16px;
+        }
+
+        .side-nav {
+          padding: 10px 12px;
+        }
+        .nav-item .nav-label {
+          font-size: 0.8rem;
+        }
+
+        /* An anchored dropdown can't reliably stay on-screen when its
+           trigger sits inside a narrow, wrapping row — rather than more
+           edge/overflow math, this becomes a fixed, centered panel with
+           a backdrop on small screens, same pattern as the confirm
+           modal. That sidesteps the positioning problem entirely instead
+           of trying to out-compute it. */
+        .sources-dropdown.open::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          background: rgba(15, 18, 30, 0.5);
+          z-index: 90;
+        }
+        .sources-menu {
+          position: fixed !important;
+          top: 50% !important;
+          left: 50% !important;
+          right: auto !important;
+          bottom: auto !important;
+          transform: translate(-50%, -50%);
+          width: calc(100vw - 40px);
+          max-width: 320px;
+          max-height: 70vh;
+          z-index: 91;
+        }
+
+        .view-header {
+          padding: 20px 16px 4px;
+        }
+        .panel-card {
+          margin: 14px 16px 0;
+          padding: 16px;
+        }
+        .panel-card form {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .panel-card .field {
+          width: 100%;
+        }
+        .panel-card form button {
+          width: 100%;
+        }
+        .panel-card .role-toggle {
+          width: 100%;
+        }
+        .panel-card .role-toggle .role-btn {
+          flex: 1;
+          width: auto;
+        }
+
+        .user-list {
+          margin: 14px 16px 32px;
+        }
+        .user-row {
+          flex-wrap: wrap;
+        }
+
+        .toolbar {
+          padding: 14px 16px 0;
+        }
+        .select-toolbar {
+          margin: 14px 16px 0;
+        }
+        .tabs {
+          width: 100%;
+        }
+        .tab-btn {
+          flex: 1;
+          text-align: center;
+        }
+        #sourceFilterDropdown {
+          flex: 1;
+          min-width: 0;
+        }
+        #sourceFilterDropdown .dropdown-trigger {
+          width: 100%;
+          justify-content: space-between;
+        }
+        input[type="search"] {
+          flex-basis: 100%;
+        }
+        #refreshBtn {
+          flex: 1;
+        }
+
+        .list {
+          padding: 14px 16px 32px;
+        }
+        .row-card {
+          padding: 4px 14px;
+        }
+        .row-date {
+          width: 100%;
+          order: 1;
+          white-space: normal;
+        }
+
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .row-actions button {
+          flex: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===================== LOGIN ===================== -->
+    <div id="loginScreen">
+      <div class="login-card">
+        <div class="brand-mark">RB</div>
+        <h1>RB Labs</h1>
+        <p class="subtitle">Dashboard</p>
+        <form id="loginForm">
+          <div class="field">
+            <label for="username">Username</label>
+            <input type="text" id="username" autocomplete="username" required />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="password-field">
+              <input
+                type="password"
+                id="password"
+                autocomplete="current-password"
+                required
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                id="passwordToggle"
+                tabindex="-1"
+                aria-label="Show password"
+              >
+                <span class="eye-icon eye-show">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </span>
+                <span class="eye-icon eye-hide" hidden>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.42 19.42 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a19.5 19.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+                    ></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" id="loginBtn">
+            Log in
+          </button>
+          <div class="error-text" id="loginError"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ===================== RESUME LOADING ===================== -->
+    <div id="resumeLoading">Checking session…</div>
+
+    <!-- ===================== DASHBOARD ===================== -->
+    <div id="dashboardScreen">
+      <div class="shell">
+        <nav class="side-nav">
+          <div class="nav-brand">
+            <div class="brand-mark">RB</div>
+            <span class="nav-brand-text">RB Labs</span>
+          </div>
+
+          <div class="nav-items">
+            <button
+              class="nav-item active"
+              data-view="requests"
+              id="navRequests"
+            >
+              <span class="nav-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <line x1="4" y1="6" x2="20" y2="6"></line>
+                  <line x1="4" y1="12" x2="20" y2="12"></line>
+                  <line x1="4" y1="18" x2="14" y2="18"></line>
+                </svg>
+              </span>
+              <span class="nav-label">Requests</span>
+            </button>
+            <button class="nav-item" data-view="team" id="navTeam" hidden>
+              <span class="nav-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="8" cy="8" r="3.2"></circle>
+                  <circle cx="16" cy="9.5" r="2.6"></circle>
+                  <path
+                    d="M3 20c0-3.3 2.7-5.5 5.8-5.5S14.6 16.7 14.6 20"
+                  ></path>
+                  <path d="M15.2 14.9c2.6.3 4.6 2.2 4.6 5.1"></path>
+                </svg>
+              </span>
+              <span class="nav-label">Team</span>
+            </button>
+            <button class="nav-item" data-view="account" id="navAccount">
+              <span class="nav-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path
+                    d="M12 3v2.5M12 18.5V21M4.6 6.6l1.8 1.8M17.6 15.6l1.8 1.8M3 12h2.5M18.5 12H21M4.6 17.4l1.8-1.8M17.6 8.4l1.8-1.8"
+                  ></path>
+                </svg>
+              </span>
+              <span class="nav-label">Account</span>
+            </button>
+          </div>
+
+          <div class="nav-footer">
+            <span class="who" id="whoami"></span>
+            <button class="btn-ghost btn-sm" id="logoutBtn">Log out</button>
+          </div>
+        </nav>
+
+        <main class="main-area">
+          <!-- ===================== Requests view ===================== -->
+          <section class="view" id="viewRequests">
+            <div class="toolbar">
+              <div class="tabs" id="statusTabs">
+                <button class="tab-btn active" data-status="new">New</button>
+                <button class="tab-btn" data-status="treated">Treated</button>
+                <button class="tab-btn" data-status="deleted">Deleted</button>
+              </div>
+              <div class="dropdown" id="sourceFilterDropdown">
+                <button
+                  type="button"
+                  class="dropdown-trigger btn-ghost btn-sm"
+                  id="sourceFilterBtn"
+                >
+                  <span id="sourceFilterLabel">All sources</span>
+                  <span class="dropdown-caret"></span>
+                </button>
+                <div class="dropdown-menu" id="sourceFilterMenu" hidden></div>
+              </div>
+              <input
+                type="search"
+                id="searchBox"
+                placeholder="Search name, email, message..."
+              />
+              <button class="btn-ghost btn-sm" id="refreshBtn">Refresh</button>
+              <span class="result-count" id="resultCount"></span>
+            </div>
+
+            <div class="select-toolbar" id="selectToolbar" hidden>
+              <span class="select-count" id="selectCount">0 selected</span>
+              <button type="button" class="btn-ghost btn-sm" id="selectCancelBtn">
+                Cancel
+              </button>
+              <button type="button" class="btn-sm btn-delete" id="selectDeleteBtn">
+                Delete permanently
+              </button>
+            </div>
+
+            <div class="list" id="list"></div>
+          </section>
+
+          <!-- ===================== Team view (admin only) ===================== -->
+          <section class="view" id="viewTeam" hidden>
+            <div class="view-header">
+              <div>
+                <h2>Team</h2>
+                <p class="view-subtitle">
+                  Manage who has access to this dashboard.
+                </p>
+              </div>
+              <button class="btn-ghost btn-sm" id="addUserBtn">
+                + Add team member
+              </button>
+            </div>
+
+            <div class="panel-card" id="adminPanel" hidden>
+              <form id="addUserForm">
+                <div class="field">
+                  <label for="newUsername">Username</label>
+                  <input
+                    type="text"
+                    id="newUsername"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="newPassword">Password</label>
+                  <input
+                    type="text"
+                    id="newPassword"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label>Role</label>
+                  <div class="role-toggle" id="newRoleToggle">
+                    <button
+                      type="button"
+                      class="role-btn active"
+                      data-role="user"
+                    >
+                      User
+                    </button>
+                    <button type="button" class="role-btn" data-role="admin">
+                      Admin
+                    </button>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="btn-ghost btn-sm"
+                  id="addUserSubmit"
+                >
+                  Create account
+                </button>
+                <button
+                  type="button"
+                  class="btn-ghost btn-sm"
+                  id="addUserCancel"
+                >
+                  Cancel
+                </button>
+              </form>
+              <div class="error-text" id="addUserMessage"></div>
+            </div>
+
+            <div class="user-list" id="userList"></div>
+          </section>
+
+          <!-- ===================== Account view ===================== -->
+          <section class="view" id="viewAccount" hidden>
+            <div class="view-header">
+              <div>
+                <h2>Account</h2>
+                <p class="view-subtitle">Update your own login password.</p>
+              </div>
+              <button class="btn-ghost btn-sm" id="changePasswordBtn">
+                Change password
+              </button>
+            </div>
+
+            <div class="panel-card" id="changePasswordPanel" hidden>
+              <form id="changePasswordForm">
+                <div class="field">
+                  <label for="currentPassword">Current password</label>
+                  <input
+                    type="password"
+                    id="currentPassword"
+                    autocomplete="current-password"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="newPasswordField">New password</label>
+                  <input
+                    type="password"
+                    id="newPasswordField"
+                    autocomplete="new-password"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="confirmPasswordField">Confirm new password</label>
+                  <input
+                    type="password"
+                    id="confirmPasswordField"
+                    autocomplete="new-password"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="btn-ghost btn-sm"
+                  id="changePasswordSubmit"
+                >
+                  Update password
+                </button>
+                <button
+                  type="button"
+                  class="btn-ghost btn-sm"
+                  id="changePasswordCancel"
+                >
+                  Cancel
+                </button>
+              </form>
+              <div class="error-text" id="changePasswordMessage"></div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ===================== CONFIRM MODAL ===================== -->
+    <div class="confirm-overlay" id="confirmOverlay" hidden>
+      <div class="confirm-card">
+        <div class="confirm-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+            ></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <h3 id="confirmTitle">Are you sure?</h3>
+        <p id="confirmBody"></p>
+        <div class="confirm-actions">
+          <button type="button" class="btn-ghost btn-sm" id="confirmCancelBtn">
+            Cancel
+          </button>
+          <button type="button" class="btn-sm btn-delete" id="confirmOkBtn">
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var API_URL =
+        "https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec";
+
+      var TOKEN = null;
+      var ME = null;
+      var ME_ROLE = null;
+      var ALL_ROWS = [];
+      var currentStatusTab = "new";
+      var sourceFilterValue = "";
+
+      // Must match KNOWN_SOURCES in Code.gs exactly (values), with short
+      // display labels for the Team page's source-access editor.
+      var SOURCE_OPTIONS = [
+        { value: "Career", label: "Career" },
+        { value: "RB Labs Contact Page", label: "Contact" },
+        { value: "RB Labs Book Page", label: "Book a Call" },
+        { value: "RB Labs Robot Order Page", label: "Robot Order" },
+        { value: "Robert Booking Request", label: "Robert Booking" },
+      ];
+
+      function sourceLabel(value) {
+        var found = SOURCE_OPTIONS.filter(function (o) {
+          return o.value === value;
+        })[0];
+        return found ? found.label : value;
       }
 
-      header.topbar {
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 14px 16px;
+      function sourcesSummary(sources) {
+        if (!sources || sources.length === 0) return "All sources";
+        return sources.map(sourceLabel).join(", ");
       }
-      header.topbar h1 { font-size: 1rem; }
-      header.topbar > div { flex-wrap: wrap; gap: 8px; }
-      .who { width: 100%; order: -1; }
 
-      .admin-panel { padding: 14px 16px; }
-      .admin-panel form { flex-direction: column; align-items: stretch; }
-      .admin-panel .field { width: 100%; }
-      .admin-panel form button { width: 100%; }
-
-      .user-row { flex-wrap: wrap; }
-
-      .toolbar { padding: 14px 16px 0; }
-      .tabs { width: 100%; }
-      .tab-btn { flex: 1; text-align: center; }
-      #sourceFilter { flex: 1; min-width: 0; }
-      input[type="search"] { flex-basis: 100%; }
-      #refreshBtn { flex: 1; }
-
-      .list { padding: 14px 16px 32px; }
-      .row-card { padding: 12px; }
-      .row-date { width: 100%; order: 1; white-space: normal; }
-
-      .detail-grid { grid-template-columns: 1fr; }
-
-      .row-actions button { flex: 1; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ===================== LOGIN ===================== -->
-  <div id="loginScreen">
-    <div class="login-card">
-      <h1>RB Labs — Requests</h1>
-      <form id="loginForm">
-        <div class="field">
-          <label for="username">Username</label>
-          <input type="text" id="username" autocomplete="username" required>
-        </div>
-        <div class="field">
-          <label for="password">Password</label>
-          <input type="password" id="password" autocomplete="current-password" required>
-        </div>
-        <button type="submit" class="btn-primary" id="loginBtn">Log in</button>
-        <div class="error-text" id="loginError"></div>
-      </form>
-    </div>
-  </div>
-
-  <!-- ===================== RESUME LOADING ===================== -->
-  <div id="resumeLoading">Checking session…</div>
-
-  <!-- ===================== DASHBOARD ===================== -->
-  <div id="dashboardScreen">
-    <header class="topbar">
-      <h1>RB Labs — Requests</h1>
-      <div style="display:flex; align-items:center; gap:14px;">
-        <span class="who" id="whoami"></span>
-        <button class="btn-ghost btn-sm" id="addUserBtn" hidden>+ Add team member</button>
-        <button class="btn-ghost btn-sm" id="logoutBtn">Log out</button>
-      </div>
-    </header>
-
-    <div class="admin-panel" id="adminPanel" hidden>
-      <form id="addUserForm">
-        <div class="field">
-          <label for="newUsername">Username</label>
-          <input type="text" id="newUsername" autocomplete="off" required>
-        </div>
-        <div class="field">
-          <label for="newPassword">Password</label>
-          <input type="text" id="newPassword" autocomplete="off" required>
-        </div>
-        <div class="field">
-          <label for="newRole">Role</label>
-          <select id="newRole">
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-          </select>
-        </div>
-        <button type="submit" class="btn-ghost btn-sm" id="addUserSubmit">Create account</button>
-        <button type="button" class="btn-ghost btn-sm" id="addUserCancel">Cancel</button>
-      </form>
-      <div class="error-text" id="addUserMessage"></div>
-      <div class="user-list" id="userList"></div>
-    </div>
-
-    <div class="toolbar">
-      <div class="tabs" id="statusTabs">
-        <button class="tab-btn active" data-status="new">New</button>
-        <button class="tab-btn" data-status="treated">Treated</button>
-        <button class="tab-btn" data-status="deleted">Deleted</button>
-      </div>
-      <select id="sourceFilter">
-        <option value="">All sources</option>
-      </select>
-      <input type="search" id="searchBox" placeholder="Search name, email, message...">
-      <button class="btn-ghost btn-sm" id="refreshBtn">Refresh</button>
-    </div>
-
-    <div class="list" id="list"></div>
-  </div>
-
-<script>
-  var API_URL = 'https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec';
-
-  var TOKEN = null;
-  var ME = null;
-  var ME_ROLE = null;
-  var ALL_ROWS = [];
-  var currentStatusTab = 'new';
-
-  function callApi(action, params) {
-    var body = Object.assign({ action: action }, params || {});
-    return fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(body)
-    })
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
-        if (!data.ok) throw new Error(data.error || 'Request failed.');
-        return data;
+      function closeAllSourcesDropdowns() {
+        document
+          .querySelectorAll(".sources-dropdown.open")
+          .forEach(function (dropdown) {
+            dropdown.classList.remove("open");
+            var menu = dropdown.querySelector(".sources-menu");
+            if (menu) menu.hidden = true;
+          });
+      }
+      document.addEventListener("click", function (e) {
+        // A click that lands exactly on .sources-dropdown itself (not a
+        // deeper child) is the mobile backdrop — pseudo-elements aren't
+        // separately targetable, so a tap there reports e.target as the
+        // host element, same as a genuine click-away would.
+        var onDropdown = e.target.closest(".sources-dropdown");
+        if (!onDropdown || e.target.classList.contains("sources-dropdown")) {
+          closeAllSourcesDropdowns();
+        }
       });
-  }
-
-  // ---------- Login ----------
-  document.getElementById('loginForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var username = document.getElementById('username').value.trim();
-    var password = document.getElementById('password').value;
-    var btn = document.getElementById('loginBtn');
-    var errEl = document.getElementById('loginError');
-    errEl.style.display = 'none';
-    btn.disabled = true;
-    btn.textContent = 'Logging in...';
-
-    callApi('login', { username: username, password: password })
-      .then(function (data) {
-        TOKEN = data.token;
-        ME = data.username;
-        ME_ROLE = data.role;
-        localStorage.setItem('rb_dash_token', TOKEN);
-        localStorage.setItem('rb_dash_user', ME);
-        localStorage.setItem('rb_dash_role', ME_ROLE);
-        enterDashboard();
-      })
-      .catch(function (err) {
-        btn.disabled = false;
-        btn.textContent = 'Log in';
-        errEl.textContent = err.message || 'Login failed.';
-        errEl.style.display = 'block';
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeAllSourcesDropdowns();
       });
-  });
+      // Rows are cheap to hold in memory (thousands of plain objects);
+      // building thousands of DOM subtrees per render is not. So the
+      // fetched set is unlimited, but how much of it we actually render
+      // at once is capped, with a "Load more" button to reveal more.
+      var VISIBLE_STEP = 75;
+      var visibleCount = VISIBLE_STEP;
 
-  document.getElementById('logoutBtn').addEventListener('click', function () {
-    callApi('logout', { token: TOKEN }).catch(function () {});
-    localStorage.removeItem('rb_dash_token');
-    localStorage.removeItem('rb_dash_user');
-    localStorage.removeItem('rb_dash_role');
-    TOKEN = null;
-    document.getElementById('dashboardScreen').style.display = 'none';
-    document.getElementById('loginScreen').style.display = 'flex';
-  });
+      // Long-press multi-select, Deleted tab only, admin only (server
+      // enforces this too — purgeRows is gated by requireAdmin_).
+      var LONG_PRESS_MS = 500;
+      var LONG_PRESS_MOVE_THRESHOLD = 10;
+      var selectionMode = false;
+      var selectedKeys = {};
 
-  function enterDashboard() {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('resumeLoading').classList.remove('visible');
-    document.getElementById('dashboardScreen').style.display = 'block';
-    document.getElementById('whoami').textContent = ME + (ME_ROLE === 'admin' ? ' (admin)' : '');
-    document.getElementById('addUserBtn').hidden = (ME_ROLE !== 'admin');
-    loadSubmissions();
-  }
+      function enterSelectionMode() {
+        if (selectionMode) return;
+        selectionMode = true;
+        document.getElementById("list").classList.add("selection-mode");
+        document.getElementById("selectToolbar").hidden = false;
+      }
 
-  // Try to resume a saved session on page load. The login form is hidden
-  // immediately (before the async check even starts) so it never flashes
-  // on screen while we're silently verifying the saved token.
-  (function tryResume() {
-    var savedToken = localStorage.getItem('rb_dash_token');
-    var savedUser = localStorage.getItem('rb_dash_user');
-    var savedRole = localStorage.getItem('rb_dash_role');
+      function exitSelectionMode() {
+        selectionMode = false;
+        selectedKeys = {};
+        var listEl = document.getElementById("list");
+        if (listEl) listEl.classList.remove("selection-mode");
+        var toolbar = document.getElementById("selectToolbar");
+        if (toolbar) toolbar.hidden = true;
+      }
 
-    if (!savedToken || !savedUser) return;
+      function toggleRowSelection(key) {
+        if (selectedKeys[key]) {
+          delete selectedKeys[key];
+        } else {
+          selectedKeys[key] = true;
+        }
+        updateSelectionUI();
+      }
 
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('resumeLoading').classList.add('visible');
+      function updateSelectionUI() {
+        document.querySelectorAll(".row-select").forEach(function (el) {
+          el.classList.toggle("checked", !!selectedKeys[el.dataset.key]);
+        });
+        var count = Object.keys(selectedKeys).length;
+        document.getElementById("selectCount").textContent =
+          count + (count === 1 ? " selected" : " selected");
+      }
 
-    TOKEN = savedToken;
-    ME = savedUser;
-    ME_ROLE = savedRole;
+      function debounce(fn, delay) {
+        var timer = null;
+        return function () {
+          var ctx = this;
+          var args = arguments;
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            fn.apply(ctx, args);
+          }, delay);
+        };
+      }
 
-    callApi('getSubmissions', { token: TOKEN })
-      .then(function (data) {
-        ALL_ROWS = data.rows;
-        updateSourceFilterOptions();
-        enterDashboard();
-        render();
-      })
-      .catch(function (err) {
-        console.error('Session resume failed:', err);
-        localStorage.removeItem('rb_dash_token');
-        localStorage.removeItem('rb_dash_user');
-        localStorage.removeItem('rb_dash_role');
-        document.getElementById('resumeLoading').classList.remove('visible');
-        document.getElementById('loginScreen').style.display = 'flex';
+      // Styled stand-in for window.confirm(). Resolves true/false;
+      // dismissible via Cancel, clicking the backdrop, or Escape.
+      function showConfirmModal(opts) {
+        return new Promise(function (resolve) {
+          var overlay = document.getElementById("confirmOverlay");
+          var titleEl = document.getElementById("confirmTitle");
+          var bodyEl = document.getElementById("confirmBody");
+          var okBtn = document.getElementById("confirmOkBtn");
+          var cancelBtn = document.getElementById("confirmCancelBtn");
+
+          titleEl.textContent = opts.title || "Are you sure?";
+          bodyEl.textContent = opts.message || "";
+          okBtn.textContent = opts.confirmLabel || "Confirm";
+
+          overlay.hidden = false;
+
+          function cleanup(result) {
+            overlay.hidden = true;
+            okBtn.removeEventListener("click", onOk);
+            cancelBtn.removeEventListener("click", onCancel);
+            overlay.removeEventListener("click", onOverlayClick);
+            document.removeEventListener("keydown", onKeydown);
+            resolve(result);
+          }
+          function onOk() {
+            cleanup(true);
+          }
+          function onCancel() {
+            cleanup(false);
+          }
+          function onOverlayClick(e) {
+            if (e.target === overlay) cleanup(false);
+          }
+          function onKeydown(e) {
+            if (e.key === "Escape") cleanup(false);
+          }
+
+          okBtn.addEventListener("click", onOk);
+          cancelBtn.addEventListener("click", onCancel);
+          overlay.addEventListener("click", onOverlayClick);
+          document.addEventListener("keydown", onKeydown);
+        });
+      }
+
+      function callApi(action, params) {
+        var body = Object.assign({ action: action }, params || {});
+        return fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(body),
+        })
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (data) {
+            if (!data.ok) throw new Error(data.error || "Request failed.");
+            return data;
+          });
+      }
+
+      // ---------- View navigation ----------
+      // Three top-level views (Requests / Team / Account) share one nav.
+      // Team is admin-only; showView() itself enforces that so a stale
+      // click or direct call can never reveal it to a non-admin.
+      var VIEWS = ["requests", "team", "account"];
+      function viewSectionId(name) {
+        return "view" + name.charAt(0).toUpperCase() + name.slice(1);
+      }
+      function navItemId(name) {
+        return "nav" + name.charAt(0).toUpperCase() + name.slice(1);
+      }
+      function showView(name) {
+        if (name === "team" && ME_ROLE !== "admin") name = "requests";
+        VIEWS.forEach(function (v) {
+          var section = document.getElementById(viewSectionId(v));
+          var navItem = document.getElementById(navItemId(v));
+          if (section) section.hidden = v !== name;
+          if (navItem) navItem.classList.toggle("active", v === name);
+        });
+        if (name === "team") loadUserList();
+      }
+      document.querySelectorAll(".nav-item").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          showView(btn.dataset.view);
+        });
       });
-  })();
 
-  // ---------- Admin: create/remove users ----------
-  document.getElementById('addUserBtn').addEventListener('click', function () {
-    document.getElementById('adminPanel').hidden = false;
-    loadUserList();
-  });
-  document.getElementById('addUserCancel').addEventListener('click', function () {
-    document.getElementById('adminPanel').hidden = true;
-  });
-  document.getElementById('addUserForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var newUsername = document.getElementById('newUsername').value.trim();
-    var newPassword = document.getElementById('newPassword').value;
-    var newRole = document.getElementById('newRole').value;
-    var btn = document.getElementById('addUserSubmit');
-    var msgEl = document.getElementById('addUserMessage');
-    msgEl.style.display = 'none';
-    btn.disabled = true;
+      // ---------- Login ----------
+      document
+        .getElementById("passwordToggle")
+        .addEventListener("click", function () {
+          var input = document.getElementById("password");
+          var reveal = input.type === "password";
+          input.type = reveal ? "text" : "password";
+          this.querySelector(".eye-show").hidden = reveal;
+          this.querySelector(".eye-hide").hidden = !reveal;
+          this.setAttribute(
+            "aria-label",
+            reveal ? "Hide password" : "Show password",
+          );
+        });
 
-    callApi('createUser', { token: TOKEN, username: newUsername, password: newPassword, role: newRole })
-      .then(function () {
-        btn.disabled = false;
-        document.getElementById('addUserForm').reset();
-        loadUserList();
-      })
-      .catch(function (err) {
-        btn.disabled = false;
-        msgEl.textContent = err.message || 'Failed to create account.';
-        msgEl.style.display = 'block';
-      });
-  });
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          var username = document.getElementById("username").value.trim();
+          var password = document.getElementById("password").value;
+          var btn = document.getElementById("loginBtn");
+          var errEl = document.getElementById("loginError");
+          errEl.style.display = "none";
+          btn.disabled = true;
+          btn.textContent = "Logging in...";
 
-  function loadUserList() {
-    var listEl = document.getElementById('userList');
-    listEl.innerHTML = '<div class="user-row">Loading…</div>';
+          callApi("login", { username: username, password: password })
+            .then(function (data) {
+              TOKEN = data.token;
+              ME = data.username;
+              ME_ROLE = data.role;
+              localStorage.setItem("rb_dash_token", TOKEN);
+              localStorage.setItem("rb_dash_user", ME);
+              localStorage.setItem("rb_dash_role", ME_ROLE);
+              enterDashboard();
+            })
+            .catch(function (err) {
+              btn.disabled = false;
+              btn.textContent = "Log in";
+              errEl.textContent = err.message || "Login failed.";
+              errEl.style.display = "block";
+            });
+        });
 
-    callApi('listUsers', { token: TOKEN })
-      .then(function (data) {
-        renderUserList(data.users);
-      })
-      .catch(function (err) {
-        listEl.innerHTML = '<div class="user-row">' + (err.message || 'Failed to load users.') + '</div>';
-      });
-  }
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function () {
+          callApi("logout", { token: TOKEN }).catch(function () {});
+          localStorage.removeItem("rb_dash_token");
+          localStorage.removeItem("rb_dash_user");
+          localStorage.removeItem("rb_dash_role");
+          TOKEN = null;
+          document.getElementById("dashboardScreen").style.display = "none";
+          document.getElementById("loginScreen").style.display = "flex";
+        });
 
-  function renderUserList(users) {
-    var listEl = document.getElementById('userList');
-    listEl.innerHTML = users.map(function (u) {
-      var isSelf = (u.username === ME);
-      var removeBtn = isSelf
-        ? ''
-        : '<button type="button" class="btn-delete-sm" data-username="' + escapeHtml(u.username) + '">Remove</button>';
-      return (
-        '<div class="user-row">' +
-          '<span class="user-name">' + escapeHtml(u.username) + '</span>' +
-          '<span class="user-role">' + escapeHtml(u.role) + (isSelf ? ' — you' : '') + '</span>' +
-          '<span class="row-spacer"></span>' +
-          removeBtn +
-        '</div>'
-      );
-    }).join('');
+      function enterDashboard() {
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("resumeLoading").classList.remove("visible");
+        document.getElementById("dashboardScreen").style.display = "block";
+        document.getElementById("whoami").textContent =
+          ME + (ME_ROLE === "admin" ? " (admin)" : "");
+        document.getElementById("addUserBtn").hidden = ME_ROLE !== "admin";
+        document.getElementById("navTeam").hidden = ME_ROLE !== "admin";
+        showView("requests");
+        loadSubmissions();
+      }
 
-    listEl.querySelectorAll('.btn-delete-sm').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var username = btn.dataset.username;
-        if (!confirm('Remove ' + username + '’s access?')) return;
-        btn.disabled = true;
+      // Try to resume a saved session on page load. The login form is hidden
+      // immediately (before the async check even starts) so it never flashes
+      // on screen while we're silently verifying the saved token.
+      (function tryResume() {
+        var savedToken = localStorage.getItem("rb_dash_token");
+        var savedUser = localStorage.getItem("rb_dash_user");
+        var savedRole = localStorage.getItem("rb_dash_role");
 
-        callApi('deleteUser', { token: TOKEN, username: username })
-          .then(function () {
-            loadUserList();
+        if (!savedToken || !savedUser) return;
+
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("resumeLoading").classList.add("visible");
+
+        TOKEN = savedToken;
+        ME = savedUser;
+        ME_ROLE = savedRole;
+
+        callApi("getSubmissions", { token: TOKEN })
+          .then(function (data) {
+            ALL_ROWS = data.rows;
+            updateSourceFilterOptions();
+            enterDashboard();
+            render();
           })
           .catch(function (err) {
-            alert(err.message || 'Failed to remove user.');
-            btn.disabled = false;
+            console.error("Session resume failed:", err);
+            localStorage.removeItem("rb_dash_token");
+            localStorage.removeItem("rb_dash_user");
+            localStorage.removeItem("rb_dash_role");
+            document
+              .getElementById("resumeLoading")
+              .classList.remove("visible");
+            document.getElementById("loginScreen").style.display = "flex";
           });
-      });
-    });
-  }
+      })();
 
-  // ---------- Data ----------
-  function loadSubmissions() {
-    document.getElementById('list').innerHTML = '<div class="empty">Loading…</div>';
-    callApi('getSubmissions', { token: TOKEN })
-      .then(function (data) {
-        ALL_ROWS = data.rows;
-        updateSourceFilterOptions();
-        render();
-      })
-      .catch(function (err) {
-        document.getElementById('list').innerHTML = '<div class="empty">' + (err.message || 'Failed to load.') + '</div>';
-      });
-  }
+      // ---------- Change own password ----------
+      document
+        .getElementById("changePasswordBtn")
+        .addEventListener("click", function () {
+          document.getElementById("changePasswordPanel").hidden = false;
+          var msgEl = document.getElementById("changePasswordMessage");
+          msgEl.style.display = "none";
+          msgEl.textContent = "";
+        });
+      document
+        .getElementById("changePasswordCancel")
+        .addEventListener("click", function () {
+          document.getElementById("changePasswordPanel").hidden = true;
+          var msgEl = document.getElementById("changePasswordMessage");
+          msgEl.style.display = "none";
+          msgEl.textContent = "";
+        });
+      document
+        .getElementById("changePasswordForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          var currentPassword =
+            document.getElementById("currentPassword").value;
+          var newPassword = document.getElementById("newPasswordField").value;
+          var confirmPassword = document.getElementById(
+            "confirmPasswordField",
+          ).value;
+          var btn = document.getElementById("changePasswordSubmit");
+          var msgEl = document.getElementById("changePasswordMessage");
+          msgEl.className = "error-text";
+          msgEl.style.display = "none";
 
-  function updateSourceFilterOptions() {
-    var select = document.getElementById('sourceFilter');
-    var current = select.value;
-    var sources = [];
-    ALL_ROWS.forEach(function (r) {
-      if (r.source && sources.indexOf(r.source) === -1) sources.push(r.source);
-    });
-    sources.sort();
+          if (newPassword !== confirmPassword) {
+            msgEl.textContent = "New passwords do not match.";
+            msgEl.style.display = "block";
+            return;
+          }
 
-    select.innerHTML = '<option value="">All sources</option>' +
-      sources.map(function (s) {
-        return '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + '</option>';
-      }).join('');
+          btn.disabled = true;
+          callApi("changePassword", {
+            token: TOKEN,
+            currentPassword: currentPassword,
+            newPassword: newPassword,
+          })
+            .then(function () {
+              btn.disabled = false;
+              document.getElementById("changePasswordForm").reset();
+              msgEl.className = "success-text";
+              msgEl.textContent = "Password updated successfully.";
+              msgEl.style.display = "block";
+            })
+            .catch(function (err) {
+              btn.disabled = false;
+              msgEl.className = "error-text";
+              msgEl.textContent = err.message || "Failed to update password.";
+              msgEl.style.display = "block";
+            });
+        });
 
-    if (sources.indexOf(current) !== -1) select.value = current;
-  }
+      // ---------- Admin: create/remove users ----------
+      document
+        .getElementById("addUserBtn")
+        .addEventListener("click", function () {
+          document.getElementById("adminPanel").hidden = false;
+          loadUserList();
+        });
+      document
+        .getElementById("addUserCancel")
+        .addEventListener("click", function () {
+          document.getElementById("adminPanel").hidden = true;
+        });
 
-  document.getElementById('refreshBtn').addEventListener('click', loadSubmissions);
-
-  document.querySelectorAll('.tab-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      currentStatusTab = btn.dataset.status;
-      render();
-    });
-  });
-  document.getElementById('sourceFilter').addEventListener('change', render);
-  document.getElementById('searchBox').addEventListener('input', render);
-
-  // ---------- Render ----------
-  function escapeHtml(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
-
-  function displayPhone(phone) {
-    var p = (phone === undefined || phone === null) ? '' : String(phone);
-    if (p.charAt(0) === '(' && p.charAt(p.length - 1) === ')') {
-      return p.slice(1, -1);
-    }
-    return p;
-  }
-
-  function formatDate(iso) {
-    if (!iso) return '';
-    var d = new Date(iso);
-    if (isNaN(d.getTime())) return String(iso);
-
-    var parts = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/Zurich',
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hourCycle: 'h23'
-    }).formatToParts(d);
-
-    var map = {};
-    parts.forEach(function (p) { map[p.type] = p.value; });
-    return map.day + '/' + map.month + '/' + map.year + ' ' + map.hour + ':' + map.minute;
-  }
-
-  function render() {
-    var source = document.getElementById('sourceFilter').value;
-    var search = document.getElementById('searchBox').value.trim().toLowerCase();
-
-    var rows = ALL_ROWS.filter(function (r) { return r.status === currentStatusTab; });
-    if (source) rows = rows.filter(function (r) { return r.source === source; });
-    if (search) {
-      rows = rows.filter(function (r) {
-        var hay = [r.name, r.email, r.phone, r.message, r.position].join(' ').toLowerCase();
-        return hay.indexOf(search) !== -1;
-      });
-    }
-
-    var listEl = document.getElementById('list');
-    if (rows.length === 0) {
-      listEl.innerHTML = '<div class="empty">Nothing here.</div>';
-      return;
-    }
-
-    listEl.innerHTML = rows.map(function (r, idx) {
-      var key = r.sheet + '_' + r.row;
-      var fieldsHtml = Object.keys(r.fields || {}).map(function (k) {
-        return '<div><span>' + escapeHtml(k) + ':</span> ' + escapeHtml(r.fields[k]) + '</div>';
-      }).join('');
-
-      var actions;
-      if (r.status === 'new') {
-        actions = '<button class="btn-sm btn-treat" data-action="treated" data-key="' + key + '">Mark treated</button>' +
-          '<button class="btn-sm btn-delete" data-action="deleted" data-key="' + key + '">Delete</button>';
-      } else if (r.status === 'treated') {
-        actions = '<button class="btn-sm btn-undo" data-action="new" data-key="' + key + '">Move back to new</button>' +
-          '<button class="btn-sm btn-delete" data-action="deleted" data-key="' + key + '">Delete</button>';
-      } else {
-        actions = '<button class="btn-sm btn-undo" data-action="new" data-key="' + key + '">Restore</button>';
+      document
+        .querySelectorAll("#newRoleToggle .role-btn")
+        .forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            document
+              .querySelectorAll("#newRoleToggle .role-btn")
+              .forEach(function (b) {
+                b.classList.remove("active");
+              });
+            btn.classList.add("active");
+          });
+        });
+      function resetNewRoleToggle() {
+        document
+          .querySelectorAll("#newRoleToggle .role-btn")
+          .forEach(function (b) {
+            b.classList.toggle("active", b.dataset.role === "user");
+          });
       }
 
-      return (
-        '<div class="row-card" data-sheet="' + escapeHtml(r.sheet) + '" data-row="' + r.row + '">' +
-          '<div class="row-head" data-toggle="' + key + '">' +
-            '<span class="badge status-' + r.status + '">' + escapeHtml(r.status) + '</span>' +
-            '<span class="badge source">' + escapeHtml(r.source) + '</span>' +
-            '<span class="row-name">' + escapeHtml(r.name || r.email || 'Unknown') + '</span>' +
-            (r.position ? '<span class="row-meta">— ' + escapeHtml(r.position) + '</span>' : '') +
-            '<span class="row-spacer"></span>' +
-            '<span class="row-date">' + escapeHtml(formatDate(r.created_at)) + '</span>' +
-          '</div>' +
-          '<div class="row-detail" id="detail_' + key + '">' +
-            '<div class="detail-grid">' +
-              '<div><span>Email:</span> ' + escapeHtml(r.email) + '</div>' +
-              '<div><span>Phone:</span> ' + escapeHtml(displayPhone(r.phone)) + '</div>' +
+      document
+        .getElementById("addUserForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          var newUsername = document.getElementById("newUsername").value.trim();
+          var newPassword = document.getElementById("newPassword").value;
+          var newRole = document.querySelector(
+            "#newRoleToggle .role-btn.active",
+          ).dataset.role;
+          var btn = document.getElementById("addUserSubmit");
+          var msgEl = document.getElementById("addUserMessage");
+          msgEl.style.display = "none";
+          btn.disabled = true;
+
+          callApi("createUser", {
+            token: TOKEN,
+            username: newUsername,
+            password: newPassword,
+            role: newRole,
+          })
+            .then(function () {
+              btn.disabled = false;
+              document.getElementById("addUserForm").reset();
+              resetNewRoleToggle();
+              loadUserList();
+            })
+            .catch(function (err) {
+              btn.disabled = false;
+              msgEl.textContent = err.message || "Failed to create account.";
+              msgEl.style.display = "block";
+            });
+        });
+
+      function loadUserList() {
+        var listEl = document.getElementById("userList");
+        listEl.innerHTML = '<div class="user-row">Loading…</div>';
+
+        callApi("listUsers", { token: TOKEN })
+          .then(function (data) {
+            renderUserList(data.users);
+          })
+          .catch(function (err) {
+            listEl.innerHTML =
+              '<div class="user-row">' +
+              (err.message || "Failed to load users.") +
+              "</div>";
+          });
+      }
+
+      function renderUserList(users) {
+        var listEl = document.getElementById("userList");
+        listEl.innerHTML = users
+          .map(function (u) {
+            var isSelf = u.username === ME;
+
+            if (isSelf) {
+              return (
+                '<div class="user-row">' +
+                '<span class="user-name">' +
+                escapeHtml(u.username) +
+                "</span>" +
+                '<span class="user-role">' +
+                escapeHtml(u.role) +
+                " — you</span>" +
+                '<span class="scope-note">' +
+                escapeHtml(sourcesSummary(u.sources)) +
+                "</span>" +
+                "</div>"
+              );
+            }
+
+            var sourcesMenuHtml = SOURCE_OPTIONS.map(function (opt) {
+              return (
+                '<label class="source-option">' +
+                '<input type="checkbox" value="' +
+                escapeHtml(opt.value) +
+                '"' +
+                ((u.sources || []).indexOf(opt.value) !== -1
+                  ? " checked"
+                  : "") +
+                " />" +
+                escapeHtml(opt.label) +
+                "</label>"
+              );
+            }).join("");
+
+            return (
+              '<div class="user-row">' +
+              '<span class="user-name">' +
+              escapeHtml(u.username) +
+              "</span>" +
+              '<div class="role-toggle" data-username="' +
+              escapeHtml(u.username) +
+              '">' +
+              '<button type="button" class="role-btn' +
+              (u.role === "user" ? " active" : "") +
+              '" data-role="user">User</button>' +
+              '<button type="button" class="role-btn' +
+              (u.role === "admin" ? " active" : "") +
+              '" data-role="admin">Admin</button>' +
+              "</div>" +
+              '<div class="dropdown sources-dropdown" data-username="' +
+              escapeHtml(u.username) +
+              '">' +
+              '<button type="button" class="dropdown-trigger btn-ghost btn-sm sources-trigger">' +
+              '<span class="sources-label">' +
+              escapeHtml(sourcesSummary(u.sources)) +
+              "</span>" +
+              '<span class="dropdown-caret"></span>' +
+              "</button>" +
+              '<div class="dropdown-menu sources-menu" hidden>' +
+              sourcesMenuHtml +
+              '<div class="sources-menu-footer">' +
+              '<button type="button" class="btn-ghost btn-sm sources-cancel-btn">Cancel</button>' +
+              '<button type="button" class="btn-ghost btn-sm sources-save-btn">Save</button>' +
+              "</div>" +
+              "</div>" +
+              "</div>" +
+              '<span class="row-spacer"></span>' +
+              '<button type="button" class="btn-delete-sm" data-username="' +
+              escapeHtml(u.username) +
+              '">Remove</button>' +
+              "</div>"
+            );
+          })
+          .join("");
+
+        listEl.querySelectorAll(".role-toggle").forEach(function (toggle) {
+          var username = toggle.dataset.username;
+          var buttons = toggle.querySelectorAll(".role-btn");
+
+          buttons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              if (btn.classList.contains("active")) return;
+              var newRole = btn.dataset.role;
+
+              buttons.forEach(function (b) {
+                b.disabled = true;
+              });
+
+              callApi("updateUserRole", {
+                token: TOKEN,
+                username: username,
+                role: newRole,
+              })
+                .then(function () {
+                  buttons.forEach(function (b) {
+                    b.classList.toggle("active", b === btn);
+                    b.disabled = false;
+                  });
+                })
+                .catch(function (err) {
+                  alert(err.message || "Failed to update role.");
+                  loadUserList();
+                });
+            });
+          });
+        });
+
+        listEl.querySelectorAll(".sources-dropdown").forEach(function (dropdown) {
+          var username = dropdown.dataset.username;
+          var trigger = dropdown.querySelector(".sources-trigger");
+          var menu = dropdown.querySelector(".sources-menu");
+          var saveBtn = dropdown.querySelector(".sources-save-btn");
+          var cancelBtn = dropdown.querySelector(".sources-cancel-btn");
+          var checkboxes = dropdown.querySelectorAll('input[type="checkbox"]');
+
+          trigger.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var wasOpen = dropdown.classList.contains("open");
+            closeAllSourcesDropdowns();
+            if (!wasOpen) {
+              dropdown.classList.add("open");
+              menu.hidden = false;
+              positionDropdownMenu(menu);
+            }
+          });
+
+          menu.addEventListener("click", function (e) {
+            e.stopPropagation();
+          });
+
+          cancelBtn.addEventListener("click", function () {
+            closeAllSourcesDropdowns();
+          });
+
+          saveBtn.addEventListener("click", function () {
+            var selected = Array.prototype.filter
+              .call(checkboxes, function (cb) {
+                return cb.checked;
+              })
+              .map(function (cb) {
+                return cb.value;
+              });
+
+            saveBtn.disabled = true;
+            callApi("updateUserSources", {
+              token: TOKEN,
+              username: username,
+              sources: selected,
+            })
+              .then(function () {
+                saveBtn.disabled = false;
+                closeAllSourcesDropdowns();
+                loadUserList();
+              })
+              .catch(function (err) {
+                saveBtn.disabled = false;
+                alert(err.message || "Failed to update source access.");
+              });
+          });
+        });
+
+        listEl.querySelectorAll(".btn-delete-sm").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var username = btn.dataset.username;
+            showConfirmModal({
+              title: "Remove team member?",
+              message:
+                "Remove " + username + "’s access to the dashboard?",
+              confirmLabel: "Remove",
+            }).then(function (confirmed) {
+              if (!confirmed) return;
+              btn.disabled = true;
+
+              callApi("deleteUser", { token: TOKEN, username: username })
+                .then(function () {
+                  loadUserList();
+                })
+                .catch(function (err) {
+                  alert(err.message || "Failed to remove user.");
+                  btn.disabled = false;
+                });
+            });
+          });
+        });
+      }
+
+      // ---------- Data ----------
+      function loadSubmissions() {
+        document.getElementById("list").innerHTML =
+          '<div class="empty">Loading…</div>';
+        callApi("getSubmissions", { token: TOKEN })
+          .then(function (data) {
+            ALL_ROWS = data.rows;
+            visibleCount = VISIBLE_STEP;
+            exitSelectionMode();
+            updateSourceFilterOptions();
+            render();
+          })
+          .catch(function (err) {
+            document.getElementById("list").innerHTML =
+              '<div class="empty">' +
+              (err.message || "Failed to load.") +
+              "</div>";
+          });
+      }
+
+      function updateSourceFilterOptions() {
+        var sources = [];
+        ALL_ROWS.forEach(function (r) {
+          if (r.source && sources.indexOf(r.source) === -1)
+            sources.push(r.source);
+        });
+        sources.sort();
+
+        if (sourceFilterValue && sources.indexOf(sourceFilterValue) === -1) {
+          sourceFilterValue = "";
+        }
+
+        var options = [{ value: "", label: "All sources" }].concat(
+          sources.map(function (s) {
+            return { value: s, label: s };
+          }),
+        );
+
+        var menu = document.getElementById("sourceFilterMenu");
+        menu.innerHTML = options
+          .map(function (opt) {
+            return (
+              '<button type="button" class="dropdown-option' +
+              (opt.value === sourceFilterValue ? " active" : "") +
+              '" data-value="' +
+              escapeHtml(opt.value) +
+              '">' +
+              escapeHtml(opt.label) +
+              "</button>"
+            );
+          })
+          .join("");
+
+        menu.querySelectorAll(".dropdown-option").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            sourceFilterValue = btn.dataset.value;
+            document.getElementById("sourceFilterLabel").textContent =
+              btn.textContent;
+            menu.querySelectorAll(".dropdown-option").forEach(function (b) {
+              b.classList.toggle("active", b === btn);
+            });
+            closeSourceFilterMenu();
+            visibleCount = VISIBLE_STEP;
+            exitSelectionMode();
+            render();
+          });
+        });
+
+        var selected = options.filter(function (o) {
+          return o.value === sourceFilterValue;
+        })[0];
+        document.getElementById("sourceFilterLabel").textContent = selected
+          ? selected.label
+          : "All sources";
+      }
+
+      // Keeps a dropdown menu fully on-screen. Rather than flipping to a
+      // CSS class anchored on the trigger's own edge (which assumes the
+      // trigger itself is positioned in a way that makes that edge safe —
+      // not reliably true for a menu sitting inside a narrow flex row),
+      // this measures the actual overflow in pixels and shifts by exactly
+      // that much, so it's correct regardless of where the trigger sits.
+      function positionDropdownMenu(menu) {
+        menu.style.left = "";
+        menu.classList.remove("align-top");
+
+        var margin = 8;
+        var rect = menu.getBoundingClientRect();
+        var overflowRight = rect.right - (window.innerWidth - margin);
+        if (overflowRight > 0) {
+          menu.style.left = -overflowRight + "px";
+        }
+
+        rect = menu.getBoundingClientRect();
+        if (rect.bottom > window.innerHeight - margin) {
+          menu.classList.add("align-top");
+        }
+      }
+
+      // ---------- Source filter dropdown (custom, not a native <select>) ----------
+      function closeSourceFilterMenu() {
+        document.getElementById("sourceFilterMenu").hidden = true;
+        document
+          .getElementById("sourceFilterDropdown")
+          .classList.remove("open");
+      }
+      function openSourceFilterMenu() {
+        var dropdown = document.getElementById("sourceFilterDropdown");
+        var menu = document.getElementById("sourceFilterMenu");
+        menu.hidden = false;
+        dropdown.classList.add("open");
+        positionDropdownMenu(menu);
+      }
+      document
+        .getElementById("sourceFilterBtn")
+        .addEventListener("click", function (e) {
+          e.stopPropagation();
+          var menu = document.getElementById("sourceFilterMenu");
+          if (menu.hidden) {
+            openSourceFilterMenu();
+          } else {
+            closeSourceFilterMenu();
+          }
+        });
+      document.addEventListener("click", function (e) {
+        var dropdown = document.getElementById("sourceFilterDropdown");
+        if (!dropdown.contains(e.target)) closeSourceFilterMenu();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeSourceFilterMenu();
+      });
+
+      document
+        .getElementById("refreshBtn")
+        .addEventListener("click", loadSubmissions);
+
+      document.querySelectorAll(".tab-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll(".tab-btn").forEach(function (b) {
+            b.classList.remove("active");
+          });
+          btn.classList.add("active");
+          currentStatusTab = btn.dataset.status;
+          visibleCount = VISIBLE_STEP;
+          exitSelectionMode();
+          render();
+        });
+      });
+      document.getElementById("searchBox").addEventListener(
+        "input",
+        debounce(function () {
+          visibleCount = VISIBLE_STEP;
+          exitSelectionMode();
+          render();
+        }, 200),
+      );
+
+      document
+        .getElementById("selectCancelBtn")
+        .addEventListener("click", function () {
+          exitSelectionMode();
+        });
+
+      document
+        .getElementById("selectDeleteBtn")
+        .addEventListener("click", function () {
+          var keys = Object.keys(selectedKeys);
+          if (keys.length === 0) return;
+
+          var targets = keys
+            .map(function (key) {
+              return ALL_ROWS.find(function (r) {
+                return r.sheet + "_" + r.row === key;
+              });
+            })
+            .filter(function (r) {
+              return r && r.status === "deleted";
+            });
+
+          if (targets.length === 0) return;
+
+          showConfirmModal({
+            title: "Delete permanently?",
+            message:
+              "Permanently delete " +
+              targets.length +
+              (targets.length === 1 ? " request" : " requests") +
+              "? This removes them from the spreadsheet entirely and cannot be undone.",
+            confirmLabel: "Delete permanently",
+          }).then(function (confirmed) {
+            if (!confirmed) return;
+
+            var btn = document.getElementById("selectDeleteBtn");
+            btn.disabled = true;
+
+            callApi("purgeRows", {
+              token: TOKEN,
+              rows: targets.map(function (r) {
+                return { sheet: r.sheet, row: r.row };
+              }),
+            })
+              .then(function (data) {
+                btn.disabled = false;
+
+                var deletedKeys = {};
+                (data.deleted || []).forEach(function (d) {
+                  deletedKeys[d.sheet + "_" + d.row] = true;
+                });
+                ALL_ROWS = ALL_ROWS.filter(function (r) {
+                  return !deletedKeys[r.sheet + "_" + r.row];
+                });
+
+                exitSelectionMode();
+                render();
+
+                if (data.skipped && data.skipped.length > 0) {
+                  alert(
+                    (data.deleted ? data.deleted.length : 0) +
+                      " deleted. " +
+                      data.skipped.length +
+                      " could not be deleted (they may have changed since this list was loaded) — refresh to see the current state.",
+                  );
+                }
+              })
+              .catch(function (err) {
+                btn.disabled = false;
+                alert(err.message || "Failed to delete.");
+              });
+          });
+        });
+
+      // ---------- Render ----------
+      function escapeHtml(s) {
+        return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+          return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          }[c];
+        });
+      }
+
+      function displayPhone(phone) {
+        var p = phone === undefined || phone === null ? "" : String(phone);
+        if (p.charAt(0) === "(" && p.charAt(p.length - 1) === ")") {
+          return p.slice(1, -1);
+        }
+        return p;
+      }
+
+      function formatDate(iso) {
+        if (!iso) return "";
+        var d = new Date(iso);
+        if (isNaN(d.getTime())) return String(iso);
+
+        var parts = new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Europe/Zurich",
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          hourCycle: "h23",
+        }).formatToParts(d);
+
+        var map = {};
+        parts.forEach(function (p) {
+          map[p.type] = p.value;
+        });
+        return (
+          map.day +
+          "/" +
+          map.month +
+          "/" +
+          map.year +
+          " " +
+          map.hour +
+          ":" +
+          map.minute
+        );
+      }
+
+      function render() {
+        var source = sourceFilterValue;
+        var search = document
+          .getElementById("searchBox")
+          .value.trim()
+          .toLowerCase();
+
+        var rows = ALL_ROWS.filter(function (r) {
+          return r.status === currentStatusTab;
+        });
+        if (source)
+          rows = rows.filter(function (r) {
+            return r.source === source;
+          });
+        if (search) {
+          rows = rows.filter(function (r) {
+            var hay = [r.name, r.email, r.phone, r.message, r.position]
+              .join(" ")
+              .toLowerCase();
+            return hay.indexOf(search) !== -1;
+          });
+        }
+
+        var countEl = document.getElementById("resultCount");
+        countEl.textContent =
+          rows.length + (rows.length === 1 ? " request" : " requests");
+
+        var listEl = document.getElementById("list");
+        if (rows.length === 0) {
+          listEl.innerHTML = '<div class="empty">Nothing here.</div>';
+          return;
+        }
+
+        var visibleRows = rows.slice(0, visibleCount);
+        var remaining = rows.length - visibleRows.length;
+
+        var rowsHtml = visibleRows
+          .map(function (r, idx) {
+            var key = r.sheet + "_" + r.row;
+            var fieldsHtml = Object.keys(r.fields || {})
+              .map(function (k) {
+                return (
+                  "<div><span>" +
+                  escapeHtml(k) +
+                  ":</span> " +
+                  escapeHtml(r.fields[k]) +
+                  "</div>"
+                );
+              })
+              .join("");
+
+            var actions;
+            if (r.status === "new") {
+              actions =
+                '<button class="btn-sm btn-treat" data-action="treated" data-key="' +
+                key +
+                '">Mark treated</button>' +
+                '<button class="btn-sm btn-delete" data-action="deleted" data-key="' +
+                key +
+                '">Delete</button>';
+            } else if (r.status === "treated") {
+              actions =
+                '<button class="btn-sm btn-undo" data-action="new" data-key="' +
+                key +
+                '">Move back to new</button>' +
+                '<button class="btn-sm btn-delete" data-action="deleted" data-key="' +
+                key +
+                '">Delete</button>';
+            } else {
+              actions =
+                '<button class="btn-sm btn-undo" data-action="new" data-key="' +
+                key +
+                '">Restore</button>';
+            }
+
+            return (
+              '<div class="row-card" data-sheet="' +
+              escapeHtml(r.sheet) +
+              '" data-row="' +
+              r.row +
+              '">' +
+              '<div class="row-head" data-toggle="' +
+              key +
+              '">' +
+              '<span class="row-select" data-key="' +
+              key +
+              '"></span>' +
+              '<span class="badge status-' +
+              r.status +
+              '">' +
+              escapeHtml(r.status) +
+              "</span>" +
+              '<span class="badge source' +
+              (r.source === "Career" ? " source-career" : "") +
+              '">' +
+              escapeHtml(r.source) +
+              "</span>" +
+              '<span class="row-name">' +
+              escapeHtml(r.name || r.email || "Unknown") +
+              "</span>" +
+              (r.position
+                ? '<span class="row-meta">— ' +
+                  escapeHtml(r.position) +
+                  "</span>"
+                : "") +
+              '<span class="row-spacer"></span>' +
+              '<span class="row-date">' +
+              escapeHtml(formatDate(r.created_at)) +
+              "</span>" +
+              "</div>" +
+              '<div class="row-detail" id="detail_' +
+              key +
+              '">' +
+              '<div class="row-detail-inner"><div class="row-detail-content">' +
+              '<div class="detail-grid">' +
+              "<div><span>Email:</span> " +
+              escapeHtml(r.email) +
+              "</div>" +
+              "<div><span>Phone:</span> " +
+              escapeHtml(displayPhone(r.phone)) +
+              "</div>" +
               fieldsHtml +
-              '<div><span>IP / Country:</span> ' + escapeHtml(r.ip) + ' / ' + escapeHtml(r.country) + '</div>' +
-              '<div><span>Browser:</span> ' + escapeHtml(r.browser) + '</div>' +
-              (r.fileUrl ? '<div><span>Attachment:</span> <a href="' + escapeHtml(r.fileUrl) + '" target="_blank">Open file</a></div>' : '') +
-              (r.handledBy ? '<div><span>Handled by:</span> ' + escapeHtml(r.handledBy) + '</div>' : '') +
-              (r.handledAt ? '<div><span>Handled at:</span> ' + escapeHtml(formatDate(r.handledAt)) + '</div>' : '') +
-            '</div>' +
-            (r.message ? '<div class="detail-message">' + escapeHtml(r.message) + '</div>' : '') +
-            '<div class="comment-block">' +
-              '<label>Internal comment</label>' +
-              '<div class="comment-view" style="display:' + (r.comment ? 'block' : 'none') + '">' +
-                '<div class="comment-text">' + escapeHtml(r.comment) + '</div>' +
-                '<div class="comment-meta">' + (r.commentBy ? '— commented by ' + escapeHtml(r.commentBy) : '') + '</div>' +
-                '<button type="button" class="btn-sm btn-ghost btn-edit-comment">Edit</button>' +
-              '</div>' +
-              '<div class="comment-edit" style="display:' + (r.comment ? 'none' : 'block') + '">' +
-                '<textarea id="comment_' + key + '" class="comment-input" rows="2" placeholder="Add a note for the team...">' + escapeHtml(r.comment) + '</textarea>' +
-                '<div class="comment-footer">' +
-                  '<button type="button" class="btn-sm btn-ghost btn-save-comment">Save comment</button>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
-            '<div class="row-actions">' + actions + '</div>' +
-          '</div>' +
-        '</div>'
-      );
-    }).join('');
-
-    // Toggle expand
-    listEl.querySelectorAll('[data-toggle]').forEach(function (head) {
-      head.addEventListener('click', function () {
-        var el = document.getElementById('detail_' + head.dataset.toggle);
-        el.classList.toggle('open');
-      });
-    });
-
-    // Status actions
-    listEl.querySelectorAll('[data-action]').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var card = btn.closest('.row-card');
-        var sheet = card.dataset.sheet;
-        var rowNum = Number(card.dataset.row);
-        var newStatus = btn.dataset.action;
-
-        btn.disabled = true;
-        callApi('updateStatus', { token: TOKEN, sheet: sheet, row: rowNum, status: newStatus })
-          .then(function () {
-            loadSubmissions();
+              "<div><span>IP / Country:</span> " +
+              escapeHtml(r.ip) +
+              " / " +
+              escapeHtml(r.country) +
+              "</div>" +
+              "<div><span>Browser:</span> " +
+              escapeHtml(r.browser) +
+              "</div>" +
+              (r.fileUrl
+                ? '<div><span>Attachment:</span> <a href="' +
+                  escapeHtml(r.fileUrl) +
+                  '" target="_blank">Open file</a></div>'
+                : "") +
+              (r.handledBy
+                ? "<div><span>Handled by:</span> " +
+                  escapeHtml(r.handledBy) +
+                  "</div>"
+                : "") +
+              (r.handledAt
+                ? "<div><span>Handled at:</span> " +
+                  escapeHtml(formatDate(r.handledAt)) +
+                  "</div>"
+                : "") +
+              "</div>" +
+              (r.message
+                ? '<div class="detail-message">' +
+                  escapeHtml(r.message) +
+                  "</div>"
+                : "") +
+              '<div class="comment-block">' +
+              "<label>Internal comment</label>" +
+              '<div class="comment-view" style="display:' +
+              (r.comment ? "block" : "none") +
+              '">' +
+              '<div class="comment-text">' +
+              escapeHtml(r.comment) +
+              "</div>" +
+              '<div class="comment-meta">' +
+              (r.commentBy ? "— commented by " + escapeHtml(r.commentBy) : "") +
+              "</div>" +
+              '<button type="button" class="btn-sm btn-ghost btn-edit-comment">Edit</button>' +
+              "</div>" +
+              '<div class="comment-edit" style="display:' +
+              (r.comment ? "none" : "block") +
+              '">' +
+              '<textarea id="comment_' +
+              key +
+              '" class="comment-input" rows="2" placeholder="Add a note for the team...">' +
+              escapeHtml(r.comment) +
+              "</textarea>" +
+              '<div class="comment-footer">' +
+              '<button type="button" class="btn-sm btn-ghost btn-save-comment">Save comment</button>' +
+              "</div>" +
+              "</div>" +
+              "</div>" +
+              '<div class="row-actions">' +
+              actions +
+              "</div>" +
+              "</div></div>" +
+              "</div>" +
+              "</div>"
+            );
           })
-          .catch(function (err) {
-            alert(err.message || 'Failed to update.');
-            btn.disabled = false;
-          });
-      });
-    });
+          .join("");
 
-    // Comment: switch to edit mode
-    listEl.querySelectorAll('.btn-edit-comment').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var block = btn.closest('.comment-block');
-        block.querySelector('.comment-view').style.display = 'none';
-        block.querySelector('.comment-edit').style.display = 'block';
-        block.querySelector('.comment-input').focus();
-      });
-    });
+        var loadMoreHtml =
+          remaining > 0
+            ? '<button type="button" class="btn-ghost btn-sm load-more-btn" id="loadMoreBtn">Load more (' +
+              remaining +
+              " remaining)</button>"
+            : "";
 
-    // Comment: save
-    listEl.querySelectorAll('.btn-save-comment').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var card = btn.closest('.row-card');
-        var block = btn.closest('.comment-block');
-        var sheet = card.dataset.sheet;
-        var rowNum = Number(card.dataset.row);
-        var commentText = block.querySelector('.comment-input').value;
+        listEl.innerHTML = rowsHtml + loadMoreHtml;
 
-        btn.disabled = true;
-        callApi('updateComment', { token: TOKEN, sheet: sheet, row: rowNum, comment: commentText })
-          .then(function () {
-            btn.disabled = false;
+        if (remaining > 0) {
+          document
+            .getElementById("loadMoreBtn")
+            .addEventListener("click", function () {
+              visibleCount += VISIBLE_STEP;
+              render();
+            });
+        }
 
-            var savedRow = ALL_ROWS.find(function (r) { return r.sheet === sheet && r.row === rowNum; });
-            if (savedRow) {
-              savedRow.comment = commentText;
-              savedRow.commentBy = commentText ? ME : '';
+        // Toggle expand, long-press to select (Deleted tab, admin only —
+        // the server re-checks admin + status on the actual delete, this
+        // is just the affordance).
+        listEl.querySelectorAll("[data-toggle]").forEach(function (head) {
+          var pressTimer = null;
+          var startX = 0;
+          var startY = 0;
+          var longPressFired = false;
+
+          function clearPressTimer() {
+            if (pressTimer) {
+              clearTimeout(pressTimer);
+              pressTimer = null;
             }
+          }
 
-            if (commentText) {
-              block.querySelector('.comment-text').textContent = commentText;
-              block.querySelector('.comment-meta').textContent = '— commented by ' + ME;
-              block.querySelector('.comment-view').style.display = 'block';
-              block.querySelector('.comment-edit').style.display = 'none';
-            }
-          })
-          .catch(function (err) {
-            btn.disabled = false;
-            alert(err.message || 'Failed to save comment.');
+          head.addEventListener("pointerdown", function (e) {
+            if (currentStatusTab !== "deleted" || ME_ROLE !== "admin") return;
+            longPressFired = false;
+            startX = e.clientX;
+            startY = e.clientY;
+            clearPressTimer();
+            pressTimer = setTimeout(function () {
+              longPressFired = true;
+              enterSelectionMode();
+              toggleRowSelection(head.dataset.toggle);
+            }, LONG_PRESS_MS);
           });
-      });
-    });
-  }
-</script>
-</body>
+
+          head.addEventListener("pointermove", function (e) {
+            if (!pressTimer) return;
+            var dx = e.clientX - startX;
+            var dy = e.clientY - startY;
+            if (Math.sqrt(dx * dx + dy * dy) > LONG_PRESS_MOVE_THRESHOLD) {
+              clearPressTimer();
+            }
+          });
+
+          head.addEventListener("pointerup", clearPressTimer);
+          head.addEventListener("pointercancel", clearPressTimer);
+
+          head.addEventListener("click", function () {
+            if (longPressFired) {
+              // The click that follows a long-press's pointerup shouldn't
+              // also expand the card.
+              longPressFired = false;
+              return;
+            }
+            if (selectionMode) {
+              toggleRowSelection(head.dataset.toggle);
+              return;
+            }
+            var el = document.getElementById("detail_" + head.dataset.toggle);
+            el.classList.toggle("open");
+          });
+        });
+
+        // Status actions
+        listEl.querySelectorAll("[data-action]").forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var card = btn.closest(".row-card");
+            var sheet = card.dataset.sheet;
+            var rowNum = Number(card.dataset.row);
+            var newStatus = btn.dataset.action;
+
+            btn.disabled = true;
+            callApi("updateStatus", {
+              token: TOKEN,
+              sheet: sheet,
+              row: rowNum,
+              status: newStatus,
+            })
+              .then(function () {
+                // The server already confirmed the write — patch the row
+                // we're holding in memory and re-render, instead of
+                // re-fetching + re-parsing every row on the sheet again.
+                var savedRow = ALL_ROWS.find(function (r) {
+                  return r.sheet === sheet && r.row === rowNum;
+                });
+                if (savedRow) {
+                  savedRow.status = newStatus;
+                  savedRow.handledBy = ME;
+                  savedRow.handledAt = new Date().toISOString();
+                }
+                render();
+              })
+              .catch(function (err) {
+                alert(err.message || "Failed to update.");
+                btn.disabled = false;
+              });
+          });
+        });
+
+        // Comment: switch to edit mode
+        listEl.querySelectorAll(".btn-edit-comment").forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var block = btn.closest(".comment-block");
+            block.querySelector(".comment-view").style.display = "none";
+            block.querySelector(".comment-edit").style.display = "block";
+            block.querySelector(".comment-input").focus();
+          });
+        });
+
+        // Comment: save
+        listEl.querySelectorAll(".btn-save-comment").forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var card = btn.closest(".row-card");
+            var block = btn.closest(".comment-block");
+            var sheet = card.dataset.sheet;
+            var rowNum = Number(card.dataset.row);
+            var commentText = block.querySelector(".comment-input").value;
+
+            btn.disabled = true;
+            callApi("updateComment", {
+              token: TOKEN,
+              sheet: sheet,
+              row: rowNum,
+              comment: commentText,
+            })
+              .then(function () {
+                btn.disabled = false;
+
+                var savedRow = ALL_ROWS.find(function (r) {
+                  return r.sheet === sheet && r.row === rowNum;
+                });
+                if (savedRow) {
+                  savedRow.comment = commentText;
+                  savedRow.commentBy = commentText ? ME : "";
+                }
+
+                if (commentText) {
+                  block.querySelector(".comment-text").textContent =
+                    commentText;
+                  block.querySelector(".comment-meta").textContent =
+                    "— commented by " + ME;
+                  block.querySelector(".comment-view").style.display = "block";
+                  block.querySelector(".comment-edit").style.display = "none";
+                }
+              })
+              .catch(function (err) {
+                btn.disabled = false;
+                alert(err.message || "Failed to save comment.");
+              });
+          });
+        });
+
+        // Re-render replaces every .row-select span, so re-apply the
+        // current selection state to the fresh DOM (a no-op when
+        // selectionMode is off).
+        updateSelectionUI();
+      }
+    </script>
+  </body>
 </html>

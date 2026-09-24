@@ -1028,7 +1028,8 @@
                         <div class="form-section">
                             <div class="form-group full-width">
                                 <label for="message">Tell us about your vision</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Share your goals and how you envision Robert helping your business..."></textarea>
+                                <textarea id="message" name="message" rows="4" placeholder="Share your goals and how you envision Robert helping your business..." maxlength="2000"></textarea>
+                                <div class="char-counter" id="messageCounter">0 / 2000</div>
                             </div>
                         </div>
 
@@ -1071,6 +1072,21 @@
         </div>
     </div>
 </section>
+
+<script>
+    (function () {
+        var textarea = document.getElementById('message');
+        var counter = document.getElementById('messageCounter');
+        if (!textarea || !counter) return;
+
+        function updateCounter() {
+            counter.textContent = textarea.value.length + ' / 2000';
+        }
+
+        textarea.addEventListener('input', updateCounter);
+        updateCounter();
+    })();
+</script>
 
 
     <footer class="footer">
