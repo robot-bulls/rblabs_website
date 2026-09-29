@@ -776,6 +776,18 @@
       .select-toolbar[hidden] {
         display: none;
       }
+      .select-all-label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--accent);
+        cursor: pointer;
+      }
+      .select-all-label input {
+        accent-color: var(--accent);
+      }
       .select-count {
         flex: 1;
         font-size: 0.85rem;
@@ -844,6 +856,10 @@
       .row-card:hover {
         box-shadow: var(--shadow-md);
         border-color: var(--border-strong);
+      }
+      .row-card.is-deleting {
+        opacity: 0.5;
+        pointer-events: none;
       }
       .row-head {
         display: flex;
@@ -1361,6 +1377,10 @@
             </div>
 
             <div class="select-toolbar" id="selectToolbar" hidden>
+              <label class="select-all-label">
+                <input type="checkbox" id="selectAllCheckbox" />
+                Select all
+              </label>
               <span class="select-count" id="selectCount">0 selected</span>
               <button type="button" class="btn-ghost btn-sm" id="selectCancelBtn">
                 Cancel
@@ -1621,6 +1641,8 @@
         if (listEl) listEl.classList.remove("selection-mode");
         var toolbar = document.getElementById("selectToolbar");
         if (toolbar) toolbar.hidden = true;
+        var selectAll = document.getElementById("selectAllCheckbox");
+        if (selectAll) selectAll.checked = false;
       }
 
       function toggleRowSelection(key) {
@@ -1639,6 +1661,15 @@
         var count = Object.keys(selectedKeys).length;
         document.getElementById("selectCount").textContent =
           count + (count === 1 ? " selected" : " selected");
+
+        // "Select all" reflects whether every currently-matching row (not
+        // just the rendered ones) is selected, and re-checks itself if a
+        // manual selection happens to already cover all of them.
+        var selectAll = document.getElementById("selectAllCheckbox");
+        if (selectAll) {
+          var total = getFilteredRows().length;
+          selectAll.checked = total > 0 && count === total;
+        }
       }
 
       function debounce(fn, delay) {
@@ -1705,9 +1736,22 @@
           body: JSON.stringify(body),
         })
           .then(function (res) {
-            return res.json();
+            return res.text();
           })
-          .then(function (data) {
+          .then(function (text) {
+            var data;
+            try {
+              data = JSON.parse(text);
+            } catch (e) {
+              // Apps Script sometimes kills a long-running request and
+              // returns its own HTML error page instead of our JSON —
+              // that happens outside the script entirely, so no amount
+              // of try/catch in Code.gs can turn it into a clean error.
+              // Surface something readable instead of a raw parse error.
+              throw new Error(
+                "The server took too long or hit an error (this can happen on Apps Script during a slow or large request). Please try again.",
+              );
+            }
             if (!data.ok) throw new Error(data.error || "Request failed.");
             return data;
           });
@@ -2173,6 +2217,7 @@
             });
           });
         });
+
       }
 
       // ---------- Data ----------
@@ -2339,6 +2384,19 @@
         });
 
       document
+        .getElementById("selectAllCheckbox")
+        .addEventListener("change", function (e) {
+          if (e.target.checked) {
+            getFilteredRows().forEach(function (r) {
+              selectedKeys[r.sheet + "_" + r.row] = true;
+            });
+          } else {
+            selectedKeys = {};
+          }
+          updateSelectionUI();
+        });
+
+      document
         .getElementById("selectDeleteBtn")
         .addEventListener("click", function () {
           var keys = Object.keys(selectedKeys);
@@ -2368,7 +2426,21 @@
             if (!confirmed) return;
 
             var btn = document.getElementById("selectDeleteBtn");
+            var originalLabel = btn.textContent;
             btn.disabled = true;
+            btn.textContent = "Deleting…";
+
+            // This is a destructive, irreversible action, so — unlike the
+            // status/comment actions above — the rows are never removed
+            // from the UI before the server actually confirms it. This
+            // only marks them as in-flight so the wait is visible instead
+            // of silent; it doesn't make the wait itself shorter.
+            targets.forEach(function (r) {
+              var card = document.querySelector(
+                '.row-card[data-sheet="' + r.sheet + '"][data-row="' + r.row + '"]',
+              );
+              if (card) card.classList.add("is-deleting");
+            });
 
             callApi("purgeRows", {
               token: TOKEN,
@@ -2378,6 +2450,7 @@
             })
               .then(function (data) {
                 btn.disabled = false;
+                btn.textContent = originalLabel;
 
                 var deletedKeys = {};
                 (data.deleted || []).forEach(function (d) {
@@ -2401,6 +2474,13 @@
               })
               .catch(function (err) {
                 btn.disabled = false;
+                btn.textContent = originalLabel;
+                targets.forEach(function (r) {
+                  var card = document.querySelector(
+                    '.row-card[data-sheet="' + r.sheet + '"][data-row="' + r.row + '"]',
+                  );
+                  if (card) card.classList.remove("is-deleting");
+                });
                 alert(err.message || "Failed to delete.");
               });
           });
@@ -2459,7 +2539,10 @@
         );
       }
 
-      function render() {
+      // The same status/source/search filter render() uses, exposed so
+      // "Select all" can select every matching row — not just the ones
+      // currently rendered under the visibleCount cap.
+      function getFilteredRows() {
         var source = sourceFilterValue;
         var search = document
           .getElementById("searchBox")
@@ -2481,6 +2564,11 @@
             return hay.indexOf(search) !== -1;
           });
         }
+        return rows;
+      }
+
+      function render() {
+        var rows = getFilteredRows();
 
         var countEl = document.getElementById("resultCount");
         countEl.textContent =
@@ -2721,7 +2809,13 @@
           });
         });
 
-        // Status actions
+        // Status actions — applied optimistically. The Apps Script
+        // round-trip itself can't be made faster from here, so instead of
+        // waiting on it before updating anything, the change is applied
+        // to the UI immediately and only rolled back if the request
+        // actually fails (rare). This doesn't reduce real latency, it
+        // just removes the visible wait for the part of it nothing here
+        // can eliminate.
         listEl.querySelectorAll("[data-action]").forEach(function (btn) {
           btn.addEventListener("click", function (e) {
             e.stopPropagation();
@@ -2730,31 +2824,33 @@
             var rowNum = Number(card.dataset.row);
             var newStatus = btn.dataset.action;
 
-            btn.disabled = true;
+            var savedRow = ALL_ROWS.find(function (r) {
+              return r.sheet === sheet && r.row === rowNum;
+            });
+            if (!savedRow) return;
+
+            var previous = {
+              status: savedRow.status,
+              handledBy: savedRow.handledBy,
+              handledAt: savedRow.handledAt,
+            };
+            savedRow.status = newStatus;
+            savedRow.handledBy = ME;
+            savedRow.handledAt = new Date().toISOString();
+            render();
+
             callApi("updateStatus", {
               token: TOKEN,
               sheet: sheet,
               row: rowNum,
               status: newStatus,
-            })
-              .then(function () {
-                // The server already confirmed the write — patch the row
-                // we're holding in memory and re-render, instead of
-                // re-fetching + re-parsing every row on the sheet again.
-                var savedRow = ALL_ROWS.find(function (r) {
-                  return r.sheet === sheet && r.row === rowNum;
-                });
-                if (savedRow) {
-                  savedRow.status = newStatus;
-                  savedRow.handledBy = ME;
-                  savedRow.handledAt = new Date().toISOString();
-                }
-                render();
-              })
-              .catch(function (err) {
-                alert(err.message || "Failed to update.");
-                btn.disabled = false;
-              });
+            }).catch(function (err) {
+              savedRow.status = previous.status;
+              savedRow.handledBy = previous.handledBy;
+              savedRow.handledAt = previous.handledAt;
+              render();
+              alert(err.message || "Failed to update — change was undone.");
+            });
           });
         });
 
@@ -2769,7 +2865,10 @@
           });
         });
 
-        // Comment: save
+        // Comment: save — also optimistic, same reasoning as status
+        // actions above. Applied immediately; rolled back (via a full
+        // render(), simplest way to guarantee the DOM matches the
+        // reverted state) only if the request fails.
         listEl.querySelectorAll(".btn-save-comment").forEach(function (btn) {
           btn.addEventListener("click", function (e) {
             e.stopPropagation();
@@ -2779,37 +2878,39 @@
             var rowNum = Number(card.dataset.row);
             var commentText = block.querySelector(".comment-input").value;
 
-            btn.disabled = true;
+            var savedRow = ALL_ROWS.find(function (r) {
+              return r.sheet === sheet && r.row === rowNum;
+            });
+            var previous = savedRow
+              ? { comment: savedRow.comment, commentBy: savedRow.commentBy }
+              : null;
+
+            if (savedRow) {
+              savedRow.comment = commentText;
+              savedRow.commentBy = commentText ? ME : "";
+            }
+
+            if (commentText) {
+              block.querySelector(".comment-text").textContent = commentText;
+              block.querySelector(".comment-meta").textContent =
+                "— commented by " + ME;
+              block.querySelector(".comment-view").style.display = "block";
+              block.querySelector(".comment-edit").style.display = "none";
+            }
+
             callApi("updateComment", {
               token: TOKEN,
               sheet: sheet,
               row: rowNum,
               comment: commentText,
-            })
-              .then(function () {
-                btn.disabled = false;
-
-                var savedRow = ALL_ROWS.find(function (r) {
-                  return r.sheet === sheet && r.row === rowNum;
-                });
-                if (savedRow) {
-                  savedRow.comment = commentText;
-                  savedRow.commentBy = commentText ? ME : "";
-                }
-
-                if (commentText) {
-                  block.querySelector(".comment-text").textContent =
-                    commentText;
-                  block.querySelector(".comment-meta").textContent =
-                    "— commented by " + ME;
-                  block.querySelector(".comment-view").style.display = "block";
-                  block.querySelector(".comment-edit").style.display = "none";
-                }
-              })
-              .catch(function (err) {
-                btn.disabled = false;
-                alert(err.message || "Failed to save comment.");
-              });
+            }).catch(function (err) {
+              if (savedRow && previous) {
+                savedRow.comment = previous.comment;
+                savedRow.commentBy = previous.commentBy;
+              }
+              alert(err.message || "Failed to save comment — change was undone.");
+              render();
+            });
           });
         });
 
