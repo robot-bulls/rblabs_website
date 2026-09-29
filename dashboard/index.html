@@ -32,6 +32,8 @@
 
         --new: #2563eb;
         --new-bg: #eaf1ff;
+        --processing: #b45309;
+        --processing-bg: #fef3e2;
         --treated: #15803d;
         --treated-bg: #eafaf0;
         --deleted: #b91c1c;
@@ -136,6 +138,14 @@
         font-size: 0.8rem;
         border-radius: var(--radius-sm);
         width: auto;
+      }
+      .btn-process {
+        background: var(--processing-bg);
+        color: var(--processing);
+      }
+      .btn-process:hover:not(:disabled) {
+        background: var(--processing);
+        color: #fff;
       }
       .btn-treat {
         background: var(--treated-bg);
@@ -897,6 +907,10 @@
         background: var(--new-bg);
         color: var(--new);
       }
+      .badge.status-in-progress {
+        background: var(--processing-bg);
+        color: var(--processing);
+      }
       .badge.status-treated {
         background: var(--treated-bg);
         color: var(--treated);
@@ -1161,6 +1175,9 @@
         .tab-btn {
           flex: 1;
           text-align: center;
+          padding-left: 8px;
+          padding-right: 8px;
+          font-size: 0.76rem;
         }
         #sourceFilterDropdown {
           flex: 1;
@@ -1353,6 +1370,7 @@
             <div class="toolbar">
               <div class="tabs" id="statusTabs">
                 <button class="tab-btn active" data-status="new">New</button>
+                <button class="tab-btn" data-status="in-progress">In Progress</button>
                 <button class="tab-btn" data-status="treated">Treated</button>
                 <button class="tab-btn" data-status="deleted">Deleted</button>
               </div>
@@ -2601,6 +2619,20 @@
             var actions;
             if (r.status === "new") {
               actions =
+                '<button class="btn-sm btn-process" data-action="in-progress" data-key="' +
+                key +
+                '">In progress</button>' +
+                '<button class="btn-sm btn-treat" data-action="treated" data-key="' +
+                key +
+                '">Mark treated</button>' +
+                '<button class="btn-sm btn-delete" data-action="deleted" data-key="' +
+                key +
+                '">Delete</button>';
+            } else if (r.status === "in-progress") {
+              actions =
+                '<button class="btn-sm btn-undo" data-action="new" data-key="' +
+                key +
+                '">Move back to new</button>' +
                 '<button class="btn-sm btn-treat" data-action="treated" data-key="' +
                 key +
                 '">Mark treated</button>' +
