@@ -1377,10 +1377,10 @@
               <div class="dropdown" id="sourceFilterDropdown">
                 <button
                   type="button"
-                  class="dropdown-trigger btn-ghost btn-sm"
+                  class="dropdown-trigger sources-trigger btn-ghost btn-sm"
                   id="sourceFilterBtn"
                 >
-                  <span id="sourceFilterLabel">All sources</span>
+                  <span class="sources-label" id="sourceFilterLabel">All sources</span>
                   <span class="dropdown-caret"></span>
                 </button>
                 <div class="dropdown-menu" id="sourceFilterMenu" hidden></div>
@@ -1585,7 +1585,7 @@
       var ME_ROLE = null;
       var ALL_ROWS = [];
       var currentStatusTab = "new";
-      var sourceFilterValue = "";
+      var sourceFilterValues = []; // empty = all sources
 
       // Must match KNOWN_SOURCES in Code.gs exactly (values), with short
       // display labels for the Team page's source-access editor.
@@ -2258,6 +2258,11 @@
           });
       }
 
+      // Multi-select, unlike the single-select it used to be: checking a
+      // box filters immediately without closing the dropdown, so several
+      // sources can be picked in one go. No separate "All sources" row —
+      // that state is simply nothing checked, same as before when
+      // sourceFilterValue was "".
       function updateSourceFilterOptions() {
         var sources = [];
         ALL_ROWS.forEach(function (r) {
@@ -2266,52 +2271,59 @@
         });
         sources.sort();
 
-        if (sourceFilterValue && sources.indexOf(sourceFilterValue) === -1) {
-          sourceFilterValue = "";
-        }
-
-        var options = [{ value: "", label: "All sources" }].concat(
-          sources.map(function (s) {
-            return { value: s, label: s };
-          }),
-        );
+        // Drop any selected source that no longer appears in the data
+        // (e.g. after a refresh) so the filter can't silently reference
+        // something that doesn't exist anymore.
+        sourceFilterValues = sourceFilterValues.filter(function (v) {
+          return sources.indexOf(v) !== -1;
+        });
 
         var menu = document.getElementById("sourceFilterMenu");
-        menu.innerHTML = options
-          .map(function (opt) {
+        menu.innerHTML = sources
+          .map(function (s) {
             return (
-              '<button type="button" class="dropdown-option' +
-              (opt.value === sourceFilterValue ? " active" : "") +
-              '" data-value="' +
-              escapeHtml(opt.value) +
-              '">' +
-              escapeHtml(opt.label) +
-              "</button>"
+              '<label class="source-option">' +
+              '<input type="checkbox" value="' +
+              escapeHtml(s) +
+              '"' +
+              (sourceFilterValues.indexOf(s) !== -1 ? " checked" : "") +
+              " />" +
+              escapeHtml(s) +
+              "</label>"
             );
           })
           .join("");
 
-        menu.querySelectorAll(".dropdown-option").forEach(function (btn) {
-          btn.addEventListener("click", function () {
-            sourceFilterValue = btn.dataset.value;
-            document.getElementById("sourceFilterLabel").textContent =
-              btn.textContent;
-            menu.querySelectorAll(".dropdown-option").forEach(function (b) {
-              b.classList.toggle("active", b === btn);
+        menu
+          .querySelectorAll('input[type="checkbox"]')
+          .forEach(function (checkbox) {
+            checkbox.addEventListener("change", function () {
+              var value = checkbox.value;
+              var idx = sourceFilterValues.indexOf(value);
+              if (checkbox.checked && idx === -1) {
+                sourceFilterValues.push(value);
+              } else if (!checkbox.checked && idx !== -1) {
+                sourceFilterValues.splice(idx, 1);
+              }
+              updateSourceFilterLabel();
+              visibleCount = VISIBLE_STEP;
+              exitSelectionMode();
+              render();
             });
-            closeSourceFilterMenu();
-            visibleCount = VISIBLE_STEP;
-            exitSelectionMode();
-            render();
           });
-        });
 
-        var selected = options.filter(function (o) {
-          return o.value === sourceFilterValue;
-        })[0];
-        document.getElementById("sourceFilterLabel").textContent = selected
-          ? selected.label
-          : "All sources";
+        updateSourceFilterLabel();
+      }
+
+      function updateSourceFilterLabel() {
+        var label = document.getElementById("sourceFilterLabel");
+        if (sourceFilterValues.length === 0) {
+          label.textContent = "All sources";
+        } else if (sourceFilterValues.length === 1) {
+          label.textContent = sourceFilterValues[0];
+        } else {
+          label.textContent = sourceFilterValues.length + " sources";
+        }
       }
 
       // Keeps a dropdown menu fully on-screen. Rather than flipping to a
@@ -2561,7 +2573,6 @@
       // "Select all" can select every matching row — not just the ones
       // currently rendered under the visibleCount cap.
       function getFilteredRows() {
-        var source = sourceFilterValue;
         var search = document
           .getElementById("searchBox")
           .value.trim()
@@ -2570,9 +2581,9 @@
         var rows = ALL_ROWS.filter(function (r) {
           return r.status === currentStatusTab;
         });
-        if (source)
+        if (sourceFilterValues.length > 0)
           rows = rows.filter(function (r) {
-            return r.source === source;
+            return sourceFilterValues.indexOf(r.source) !== -1;
           });
         if (search) {
           rows = rows.filter(function (r) {
