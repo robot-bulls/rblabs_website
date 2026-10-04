@@ -1585,7 +1585,8 @@
       var ME_ROLE = null;
       var ALL_ROWS = [];
       var currentStatusTab = "new";
-      var sourceFilterValues = []; // empty = all sources
+      var sourceFilterValues = []; // checked sources; checkboxes default to checked
+      var sourceFilterKnownSources = []; // sources ever seen, so only genuinely new ones auto-check
 
       // Must match KNOWN_SOURCES in Code.gs exactly (values), with short
       // display labels for the Team page's source-access editor.
@@ -2258,11 +2259,7 @@
           });
       }
 
-      // Multi-select, unlike the single-select it used to be: checking a
-      // box filters immediately without closing the dropdown, so several
-      // sources can be picked in one go. No separate "All sources" row —
-      // that state is simply nothing checked, same as before when
-      // sourceFilterValue was "".
+      // Multi-select: checking a box filters immediately without closing the dropdown.
       function updateSourceFilterOptions() {
         var sources = [];
         ALL_ROWS.forEach(function (r) {
@@ -2271,9 +2268,15 @@
         });
         sources.sort();
 
-        // Drop any selected source that no longer appears in the data
-        // (e.g. after a refresh) so the filter can't silently reference
-        // something that doesn't exist anymore.
+        // Newly-seen sources default to checked; already-known ones keep whatever the user picked.
+        sources.forEach(function (s) {
+          if (sourceFilterKnownSources.indexOf(s) === -1) {
+            sourceFilterKnownSources.push(s);
+            sourceFilterValues.push(s);
+          }
+        });
+
+        // Drop any selected source that no longer appears in the data at all.
         sourceFilterValues = sourceFilterValues.filter(function (v) {
           return sources.indexOf(v) !== -1;
         });
@@ -2318,6 +2321,8 @@
       function updateSourceFilterLabel() {
         var label = document.getElementById("sourceFilterLabel");
         if (sourceFilterValues.length === 0) {
+          label.textContent = "No sources";
+        } else if (sourceFilterValues.length === sourceFilterKnownSources.length) {
           label.textContent = "All sources";
         } else if (sourceFilterValues.length === 1) {
           label.textContent = sourceFilterValues[0];
@@ -2569,9 +2574,7 @@
         );
       }
 
-      // The same status/source/search filter render() uses, exposed so
-      // "Select all" can select every matching row — not just the ones
-      // currently rendered under the visibleCount cap.
+      // Same filter render() uses, exposed so "Select all" covers every matching row, not just rendered ones.
       function getFilteredRows() {
         var search = document
           .getElementById("searchBox")
@@ -2581,10 +2584,9 @@
         var rows = ALL_ROWS.filter(function (r) {
           return r.status === currentStatusTab;
         });
-        if (sourceFilterValues.length > 0)
-          rows = rows.filter(function (r) {
-            return sourceFilterValues.indexOf(r.source) !== -1;
-          });
+        rows = rows.filter(function (r) {
+          return sourceFilterValues.indexOf(r.source) !== -1;
+        });
         if (search) {
           rows = rows.filter(function (r) {
             var hay = [r.name, r.email, r.phone, r.message, r.position]
