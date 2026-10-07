@@ -2289,16 +2289,18 @@
       }
 
       // Multi-select: checking a box filters immediately without closing the dropdown.
+      function sourceInScope(s) {
+        return currentView === "career" ? s === "Career" : s !== "Career";
+      }
+
       function updateSourceFilterOptions() {
-        var sources = [];
+        var allKnownSources = [];
         ALL_ROWS.forEach(function (r) {
-          var inScope =
-            currentView === "career"
-              ? r.source === "Career"
-              : r.source !== "Career";
-          if (inScope && r.source && sources.indexOf(r.source) === -1)
-            sources.push(r.source);
+          if (r.source && allKnownSources.indexOf(r.source) === -1)
+            allKnownSources.push(r.source);
         });
+
+        var sources = allKnownSources.filter(sourceInScope);
         sources.sort();
 
         // Newly-seen sources default to checked; already-known ones keep whatever the user picked.
@@ -2309,9 +2311,9 @@
           }
         });
 
-        // Drop any selected source that no longer appears in the data at all.
+        // Drop a selection only if the source no longer exists anywhere in the data, not just outside this view.
         sourceFilterValues = sourceFilterValues.filter(function (v) {
-          return sources.indexOf(v) !== -1;
+          return allKnownSources.indexOf(v) !== -1;
         });
 
         var menu = document.getElementById("sourceFilterMenu");
@@ -2353,14 +2355,16 @@
 
       function updateSourceFilterLabel() {
         var label = document.getElementById("sourceFilterLabel");
-        if (sourceFilterValues.length === 0) {
+        var checked = sourceFilterValues.filter(sourceInScope);
+        var total = sourceFilterKnownSources.filter(sourceInScope).length;
+        if (checked.length === 0) {
           label.textContent = "No sources";
-        } else if (sourceFilterValues.length === sourceFilterKnownSources.length) {
+        } else if (checked.length === total) {
           label.textContent = "All sources";
-        } else if (sourceFilterValues.length === 1) {
-          label.textContent = sourceFilterValues[0];
+        } else if (checked.length === 1) {
+          label.textContent = checked[0];
         } else {
-          label.textContent = sourceFilterValues.length + " sources";
+          label.textContent = checked.length + " sources";
         }
       }
 
@@ -2618,9 +2622,7 @@
           return r.status === currentStatusTab;
         });
         rows = rows.filter(function (r) {
-          return currentView === "career"
-            ? r.source === "Career"
-            : r.source !== "Career";
+          return sourceInScope(r.source);
         });
         rows = rows.filter(function (r) {
           return sourceFilterValues.indexOf(r.source) !== -1;
