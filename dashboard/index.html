@@ -1881,15 +1881,44 @@
         .getElementById("logoutBtn")
         .addEventListener("click", function () {
           callApi("logout", { token: TOKEN }).catch(function () {});
-          localStorage.removeItem("rb_dash_token");
-          localStorage.removeItem("rb_dash_user");
-          localStorage.removeItem("rb_dash_role");
-          TOKEN = null;
-          document.getElementById("dashboardScreen").style.display = "none";
-          document.getElementById("loginScreen").style.display = "flex";
+          forceLogout_();
         });
 
-      function enterDashboard() {
+      // Caches the last-loaded rows per-user so a reload can render instantly instead of waiting on a fetch; wrapped since localStorage can throw (quota, private browsing) and this is a pure optimization, safe to skip.
+      function cacheRows_(rows) {
+        try {
+          localStorage.setItem("rb_dash_rows_cache", JSON.stringify(rows));
+          localStorage.setItem("rb_dash_rows_cache_user", ME);
+        } catch (e) {}
+      }
+
+      function readCachedRows_(username) {
+        try {
+          if (localStorage.getItem("rb_dash_rows_cache_user") !== username)
+            return null;
+          var raw = localStorage.getItem("rb_dash_rows_cache");
+          if (!raw) return null;
+          var parsed = JSON.parse(raw);
+          return Array.isArray(parsed) ? parsed : null;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      // Single, consistent teardown to the login screen, reused by an explicit logout, an expired session found by verifySession, and one found later by a silent background refresh.
+      function forceLogout_() {
+        localStorage.removeItem("rb_dash_token");
+        localStorage.removeItem("rb_dash_user");
+        localStorage.removeItem("rb_dash_role");
+        localStorage.removeItem("rb_dash_rows_cache");
+        localStorage.removeItem("rb_dash_rows_cache_user");
+        TOKEN = null;
+        document.getElementById("resumeLoading").classList.remove("visible");
+        document.getElementById("dashboardScreen").style.display = "none";
+        document.getElementById("loginScreen").style.display = "flex";
+      }
+
+      function enterDashboard(silentLoad) {
         document.getElementById("loginScreen").style.display = "none";
         document.getElementById("resumeLoading").classList.remove("visible");
         document.getElementById("dashboardScreen").style.display = "block";
@@ -1898,12 +1927,10 @@
         document.getElementById("addUserBtn").hidden = ME_ROLE !== "admin";
         document.getElementById("navTeam").hidden = ME_ROLE !== "admin";
         showView("requests");
-        loadSubmissions();
+        loadSubmissions(silentLoad);
       }
 
-      // Try to resume a saved session on page load. The login form is hidden
-      // immediately (before the async check even starts) so it never flashes
-      // on screen while we're silently verifying the saved token.
+      // Resume a saved session: with a cache for this user, render instantly from it while a fresh copy loads in the background; otherwise verifySession first, then load.
       (function tryResume() {
         var savedToken = localStorage.getItem("rb_dash_token");
         var savedUser = localStorage.getItem("rb_dash_user");
@@ -1911,29 +1938,30 @@
 
         if (!savedToken || !savedUser) return;
 
-        document.getElementById("loginScreen").style.display = "none";
-        document.getElementById("resumeLoading").classList.add("visible");
-
         TOKEN = savedToken;
         ME = savedUser;
         ME_ROLE = savedRole;
 
-        callApi("getSubmissions", { token: TOKEN })
+        var cachedRows = readCachedRows_(savedUser);
+        if (cachedRows) {
+          ALL_ROWS = cachedRows;
+          document.getElementById("loginScreen").style.display = "none";
+          enterDashboard(true);
+          return;
+        }
+
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("resumeLoading").classList.add("visible");
+
+        callApi("verifySession", { token: TOKEN })
           .then(function (data) {
-            ALL_ROWS = data.rows;
-            updateSourceFilterOptions();
+            ME_ROLE = data.role;
+            localStorage.setItem("rb_dash_role", ME_ROLE);
             enterDashboard();
-            render();
           })
           .catch(function (err) {
             console.error("Session resume failed:", err);
-            localStorage.removeItem("rb_dash_token");
-            localStorage.removeItem("rb_dash_user");
-            localStorage.removeItem("rb_dash_role");
-            document
-              .getElementById("resumeLoading")
-              .classList.remove("visible");
-            document.getElementById("loginScreen").style.display = "flex";
+            forceLogout_();
           });
       })();
 
@@ -2269,9 +2297,11 @@
       }
 
       // ---------- Data ----------
-      function loadSubmissions() {
-        document.getElementById("list").innerHTML =
-          '<div class="empty">Loading…</div>';
+      function loadSubmissions(silent) {
+        if (!silent) {
+          document.getElementById("list").innerHTML =
+            '<div class="empty">Loading…</div>';
+        }
         callApi("getSubmissions", { token: TOKEN })
           .then(function (data) {
             ALL_ROWS = data.rows;
@@ -2279,8 +2309,16 @@
             exitSelectionMode();
             updateSourceFilterOptions();
             render();
+            cacheRows_(ALL_ROWS);
           })
           .catch(function (err) {
+            if (silent) {
+              console.error("Background refresh failed:", err);
+              if (err.message === "Session expired. Please log in again.") {
+                forceLogout_();
+              }
+              return;
+            }
             document.getElementById("list").innerHTML =
               '<div class="empty">' +
               (err.message || "Failed to load.") +
