@@ -1318,6 +1318,23 @@
               </span>
               <span class="nav-label">Requests</span>
             </button>
+            <button class="nav-item" data-view="career" id="navCareer">
+              <span class="nav-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+                  <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                </svg>
+              </span>
+              <span class="nav-label">Career</span>
+            </button>
             <button class="nav-item" data-view="team" id="navTeam" hidden>
               <span class="nav-icon">
                 <svg
@@ -1777,10 +1794,10 @@
       }
 
       // ---------- View navigation ----------
-      // Three top-level views (Requests / Team / Account) share one nav.
-      // Team is admin-only; showView() itself enforces that so a stale
-      // click or direct call can never reveal it to a non-admin.
+      // Career reuses the Requests section/list with a source filter instead of its own section — see currentView.
       var VIEWS = ["requests", "team", "account"];
+      var NAV_ITEMS = ["requests", "career", "team", "account"];
+      var currentView = "requests"; // "requests" (excludes Career) or "career" (only Career)
       function viewSectionId(name) {
         return "view" + name.charAt(0).toUpperCase() + name.slice(1);
       }
@@ -1789,13 +1806,25 @@
       }
       function showView(name) {
         if (name === "team" && ME_ROLE !== "admin") name = "requests";
+        var sectionName = name === "career" ? "requests" : name;
         VIEWS.forEach(function (v) {
           var section = document.getElementById(viewSectionId(v));
+          if (section) section.hidden = v !== sectionName;
+        });
+        NAV_ITEMS.forEach(function (v) {
           var navItem = document.getElementById(navItemId(v));
-          if (section) section.hidden = v !== name;
           if (navItem) navItem.classList.toggle("active", v === name);
         });
         if (name === "team") loadUserList();
+        if (name === "requests" || name === "career") {
+          currentView = name;
+          document.getElementById("sourceFilterDropdown").hidden =
+            name === "career";
+          visibleCount = VISIBLE_STEP;
+          exitSelectionMode();
+          updateSourceFilterOptions();
+          render();
+        }
       }
       document.querySelectorAll(".nav-item").forEach(function (btn) {
         btn.addEventListener("click", function () {
@@ -2263,7 +2292,11 @@
       function updateSourceFilterOptions() {
         var sources = [];
         ALL_ROWS.forEach(function (r) {
-          if (r.source && sources.indexOf(r.source) === -1)
+          var inScope =
+            currentView === "career"
+              ? r.source === "Career"
+              : r.source !== "Career";
+          if (inScope && r.source && sources.indexOf(r.source) === -1)
             sources.push(r.source);
         });
         sources.sort();
@@ -2583,6 +2616,11 @@
 
         var rows = ALL_ROWS.filter(function (r) {
           return r.status === currentStatusTab;
+        });
+        rows = rows.filter(function (r) {
+          return currentView === "career"
+            ? r.source === "Career"
+            : r.source !== "Career";
         });
         rows = rows.filter(function (r) {
           return sourceFilterValues.indexOf(r.source) !== -1;
