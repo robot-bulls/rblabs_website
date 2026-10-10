@@ -1285,6 +1285,17 @@
       </div>
     </div>
 
+    <script>
+      try {
+        if (
+          localStorage.getItem("rb_dash_token") &&
+          localStorage.getItem("rb_dash_user")
+        ) {
+          document.getElementById("loginScreen").style.display = "none";
+        }
+      } catch (e) {}
+    </script>
+
     <!-- ===================== RESUME LOADING ===================== -->
     <div id="resumeLoading">Checking session…</div>
 
@@ -1791,6 +1802,17 @@
             if (!data.ok) throw new Error(data.error || "Request failed.");
             return data;
           });
+      }
+
+      // Serializes calls so clicking several rows quickly doesn't fire them at Apps Script all at once — concurrent requests to it have been seen to come back malformed. Each call still gets its own real result; one failing doesn't block the next.
+      var apiQueueTail_ = Promise.resolve();
+      function queueApiCall_(startFn) {
+        var runThisCall = apiQueueTail_.then(startFn, startFn);
+        apiQueueTail_ = runThisCall.then(
+          function () {},
+          function () {},
+        );
+        return runThisCall;
       }
 
       // ---------- View navigation ----------
@@ -2962,11 +2984,13 @@
             savedRow.handledAt = new Date().toISOString();
             render();
 
-            callApi("updateStatus", {
-              token: TOKEN,
-              sheet: sheet,
-              row: rowNum,
-              status: newStatus,
+            queueApiCall_(function () {
+              return callApi("updateStatus", {
+                token: TOKEN,
+                sheet: sheet,
+                row: rowNum,
+                status: newStatus,
+              });
             }).catch(function (err) {
               savedRow.status = previous.status;
               savedRow.handledBy = previous.handledBy;
@@ -3021,11 +3045,13 @@
               block.querySelector(".comment-edit").style.display = "none";
             }
 
-            callApi("updateComment", {
-              token: TOKEN,
-              sheet: sheet,
-              row: rowNum,
-              comment: commentText,
+            queueApiCall_(function () {
+              return callApi("updateComment", {
+                token: TOKEN,
+                sheet: sheet,
+                row: rowNum,
+                comment: commentText,
+              });
             }).catch(function (err) {
               if (savedRow && previous) {
                 savedRow.comment = previous.comment;
