@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RB Labs | Bring Robert to your next event</title>
+<meta name="description" content="Make your next event impossible to ignore with Robert, the AI-powered humanoid robot by RB Labs.">
+<link rel="icon" type="image/png" href="/inquiries/assets/favicon.png">
+<style>
+
+  /* Theme matched to rblabs.ai: system SF Pro stack, near-black ink, grey copy,
+     RB Labs blue (#07458d) as accent, white cards, pill buttons, soft shadows */
+  :root {
+    --ink: #1a1a1a;
+    --ink-strong: #1d1d1f;
+    --ink-body: #374151;
+    --ink-soft: #6e6e73;
+    --ink-faint: #9ca3af;
+    --blue: #07458d;
+    --blue-soft: rgba(7, 69, 141, 0.08);
+    --blue-ring: rgba(7, 69, 141, 0.18);
+    --line: rgba(0, 0, 0, 0.1);
+    --bg: #ffffff;
+    --bg-grey: linear-gradient(145deg, #ececee 0%, #f7f7f9 60%, #eaeaec 100%);
+    --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.10);
+    --radius: 16px;
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  img, video { display: block; max-width: 100%; }
+
+  /* ---------- Header (same feel as rblabs.ai top bar) ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  }
+  .topbar-inner {
+    max-width: 1080px; margin: 0 auto; padding: 10px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .topbar img { height: 38px; width: auto; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: inherit; font-size: 15px; font-weight: 500;
+    color: var(--ink-strong); text-decoration: none;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid var(--line);
+    border-radius: 50px;
+    padding: 9.6px 22.4px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    cursor: pointer;
+  }
+  .pill:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10); background: #fff; }
+
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+  .wrap-narrow { max-width: 920px; }
+
+  /* ---------- Section 1: Hero ---------- */
+  .hero { text-align: center; padding-top: 36px; padding-bottom: 28px; }
+  .hero-logo { width: 72px; height: auto; margin: 0 auto 14px; }
+  .eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--ink-soft); margin: 0 0 14px;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 7vw, 52px);
+    line-height: 1.08; font-weight: 700; letter-spacing: -1.2px;
+    color: var(--ink); margin: 0 0 26px;
+  }
+  .hero p.lead {
+    font-size: 17px; line-height: 1.6; color: var(--ink-body);
+    margin: 0 auto; max-width: 540px;
+  }
+
+  /* Video: fixed 4:5 frame + object-fit cover = no black bars, clean edges */
+  .video-frame {
+    width: min(100%, 360px);
+    aspect-ratio: 9 / 16;
+    margin: 30px auto 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #e9e9ec;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
+  }
+  .video-frame video { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- Section 2: Social proof ---------- */
+  .proof { background: var(--bg-grey); padding: 64px 0; margin-top: 56px; }
+  .section-title {
+    font-size: clamp(28px, 5.5vw, 40px); line-height: 1.12;
+    font-weight: 700; letter-spacing: -1px; color: var(--ink);
+    margin: 0 0 28px; text-align: center;
+  }
+  .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .photo {
+    border-radius: var(--radius); overflow: hidden;
+    aspect-ratio: 4 / 5; background: #dcdce0;
+    box-shadow: var(--card-shadow);
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  .photo:hover img { transform: scale(1.04); }
+
+  /* ---------- Form ---------- */
+  .form-section { padding-top: 64px; padding-bottom: 24px; }
+  .section-sub { text-align: center; color: var(--ink-soft); margin: -16px 0 28px; font-size: 16px; }
+  .card {
+    background: #fff; border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 18px; padding: 28px;
+    box-shadow: var(--card-shadow);
+  }
+  @media (max-width: 480px) { .card { padding: 20px 16px; } }
+  .field { margin-bottom: 18px; min-width: 0; }
+  .field > label, .field-label {
+    display: block; font-size: 14px; font-weight: 600;
+    color: var(--ink-strong); margin-bottom: 7px;
+  }
+  .req { color: var(--blue); }
+  .hint { font-weight: 400; color: var(--ink-soft); font-size: 13px; }
+  .field input[type=text], .field input[type=email], .field input[type=tel], .field select {
+    width: 100%; padding: 12px 14px;
+    border: 1px solid var(--line); border-radius: 12px;
+    font-size: 15px; font-family: inherit; color: var(--ink);
+    background: #fff; transition: border-color .2s ease, box-shadow .2s ease;
+    -webkit-appearance: none; appearance: none;
+  }
+  .field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236e6e73' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px;
+  }
+  .field input:focus, .field select:focus {
+    outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px var(--blue-ring);
+  }
+  .field.invalid input, .field.invalid select { border-color: #d14343; }
+  .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+  .specify { display: none; margin-top: 10px; }
+  .specify.show { display: block; }
+
+  /* City autocomplete */
+  .autocomplete-wrap { position: relative; }
+  .city-dropdown {
+    display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    max-height: 230px; overflow-y: auto; z-index: 5;
+  }
+  .city-dropdown.open { display: block; }
+  .city-option { padding: 10px 14px; font-size: 14px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; }
+  .city-option:hover { background: var(--blue-soft); }
+  .city-option .state { color: var(--ink-soft); font-size: 13px; }
+  .city-empty { padding: 10px 14px; font-size: 13px; color: var(--ink-soft); }
+
+  .submit-btn {
+    width: 100%; margin-top: 6px; padding: 15px 24px;
+    font-family: inherit; font-size: 16px; font-weight: 600; color: #fff;
+    background: var(--ink-strong); border: none; border-radius: 999px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .submit-btn:hover { transform: translateY(-1px); background: #000; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); }
+  .submit-btn:disabled { opacity: .6; cursor: default; transform: none; }
+  .form-error { display: none; color: #d14343; font-size: 13.5px; text-align: center; margin-top: 10px; }
+  .form-error.show { display: block; }
+
+  /* ---------- Calendly step ---------- */
+  /* Calendly stacks into a tall single column below ~650px wide, so width and height
+     are linked: keep it wide enough to stay in the shorter side-by-side layout. */
+  .calendly-card { max-width: 680px; margin: 0 auto; }
+  .calendly-inline-widget { min-width: 280px; height: 700px; }
+  .calendly-fallback { height: 700px; display: grid; place-items: center; padding: 20px; text-align: center; }
+
+  /* ---------- Thank you ---------- */
+  footer { text-align: center; font-size: 13px; color: var(--ink-faint); padding: 48px 20px 36px; }
+
+  /* ---------- Scroll reveal (subtle, like rblabs.ai) ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- Hero CTA ---------- */
+  .pill-dark { margin-top: 30px; background: var(--ink-strong); color: #fff; border-color: transparent; padding: 14px 32px; box-shadow: 0 4px 15px rgba(0,0,0,.15); }
+  .pill-dark:hover { background: #000; color: #fff; }
+
+  /* ---------- Form grid ---------- */
+  .form-grid { display: grid; grid-template-columns: 1fr; }
+  .form-grid > .row { margin: 0; }
+
+  /* ---------- Desktop layout: use the full screen ---------- */
+  @media (min-width: 900px) {
+    .hero {
+      display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: start; gap: 64px;
+      text-align: left; padding-top: 28px; padding-bottom: 48px;
+    }
+    .hero h1 { font-size: clamp(48px, 5vw, 68px); letter-spacing: -2px; }
+    .hero p.lead { margin: 0; font-size: 19px; max-width: 560px; }
+    .hero-text { padding-top: 20px; }
+    .video-frame { width: 100%; max-width: 340px; margin: 0 40px 0 auto; }
+    .eyebrow { margin-bottom: 18px; }
+    .proof { padding: 88px 0; margin-top: 24px; }
+    .photo-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .section-title { margin-bottom: 40px; }
+    .form-section { padding-top: 88px; }
+    .card { padding: 36px 40px; }
+    .form-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 18px; }
+    .form-grid > .row { display: contents; }
+    .span-2 { grid-column: 1 / -1; }
+    .submit-btn { max-width: 420px; display: block; margin-left: auto; margin-right: auto; }
+  }
+
+  /* ---------- Photo carousel ---------- */
+  .carousel { position: relative; }
+  .car-viewport { overflow: hidden; border-radius: var(--radius); padding: 4px 0 8px; margin: -4px 0 -8px; touch-action: pan-y; }
+  .car-track { --per: 2; --gap: 14px; display: flex; gap: var(--gap); will-change: transform; }
+  .car-track.animating { transition: transform .5s cubic-bezier(.25,.8,.25,1); }
+  .car-track .photo { flex: 0 0 calc((100% - (var(--per) - 1) * var(--gap)) / var(--per)); }
+  .car-btn {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+    color: var(--ink-strong); background: rgba(255,255,255,.85);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--line); box-shadow: 0 4px 18px rgba(0,0,0,.12); cursor: pointer;
+    transition: opacity .25s ease, transform .25s ease, background .25s ease;
+  }
+  .car-btn:hover { background: #fff; transform: translateY(-50%) scale(1.06); }
+  .car-btn:disabled { opacity: 0; pointer-events: none; }
+  .car-btn.prev { left: -10px; } .car-btn.next { right: -10px; }
+  @media (min-width: 900px) {
+    .car-track { --per: 4; --gap: 18px; }
+    .car-btn.prev { left: -22px; } .car-btn.next { right: -22px; }
+  }
+
+  /* ================= FULL LP SECTIONS ================= */
+  .sec { padding-top: 48px; padding-bottom: 48px; }
+  .sec-grey { background: var(--bg-grey); }
+  .eyebrow.center, .sec-title.center { text-align: center; }
+  .sec-title {
+    font-size: clamp(28px, 5.5vw, 44px); line-height: 1.1; font-weight: 700;
+    letter-spacing: -1.1px; color: var(--ink); margin: 0 0 26px;
+  }
+  .sec-title.center { max-width: none; margin-left: auto; margin-right: auto; margin-bottom: 30px; }
+  .sec-text { font-size: 18px; line-height: 1.65; color: var(--ink-body); margin: 0; }
+
+  .problem-grid { display: grid; gap: 4px; }
+  .problem { padding-top: 40px; padding-bottom: 40px; }
+  .hl { background: linear-gradient(90deg, var(--blue), #2f7ad6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .accent-text { border-left: 3px solid var(--blue); padding-left: 20px; }
+
+  .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .b-card {
+    background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 18px; padding: 22px 18px;
+    box-shadow: var(--card-shadow); transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .b-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); }
+  .b-icon, .u-icon {
+    width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--blue-soft); color: var(--blue); margin-bottom: 16px;
+  }
+  .b-card h3, .step h3 { font-size: 17px; line-height: 1.3; letter-spacing: -.2px; margin: 0 0 8px; color: var(--ink); }
+  .b-card p, .step p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+  .uses { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .use {
+    display: flex; align-items: center; gap: 14px; padding: 16px; font-size: 15.5px; font-weight: 600;
+    color: var(--ink-strong); background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    transition: border-color .25s ease, transform .25s ease;
+  }
+  .use:hover { border-color: rgba(7,69,141,.35); transform: translateY(-2px); }
+  .use .u-icon { margin: 0; flex: 0 0 44px; }
+
+  .custom-grid { display: grid; gap: 32px; align-items: center; }
+  .custom-img { border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 5; max-width: 340px; width: 100%; margin: 0 auto; box-shadow: 0 18px 50px rgba(0,0,0,.14); }
+  .custom-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  .steps { display: grid; gap: 14px; counter-reset: s; }
+  .step { position: relative; background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 18px; padding: 24px 22px; box-shadow: var(--card-shadow); }
+  .step-num {
+    display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+    background: var(--blue); color: #fff; font-weight: 700; font-size: 15px; margin-bottom: 16px;
+  }
+  .steps-note { text-align: center; font-size: 14px; color: var(--ink-soft); margin: 22px 0 0; }
+  .how { padding-top: 40px; }
+
+  .cta-band {
+    background: var(--ink-strong); color: #fff; border-radius: 20px; text-align: center;
+    padding: 28px 22px; box-shadow: 0 20px 60px rgba(0,0,0,.18);
+  }
+  .cta-band h2 { font-size: clamp(22px, 4.5vw, 30px); line-height: 1.12; letter-spacing: -.6px; margin: 0 auto 18px; max-width: 680px; }
+  .pill-light { background: #fff; color: var(--ink-strong); padding: 14px 30px; border-color: transparent; }
+  .pill-light:hover { background: #f2f2f4; }
+  .cta-band.in-grey { margin-top: 56px; }
+  @media (max-width: 480px) { .cta-band { padding: 40px 18px; } .pill-light { font-size: 14px; padding: 13px 20px; white-space: nowrap; } }
+
+  @media (min-width: 900px) {
+    .sec { padding-top: 64px; padding-bottom: 64px; }
+    .problem { padding-top: 56px; padding-bottom: 56px; }
+    .problem-grid { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .problem .sec-title { margin-bottom: 0; }
+    .benefits { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .b-card { padding: 28px 24px; }
+    .uses { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .use { padding: 20px; font-size: 16.5px; }
+    .custom-grid { grid-template-columns: 0.85fr 1.15fr; gap: 80px; }
+    .custom-img { margin: 0; }
+    .steps { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .step { padding: 30px 28px; }
+    .how { padding-bottom: 48px; }
+    .sec-title.center { white-space: nowrap; font-size: clamp(34px, 3.4vw, 44px); }
+    .cta-band { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 30px 40px; text-align: left; }
+    .cta-band h2 { margin: 0; max-width: none; }
+    .cta-band.in-grey { margin-top: 72px; }
+  }
+
+  .form-section { padding-top: 24px; }
+  .uses-sec { padding-top: 64px; }
+  @media (min-width: 900px) { .form-section { padding-top: 32px; } .uses-sec { padding-top: 88px; } }
+
+  /* ---------- Video sound control ---------- */
+  .video-frame { position: relative; }
+  .sound-ctrl {
+    position: absolute; top: 14px; right: 14px; z-index: 3;
+    display: flex; align-items: center; justify-content: center; gap: 0; height: 40px; min-width: 40px; padding: 0 3px; box-sizing: border-box;
+    border-radius: 999px; background: rgba(0,0,0,.45);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.18);
+    transition: padding .3s ease, background .3s ease;
+  }
+  .sound-btn {
+    width: 34px; height: 34px; flex: 0 0 34px; border: 0; padding: 0; border-radius: 50%;
+    display: grid; place-items: center; background: transparent; color: #fff; cursor: pointer;
+  }
+  .sound-btn svg { width: 19px; height: 19px; }
+  .sound-btn .ic-on { display: none; }
+  .sound-ctrl.on .sound-btn .ic-on { display: block; }
+  .sound-ctrl.on .sound-btn .ic-off { display: none; }
+  .vol {
+    width: 0; opacity: 0; pointer-events: none; transition: width .3s ease, opacity .3s ease, margin .3s ease;
+    -webkit-appearance: none; appearance: none; height: 4px; border-radius: 4px; margin: 0;
+    background: linear-gradient(to right, #fff var(--v,80%), rgba(255,255,255,.35) var(--v,80%)); cursor: pointer;
+  }
+  .sound-ctrl.on { padding-left: 14px; gap: 8px; }
+  .sound-ctrl.on .vol { width: 84px; opacity: 1; pointer-events: auto; }
+  .vol::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 0; }
+  .vol::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 0; }
+
+  /* ---------- Date range / multi-select / city autocomplete ---------- */
+  .date-range { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .date-part { display: block; }
+  .date-part span { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
+  .field input[type=date] { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 12px; font-size: 15px; font-family: inherit; color: var(--ink); background: #fff; }
+  .field input[type=date]:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px var(--blue-ring); }
+  .multi { position: relative; }
+  .multi-btn {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff;
+    font-family: inherit; font-size: 15px; color: var(--ink); cursor: pointer; text-align: left;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .multi-btn:focus-visible, .multi.open .multi-btn { outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px var(--blue-ring); }
+  .multi-value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1 1 auto; }
+  .multi-value.placeholder { color: #8e8e93; }
+  .multi.open .multi-btn svg { transform: rotate(180deg); }
+  .multi-btn svg { flex: 0 0 auto; transition: transform .2s ease; }
+  .multi-panel {
+    display: none; position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 6;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 6px;
+    box-shadow: 0 12px 32px rgba(0,0,0,.12); max-height: 290px; overflow-y: auto;
+  }
+  .multi.open .multi-panel { display: block; animation: fadeUp .18s ease both; }
+  .multi-opt { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px; font-size: 14.5px; color: var(--ink-body); cursor: pointer; }
+  .multi-opt:hover { background: var(--blue-soft); }
+  .multi-opt input { width: 16px; height: 16px; accent-color: var(--blue); flex: 0 0 auto; margin: 0; }
+
+  .after-step { display: none; scroll-margin-top: 84px; }
+  .after-step.show { display: block; animation: fadeUp .5s ease both; }
+  .received { text-align: center; padding: 8px 12px 24px; }
+  .received .check { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 18px; background: var(--blue); display: grid; place-items: center; box-shadow: 0 10px 30px rgba(7,69,141,.3); }
+  .received h2 { font-size: clamp(24px, 4.2vw, 32px); line-height: 1.2; letter-spacing: -.6px; margin: 0 0 12px; }
+  .received .faster { font-size: 16px; color: var(--ink-soft); margin: 0; }
+  .down-arrow { color: var(--blue); display: grid; place-items: center; margin: 14px 0 16px; animation: bob 1.6s ease-in-out infinite; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  @media (prefers-reduced-motion: reduce) { .down-arrow { animation: none; } }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover { color: var(--blue); text-decoration: underline; }
+  footer .sep { margin: 0 8px; }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <img src="/inquiries/assets/logo.png" alt="RB Labs">
+      <a href="#request" class="pill">Book Robert <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main>
+    <!-- SECTION 1 : HERO -->
+    <section class="wrap hero">
+      <div class="hero-text">
+      <p class="eyebrow reveal">AI-powered humanoid robot experiences</p>
+      <h1 class="reveal">Make your next event impossible to ignore</h1>
+      <p class="lead reveal">Robert, our AI-powered humanoid robot, gives people a reason to stop, interact and create moments worth sharing. From trade shows to product launches.</p>
+        <a href="#request" class="pill pill-dark reveal">Request availability <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="video-frame reveal">
+        <video autoplay muted loop playsinline preload="auto" poster="/inquiries/assets/hero-poster.jpg">
+          <source src="/inquiries/assets/hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="sound-ctrl" id="soundCtrl">
+          <input class="vol" id="vol" type="range" min="0" max="1" step="0.05" value="0.8" aria-label="Volume">
+          <button type="button" class="sound-btn" id="soundBtn" aria-label="Turn sound on">
+            <svg class="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
+            <svg class="ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 : SOCIAL PROOF -->
+    <section class="proof">
+      <div class="wrap">
+        <h2 class="section-title reveal">Seen at major events around the world</h2>
+        <div class="carousel reveal">
+          <button type="button" class="car-btn prev" aria-label="Previous photo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="car-viewport">
+          <div class="car-track" id="carTrack">
+            <div class="photo"><img src="/inquiries/assets/photo-leap-conference.jpg" alt="Robert at the LEAP tech conference" loading="lazy"></div>
+            <div class="photo"><img src="/inquiries/assets/photo-geneva-police.jpg" alt="Robert at the Geneva Police booth with visitors" loading="lazy"></div>
+            <div class="photo"><img src="/inquiries/assets/photo-damac-event.jpg" alt="Guests filming Robert at a DAMAC event" loading="lazy"></div>
+            <div class="photo"><img src="/inquiries/assets/photo-exhibition-interview.jpg" alt="Robert being interviewed at an exhibition" loading="lazy"></div>
+            <div class="photo"><img src="/inquiries/assets/photo-davos-lounge.jpg" alt="Robert at the Digital Lounge in Davos" loading="lazy"></div>
+            <div class="photo"><img src="/inquiries/assets/photo-trade-show.jpg" alt="Robert walking a trade show surrounded by visitors" loading="lazy"></div>
+            <div class="photo"><img src="/inquiries/assets/photo-ai-conference.jpg" alt="Robert on stage at an AI conference" loading="lazy"></div>
+          </div>
+          </div>
+          <button type="button" class="car-btn next" aria-label="Next photo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 : PROBLEM -->
+    <section class="wrap sec problem">
+      <div class="problem-grid">
+        <div>
+          <h2 class="sec-title reveal">Events are competing for <span class="hl">attention</span></h2>
+        </div>
+        <p class="sec-text accent-text reveal">At trade shows and corporate events, dozens of booths compete for the same visitors. When everything starts to look the same, giving people a reason to stop becomes the first challenge.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4 : BENEFITS -->
+    <section class="sec sec-grey">
+      <div class="wrap">
+        <h2 class="sec-title center reveal">More than a robot, a live brand experience</h2>
+        <div class="benefits">
+          <div class="b-card reveal"><div class="b-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Grab attention</h3><p>Robert stops people in the aisle and pulls them to your booth</p></div>
+          <div class="b-card reveal"><div class="b-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></div><h3>Engage visitors</h3><p>Guests talk with Robert, ask questions and stay longer</p></div>
+          <div class="b-card reveal"><div class="b-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/><path d="M12 7v6M9.5 9.5L12 7l2.5 2.5"/></svg></div><h3>Create shareable moments</h3><p>Visitors film and post Robert, extending your reach beyond the event</p></div>
+          <div class="b-card reveal"><div class="b-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></div><h3>Customized around your brand</h3><p>Robert speaks about your company, products and messaging</p></div>
+        </div>
+        <div class="cta-band in-grey reveal">
+          <h2>Planning an event? See if Robert is available.</h2>
+          <a href="#request" class="pill pill-light">Book a call with our team <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 : USE CASES -->
+    <section class="wrap sec uses-sec">
+      <h2 class="sec-title center reveal">Built for events where attention matters</h2>
+      <div class="uses">
+        <div class="use reveal"><span class="u-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></span>Trade show</div>
+        <div class="use reveal"><span class="u-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>Exhibition</div>
+        <div class="use reveal"><span class="u-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></span>Brand activation</div>
+        <div class="use reveal"><span class="u-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M14.5 4.5c3-1.5 5-1.5 5-1.5s0 2-1.5 5L12 14l-2-2 4.5-7.5z"/><path d="M9 10l-3 1-2 3 4-.5M14 15l-1 3-3 2 .5-4"/></svg></span>Product launch</div>
+        <div class="use reveal"><span class="u-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5"/></svg></span>Corporate events and conferences</div>
+        <div class="use reveal"><span class="u-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l7 4V6L7 10H3z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></span>Marketing and PR events</div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 : CUSTOMIZED (AI) -->
+    <section class="sec sec-grey">
+      <div class="wrap custom-grid">
+        <div class="custom-img reveal"><img src="/inquiries/assets/photo-exhibition-interview.jpg" alt="Robert in conversation with a guest at an exhibition" loading="lazy"></div>
+        <div>
+          <h2 class="sec-title reveal">Robert learns your brand before he meets your guests</h2>
+          <p class="sec-text reveal">Before your event, Robert is prepared around your company messaging and event context, helping create conversations that are relevant to your brand.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7 : HOW IT WORKS -->
+    <section class="wrap sec how">
+      <p class="eyebrow center reveal">How it works</p>
+      <h2 class="sec-title center reveal">From brief to event day</h2>
+      <div class="steps">
+        <div class="step reveal"><span class="step-num">1</span><h3>Tell us about your event</h3><p>Share date, location, and goals.</p></div>
+        <div class="step reveal"><span class="step-num">2</span><h3>We prepare Robert</h3><p>RB Labs handles the setup and the event customization.</p></div>
+        <div class="step reveal"><span class="step-num">3</span><h3>Robert arrives ready</h3><p>Setup and on-site operation handled by the RB Labs team.</p></div>
+      </div>
+      <p class="steps-note reveal">At least two weeks' notice is recommended whenever possible.</p>
+    </section>
+
+    <!-- FORM -->
+    <section class="wrap wrap-narrow form-section" id="request">
+      <div id="formStep">
+        <div class="card reveal">
+          <form id="leadForm" novalidate>
+          <div class="form-grid">
+
+            <div class="row">
+              <div class="field">
+                <label for="firstName">First name</label>
+                <input type="text" id="firstName" autocomplete="given-name" placeholder="John">
+              </div>
+              <div class="field">
+                <label for="lastName">Last name <span class="req">*</span></label>
+                <input type="text" id="lastName" autocomplete="family-name" placeholder="Smith" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" autocomplete="email" placeholder="you@company.com" required>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone number <span class="req">*</span></label>
+              <input type="tel" id="phone" autocomplete="tel" placeholder="+1 555 000 0000" required>
+            </div>
+
+            <div class="field">
+              <label for="company">Company name</label>
+              <input type="text" id="company" autocomplete="organization" placeholder="Your company">
+            </div>
+
+            <div class="field">
+              <span class="field-label">Job title</span>
+              <div class="multi" id="jobTitleMulti">
+                <button type="button" class="multi-btn" id="jobTitleBtn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="multi-value placeholder" id="jobTitleValue">Select your role</span>
+                  <svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="#6e6e73" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="multi-panel" id="jobTitlePanel" role="listbox">
+                  <label class="multi-opt"><input type="radio" name="jobTitle" value="Head of Marketing / CMO"><span>Head of Marketing / CMO</span></label>
+                  <label class="multi-opt"><input type="radio" name="jobTitle" value="Marketing Manager"><span>Marketing Manager</span></label>
+                  <label class="multi-opt"><input type="radio" name="jobTitle" value="Event Manager / Event Planner"><span>Event Manager / Event Planner</span></label>
+                  <label class="multi-opt"><input type="radio" name="jobTitle" value="Brand Manager"><span>Brand Manager</span></label>
+                  <label class="multi-opt"><input type="radio" name="jobTitle" value="Communications / PR"><span>Communications / PR</span></label>
+                  <label class="multi-opt"><input type="radio" name="jobTitle" value="Sales Manager / Director"><span>Sales Manager / Director</span></label>
+                  <label class="multi-opt"><input type="radio" name="jobTitle" value="Founder / CEO"><span>Founder / CEO</span></label>
+                  <label class="multi-opt"><input type="radio" name="jobTitle" value="Other"><span>Other</span></label>
+                </div>
+              </div>
+              <div class="specify" id="jobTitleOther"><input type="text" placeholder="Please specify your role"></div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">Event type</span>
+              <div class="multi" id="eventTypeMulti">
+                <button type="button" class="multi-btn" id="eventTypeBtn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="multi-value placeholder" id="eventTypeValue">Select an option</span>
+                  <svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="#6e6e73" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="multi-panel" id="eventTypePanel" role="listbox">
+                  <label class="multi-opt"><input type="radio" name="eventType" value="Trade show / Exhibition"><span>Trade show / Exhibition</span></label>
+                  <label class="multi-opt"><input type="radio" name="eventType" value="Brand activation"><span>Brand activation</span></label>
+                  <label class="multi-opt"><input type="radio" name="eventType" value="Corporate event / Conference"><span>Corporate event / Conference</span></label>
+                  <label class="multi-opt"><input type="radio" name="eventType" value="Product launch"><span>Product launch</span></label>
+                  <label class="multi-opt"><input type="radio" name="eventType" value="Promotion or marketing event"><span>Promotion or marketing event</span></label>
+                  <label class="multi-opt"><input type="radio" name="eventType" value="Other"><span>Other</span></label>
+                </div>
+              </div>
+              <div class="specify" id="eventTypeOther"><input type="text" placeholder="Please specify"></div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">Event date</span>
+              <div class="date-range">
+                <label class="date-part"><span>From</span><input type="date" id="eventDateFrom" aria-label="Event date from"></label>
+                <label class="date-part"><span>To</span><input type="date" id="eventDateTo" aria-label="Event date to"></label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="eventLocation">Event location</label>
+              <div class="autocomplete-wrap">
+                <input type="text" id="eventLocation" placeholder="Type your city and country" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="cityDropdown">
+                <div id="cityDropdown" class="city-dropdown" role="listbox"></div>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label">Your goal</span>
+              <div class="multi" id="goalMulti">
+                <button type="button" class="multi-btn" id="goalBtn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="multi-value" id="goalValue">Select all that apply</span>
+                  <svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="#6e6e73" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="multi-panel" id="goalPanel" role="listbox" aria-multiselectable="true">
+                  <label class="multi-opt"><input type="checkbox" name="goal" value="Attract more visitors"><span>Attract more visitors</span></label>
+                  <label class="multi-opt"><input type="checkbox" name="goal" value="Engage guests"><span>Engage guests</span></label>
+                  <label class="multi-opt"><input type="checkbox" name="goal" value="Create buzz around our brand"><span>Create buzz around our brand</span></label>
+                  <label class="multi-opt"><input type="checkbox" name="goal" value="Present a product or a service"><span>Present a product or a service</span></label>
+                  <label class="multi-opt"><input type="checkbox" name="goal" value="Generate social media content"><span>Generate social media content</span></label>
+                  <label class="multi-opt"><input type="checkbox" name="goal" value="Support sales or marketing"><span>Support sales or marketing</span></label>
+                  <label class="multi-opt"><input type="checkbox" name="goal" value="Showcase innovation"><span>Showcase innovation</span></label>
+                  <label class="multi-opt"><input type="checkbox" name="goal" value="Other" id="goalOther"><span>Other</span></label>
+                </div>
+              </div>
+              <div class="specify" id="goalOtherWrap"><input type="text" placeholder="Please specify"></div>
+            </div>
+
+            <div class="field span-2">
+              <span class="field-label">Budget</span>
+              <div class="multi" id="budgetMulti">
+                <button type="button" class="multi-btn" id="budgetBtn" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="multi-value placeholder" id="budgetValue">Select a range</span>
+                  <svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="#6e6e73" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="multi-panel" id="budgetPanel" role="listbox">
+                  <label class="multi-opt"><input type="radio" name="budget" value="Under $5,000"><span>Under $5,000</span></label>
+                  <label class="multi-opt"><input type="radio" name="budget" value="$5,000 – $10,000"><span>$5,000 – $10,000</span></label>
+                  <label class="multi-opt"><input type="radio" name="budget" value="$10,000 – $25,000"><span>$10,000 – $25,000</span></label>
+                  <label class="multi-opt"><input type="radio" name="budget" value="$25,000 – $50,000"><span>$25,000 – $50,000</span></label>
+                  <label class="multi-opt"><input type="radio" name="budget" value="$50,000+"><span>$50,000+</span></label>
+                  <label class="multi-opt"><input type="radio" name="budget" value="Not sure yet"><span>Not sure yet</span></label>
+                </div>
+              </div>
+            </div>
+
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Request availability and proposal</button>
+            <div class="form-error" id="formError">Please fill in the required fields</div>
+          </form>
+        </div>
+      </div>
+
+      <!-- AFTER SUBMIT: confirmation + real Calendly inline embed, prefilled with name + email -->
+      <div id="afterStep" class="after-step">
+        <div class="received">
+          <div class="check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h2>Thanks, we have received your event details.</h2>
+          <p class="faster">Want to move faster? Book a 30 min call with our team.</p>
+          <div class="down-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4v15M5.5 12.5L12 19l6.5-6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="card calendly-card">
+          <div class="calendly-inline-widget" id="calendlyEmbed" data-auto-load="false"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 RB Labs. All rights reserved.<span class="sep">·</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  var API_URL = "https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec";
+  var CALENDLY_URL = "https://calendly.com/rblabs/30min";
+
+  /* Video sound toggle + volume */
+  (function(){
+    const v = document.querySelector('.video-frame video');
+    const ctrl = document.getElementById('soundCtrl'), btn = document.getElementById('soundBtn');
+    const vol = document.getElementById('vol');
+    const paint = () => vol.style.setProperty('--v', (vol.value * 100) + '%');
+    btn.addEventListener('click', () => {
+      const turnOn = v.muted;
+      v.muted = !turnOn;
+      if (turnOn) { v.volume = vol.value > 0 ? vol.value : 0.8; if (vol.value == 0) vol.value = 0.8; v.play(); }
+      ctrl.classList.toggle('on', turnOn);
+      btn.setAttribute('aria-label', turnOn ? 'Turn sound off' : 'Turn sound on');
+      paint();
+    });
+    vol.addEventListener('input', () => {
+      v.volume = vol.value; paint();
+      if (vol.value == 0) { v.muted = true; ctrl.classList.remove('on'); }
+    });
+    paint();
+  })();
+
+  /* Scroll reveal */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => { io.observe(el); });
+
+  /* Carousel: infinite loop in both directions */
+  const track = document.getElementById('carTrack');
+  const prevBtn = document.querySelector('.car-btn.prev'), nextBtn = document.querySelector('.car-btn.next');
+  let busy = false;
+  const stepPx = () => track.children[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 14);
+  function next() {
+    if (busy) return; busy = true;
+    track.classList.add('animating');
+    track.style.transform = `translateX(${-stepPx()}px)`;
+    track.addEventListener('transitionend', function done() {
+      track.removeEventListener('transitionend', done);
+      track.classList.remove('animating');
+      track.appendChild(track.firstElementChild);
+      track.style.transform = 'translateX(0)';
+      busy = false;
+    });
+  }
+  function prev() {
+    if (busy) return; busy = true;
+    track.insertBefore(track.lastElementChild, track.firstElementChild);
+    track.style.transform = `translateX(${-stepPx()}px)`;
+    track.getBoundingClientRect();
+    track.classList.add('animating');
+    track.style.transform = 'translateX(0)';
+    track.addEventListener('transitionend', function done() {
+      track.removeEventListener('transitionend', done);
+      track.classList.remove('animating');
+      busy = false;
+    });
+  }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  let x0 = null;
+  track.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) (dx < 0 ? next : prev)();
+  });
+
+  /* Your goal: compact multi-select dropdown */
+  (function(){
+    const box = document.getElementById('goalMulti'), btn = document.getElementById('goalBtn'), val = document.getElementById('goalValue');
+    const boxes = box.querySelectorAll('input[type=checkbox]');
+    const paint = () => {
+      const sel = [...boxes].filter(b => b.checked).map(b => b.value);
+      val.textContent = sel.length === 0 ? 'Select all that apply' : sel.length === 1 ? sel[0] : sel[0] + ' +' + (sel.length - 1);
+      val.classList.toggle('placeholder', !sel.length);
+      document.getElementById('goalOtherWrap').classList.toggle('show', document.getElementById('goalOther').checked);
+    };
+    btn.addEventListener('click', () => { const o = box.classList.toggle('open'); btn.setAttribute('aria-expanded', o); });
+    boxes.forEach(b => b.addEventListener('change', paint));
+    document.addEventListener('click', e => { if (!box.contains(e.target)) { box.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.remove('open'); });
+    paint();
+  })();
+  /* Job title, event type, budget: same dropdown pattern, single-select via radios, closes on pick */
+  function initSingleSelect(boxId, placeholder, otherSpecifyId) {
+    const box = document.getElementById(boxId);
+    const btn = box.querySelector('.multi-btn'), val = box.querySelector('.multi-value');
+    const radios = box.querySelectorAll('input[type=radio]');
+    const paint = () => {
+      const picked = [...radios].find(r => r.checked);
+      val.textContent = picked ? picked.value : placeholder;
+      val.classList.toggle('placeholder', !picked);
+    };
+    btn.addEventListener('click', () => { const o = box.classList.toggle('open'); btn.setAttribute('aria-expanded', o); });
+    radios.forEach(r => r.addEventListener('change', () => {
+      paint();
+      box.classList.remove('open');
+      btn.setAttribute('aria-expanded', false);
+      if (otherSpecifyId) document.getElementById(otherSpecifyId).classList.toggle('show', r.value === 'Other');
+    }));
+    document.addEventListener('click', e => { if (!box.contains(e.target)) { box.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.remove('open'); });
+    paint();
+  }
+  initSingleSelect('jobTitleMulti', 'Select your role', 'jobTitleOther');
+  initSingleSelect('eventTypeMulti', 'Select an option', 'eventTypeOther');
+  initSingleSelect('budgetMulti', 'Select a range');
+
+  /* Event location: worldwide city suggestions (free text still allowed) */
+  (function(){
+    const cities = [["New York","New York","United States"],["Los Angeles","California","United States"],["Chicago","Illinois","United States"],["Houston","Texas","United States"],["Phoenix","Arizona","United States"],["Philadelphia","Pennsylvania","United States"],["San Antonio","Texas","United States"],["San Diego","California","United States"],["Dallas","Texas","United States"],["San Jose","California","United States"],["Austin","Texas","United States"],["Jacksonville","Florida","United States"],["Fort Worth","Texas","United States"],["Columbus","Ohio","United States"],["Charlotte","North Carolina","United States"],["San Francisco","California","United States"],["Indianapolis","Indiana","United States"],["Seattle","Washington","United States"],["Denver","Colorado","United States"],["Washington","District of Columbia","United States"],["Boston","Massachusetts","United States"],["Nashville","Tennessee","United States"],["Oklahoma City","Oklahoma","United States"],["El Paso","Texas","United States"],["Las Vegas","Nevada","United States"],["Portland","Oregon","United States"],["Memphis","Tennessee","United States"],["Louisville","Kentucky","United States"],["Baltimore","Maryland","United States"],["Milwaukee","Wisconsin","United States"],["Albuquerque","New Mexico","United States"],["Tucson","Arizona","United States"],["Fresno","California","United States"],["Sacramento","California","United States"],["Mesa","Arizona","United States"],["Kansas City","Missouri","United States"],["Atlanta","Georgia","United States"],["Miami","Florida","United States"],["Colorado Springs","Colorado","United States"],["Raleigh","North Carolina","United States"],["Omaha","Nebraska","United States"],["Long Beach","California","United States"],["Virginia Beach","Virginia","United States"],["Oakland","California","United States"],["Minneapolis","Minnesota","United States"],["Tulsa","Oklahoma","United States"],["Tampa","Florida","United States"],["Arlington","Texas","United States"],["New Orleans","Louisiana","United States"],["Wichita","Kansas","United States"],["Cleveland","Ohio","United States"],["Bakersfield","California","United States"],["Aurora","Colorado","United States"],["Anaheim","California","United States"],["Honolulu","Hawaii","United States"],["Santa Ana","California","United States"],["Riverside","California","United States"],["Corpus Christi","Texas","United States"],["Lexington","Kentucky","United States"],["Stockton","California","United States"],["Henderson","Nevada","United States"],["Saint Paul","Minnesota","United States"],["St. Louis","Missouri","United States"],["Cincinnati","Ohio","United States"],["Pittsburgh","Pennsylvania","United States"],["Greensboro","North Carolina","United States"],["Anchorage","Alaska","United States"],["Plano","Texas","United States"],["Lincoln","Nebraska","United States"],["Orlando","Florida","United States"],["Irvine","California","United States"],["Newark","New Jersey","United States"],["Durham","North Carolina","United States"],["Chula Vista","California","United States"],["Toledo","Ohio","United States"],["Fort Wayne","Indiana","United States"],["St. Petersburg","Florida","United States"],["Laredo","Texas","United States"],["Jersey City","New Jersey","United States"],["Chandler","Arizona","United States"],["Madison","Wisconsin","United States"],["Lubbock","Texas","United States"],["Scottsdale","Arizona","United States"],["Reno","Nevada","United States"],["Buffalo","New York","United States"],["Gilbert","Arizona","United States"],["Glendale","Arizona","United States"],["North Las Vegas","Nevada","United States"],["Winston-Salem","North Carolina","United States"],["Chesapeake","Virginia","United States"],["Norfolk","Virginia","United States"],["Fremont","California","United States"],["Garland","Texas","United States"],["Irving","Texas","United States"],["Hialeah","Florida","United States"],["Richmond","Virginia","United States"],["Boise","Idaho","United States"],["Spokane","Washington","United States"],["Baton Rouge","Louisiana","United States"],["Palm Springs","California","United States"],["Santa Clara","California","United States"],["Fort Lauderdale","Florida","United States"],["Miami Beach","Florida","United States"],["Boca Raton","Florida","United States"],["Salt Lake City","Utah","United States"],["Detroit","Michigan","United States"],["Hartford","Connecticut","United States"],["Providence","Rhode Island","United States"],["Savannah","Georgia","United States"],["Charleston","South Carolina","United States"],["Napa","California","United States"],["Santa Monica","California","United States"],["Palo Alto","California","United States"],["Mountain View","California","United States"],["Cambridge","Massachusetts","United States"],["Brooklyn","New York","United States"],["Paris","","France"],["Lyon","","France"],["Marseille","","France"],["Nice","","France"],["Cannes","","France"],["Monaco","","Monaco"],["Bordeaux","","France"],["Lille","","France"],["Toulouse","","France"],["Strasbourg","","France"],["Nantes","","France"],["Metz","","France"],["London","","United Kingdom"],["Manchester","","United Kingdom"],["Birmingham","","United Kingdom"],["Edinburgh","","United Kingdom"],["Glasgow","","United Kingdom"],["Liverpool","","United Kingdom"],["Dublin","","Ireland"],["Berlin","","Germany"],["Munich","","Germany"],["Frankfurt","","Germany"],["Hamburg","","Germany"],["Cologne","","Germany"],["Düsseldorf","","Germany"],["Stuttgart","","Germany"],["Hanover","","Germany"],["Leipzig","","Germany"],["Nuremberg","","Germany"],["Saarbrücken","","Germany"],["Geneva","","Switzerland"],["Zurich","","Switzerland"],["Basel","","Switzerland"],["Lausanne","","Switzerland"],["Bern","","Switzerland"],["Davos","","Switzerland"],["Lugano","","Switzerland"],["Vienna","","Austria"],["Salzburg","","Austria"],["Amsterdam","","Netherlands"],["Rotterdam","","Netherlands"],["The Hague","","Netherlands"],["Brussels","","Belgium"],["Antwerp","","Belgium"],["Luxembourg","","Luxembourg"],["Madrid","","Spain"],["Barcelona","","Spain"],["Valencia","","Spain"],["Seville","","Spain"],["Malaga","","Spain"],["Ibiza","","Spain"],["Lisbon","","Portugal"],["Porto","","Portugal"],["Milan","","Italy"],["Rome","","Italy"],["Turin","","Italy"],["Florence","","Italy"],["Venice","","Italy"],["Bologna","","Italy"],["Naples","","Italy"],["Stockholm","","Sweden"],["Copenhagen","","Denmark"],["Oslo","","Norway"],["Helsinki","","Finland"],["Reykjavik","","Iceland"],["Warsaw","","Poland"],["Krakow","","Poland"],["Prague","","Czech Republic"],["Budapest","","Hungary"],["Bucharest","","Romania"],["Sofia","","Bulgaria"],["Athens","","Greece"],["Vilnius","","Lithuania"],["Riga","","Latvia"],["Tallinn","","Estonia"],["Belgrade","","Serbia"],["Zagreb","","Croatia"],["Istanbul","","Türkiye"],["Ankara","","Türkiye"],["Dubai","","United Arab Emirates"],["Abu Dhabi","","United Arab Emirates"],["Sharjah","","United Arab Emirates"],["Doha","","Qatar"],["Riyadh","","Saudi Arabia"],["Jeddah","","Saudi Arabia"],["NEOM","","Saudi Arabia"],["Manama","","Bahrain"],["Kuwait City","","Kuwait"],["Muscat","","Oman"],["Tel Aviv","","Israel"],["Amman","","Jordan"],["Cairo","","Egypt"],["Casablanca","","Morocco"],["Marrakech","","Morocco"],["Rabat","","Morocco"],["Tunis","","Tunisia"],["Algiers","","Algeria"],["Lagos","","Nigeria"],["Abuja","","Nigeria"],["Accra","","Ghana"],["Nairobi","","Kenya"],["Kigali","","Rwanda"],["Johannesburg","","South Africa"],["Cape Town","","South Africa"],["Dakar","","Senegal"],["Abidjan","","Côte d'Ivoire"],["Toronto","","Canada"],["Montreal","","Canada"],["Vancouver","","Canada"],["Calgary","","Canada"],["Ottawa","","Canada"],["Quebec City","","Canada"],["Mexico City","","Mexico"],["Cancún","","Mexico"],["Monterrey","","Mexico"],["Guadalajara","","Mexico"],["São Paulo","","Brazil"],["Rio de Janeiro","","Brazil"],["Buenos Aires","","Argentina"],["Santiago","","Chile"],["Bogotá","","Colombia"],["Medellín","","Colombia"],["Lima","","Peru"],["Panama City","","Panama"],["San Juan","","Puerto Rico"],["Singapore","","Singapore"],["Hong Kong","","Hong Kong"],["Shanghai","","China"],["Beijing","","China"],["Shenzhen","","China"],["Tokyo","","Japan"],["Osaka","","Japan"],["Seoul","","South Korea"],["Busan","","South Korea"],["Taipei","","Taiwan"],["Bangkok","","Thailand"],["Kuala Lumpur","","Malaysia"],["Jakarta","","Indonesia"],["Bali","","Indonesia"],["Manila","","Philippines"],["Ho Chi Minh City","","Vietnam"],["Hanoi","","Vietnam"],["Mumbai","","India"],["New Delhi","","India"],["Bangalore","","India"],["Hyderabad","","India"],["Sydney","","Australia"],["Melbourne","","Australia"],["Brisbane","","Australia"],["Perth","","Australia"],["Auckland","","New Zealand"]];
+    const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+    const label = c => [c[0], c[1], c[2]].filter(Boolean).join(', ');
+    const input = document.getElementById('eventLocation'), dd = document.getElementById('cityDropdown');
+    let matches = [], hi = -1;
+    const close = () => { dd.classList.remove('open'); input.setAttribute('aria-expanded','false'); hi = -1; };
+    const render = () => {
+      dd.innerHTML = matches.length
+        ? matches.map((c,i) => `<div class="city-option${i===hi?' highlighted':''}" role="option" data-i="${i}"><span>${c[0]}</span><span class="state">${[c[1],c[2]].filter(Boolean).join(', ')}</span></div>`).join('')
+        : '<div class="city-empty">Not in the list? Just type your city and country.</div>';
+      dd.classList.add('open'); input.setAttribute('aria-expanded','true');
+    };
+    input.addEventListener('input', () => {
+      const q = norm(input.value.trim());
+      if (q.length < 2) { close(); return; }
+      const starts = [], words = [];
+      cities.forEach(c => { const n = norm(c[0]);
+        if (n.startsWith(q)) starts.push(c);
+        else if (n.split(/[\s\-]+/).some(w => w.startsWith(q)) || norm(c[2]).startsWith(q)) words.push(c); });
+      matches = starts.concat(words).slice(0, 8); hi = -1; render();
+    });
+    const pick = i => { input.value = label(matches[i]); close(); };
+    dd.addEventListener('mousedown', e => { const o = e.target.closest('.city-option'); if (o) { e.preventDefault(); pick(+o.dataset.i); } });
+    input.addEventListener('keydown', e => {
+      if (!dd.classList.contains('open') || !matches.length) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); hi = (hi + 1) % matches.length; render(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); hi = (hi - 1 + matches.length) % matches.length; render(); }
+      else if (e.key === 'Enter' && hi >= 0) { e.preventDefault(); pick(hi); }
+      else if (e.key === 'Escape') close();
+    });
+    input.addEventListener('blur', () => setTimeout(close, 120));
+  })();
+
+  /* Event date: "To" cannot be before "From" */
+  const dFrom = document.getElementById('eventDateFrom'), dTo = document.getElementById('eventDateTo');
+  dFrom.addEventListener('change', () => { dTo.min = dFrom.value; if (dTo.value && dTo.value < dFrom.value) dTo.value = dFrom.value; });
+
+  /* ---------- Real form submission ---------- */
+  async function getUserIPAndCountry() {
+    try {
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      return { ip: data.ip || 'Unknown', country: data.country_name || 'Unknown' };
+    } catch (error) {
+      try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        return { ip: ipData.ip || 'Unknown', country: 'Unknown' };
+      } catch (fallbackError) {
+        return { ip: 'Unknown', country: 'Unknown' };
+      }
+    }
+  }
+
+  function getBrowserInfo() {
+    var ua = navigator.userAgent;
+    var browserInfo = 'Unknown';
+    if (ua.indexOf('Chrome') > -1 && ua.indexOf('Edg') === -1 && ua.indexOf('OPR') === -1) browserInfo = 'Chrome';
+    else if (ua.indexOf('Safari') > -1 && ua.indexOf('Chrome') === -1) browserInfo = 'Safari';
+    else if (ua.indexOf('Firefox') > -1) browserInfo = 'Firefox';
+    else if (ua.indexOf('Edg') > -1) browserInfo = 'Edge';
+    else if (ua.indexOf('OPR') > -1 || ua.indexOf('Opera') > -1) browserInfo = 'Opera';
+    if (/Mobile|Android|iPhone|iPad/i.test(ua)) browserInfo += ' (Mobile)';
+    else browserInfo += ' (Desktop)';
+    return browserInfo;
+  }
+
+  function radioGroupValue(groupName, otherWrapId) {
+    var checked = document.querySelector('input[name=' + groupName + ']:checked');
+    if (!checked) return 'Not specified';
+    if (checked.value === 'Other' && otherWrapId) {
+      var otherInput = document.getElementById(otherWrapId).querySelector('input');
+      return otherInput.value.trim() || 'Other';
+    }
+    return checked.value;
+  }
+
+  function goalsValue() {
+    var checked = Array.prototype.slice.call(document.querySelectorAll('#goalMulti input[type=checkbox]:checked'));
+    var values = checked.map(function (cb) { return cb.value; });
+    if (values.indexOf('Other') !== -1) {
+      var otherInput = document.getElementById('goalOtherWrap').querySelector('input');
+      var otherText = otherInput.value.trim();
+      if (otherText) values = values.map(function (v) { return v === 'Other' ? ('Other: ' + otherText) : v; });
+    }
+    return values.length ? values.join(', ') : 'Not specified';
+  }
+
+  const form = document.getElementById('leadForm');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    let ok = true;
+    form.querySelectorAll('[required]').forEach(f => {
+      const bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value));
+      f.closest('.field').classList.toggle('invalid', bad);
+      if (bad) ok = false;
+    });
+    document.getElementById('formError').classList.toggle('show', !ok);
+    if (!ok) return;
+
+    var submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    var firstName = document.getElementById('firstName').value.trim();
+    var lastName = document.getElementById('lastName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var company = document.getElementById('company').value.trim();
+    var jobTitle = radioGroupValue('jobTitle', 'jobTitleOther');
+    var eventType = radioGroupValue('eventType', 'eventTypeOther');
+    var dateFrom = document.getElementById('eventDateFrom').value;
+    var dateTo = document.getElementById('eventDateTo').value;
+    var eventDateStr = 'Not specified';
+    if (dateFrom && dateTo && dateFrom !== dateTo) eventDateStr = dateFrom + ' to ' + dateTo;
+    else if (dateFrom) eventDateStr = dateFrom;
+    var location = document.getElementById('eventLocation').value.trim() || 'Not specified';
+    var goals = goalsValue();
+    var budget = radioGroupValue('budget');
+
+    var message = 'Job Title: ' + jobTitle +
+      '\nEvent Type: ' + eventType +
+      '\nEvent Date: ' + eventDateStr +
+      '\nEvent Location: ' + location +
+      '\nCompany: ' + (company || 'Not provided') +
+      '\nGoals: ' + goals +
+      '\nBudget: ' + budget +
+      '\n\nSource: RB Labs Inquiries Page';
+
+    try {
+      var ipData = await getUserIPAndCountry();
+      var formData = {
+        fname: firstName,
+        lname: lastName,
+        email: email,
+        phone: phone || 'Not provided',
+        message: message,
+        created_at: new Date().toISOString(),
+        ip: ipData.ip,
+        country: ipData.country,
+        browser: getBrowserInfo()
+      };
+
+      await fetch(API_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+    } catch (error) {
+      // Fire-and-forget, same as the rest of this site's forms: show the confirmation either way rather than block the visitor on a network hiccup.
+    }
+
+    document.getElementById('formStep').style.display = 'none';
+    var after = document.getElementById('afterStep');
+    after.classList.add('show');
+    after.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    function showCalendlyFallback() {
+      var embed = document.getElementById('calendlyEmbed');
+      embed.innerHTML = '<div class="calendly-fallback"><a href="' + CALENDLY_URL + '" target="_blank" rel="noopener" class="pill pill-dark">Book your call on Calendly <span aria-hidden="true">→</span></a></div>';
+    }
+    function renderCalendly() {
+      try {
+        // Official Calendly embed params: drop the meeting-details side panel, which is most of the extra height.
+        window.Calendly.initInlineWidget({
+          url: CALENDLY_URL + '?hide_event_type_details=1&hide_gdpr_banner=1',
+          parentElement: document.getElementById('calendlyEmbed'),
+          prefill: { name: (firstName + ' ' + lastName).trim(), email: email },
+          resize: true
+        });
+      } catch (err) {
+        showCalendlyFallback();
+      }
+    }
+    if (window.Calendly) {
+      renderCalendly();
+    } else {
+      var calendlyScript = document.querySelector('script[src*="calendly.com/assets/external/widget.js"]');
+      calendlyScript.addEventListener('load', renderCalendly);
+      calendlyScript.addEventListener('error', showCalendlyFallback);
+      setTimeout(function () { if (!window.Calendly) showCalendlyFallback(); }, 6000);
+    }
+  });
+  form.addEventListener('input', e => { const f = e.target.closest('.field'); if (f) f.classList.remove('invalid'); });
+</script>
+</body>
+</html>
