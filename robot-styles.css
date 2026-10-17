@@ -70,6 +70,9 @@
 /* On mobile the picker collapses to one column — show Robert Junior first */
 @media (max-width: 768px) {
     .rc-pick-card[data-robot="1"] { order: -1; }
+    /* Selecting a robot scrolls the configurator into view — land 20px
+       further down on mobile (90px → 70px scroll margin) */
+    .rc-shell { scroll-margin-top: 70px; }
 }
 
 .rc-pick-card {
