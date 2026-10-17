@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KJH15F9QP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3KJH15F9QP');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Internal checkout test page. No real orders.">
+    <meta name="keywords" content="RB Labs, Robotics, AI Integration, Automation, Humanoid Robots, Enterprise AI, Robotics Solutions">
+    <meta property="og:title" content="Test Checkout — RB Labs">
+    <meta property="og:description" content="Internal checkout test page. No real orders.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.rblabs.ai/xyz/">
+    <title>Test Checkout — RB Labs</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon.ico">
+
+    <!-- Apple Web App Configuration -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="RB Labs">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/logo.png">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://www.rblabs.ai/xyz/">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../robot-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../typography.css">
+
+    <style>
+        .visuallyhidden {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+        }
+        /* Temporarily hidden languages — re-enable after 2026-03-19 */
+        .nav-lang-item[data-code="ru"],
+        .nav-lang-item[data-code="uk"] { display: none !important; }
+        .nav-mobile-only { display: none; }
+        .nav-mobile-text { display: none; }
+        .nav-desktop-text { display: inline; }
+        @media (max-width: 768px) {
+            .nav-mobile-only { display: flex; }
+            .nav-mobile-text { display: inline; }
+            .nav-desktop-text { display: none; }
+        }
+        .nav-lang-dropdown {
+            position: relative;
+        }
+        .nav-lang-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            letter-spacing: 0;
+            padding: 8px 0;
+        }
+        .nav-lang-trigger .fa-globe {
+            font-size: 15px;
+        }
+        .nav-lang-arrow {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+        .nav-lang-trigger[aria-expanded="true"] .nav-lang-arrow {
+            transform: rotate(180deg);
+        }
+        .nav-lang-panel {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 260px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .nav-lang-panel.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-lang-search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .nav-lang-search .fa-search {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+        .nav-lang-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1f2937;
+            background: transparent;
+        }
+        .nav-lang-search input::placeholder {
+            color: #9ca3af;
+        }
+        .nav-lang-list {
+            max-height: 240px;
+            overflow-y: auto;
+            padding: 6px;
+        }
+        .nav-lang-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .nav-lang-list::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        .nav-lang-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+            font-family: inherit;
+            transition: background 0.15s ease;
+        }
+        .nav-lang-item:hover {
+            background: #f3f4f6;
+        }
+        .nav-lang-item.active {
+            background: rgba(0, 0, 0, 0.06);
+            color: #1d1d1f;
+            font-weight: 400;
+        }
+        .nav-lang-name {
+            flex: 1;
+        }
+        .nav-lang-code {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .nav-lang-item.active .nav-lang-code {
+            color: #1d1d1f;
+        }
+        .nav-lang-item .fa-check {
+            font-size: 12px;
+            color: #1d1d1f;
+        }
+        .nav-lang-empty {
+            padding: 20px 16px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .nav-lang-dropdown {
+                width: 100%;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                margin-top: auto;
+                padding-top: clamp(0.5rem, 1.5vh, 1rem);
+            }
+            .nav-menu.active .nav-lang-dropdown {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.25s;
+            }
+            .nav-lang-trigger {
+                width: 100%;
+                justify-content: center;
+                padding: clamp(0.4rem, 1vh, 0.8rem) 0 !important;
+                font-size: 15px !important;
+            }
+            .nav-lang-trigger .fa-globe {
+                font-size: 1.1rem !important;
+            }
+            .nav-lang-trigger .nav-lang-arrow {
+                font-size: 0.6rem !important;
+            }
+            .nav-lang-panel {
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                border-radius: 16px 16px 0 0;
+                transform: translateY(100%);
+                max-height: 60vh;
+                z-index: 10001;
+            }
+            .nav-lang-panel.open {
+                transform: translateY(0);
+            }
+            .nav-lang-backdrop {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.3);
+                z-index: 10000;
+            }
+            .nav-lang-backdrop.visible {
+                display: block;
+            }
+            .nav-lang-list {
+                max-height: calc(60vh - 60px);
+            }
+        }
+    </style>
+
+    <meta name="robots" content="noindex, nofollow">
+
+    
+
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <img src="../logo/logo.png" alt="RB Labs Logo" height="50">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about/" class="nav-link">About</a>
+                    <a href="/career/" class="nav-link">Careers</a>
+                    <a href="/news/" class="nav-link">News</a>
+                    <a href="/book/" class="nav-link">
+                        <span class="nav-desktop-text">Rentals</span>
+                        <span class="nav-mobile-text">Robot Rentals</span>
+                    </a>
+                    <a href="/robot/" class="nav-link nav-mobile-only">Custom Robot</a>
+                    <a href="/book-a-call/?scrollTo=calendly-section" class="btn btn-primary">Book a Call</a>
+                    <div class="nav-lang-dropdown">
+                        <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
+                            <i class="fas fa-globe"></i>
+                            <span>Languages</span>
+                            <i class="fas fa-chevron-down nav-lang-arrow"></i>
+                        </button>
+                        <div class="nav-lang-backdrop" id="langBackdrop"></div>
+                        <div class="nav-lang-panel" id="langDropdownPanel">
+                            <div class="nav-lang-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="langSearchInput" placeholder="Search languages..." autocomplete="off">
+                            </div>
+                            <div class="nav-lang-list" id="langList">
+                                <a href="/de/" class="nav-lang-item" data-name="Deutsch" data-code="de">
+                                    <span class="nav-lang-name">Deutsch</span>
+                                    <span class="nav-lang-code">de</span>
+                                    
+                                </a>
+                                <a href="/xyz/" class="nav-lang-item active" data-name="English" data-code="en">
+                                    <span class="nav-lang-name">English</span>
+                                    <span class="nav-lang-code">en</span>
+                                    <i class="fas fa-check"></i>
+                                </a>
+                                <a href="/es/" class="nav-lang-item" data-name="Español" data-code="es">
+                                    <span class="nav-lang-name">Español</span>
+                                    <span class="nav-lang-code">es</span>
+                                    
+                                </a>
+                                <a href="/fr/" class="nav-lang-item" data-name="Français" data-code="fr">
+                                    <span class="nav-lang-name">Français</span>
+                                    <span class="nav-lang-code">fr</span>
+                                    
+                                </a>
+                                <a href="/it/" class="nav-lang-item" data-name="Italiano" data-code="it">
+                                    <span class="nav-lang-name">Italiano</span>
+                                    <span class="nav-lang-code">it</span>
+                                    
+                                </a>
+                                <a href="/lt/" class="nav-lang-item" data-name="Lietuvių" data-code="lt">
+                                    <span class="nav-lang-name">Lietuvių</span>
+                                    <span class="nav-lang-code">lt</span>
+                                    
+                                </a>
+                                <a href="/nb/" class="nav-lang-item" data-name="Norsk" data-code="nb">
+                                    <span class="nav-lang-name">Norsk</span>
+                                    <span class="nav-lang-code">nb</span>
+                                    
+                                </a>
+                                <a href="/sv/" class="nav-lang-item" data-name="Svenska" data-code="sv">
+                                    <span class="nav-lang-name">Svenska</span>
+                                    <span class="nav-lang-code">sv</span>
+                                    
+                                </a>
+                                <a href="/bg/" class="nav-lang-item" data-name="Български" data-code="bg">
+                                    <span class="nav-lang-name">Български</span>
+                                    <span class="nav-lang-code">bg</span>
+                                    
+                                </a>
+                                <a href="/ru/" class="nav-lang-item" data-name="Русский" data-code="ru">
+                                    <span class="nav-lang-name">Русский</span>
+                                    <span class="nav-lang-code">ru</span>
+                                    
+                                </a>
+                                <a href="/uk/" class="nav-lang-item" data-name="Українська" data-code="uk">
+                                    <span class="nav-lang-name">Українська</span>
+                                    <span class="nav-lang-code">uk</span>
+                                    
+                                </a>
+                                <a href="/ar/" class="nav-lang-item" data-name="العربية" data-code="ar">
+                                    <span class="nav-lang-name">العربية</span>
+                                    <span class="nav-lang-code">ar</span>
+                                    
+                                </a>
+                                <a href="/cn/" class="nav-lang-item" data-name="简体中文" data-code="cn">
+                                    <span class="nav-lang-name">简体中文</span>
+                                    <span class="nav-lang-code">cn</span>
+                                    
+                                </a>
+                                <a href="/tw/" class="nav-lang-item" data-name="繁體中文" data-code="tw">
+                                    <span class="nav-lang-name">繁體中文</span>
+                                    <span class="nav-lang-code">tw</span>
+                                    
+                                </a>
+                            </div>
+                            <div class="nav-lang-empty" id="langEmpty" style="display:none;">
+                                No languages found
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    (function() {
+        var trigger = document.getElementById('langDropdownTrigger');
+        var panel = document.getElementById('langDropdownPanel');
+        var backdrop = document.getElementById('langBackdrop');
+        var searchInput = document.getElementById('langSearchInput');
+        var langList = document.getElementById('langList');
+        var langEmpty = document.getElementById('langEmpty');
+        var items = langList.querySelectorAll('.nav-lang-item');
+        var navMenu = document.getElementById('navMenu');
+        var navToggle = document.getElementById('navToggle');
+    
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+    
+        function openDropdown() {
+            panel.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+            if (isMobile()) backdrop.classList.add('visible');
+            searchInput.value = '';
+            filterLanguages('');
+            setTimeout(function() { searchInput.focus(); }, 100);
+        }
+    
+        function closeDropdown() {
+            panel.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+            if (backdrop) backdrop.classList.remove('visible');
+        }
+    
+        function toggleDropdown(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (panel.classList.contains('open')) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        }
+    
+        function filterLanguages(query) {
+            var q = query.toLowerCase();
+            var visibleCount = 0;
+            for (var i = 0; i < items.length; i++) {
+                var name = items[i].getAttribute('data-name').toLowerCase();
+                var code = items[i].getAttribute('data-code').toLowerCase();
+                if (name.indexOf(q) !== -1 || code.indexOf(q) !== -1) {
+                    items[i].style.display = '';
+                    visibleCount++;
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+            langEmpty.style.display = visibleCount === 0 ? '' : 'none';
+        }
+    
+        trigger.addEventListener('click', toggleDropdown);
+    
+        searchInput.addEventListener('input', function() {
+            filterLanguages(this.value);
+        });
+    
+        searchInput.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    
+        // Close dropdown on backdrop click (mobile)
+        if (backdrop) {
+            backdrop.addEventListener('click', function() {
+                closeDropdown();
+            });
+        }
+    
+        document.addEventListener('click', function(e) {
+            if (!panel.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+    
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDropdown();
+        });
+    
+        // Close language panel when mobile menu closes
+        if (navToggle) {
+            navToggle.addEventListener('click', function() {
+                if (navMenu && !navMenu.classList.contains('active')) {
+                    closeDropdown();
+                }
+            });
+        }
+    })();
+    </script>
+
+    <!-- Robot Configurator -->
+<section class="rc-section">
+    <div class="rc-pick" id="rcHeroSelect">
+        <p class="rc-canceled-note" style="display:block; max-width:720px;">TEST PAGE — checkout charges $1.00, not real prices. Orders are marked “(TEST)” in the orders sheet.</p>
+        <p class="rc-canceled-note" id="rcCanceledNote" hidden>Checkout canceled. You can pick your robot again anytime.</p>
+        <header class="rc-pick-header">
+            <h1 class="rc-title">Choose Your Robot — Test</h1>
+        </header>
+        <div class="rc-pick-grid">
+            <button type="button" class="rc-pick-card" data-robot="0">
+                <img src="../featured/robot/robert/robert-1.jpg" alt="Custom Robert" fetchpriority="high" decoding="async">
+                <span class="rc-pick-badge" id="rcHeroCta0"></span>
+                <span class="rc-pick-info">
+                    <span class="rc-pick-name">Custom Robert</span>
+                    <span class="rc-pick-price">from $1.00</span>
+                </span>
+            </button>
+            <button type="button" class="rc-pick-card" data-robot="1">
+                <img src="../featured/robot/robertJr/robertjr-1.jpg" alt="Robert Junior" fetchpriority="high" decoding="async">
+                <span class="rc-pick-badge" id="rcHeroCta1"></span>
+                <span class="rc-pick-info">
+                    <span class="rc-pick-name">Robert Junior</span>
+                    <span class="rc-pick-price">from $1.00</span>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <div class="rc-config-wrap" id="rcConfigWrap" hidden>
+    <div class="rc-shell" id="rcConfigRef">
+        <div class="rc-main">
+            <div class="rc-gallery">
+                <div class="rc-hero-frame">
+                    <div class="rc-hero-img" id="rcHeroImg"><i class="fas fa-image"></i></div>
+                    <button type="button" class="rc-nav-btn rc-nav-prev" id="rcPrev" aria-label="Previous">‹</button>
+                    <button type="button" class="rc-nav-btn rc-nav-next" id="rcNext" aria-label="Next">›</button>
+                </div>
+                <div class="rc-dots" id="rcDots"></div>
+                <div class="rc-thumbs" id="rcThumbs"></div>
+            </div>
+
+            <div class="rc-config">
+                <section class="rc-step">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">01</span>
+                        <h2>Choose your face.</h2>
+                        <span class="rc-step-sub">Make it look the way you want.</span>
+                    </div>
+                    <div class="rc-options" id="rcFaces">
+                        <button type="button" class="rc-option" data-face="0" id="rcFaceStandard">
+                            <span class="rc-option-photo"><img id="rcFaceStandardImg" src="../featured/robot/robert/robert-1.jpg" alt=""></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Standard face</span>
+                                <span class="rc-option-price">Included</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </button>
+                        <button type="button" class="rc-option" data-face="1" id="rcFaceCustom">
+                            <span class="rc-option-photo"><i class="fas fa-user-edit"></i></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Custom face</span>
+                                <span class="rc-option-price">+$1,000</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="rc-step rc-upload-step" id="rcUploadStep">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">02</span>
+                        <h2>Upload the face you want.</h2>
+                    </div>
+                    <label class="rc-dropzone" id="rcDropzone">
+                        <input type="file" accept="image/*" id="rcFileInput" style="display:none">
+                        <span class="rc-drop-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M4 14v5h16v-5"></path></svg>
+                        </span>
+                        <span class="rc-drop-text">
+                            <span class="rc-drop-main" id="rcDropMain">Drag and drop a photo here, or <span class="rc-drop-browse">browse</span></span>
+                            <span class="rc-drop-hint">JPG or PNG, front-facing, clear lighting</span>
+                        </span>
+                        <span class="rc-drop-preview" id="rcUploadPreview"><i class="fas fa-user"></i></span>
+                    </label>
+                </section>
+
+                <section class="rc-step">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">03</span>
+                        <h2>Choose your voice agent.</h2>
+                        <span class="rc-step-sub">Give your robot a voice.</span>
+                    </div>
+                    <div class="rc-options" id="rcVoices">
+                        <div class="rc-option" data-voice="0" id="rcVoiceStandard">
+                            <span class="rc-option-play-wrap">
+                                <button type="button" class="rc-option-play" id="rcPlay0" aria-label="Play sample">▶</button>
+                            </span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Standard voice</span>
+                                <span class="rc-option-price">Included</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </div>
+                        <div class="rc-option" data-voice="1" id="rcVoiceCustom">
+                            <span class="rc-option-icon"><i class="fas fa-microphone"></i></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Custom voice clone</span>
+                                <span class="rc-option-price">Included</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </div>
+                    </div>
+                    <p class="rc-voice-locked-note" id="rcVoiceLockedNote">Available once you choose a custom face.</p>
+                    <div class="rc-voice-describe" id="rcVoiceDescribeWrap">
+                        <label class="rc-voice-describe-label" for="rcVoiceDescription">Describe the voice you want</label>
+                        <textarea class="rc-voice-describe-input" id="rcVoiceDescription" rows="3" maxlength="500" placeholder="e.g. deep and calm, warm and friendly, a specific accent..."></textarea>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="rc-orderbar">
+        <div class="rc-order-summary">
+            <span class="rc-order-label">Your order</span>
+            <span class="rc-order-text" id="rcSummary"></span>
+        </div>
+        <div class="rc-total">
+            <span class="rc-total-amount" id="rcTotal"></span>
+            <span class="rc-total-currency">USD</span>
+        </div>
+        <div class="rc-checkout-wrap">
+            <button type="button" class="rc-checkout-btn" id="rcCheckout">
+                <span class="rc-checkout-btn-label">Checkout</span><span>→</span>
+            </button>
+            <span class="rc-secure">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M6 10V7a6 6 0 0112 0v3h1v12H5V10zm2 0h8V7a4 4 0 00-8 0z"></path></svg>
+                Secure payment
+            </span>
+            <span class="rc-checkout-error" id="rcCheckoutError" hidden></span>
+        </div>
+    </div>
+    </div>
+</section>
+
+<script>
+(function () {
+    var ROBOTS = [
+        { name: 'Robert', price: 1, photos: [
+            '../featured/robot/robert/robert-1.jpg',
+            '../featured/robot/robert/robert-2.jpg',
+            '../featured/robot/robert/robert-3.jpg',
+            '../featured/robot/robert/robert-4.jpg',
+            '../featured/robot/robert/robert-5.jpg'
+        ] },
+        { name: 'Robert Junior', price: 1, photos: [
+            '../featured/robot/robertJr/robertjr-1.jpg',
+            '../featured/robot/robertJr/robertjr-2.jpg',
+            '../featured/robot/robertJr/robertjr-3.jpg',
+            '../featured/robot/robertJr/robertjr-4.jpg',
+            '../featured/robot/robertJr/robertjr-5.jpg'
+        ] }
+    ];
+    var FACES = [
+        { label: 'Standard face', cost: 0 },
+        { label: 'Custom face', cost: 0.1 } // TEST: Junior only — for Robert custom is included in the base price
+    ];
+    var CUSTOM_FACE_PRICE_LABELS = {
+        included: 'Included',
+        plus: '+$0.10' // TEST price for Junior's custom face
+    };
+    var VOICES = [
+        { label: 'Standard voice', cost: 0 },
+        { label: 'Custom voice clone', cost: 0 }
+    ];
+    var PLACEHOLDER_SLIDE_COUNT = 5;
+    var GAS_EXEC_URL = 'https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec';
+    var PENDING_PHOTO_KEY = 'rc_pending_photo';
+
+    var state = { robot: null, slide: 0, face: 0, voice: 0, upload: null, voiceNote: '', playing: null };
+    var playTimer = null;
+
+    function currentPhotos() {
+        if (state.robot === null) return [];
+        return ROBOTS[state.robot].photos || [];
+    }
+
+    function slideCount() {
+        var photos = currentPhotos();
+        return photos.length || PLACEHOLDER_SLIDE_COUNT;
+    }
+
+    var sectionEl = document.querySelector('.rc-section');
+    var heroSelectEl = document.getElementById('rcHeroSelect');
+    var configWrapEl = document.getElementById('rcConfigWrap');
+    var configRefEl = document.getElementById('rcConfigRef');
+    var heroImgEl = document.getElementById('rcHeroImg');
+    var dotsEl = document.getElementById('rcDots');
+    var thumbsEl = document.getElementById('rcThumbs');
+    var prevBtn = document.getElementById('rcPrev');
+    var nextBtn = document.getElementById('rcNext');
+    var facesEl = document.getElementById('rcFaces');
+    var uploadStepEl = document.getElementById('rcUploadStep');
+    var dropzoneEl = document.getElementById('rcDropzone');
+    var fileInputEl = document.getElementById('rcFileInput');
+    var dropMainEl = document.getElementById('rcDropMain');
+    var uploadPreviewEl = document.getElementById('rcUploadPreview');
+    var voicesEl = document.getElementById('rcVoices');
+    var voiceStandardEl = document.getElementById('rcVoiceStandard');
+    var voiceCustomEl = document.getElementById('rcVoiceCustom');
+    var voiceLockedNoteEl = document.getElementById('rcVoiceLockedNote');
+    var voiceDescribeWrapEl = document.getElementById('rcVoiceDescribeWrap');
+    var voiceDescribeInputEl = document.getElementById('rcVoiceDescription');
+    var summaryEl = document.getElementById('rcSummary');
+    var totalEl = document.getElementById('rcTotal');
+    var checkoutBtn = document.getElementById('rcCheckout');
+    var checkoutBtnLabel = checkoutBtn.querySelector('.rc-checkout-btn-label');
+    var checkoutErrorEl = document.getElementById('rcCheckoutError');
+
+    function formatUSD(n) {
+        return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderHero() {
+        if (state.robot === null) return;
+        var photos = currentPhotos();
+        var src = photos[state.slide];
+        heroImgEl.classList.add('fading');
+        setTimeout(function () {
+            heroImgEl.innerHTML = src
+                ? '<img src="' + src + '" alt="' + ROBOTS[state.robot].name + '" loading="lazy" decoding="async">'
+                : '<i class="fas fa-image"></i>';
+            heroImgEl.classList.remove('fading');
+        }, 150);
+    }
+
+    function renderDots() {
+        if (state.robot === null) { dotsEl.innerHTML = ''; return; }
+        var count = slideCount();
+        dotsEl.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'rc-dot' + (i === state.slide ? ' active' : '');
+            dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+            (function (idx) {
+                dot.addEventListener('click', function () { goToSlide(idx); });
+            })(i);
+            dotsEl.appendChild(dot);
+        }
+    }
+
+    function renderThumbs() {
+        if (state.robot === null) { thumbsEl.innerHTML = ''; return; }
+        var photos = currentPhotos();
+        var count = slideCount();
+        thumbsEl.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+            var thumb = document.createElement('button');
+            thumb.type = 'button';
+            thumb.className = 'rc-thumb' + (i === state.slide ? ' active' : '');
+            thumb.innerHTML = photos[i]
+                ? '<img src="' + photos[i] + '" alt="" loading="lazy" decoding="async">'
+                : '<i class="fas fa-image"></i>';
+            (function (idx) {
+                thumb.addEventListener('click', function () { goToSlide(idx); });
+            })(i);
+            thumbsEl.appendChild(thumb);
+        }
+    }
+
+    function goToSlide(i) {
+        state.slide = i;
+        renderHero();
+        renderDots();
+        renderThumbs();
+    }
+
+    function applySelection(i) {
+        state.robot = i;
+        state.slide = 0;
+        var cards = heroSelectEl.querySelectorAll('.rc-pick-card');
+        cards.forEach(function (card, idx) {
+            var selected = idx === i;
+            card.classList.toggle('selected', selected);
+            document.getElementById('rcHeroCta' + idx).textContent = selected ? '✓' : '';
+        });
+        configWrapEl.hidden = false;
+        /* Show the selected robot's own photo as the "Standard face" preview */
+        var stdFaceImg = document.getElementById('rcFaceStandardImg');
+        if (stdFaceImg) stdFaceImg.src = ROBOTS[i].photos[0];
+        renderHero();
+        renderDots();
+        renderThumbs();
+        updateVoiceAvailability();
+        updateSummary();
+    }
+
+    function selectRobot(i) {
+        applySelection(i);
+        requestAnimationFrame(function () {
+            configRefEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    function selectFace(i) {
+        state.face = i;
+        var opts = facesEl.querySelectorAll('.rc-option');
+        opts.forEach(function (opt, idx) {
+            opt.classList.toggle('selected', idx === i);
+        });
+        uploadStepEl.classList.toggle('inactive', i !== 1);
+        updateVoiceAvailability();
+        updateSummary();
+    }
+    function updateVoiceAvailability() {
+        // Robert (index 0): no standard face or voice — custom only
+        // Robert Junior (index 1): both standard and custom options
+        var isRobert = state.robot === 0;
+        var faceIsCustom = state.face === 1;
+
+        var faceStandardEl = document.getElementById('rcFaceStandard');
+        faceStandardEl.style.display = isRobert ? 'none' : '';
+        voiceStandardEl.style.display = isRobert ? 'none' : '';
+
+        // Price label on the custom face option: "Included" for Robert, "+$1,000" for Junior
+        var customFacePriceEl = document.querySelector('#rcFaceCustom .rc-option-price');
+        if (customFacePriceEl) customFacePriceEl.textContent = isRobert ? CUSTOM_FACE_PRICE_LABELS.included : CUSTOM_FACE_PRICE_LABELS.plus;
+
+        if (isRobert) {
+            voiceLockedNoteEl.classList.remove('visible');
+            voiceCustomEl.classList.remove('disabled');
+            if (state.face === 0) { state.face = -1; facesEl.querySelectorAll('.rc-option').forEach(function(o) { o.classList.remove('selected'); }); }
+            if (state.face !== 1) selectFace(1); // Robert is custom-only — preselect it
+            if (state.voice === 0) { state.voice = -1; voicesEl.querySelectorAll('.rc-option').forEach(function(o) { o.classList.remove('selected'); }); }
+        } else {
+            // Robert Junior: standard face and voice by default
+            if (state.face < 0) selectFace(0);
+            if (state.voice < 0) selectVoice(0);
+            voiceCustomEl.classList.toggle('disabled', !faceIsCustom);
+            voiceLockedNoteEl.classList.toggle('visible', !faceIsCustom);
+            if (!faceIsCustom && state.voice === 1) selectVoice(0);
+        }
+    }
+
+    function selectVoice(i) {
+        if (i === 1 && state.robot !== 0 && state.face !== 1) return;
+        state.voice = i;
+        var opts = voicesEl.querySelectorAll('.rc-option');
+        opts.forEach(function (opt, idx) {
+            opt.classList.toggle('selected', idx === i);
+        });
+        voiceDescribeWrapEl.classList.toggle('visible', i === 1);
+        updateSummary();
+    }
+
+    function togglePlay(i) {
+        clearTimeout(playTimer);
+        var btn = document.getElementById('rcPlay' + i);
+        var wasPlaying = state.playing === i;
+        state.playing = wasPlaying ? null : i;
+        btn.classList.toggle('playing', !wasPlaying);
+        btn.textContent = !wasPlaying ? '❚❚' : '▶';
+        if (!wasPlaying) {
+            playTimer = setTimeout(function () {
+                state.playing = null;
+                btn.classList.remove('playing');
+                btn.textContent = '▶';
+            }, 2500);
+        }
+    }
+
+    // Stripe Checkout can't carry a file through the redirect to its hosted page,
+    // so the photo is downscaled client-side and held in localStorage (which, unlike
+    // an in-memory blob: URL, survives the full-page navigation to Stripe and back)
+    // until the success page confirms payment and uploads it to the backend then.
+    function compressImageForUpload_(file, callback) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = new Image();
+            img.onload = function () {
+                var maxDim = 1600;
+                var scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+                var canvas = document.createElement('canvas');
+                canvas.width = Math.round(img.width * scale);
+                canvas.height = Math.round(img.height * scale);
+                canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+                callback(canvas.toDataURL('image/jpeg', 0.82));
+            };
+            img.onerror = function () { callback(null); };
+            img.src = e.target.result;
+        };
+        reader.onerror = function () { callback(null); };
+        reader.readAsDataURL(file);
+    }
+
+    function storePendingPhoto_(dataUrl, fileName) {
+        try {
+            localStorage.setItem(PENDING_PHOTO_KEY, JSON.stringify({ dataUrl: dataUrl, fileName: fileName }));
+        } catch (e) {
+            // Storage full or unavailable (private browsing, quota, etc.) — checkout still
+            // proceeds, the photo just won't be auto-attached to the order afterward.
+        }
+    }
+
+    function setUpload(file) {
+        if (!file || file.type.indexOf('image/') !== 0) return; // drag-and-drop bypasses the file input's accept filter, so re-check the type here
+        if (state.upload) URL.revokeObjectURL(state.upload);
+        state.upload = URL.createObjectURL(file);
+        uploadPreviewEl.innerHTML = '<img src="' + state.upload + '" alt="Uploaded face">';
+        dropMainEl.innerHTML = 'Photo added. Drop another to replace, or <span class="rc-drop-browse">browse</span>';
+        selectFace(1);
+        compressImageForUpload_(file, function (dataUrl) {
+            if (dataUrl) storePendingPhoto_(dataUrl, file.name);
+        });
+    }
+
+    function updateSummary() {
+        if (state.robot === null) return;
+        // Custom face costs +$1,000 only for Robert Junior; for Robert it is
+        // the only option and is included in the $79,000 base price.
+        var faceCost = (state.face === 1 && state.robot === 1) ? FACES[1].cost : 0;
+        var voiceCost = state.voice >= 0 ? VOICES[state.voice].cost : 0;
+        var total = ROBOTS[state.robot].price + faceCost + voiceCost;
+        var parts = [ROBOTS[state.robot].name];
+        if (state.face >= 0) parts.push(FACES[state.face].label);
+        if (state.voice >= 0) parts.push(VOICES[state.voice].label);
+        summaryEl.textContent = parts.join(' · ');
+        totalEl.textContent = formatUSD(total);
+    }
+
+    heroSelectEl.querySelectorAll('.rc-pick-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            selectRobot(parseInt(card.getAttribute('data-robot'), 10));
+        });
+    });
+
+    facesEl.querySelectorAll('.rc-option').forEach(function (opt) {
+        opt.addEventListener('click', function () {
+            var faceIdx = parseInt(opt.getAttribute('data-face'), 10);
+            if (state.robot === 0 && state.face === faceIdx) {
+                selectFace(-1);
+            } else {
+                selectFace(faceIdx);
+            }
+        });
+    });
+
+    voicesEl.querySelectorAll('[data-voice]').forEach(function (row) {
+        row.addEventListener('click', function () {
+            var voiceIdx = parseInt(row.getAttribute('data-voice'), 10);
+            if (state.robot === 0 && state.voice === voiceIdx) {
+                selectVoice(-1);
+            } else {
+                selectVoice(voiceIdx);
+            }
+        });
+    });
+
+    document.getElementById('rcPlay0').addEventListener('click', function (e) { e.stopPropagation(); togglePlay(0); });
+
+    voiceDescribeInputEl.addEventListener('input', function () {
+        state.voiceNote = voiceDescribeInputEl.value;
+    });
+
+    checkoutBtn.addEventListener('click', function () {
+        if (state.robot === null || checkoutBtn.disabled) return;
+        checkoutErrorEl.hidden = true;
+        checkoutBtn.disabled = true;
+        checkoutBtnLabel.textContent = 'Redirecting…';
+
+        fetch(GAS_EXEC_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                action: 'createTestCheckoutSession',
+                robot: state.robot,
+                face: state.face,
+                voice: state.voice,
+                voiceNote: state.voiceNote,
+                lang: 'en'
+            })
+        })
+            .then(function (res) { return res.json(); })
+            .then(function (result) {
+                if (result.ok && result.url) {
+                    window.location.href = result.url;
+                    return;
+                }
+                checkoutBtn.disabled = false;
+                checkoutBtnLabel.textContent = 'Checkout';
+                checkoutErrorEl.textContent = 'Something went wrong. Please try again.';
+                checkoutErrorEl.hidden = false;
+            })
+            .catch(function () {
+                checkoutBtn.disabled = false;
+                checkoutBtnLabel.textContent = 'Checkout';
+                checkoutErrorEl.textContent = 'Something went wrong. Please try again.';
+                checkoutErrorEl.hidden = false;
+            });
+    });
+
+    prevBtn.addEventListener('click', function () { var c = slideCount(); goToSlide((state.slide - 1 + c) % c); });
+    nextBtn.addEventListener('click', function () { var c = slideCount(); goToSlide((state.slide + 1) % c); });
+
+    // Touch swipe on hero image
+    (function () {
+        var frame = document.querySelector('.rc-hero-frame');
+        if (!frame) return;
+        var touchX = null, touchY = null, touchLocked = false;
+
+        frame.addEventListener('touchstart', function (e) {
+            touchX = e.touches[0].clientX;
+            touchY = e.touches[0].clientY;
+            touchLocked = false;
+        }, { passive: true });
+
+        frame.addEventListener('touchmove', function (e) {
+            if (touchX === null) return;
+            var dx = e.touches[0].clientX - touchX;
+            var dy = e.touches[0].clientY - touchY;
+            if (!touchLocked) {
+                touchLocked = Math.abs(dx) > Math.abs(dy);
+            }
+            if (touchLocked) e.preventDefault();
+        }, { passive: false });
+
+        frame.addEventListener('touchend', function (e) {
+            if (touchX === null) return;
+            var dx = e.changedTouches[0].clientX - touchX;
+            touchX = null;
+            touchY = null;
+            if (Math.abs(dx) > 40) {
+                var c = slideCount();
+                if (dx > 0) {
+                    goToSlide((state.slide - 1 + c) % c);
+                } else {
+                    goToSlide((state.slide + 1) % c);
+                }
+            }
+        });
+    })();
+
+    dropzoneEl.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.add('dragover');
+    });
+    dropzoneEl.addEventListener('dragleave', function () {
+        dropzoneEl.classList.remove('dragover');
+    });
+    dropzoneEl.addEventListener('drop', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.remove('dragover');
+        setUpload(e.dataTransfer.files[0]);
+    });
+    fileInputEl.addEventListener('change', function (e) {
+        setUpload(e.target.files && e.target.files[0]);
+    });
+
+    // The navbar is position:fixed and overlaps document content, so clear it with real top padding on the section instead of relying on a hardcoded value that drifts whenever the navbar's own height changes (longer translations wrapping to 2 lines, etc.)
+    function clearNavbar() {
+        var navbarEl = document.getElementById('navbar');
+        var navH = navbarEl ? navbarEl.offsetHeight : 0;
+        sectionEl.style.paddingTop = navH + 'px';
+    }
+    clearNavbar();
+    window.addEventListener('resize', clearNavbar);
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var robotParam = parseInt(urlParams.get('robot'), 10);
+    if (robotParam === 0) {
+        // Robert: nothing pre-selected
+        state.face = -1;
+        state.voice = -1;
+        applySelection(robotParam);
+    } else if (robotParam === 1) {
+        // Robert Junior: standard face and voice
+        selectFace(0);
+        selectVoice(0);
+        applySelection(robotParam);
+    } else {
+        selectFace(state.face);
+        selectVoice(state.voice);
+    }
+    if (robotParam === 0 || robotParam === 1) applySelection(robotParam);
+    if (urlParams.get('canceled') === 'true') {
+        document.getElementById('rcCanceledNote').hidden = false;
+    }
+})();
+</script>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">RB Labs</h4>
+                    <p class="footer-description">
+                        Pioneering the future of AI and robotics through advanced artificial intelligence and automation technologies.
+                    </p>
+                    <p class="footer-description" style="margin-top: 1rem;">
+                        Headquarters: Mountain View, CA / Geneva, Switzerland
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/career/">Careers</a></li>
+                        <li><a href="/news/">News</a></li>
+                        <li><a href="/book/">Rental Robert</a></li>
+                        <li><a href="/book-a-call/?scrollTo=calendly-section">Book a Call</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="/contact/">Contact</a></li>
+                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service/">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/roberttherobot" target="_blank" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/tag/roberttherobot" target="_blank" aria-label="TikTok">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RB Labs AG. All rights reserved. | Switzerland</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Transparent navbar only on pages with background video (home + rent)
+        (function() {
+            var navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            var hasVideo = document.body.getAttribute('data-page') === 'home';
+            if (hasVideo) {
+                function update() {
+                    if (window.pageYOffset > 50) {
+                        navbar.classList.add('scrolled');
+                        navbar.classList.remove('navbar-transparent');
+                    } else {
+                        navbar.classList.add('navbar-transparent');
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            }
+        })();
+    </script>
+    <script>
+        // Slow, custom-duration scroll to a section requested via ?scrollTo=<id>
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            var targetId = params.get('scrollTo');
+            if (!targetId) return;
+
+            function easeInOutSine(t) {
+                return -(Math.cos(Math.PI * t) - 1) / 2;
+            }
+
+            function scrollToTarget() {
+                var target = document.getElementById(targetId);
+                if (!target) return;
+                var startY = window.pageYOffset;
+                var marginTop = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+                var targetY = target.getBoundingClientRect().top + startY - marginTop;
+                var distance = targetY - startY;
+                var duration = 500;
+                var startTime = null;
+
+                // The site sets html { scroll-behavior: smooth } globally, which would
+                // otherwise smooth-animate each of our per-frame scrollTo() calls on top
+                // of our own easing, fighting it and producing a stall-then-jump effect.
+                // Override it to 'auto' for the duration of this animation so our manual
+                // easing has full control, then restore it.
+                var htmlEl = document.documentElement;
+                var previousScrollBehavior = htmlEl.style.scrollBehavior;
+                htmlEl.style.scrollBehavior = 'auto';
+
+                function step(timestamp) {
+                    if (startTime === null) startTime = timestamp;
+                    var elapsed = timestamp - startTime;
+                    var progress = Math.min(elapsed / duration, 1);
+                    window.scrollTo(0, startY + distance * easeInOutSine(progress));
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        htmlEl.style.scrollBehavior = previousScrollBehavior;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
+            window.addEventListener('load', function() {
+                setTimeout(scrollToTarget, 150);
+            });
+        })();
+    </script>
+</body>
+</html>

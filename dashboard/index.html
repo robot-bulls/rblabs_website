@@ -608,6 +608,31 @@
         color: #fff;
       }
 
+      /* ===================== Account view ===================== */
+      .account-session {
+        margin: 0 0 12px;
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      /* ===================== Sales view ===================== */
+      .sale-row {
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .sale-main {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+        flex: 1;
+      }
+      .sale-amount {
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
       /* ===================== Toolbar (Requests view) ===================== */
       .toolbar {
         display: flex;
@@ -1346,6 +1371,22 @@
               </span>
               <span class="nav-label">Career</span>
             </button>
+            <button class="nav-item" data-view="sales" id="navSales">
+              <span class="nav-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.83z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                </svg>
+              </span>
+              <span class="nav-label">Sales</span>
+            </button>
             <button class="nav-item" data-view="team" id="navTeam" hidden>
               <span class="nav-icon">
                 <svg
@@ -1388,7 +1429,6 @@
 
           <div class="nav-footer">
             <span class="who" id="whoami"></span>
-            <button class="btn-ghost btn-sm" id="logoutBtn">Log out</button>
           </div>
         </nav>
 
@@ -1437,6 +1477,21 @@
             </div>
 
             <div class="list" id="list"></div>
+          </section>
+
+          <!-- ===================== Sales view ===================== -->
+          <section class="view" id="viewSales" hidden>
+            <div class="view-header">
+              <div>
+                <h2>Sales</h2>
+                <p class="view-subtitle">
+                  Robot orders from the /robot checkout.
+                </p>
+              </div>
+              <button class="btn-ghost btn-sm" id="salesRefreshBtn">Refresh</button>
+            </div>
+
+            <div class="list" id="salesList"></div>
           </section>
 
           <!-- ===================== Team view (admin only) ===================== -->
@@ -1567,6 +1622,13 @@
               </form>
               <div class="error-text" id="changePasswordMessage"></div>
             </div>
+
+            <div class="panel-card">
+              <p class="account-session">
+                Signed in as <strong id="accountWhoami"></strong>
+              </p>
+              <button class="btn-ghost btn-sm" id="logoutBtn">Log out</button>
+            </div>
           </section>
         </main>
       </div>
@@ -1623,9 +1685,10 @@
         { value: "RB Labs Contact Page", label: "Contact" },
         { value: "RB Labs Book Page", label: "Book a Call" },
         { value: "RB Labs Robot Order Page", label: "Robot Order" },
-        { value: "Robert Booking Request", label: "Robert Booking" },
-        { value: "RB Labs Inquiries Page", label: "Inquiries" },
-      ];
+  { value: "Robert Booking Request", label: "Robert Booking" },
+  { value: "RB Labs Inquiries Page", label: "Inquiries" },
+  { value: "Sales", label: "Sales" },
+];
 
       function sourceLabel(value) {
         var found = SOURCE_OPTIONS.filter(function (o) {
@@ -1818,8 +1881,8 @@
 
       // ---------- View navigation ----------
       // Career reuses the Requests section/list with a source filter instead of its own section — see currentView.
-      var VIEWS = ["requests", "team", "account"];
-      var NAV_ITEMS = ["requests", "career", "team", "account"];
+  var VIEWS = ["requests", "sales", "team", "account"];
+  var NAV_ITEMS = ["requests", "career", "sales", "team", "account"];
       var currentView = "requests"; // "requests" (excludes Career) or "career" (only Career)
       function viewSectionId(name) {
         return "view" + name.charAt(0).toUpperCase() + name.slice(1);
@@ -1839,6 +1902,7 @@
           if (navItem) navItem.classList.toggle("active", v === name);
         });
         if (name === "team") loadUserList();
+  if (name === "sales") loadSales();
         if (name === "requests" || name === "career") {
           currentView = name;
           document.getElementById("sourceFilterDropdown").hidden =
@@ -1849,11 +1913,75 @@
           render();
         }
       }
-      document.querySelectorAll(".nav-item").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          showView(btn.dataset.view);
-        });
-      });
+document.querySelectorAll(".nav-item").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    showView(btn.dataset.view);
+  });
+});
+document.getElementById("salesRefreshBtn").addEventListener("click", loadSales);
+
+// ---------- Sales view (robot orders, read-only) ----------
+function loadSales() {
+  document.getElementById("salesList").innerHTML =
+    '<div class="empty">Loading…</div>';
+  callApi("getOrders", { token: TOKEN })
+    .then(function (data) {
+      renderSales(data.orders || []);
+    })
+    .catch(function (err) {
+      document.getElementById("salesList").innerHTML =
+        '<div class="empty">' + escapeHtml(err.message) + "</div>";
+    });
+}
+
+function renderSales(orders) {
+  var listEl = document.getElementById("salesList");
+  if (!orders.length) {
+    listEl.innerHTML = '<div class="empty">Nothing here.</div>';
+    return;
+  }
+  listEl.innerHTML = orders
+    .map(function (o) {
+      var paid = o.paymentStatus === "paid";
+      var config = [o.robot, o.face, o.voice].filter(Boolean).join(" · ");
+      var amount =
+        (o.currency || "USD") === "USD"
+          ? "$" + Number(o.amount || 0).toLocaleString("en-US")
+          : o.amount + " " + (o.currency || "");
+      var meta = [o.email, o.voiceNote ? 'voice: "' + o.voiceNote + '"' : ""]
+        .filter(Boolean)
+        .join(" · ");
+      return (
+        '<div class="user-row sale-row">' +
+        '<div class="sale-main">' +
+        '<span class="user-name">' +
+        escapeHtml(config) +
+        "</span>" +
+        '<span class="scope-note">' +
+        escapeHtml(meta) +
+        "</span>" +
+        "</div>" +
+        '<span class="badge ' +
+        (paid ? "status-treated" : "status-new") +
+        '">' +
+        escapeHtml(o.paymentStatus || "unknown") +
+        "</span>" +
+        '<span class="sale-amount">' +
+        escapeHtml(amount) +
+        "</span>" +
+        (o.photoUrl
+          ? '<a class="btn-ghost btn-sm" href="' +
+            escapeHtml(o.photoUrl) +
+            '" target="_blank" rel="noopener">Photo</a>'
+          : "") +
+        '<span class="row-date">' +
+        escapeHtml(formatDate(o.date)) +
+        "</span>" +
+        "</div>"
+      );
+    })
+    .join("");
+}
 
       // ---------- Login ----------
       document
@@ -1946,6 +2074,8 @@
         document.getElementById("resumeLoading").classList.remove("visible");
         document.getElementById("dashboardScreen").style.display = "block";
         document.getElementById("whoami").textContent =
+          ME + (ME_ROLE === "admin" ? " (admin)" : "");
+        document.getElementById("accountWhoami").textContent =
           ME + (ME_ROLE === "admin" ? " (admin)" : "");
         document.getElementById("addUserBtn").hidden = ME_ROLE !== "admin";
         document.getElementById("navTeam").hidden = ME_ROLE !== "admin";

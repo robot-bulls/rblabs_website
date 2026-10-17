@@ -11,10 +11,10 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Konfigurieren und bestellen Sie Ihren maßgeschneiderten KI-gesteuerten Roboter-Mitarbeiter von RB Labs. Ab 50.000 USD.">
+    <meta name="description" content="Konfigurieren und bestellen Sie Ihren maßgeschneiderten KI-gesteuerten Roboter-Mitarbeiter von RB Labs. Ab 79.000 USD.">
     <meta name="keywords" content="RB Labs, Robotik, KI-Integration, Automatisierung, Humanoide Roboter, Unternehmens-KI, Robotiklösungen">
     <meta property="og:title" content="Bauen Sie Ihren eigenen Roboter-Mitarbeiter - RB Labs">
-    <meta property="og:description" content="Konfigurieren und bestellen Sie Ihren maßgeschneiderten KI-gesteuerten Roboter-Mitarbeiter von RB Labs. Ab 50.000 USD.">
+    <meta property="og:description" content="Konfigurieren und bestellen Sie Ihren maßgeschneiderten KI-gesteuerten Roboter-Mitarbeiter von RB Labs. Ab 79.000 USD.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.rblabs.ai/de/robot/">
     <title>Bauen Sie Ihren eigenen Roboter-Mitarbeiter - RB Labs</title>
@@ -255,11 +255,16 @@
         }
     </style>
 
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" fetchpriority="high" href="/featured/robot/robert/robert-1.jpg">
+<link rel="preload" as="image" fetchpriority="high" href="/featured/robot/robertJr/robertjr-1.jpg">
+
     
 
 </head>
-<body data-page="home">
+<body>
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
@@ -273,7 +278,7 @@
                     <a href="/de/news/" class="nav-link">Nachrichten</a>
                     <a href="/de/book/" class="nav-link">
                         <span class="nav-desktop-text">Book</span>
-                        <span class="nav-mobile-text">Robert buchen</span>
+                        <span class="nav-mobile-text">Robotervermietung</span>
                     </a>
                     <a href="/de/robot/" class="nav-link nav-mobile-only">Eigener Roboter</a>
                     <div class="nav-lang-dropdown">
@@ -470,621 +475,595 @@
     })();
     </script>
 
-    <!-- Product Hero -->
-<section class="product-hero">
-    <div class="hero-background">
-        <video
-            id="robot-hero-video"
-            class="hero-video"
-            autoplay muted playsinline loop
-            preload="metadata"
-        ></video>
-        <script>
-            (function() {
-                var v = document.getElementById('robot-hero-video');
-                var srcMobile     = '../../featured/buy-robot-mobile.mp4';
-                var srcDesktop    = '../../featured/buy-robot.mp4';
-                var posterMobile  = '../../featured/buy-robot-mobile-poster.jpg';
-                var posterDesktop = '../../featured/buy-robot-poster.jpg';
-                var current = null;
-
-                function loadVideo() {
-                    var isMobile = window.innerWidth <= 768;
-                    var target = isMobile ? 'mobile' : 'desktop';
-                    if (target === current) return;
-                    current = target;
-                    v.poster = isMobile ? posterMobile : posterDesktop;
-                    v.src    = isMobile ? srcMobile    : srcDesktop;
-                    v.load();
-                }
-
-                loadVideo();
-
-                var resizeTimer;
-                window.addEventListener('resize', function() {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(loadVideo, 200);
-                });
-            })();
-        </script>
-    </div>
-    <div class="product-hero-content">
-        <div class="hero-title">
-            <span class="hero-welcome">Erstellen Sie Ihr eigenes</span>
-            <span class="hero-brand">Roboter-Mitarbeiter</span>
-        </div>
-        <p class="hero-description">
-            Konfigurieren Sie Ihren benutzerdefinierten, KI-gestützten humanoiden Roboter mit der Persönlichkeit, den Fähigkeiten und dem Wissen, das Ihr Unternehmen benötigt.
-        </p>
-        <div class="hero-cta">
-            <a href="#contact-form" class="btn btn-primary btn-large btn-minimal">
-                <span>Konfigurieren Sie Ihren Roboter</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
+    <!-- Robot Configurator -->
+<section class="rc-section">
+    <div class="rc-pick" id="rcHeroSelect">
+        <p class="rc-canceled-note" id="rcCanceledNote" hidden>Zahlung abgebrochen. Sie können Ihren Roboter jederzeit erneut auswählen.</p>
+        <header class="rc-pick-header">
+            <h1 class="rc-title">Wähle deinen Roboter</h1>
+        </header>
+        <div class="rc-pick-grid">
+            <button type="button" class="rc-pick-card" data-robot="0">
+                <img src="../../featured/robot/robert/robert-1.jpg" alt="Custom Robert" fetchpriority="high" decoding="async">
+                <span class="rc-pick-badge" id="rcHeroCta0"></span>
+                <span class="rc-pick-info">
+                    <span class="rc-pick-name">Custom Robert</span>
+                    <span class="rc-pick-price">ab $79.000</span>
+                </span>
+            </button>
+            <button type="button" class="rc-pick-card" data-robot="1">
+                <img src="../../featured/robot/robertJr/robertjr-1.jpg" alt="Robert Junior" fetchpriority="high" decoding="async">
+                <span class="rc-pick-badge" id="rcHeroCta1"></span>
+                <span class="rc-pick-info">
+                    <span class="rc-pick-name">Robert Junior</span>
+                    <span class="rc-pick-price">ab $13.000</span>
+                </span>
+            </button>
         </div>
     </div>
-</section>
 
-<!-- Sticky Product Section -->
-<section class="product-showcase" id="personalities">
-    <div class="product-container">
-        <!-- Sticky Robot Visual -->
-        <div class="product-visual">
-            <div class="robot-display">
-                <video
-                    muted
-                    playsinline
-                    webkit-playsinline
-                    x-webkit-airplay="allow"
-                    class="robot-video"
-                    id="robotVideo"
-                    poster="../../featured/your-rb-labs-robot_mobile.webp"
-                    preload="auto"
-                >
-                    <!-- Mobile/tablet video loads for screens <= 1024px -->
-                    <source src="../../featured/your-rb-labs-robot_mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
-                    <!-- Desktop video loads for screens > 1024px -->
-                    <source src="../../featured/your-rb-labs-robot.mp4" type="video/mp4">
-                    <img src="../../featured/your-rb-labs-robot_mobile.webp" alt="Your Custom Robot Employee RB Labs">
-                </video>
-                <div class="robot-personality-badge" id="personalityBadge">
-                    <span class="badge-icon"><i class="fas fa-robot"></i></span>
-                    <span class="badge-text">KI-POWERED ROBOTER</span>
+    <div class="rc-config-wrap" id="rcConfigWrap" hidden>
+    <div class="rc-shell" id="rcConfigRef">
+        <div class="rc-main">
+            <div class="rc-gallery">
+                <div class="rc-hero-frame">
+                    <div class="rc-hero-img" id="rcHeroImg"><i class="fas fa-image"></i></div>
+                    <button type="button" class="rc-nav-btn rc-nav-prev" id="rcPrev" aria-label="Previous">‹</button>
+                    <button type="button" class="rc-nav-btn rc-nav-next" id="rcNext" aria-label="Next">›</button>
                 </div>
-                <div class="pip-controls">
-                    <button class="pip-btn" id="pipMinimize" title="Minimize">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button class="pip-btn" id="pipExpand" title="Expand">
-                        <i class="fas fa-expand"></i>
-                    </button>
-                    <button class="pip-btn" id="pipClose" title="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
+                <div class="rc-dots" id="rcDots"></div>
+                <div class="rc-thumbs" id="rcThumbs"></div>
+            </div>
+
+            <div class="rc-config">
+                <section class="rc-step">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">01</span>
+                        <h2>Wähle dein Gesicht.</h2>
+                        <span class="rc-step-sub">Gestalte es genau nach deinen Wünschen.</span>
+                    </div>
+                    <div class="rc-options" id="rcFaces">
+                        <button type="button" class="rc-option" data-face="0" id="rcFaceStandard">
+                            <span class="rc-option-photo"><img id="rcFaceStandardImg" src="../../featured/robot/robert/robert-1.jpg" alt=""></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Standardgesicht</span>
+                                <span class="rc-option-price">Inklusive</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </button>
+                        <button type="button" class="rc-option" data-face="1" id="rcFaceCustom">
+                            <span class="rc-option-photo"><i class="fas fa-user-edit"></i></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Individuelles Gesicht</span>
+                                <span class="rc-option-price">+$1.000</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="rc-step rc-upload-step" id="rcUploadStep">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">02</span>
+                        <h2>Lade das gewünschte Gesicht hoch.</h2>
+                    </div>
+                    <label class="rc-dropzone" id="rcDropzone">
+                        <input type="file" accept="image/*" id="rcFileInput" style="display:none">
+                        <span class="rc-drop-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M4 14v5h16v-5"></path></svg>
+                        </span>
+                        <span class="rc-drop-text">
+                            <span class="rc-drop-main" id="rcDropMain">Foto hierher ziehen und ablegen, oder <span class="rc-drop-browse">durchsuchen</span></span>
+                            <span class="rc-drop-hint">JPG oder PNG, frontal, klare Beleuchtung</span>
+                        </span>
+                        <span class="rc-drop-preview" id="rcUploadPreview"><i class="fas fa-user"></i></span>
+                    </label>
+                </section>
+
+                <section class="rc-step">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">03</span>
+                        <h2>Wähle deinen Sprachassistenten.</h2>
+                        <span class="rc-step-sub">Gib deinem Roboter eine Stimme.</span>
+                    </div>
+                    <div class="rc-options" id="rcVoices">
+                        <div class="rc-option" data-voice="0" id="rcVoiceStandard">
+                            <span class="rc-option-play-wrap">
+                                <button type="button" class="rc-option-play" id="rcPlay0" aria-label="Play sample">▶</button>
+                            </span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Standardstimme</span>
+                                <span class="rc-option-price">Inklusive</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </div>
+                        <div class="rc-option" data-voice="1" id="rcVoiceCustom">
+                            <span class="rc-option-icon"><i class="fas fa-microphone"></i></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Individueller Stimmenklon</span>
+                                <span class="rc-option-price">Inklusive</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </div>
+                    </div>
+                    <p class="rc-voice-locked-note" id="rcVoiceLockedNote">Verfügbar, sobald Sie ein individuelles Gesicht auswählen.</p>
+                    <div class="rc-voice-describe" id="rcVoiceDescribeWrap">
+                        <label class="rc-voice-describe-label" for="rcVoiceDescription">Beschreiben Sie die gewünschte Stimme</label>
+                        <textarea class="rc-voice-describe-input" id="rcVoiceDescription" rows="3" maxlength="500" placeholder="z. B. tief und ruhig, warm und freundlich, ein bestimmter Akzent …"></textarea>
+                    </div>
+                </section>
             </div>
         </div>
+    </div>
 
-        <!-- Scrolling Content -->
-        <div class="product-content">
-            <!-- Introduction -->
-            <div class="content-section" data-personality="intro">
-                <div class="section-inner">
-                    <span class="section-label">LERNEN SIE ROBERT KENNEN</span>
-                    <h2>Ihr KI-gestützter Geschäftspartner</h2>
-                    <p class="lead-text">
-                        Robert ist nicht nur ein Roboter – er ist ein vollständig anpassbarer KI-Mitarbeiter, der nahtlos in Ihre Geschäftsabläufe integriert werden kann.
-                    </p>
-                    <div class="feature-grid">
-                        <div class="feature-item">
-                            <i class="fas fa-palette"></i>
-                            <h4>White-Label-Lösung</h4>
-                            <p>Vollständig mit der Identität und Stimme Ihres Unternehmens gebrandet</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-database"></i>
-                            <h4>Auf Ihren Daten trainieren</h4>
-                            <p>Importieren Sie Ihre Wissensdatenbank, Dokumente und Prozesse</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-plug"></i>
-                            <h4>Nahtlose Integration</h4>
-                            <p>Verbindet sich mit Ihrem bestehenden CRM, ERP und Tools</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <h4>Umfassende Analytik</h4>
-                            <p>Verfolgen Sie Leistung, ROI und Kundenzufriedenheit</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Manufacturing Robot -->
-            <div class="content-section personality-section" data-personality="manufacturing">
-                <div class="section-inner">
-                    <span class="section-label">HERSTELLUNG</span>
-                    <h2>Produktion &amp; Montage</h2>
-                    <p class="lead-text">
-                        Setzen Sie einen Robotermitarbeiter ein, der zum dedizierten Produktionsexperten Ihrer Einrichtung wird, geschult auf Ihre spezifischen Prozesse, Qualitätsanforderungen und Betriebsabläufe.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Produktionsoptimierung</h4>
-                                <p>Echtzeitüberwachung der Produktionslinie und Effizienzanalyse</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Qualitätskontrolle</h4>
-                                <p>Automatisierte Inspektions- und Fehlererkennungssysteme</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Sicherheitskonformität</h4>
-                                <p>Bleiben Sie automatisch konform mit Sicherheitsvorschriften</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Prädiktive Wartung</h4>
-                                <p>Verhindern Sie Ausfallzeiten mit KI-gestützter Geräteüberwachung</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stats-row">
-                        <div class="stat">
-                            <span class="stat-value">90%</span>
-                            <span class="stat-label">Genauigkeitsrate</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">0.3s</span>
-                            <span class="stat-label">Reaktionszeit</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">24/7</span>
-                            <span class="stat-label">Verfügbarkeit</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Real Estate Agent -->
-            <div class="content-section personality-section" data-personality="realestate">
-                <div class="section-inner">
-                    <span class="section-label">IMMOBILIEN</span>
-                    <h2>Eigentum &amp; Verkauf</h2>
-                    <p class="lead-text">
-                        Erstellen Sie einen KI-Agenten, der auf Ihrem Immobilienportfolio, lokalen Marktdaten und Verkaufsprozessen trainiert ist, um Anfragen zu bearbeiten und Leads rund um die Uhr zu qualifizieren.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Immobilienabgleich</h4>
-                                <p>KI-gestützter Abgleich von Käufern mit perfekten Immobilien</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Virtuelle Besichtigungen</h4>
-                                <p>Führen Sie Kunden durch Immobilien mit detaillierten Beschreibungen</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Marktanalyse</h4>
-                                <p>Sofortige Immobilienbewertungen und Einblicke in die Nachbarschaft</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Lead-Qualifizierung</h4>
-                                <p>Automatische Qualifizierung und Pflege potenzieller Käufer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <p>&quot;Robert hat unsere Lead-Konversionsrate um 45 % erhöht und bearbeitet 80 % der ersten Anfragen automatisch.&quot;</p>
-                        <cite>- Sarah Chen, Immobilienmaklerin</cite>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sales Agent -->
-            <div class="content-section personality-section" data-personality="sales">
-                <div class="section-inner">
-                    <span class="section-label">VERKAUF</span>
-                    <h2>Geschäftsentwicklung</h2>
-                    <p class="lead-text">
-                        Bauen Sie eine KI-Vertriebsmannschaft auf, die Ihre Produkte in- und auswendig kennt, Ihrer Verkaufsmethodik folgt und unbegrenzt mit der Nachfrage skaliert.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Lead-Generierung</h4>
-                                <p>Identifizieren und engagieren Sie automatisch hochwertige Interessenten</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Produktwissen</h4>
-                                <p>Tiefes Verständnis Ihres gesamten Produktkatalogs</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Einwandsbehandlung</h4>
-                                <p>Ausgereifte Antworten auf gängige Verkaufswidersprüche</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>CRM-Integration</h4>
-                                <p>Nahtlose Integration mit Ihren bestehenden Vertriebstools</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="performance-metrics">
-                        <h4>Leistungskennzahlen</h4>
-                        <div class="metrics-grid">
-                            <div class="metric">
-                                <span class="metric-value">3x</span>
-                                <span class="metric-label">Mehr bearbeitete Leads</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">65%</span>
-                                <span class="metric-label">Steigerung der Konversionsrate</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">$2M+</span>
-                                <span class="metric-label">Generierter Umsatz</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Legal Assistant -->
-            <div class="content-section personality-section" data-personality="legal">
-                <div class="section-inner">
-                    <span class="section-label">RECHTLICH</span>
-                    <h2>Rechtsdienstleistungen</h2>
-                    <p class="lead-text">
-                        Setzen Sie einen KI-Assistenten ein, der auf den Präzedenzfällen, der Fallhistorie und den rechtlichen Rahmenbedingungen Ihrer Kanzlei trainiert wurde, um die Recherche und die Mandanteneingabe zu optimieren.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Dokumentenanalysen</h4>
-                                <p>Überprüfen Sie Verträge und rechtliche Dokumente in Sekunden</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Rechtsrecherche</h4>
-                                <p>Zugriff auf umfangreiche Datenbanken mit Rechtsprechung und Präzedenzfällen</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Mandanteneingabe</h4>
-                                <p>Optimieren Sie die ersten Beratungen und die Datensammlung</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Compliance-Überwachung</h4>
-                                <p>Bleiben Sie über sich ändernde Vorschriften informiert</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="security-note">
-                        <i class="fas fa-lock"></i>
-                        <p>Sicherheit auf Unternehmensniveau gewährleistet die Vertraulichkeit der Mandanten und den Schutz des Anwalts-Mandanten-Privilegs</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Teacher -->
-            <div class="content-section personality-section" data-personality="teacher">
-                <div class="section-inner">
-                    <span class="section-label">BILDUNG</span>
-                    <h2>Lehre &amp; Ausbildung</h2>
-                    <p class="lead-text">
-                        Erstellen Sie einen KI-Tutor, der auf Ihrem Lehrplan, Ihren Lehrmethoden und Bildungsinhalten trainiert wurde, um personalisiertes Lernen in großem Maßstab zu bieten.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Personalisierte Lernmethoden</h4>
-                                <p>Passen Sie den Lehrstil an die Bedürfnisse jedes Schülers an</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Interaktive Lektionen</h4>
-                                <p>Binden Sie die Schüler mit dynamischen Frage-Antwort-Sitzungen ein</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Fortschrittsverfolgung</h4>
-                                <p>Überwachen und Berichten über die Schülerleistungen</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Fächerübergreifende Expertise</h4>
-                                <p>Unterrichten Sie in verschiedenen Fächern und auf unterschiedlichen Niveaus</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="education-stats">
-                        <div class="edu-stat">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Über 10.000 unterrichtete Schüler</span>
-                        </div>
-                        <div class="edu-stat">
-                            <i class="fas fa-star"></i>
-                            <span>4,9/5 Schülerbewertung</span>
-                        </div>
-                        <div class="edu-stat">
-                            <i class="fas fa-language"></i>
-                            <span>Über 50 unterstützte Sprachen</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pricing Section -->
-            <div class="content-section" data-personality="pricing">
-                <div class="section-inner">
-                    <span class="section-label">PREISE</span>
-                    <h2>Investitionen &amp; Pläne</h2>
-                    <div class="pricing-container">
-                        <div class="pricing-main">
-                            <div class="price-display">
-                                <span class="price-starting">Ab</span>
-                                <span class="price-amount">$50,000</span>
-                                <span class="price-period">USD</span>
-                            </div>
-                            <div class="whats-included">
-                                <h3>Was ist enthalten</h3>
-                                <ul class="included-list">
-                                    <li><i class="fas fa-check"></i> Komplette KI-Systemeinrichtung</li>
-                                    <li><i class="fas fa-check"></i> 5 Stunden Batterielebensdauer</li>
-                                    <li><i class="fas fa-check"></i> 3 Persönlichkeitskonfigurationen</li>
-                                    <li><i class="fas fa-check"></i> 1 Jahr Unterstützung &amp; Updates</li>
-                                    <li><i class="fas fa-check"></i> Schulung für Ihr Team</li>
-                                    <li><i class="fas fa-check"></i> API-Zugriff &amp; Integrationen</li>
-                                    <li><i class="fas fa-check"></i> Benutzerdefinierte Branding-Optionen</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pricing-addons">
-                            <h3>Zusätzliche Optionen</h3>
-                            <div class="addon-item">
-                                <span class="addon-name">Zusätzliche Handgeschicklichkeit</span>
-                                <span class="addon-price">$20.000</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Vor-Ort-Bereitstellung</span>
-                                <span class="addon-price">$25.000</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Premium-Support</span>
-                                <span class="addon-price">Kontakt für Angebot</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Gehender Roboter</span>
-                                <span class="addon-price">Kontakt für Angebot</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form Section -->
-            <div class="content-section contact-section" id="contact-form">
-                <div class="section-inner">
-                    <span class="section-label">STARTEN</span>
-                    <h2>Anfrage für ein individuelles Angebot</h2>
-                    <p class="lead-text">
-                        Erzählen Sie uns von Ihrem Unternehmen und wir gestalten den perfekten Roboter-Mitarbeiter für Ihre Bedürfnisse.
-                    </p>
-
-                    <form class="contact-form" id="robotContactForm">
-                        <div class="form-section">
-                            <h3>Unternehmensinformationen</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="company">Firmenname *</label>
-                                    <input type="text" id="company" name="company" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="industry">Branche *</label>
-                                    <select id="industry" name="industry" required>
-                                        <option value="">Branche auswählen</option>
-                                        <option value="manufacturing">Fertigung</option>
-                                        <option value="logistics">Logistik &amp; Lagerhaltung</option>
-                                        <option value="automotive">Automobil</option>
-                                        <option value="aerospace">Luft- und Raumfahrt &amp; Verteidigung</option>
-                                        <option value="healthcare">Gesundheitswesen</option>
-                                        <option value="retail">Einzelhandel &amp; E-Commerce</option>
-                                        <option value="technology">Technologie</option>
-                                        <option value="other">Sonstiges</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="size">Unternehmensgröße</label>
-                                    <select id="size" name="size">
-                                        <option value="">Größe auswählen</option>
-                                        <option value="1-10">1-10 Mitarbeiter</option>
-                                        <option value="11-50">11-50 Mitarbeiter</option>
-                                        <option value="51-200">51-200 Mitarbeiter</option>
-                                        <option value="201-1000">201-1000 Mitarbeiter</option>
-                                        <option value="1000+">1000+ Mitarbeiter</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Kontaktdaten</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="name">Vollständiger Name *</label>
-                                    <input type="text" id="name" name="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Geschäftliche E-Mail *</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Telefonnummer</label>
-                                    <input type="tel" id="phone" name="phone">
-                                </div>
-                                <div class="form-group">
-                                    <label for="country">Land/Region *</label>
-                                    <input type="text" id="country" name="country" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Ihr Interesse</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="usecase">Hauptanwendungsfall *</label>
-                                    <select id="usecase" name="usecase" required>
-                                        <option value="">Anwendungsfall auswählen</option>
-                                        <option value="manufacturing">Produktion &amp; Montage</option>
-                                        <option value="logistics">Logistik &amp; Fulfillment</option>
-                                        <option value="quality">Qualitätskontrolle</option>
-                                        <option value="maintenance">Vorausschauende Wartung</option>
-                                        <option value="warehouse">Lagerautomatisierung</option>
-                                        <option value="customer-service">Kundenservice</option>
-                                        <option value="other">Sonstiges (unten angeben)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="timeline">Implementierungszeitrahmen</label>
-                                    <select id="timeline" name="timeline">
-                                        <option value="">Zeitrahmen auswählen</option>
-                                        <option value="immediate">Sofort (&lt; 1 Monat)</option>
-                                        <option value="1-3months">1-3 Monate</option>
-                                        <option value="3-6months">3-6 Monate</option>
-                                        <option value="6-12months">6-12 Monate</option>
-                                        <option value="planning">Nur Planung</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="personalities">Anzahl benötigter Persönlichkeiten</label>
-                                    <select id="personalities" name="personalities">
-                                        <option value="">Anzahl auswählen</option>
-                                        <option value="1">1 Persönlichkeit</option>
-                                        <option value="2-3">2-3 Persönlichkeiten</option>
-                                        <option value="4-5">4-5 Persönlichkeiten</option>
-                                        <option value="5+">5+ Persönlichkeiten</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="budget">Budgetrahmen</label>
-                                    <select id="budget" name="budget">
-                                        <option value="">Budget auswählen</option>
-                                        <option value="50-100k">50.000 $ - 100.000 $</option>
-                                        <option value="100-250k">100.000 $ - 250.000 $</option>
-                                        <option value="250-500k">250.000 CHF - 500.000 CHF</option>
-                                        <option value="500k+">500.000 CHF+</option>
-                                        <option value="custom">Angebot anfordern</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <div class="form-group full-width">
-                                <label for="message">Teilen Sie uns Ihre Vision mit</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Teilen Sie Ihre Ziele und wie Sie sich vorstellen, dass Robert Ihrem Unternehmen hilft..." maxlength="2000"></textarea>
-                                <div class="char-counter" id="messageCounter">0 / 2000</div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Bevorzugte Kontaktmethode</h3>
-                            <div class="contact-preferences">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="video-call">
-                                    <span>Videoanruf planen</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="phone">
-                                    <span>Telefonberatung</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="email">
-                                    <span>E-Mail-Korrespondenz</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="in-person">
-                                    <span>Persönliches Treffen (Mountain View / Genf)</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-submit">
-                            <button type="submit" class="btn btn-primary btn-large">
-                                Erhalten Sie Ihr individuelles Angebot
-                            </button>
-                            <div class="form-trust">
-                                <p><i class="fas fa-lock"></i> Ihre Informationen sind verschlüsselt und sicher</p>
-                                <p><i class="fas fa-clock"></i> Antwort innerhalb von 24 Stunden</p>
-                                <p><i class="fas fa-shield-alt"></i> Kein Spam, niemals</p>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+    <div class="rc-orderbar">
+        <div class="rc-order-summary">
+            <span class="rc-order-label">Deine Bestellung</span>
+            <span class="rc-order-text" id="rcSummary"></span>
         </div>
+        <div class="rc-total">
+            <span class="rc-total-amount" id="rcTotal"></span>
+            <span class="rc-total-currency">USD</span>
+        </div>
+        <div class="rc-checkout-wrap">
+            <button type="button" class="rc-checkout-btn" id="rcCheckout">
+                <span class="rc-checkout-btn-label">Zur Kasse</span><span>→</span>
+            </button>
+            <span class="rc-secure">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M6 10V7a6 6 0 0112 0v3h1v12H5V10zm2 0h8V7a4 4 0 00-8 0z"></path></svg>
+                Sichere Zahlung
+            </span>
+            <span class="rc-checkout-error" id="rcCheckoutError" hidden></span>
+        </div>
+    </div>
     </div>
 </section>
 
 <script>
-    (function () {
-        var textarea = document.getElementById('message');
-        var counter = document.getElementById('messageCounter');
-        if (!textarea || !counter) return;
+(function () {
+    var ROBOTS = [
+        { name: 'Robert', price: 79000, photos: [
+            '../../featured/robot/robert/robert-1.jpg',
+            '../../featured/robot/robert/robert-2.jpg',
+            '../../featured/robot/robert/robert-3.jpg',
+            '../../featured/robot/robert/robert-4.jpg',
+            '../../featured/robot/robert/robert-5.jpg'
+        ] },
+        { name: 'Robert Junior', price: 13000, photos: [
+            '../../featured/robot/robertJr/robertjr-1.jpg',
+            '../../featured/robot/robertJr/robertjr-2.jpg',
+            '../../featured/robot/robertJr/robertjr-3.jpg',
+            '../../featured/robot/robertJr/robertjr-4.jpg',
+            '../../featured/robot/robertJr/robertjr-5.jpg',
+            '../../featured/robot/robertJr/robertjr-6.jpg',
+            '../../featured/robot/robertJr/robertjr-7.jpg'
+        ] }
+    ];
+    var FACES = [
+        { label: 'Standardgesicht', cost: 0 },
+        { label: 'Individuelles Gesicht', cost: 1000 } // Junior only — for Robert custom is included in the base price
+    ];
+    var CUSTOM_FACE_PRICE_LABELS = {
+        included: 'Inklusive',
+        plus: '+$1.000'
+    };
+    var VOICES = [
+        { label: 'Standardstimme', cost: 0 },
+        { label: 'Individueller Stimmenklon', cost: 0 }
+    ];
+    var PLACEHOLDER_SLIDE_COUNT = 5;
+    var GAS_EXEC_URL = 'https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec';
+    var PENDING_PHOTO_KEY = 'rc_pending_photo';
 
-        function updateCounter() {
-            counter.textContent = textarea.value.length + ' / 2000';
+    var state = { robot: null, slide: 0, face: 0, voice: 0, upload: null, voiceNote: '', playing: null };
+    var playTimer = null;
+
+    function currentPhotos() {
+        if (state.robot === null) return [];
+        return ROBOTS[state.robot].photos || [];
+    }
+
+    function slideCount() {
+        var photos = currentPhotos();
+        return photos.length || PLACEHOLDER_SLIDE_COUNT;
+    }
+
+    var sectionEl = document.querySelector('.rc-section');
+    var heroSelectEl = document.getElementById('rcHeroSelect');
+    var configWrapEl = document.getElementById('rcConfigWrap');
+    var configRefEl = document.getElementById('rcConfigRef');
+    var heroImgEl = document.getElementById('rcHeroImg');
+    var dotsEl = document.getElementById('rcDots');
+    var thumbsEl = document.getElementById('rcThumbs');
+    var prevBtn = document.getElementById('rcPrev');
+    var nextBtn = document.getElementById('rcNext');
+    var facesEl = document.getElementById('rcFaces');
+    var uploadStepEl = document.getElementById('rcUploadStep');
+    var dropzoneEl = document.getElementById('rcDropzone');
+    var fileInputEl = document.getElementById('rcFileInput');
+    var dropMainEl = document.getElementById('rcDropMain');
+    var uploadPreviewEl = document.getElementById('rcUploadPreview');
+    var voicesEl = document.getElementById('rcVoices');
+    var voiceStandardEl = document.getElementById('rcVoiceStandard');
+    var voiceCustomEl = document.getElementById('rcVoiceCustom');
+    var voiceLockedNoteEl = document.getElementById('rcVoiceLockedNote');
+    var voiceDescribeWrapEl = document.getElementById('rcVoiceDescribeWrap');
+    var voiceDescribeInputEl = document.getElementById('rcVoiceDescription');
+    var summaryEl = document.getElementById('rcSummary');
+    var totalEl = document.getElementById('rcTotal');
+    var checkoutBtn = document.getElementById('rcCheckout');
+    var checkoutBtnLabel = checkoutBtn.querySelector('.rc-checkout-btn-label');
+    var checkoutErrorEl = document.getElementById('rcCheckoutError');
+
+    function formatUSD(n) {
+        return '$' + n.toLocaleString('en-US');
+    }
+
+    function renderHero() {
+        if (state.robot === null) return;
+        var photos = currentPhotos();
+        var src = photos[state.slide];
+        heroImgEl.classList.add('fading');
+        setTimeout(function () {
+            heroImgEl.innerHTML = src
+                ? '<img src="' + src + '" alt="' + ROBOTS[state.robot].name + '" loading="lazy" decoding="async">'
+                : '<i class="fas fa-image"></i>';
+            heroImgEl.classList.remove('fading');
+        }, 150);
+    }
+
+    function renderDots() {
+        if (state.robot === null) { dotsEl.innerHTML = ''; return; }
+        var count = slideCount();
+        dotsEl.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'rc-dot' + (i === state.slide ? ' active' : '');
+            dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+            (function (idx) {
+                dot.addEventListener('click', function () { goToSlide(idx); });
+            })(i);
+            dotsEl.appendChild(dot);
         }
+    }
 
-        textarea.addEventListener('input', updateCounter);
-        updateCounter();
+    function renderThumbs() {
+        if (state.robot === null) { thumbsEl.innerHTML = ''; return; }
+        var photos = currentPhotos();
+        var count = slideCount();
+        thumbsEl.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+            var thumb = document.createElement('button');
+            thumb.type = 'button';
+            thumb.className = 'rc-thumb' + (i === state.slide ? ' active' : '');
+            thumb.innerHTML = photos[i]
+                ? '<img src="' + photos[i] + '" alt="" loading="lazy" decoding="async">'
+                : '<i class="fas fa-image"></i>';
+            (function (idx) {
+                thumb.addEventListener('click', function () { goToSlide(idx); });
+            })(i);
+            thumbsEl.appendChild(thumb);
+        }
+    }
+
+    function goToSlide(i) {
+        state.slide = i;
+        renderHero();
+        renderDots();
+        renderThumbs();
+    }
+
+    function applySelection(i) {
+        state.robot = i;
+        state.slide = 0;
+        var cards = heroSelectEl.querySelectorAll('.rc-pick-card');
+        cards.forEach(function (card, idx) {
+            var selected = idx === i;
+            card.classList.toggle('selected', selected);
+            document.getElementById('rcHeroCta' + idx).textContent = selected ? '✓' : '';
+        });
+        configWrapEl.hidden = false;
+        /* Show the selected robot's own photo as the "Standard face" preview */
+        var stdFaceImg = document.getElementById('rcFaceStandardImg');
+        if (stdFaceImg) stdFaceImg.src = ROBOTS[i].photos[0];
+        renderHero();
+        renderDots();
+        renderThumbs();
+        updateVoiceAvailability();
+        updateSummary();
+    }
+
+    function selectRobot(i) {
+        applySelection(i);
+        requestAnimationFrame(function () {
+            configRefEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    function selectFace(i) {
+        state.face = i;
+        var opts = facesEl.querySelectorAll('.rc-option');
+        opts.forEach(function (opt, idx) {
+            opt.classList.toggle('selected', idx === i);
+        });
+        uploadStepEl.classList.toggle('inactive', i !== 1);
+        updateVoiceAvailability();
+        updateSummary();
+    }
+    function updateVoiceAvailability() {
+        // Robert (index 0): no standard face or voice — custom only
+        // Robert Junior (index 1): both standard and custom options
+        var isRobert = state.robot === 0;
+        var faceIsCustom = state.face === 1;
+
+        var faceStandardEl = document.getElementById('rcFaceStandard');
+        faceStandardEl.style.display = isRobert ? 'none' : '';
+        voiceStandardEl.style.display = isRobert ? 'none' : '';
+
+        // Price label on the custom face option: "Included" for Robert, "+$1,000" for Junior
+        var customFacePriceEl = document.querySelector('#rcFaceCustom .rc-option-price');
+        if (customFacePriceEl) customFacePriceEl.textContent = isRobert ? CUSTOM_FACE_PRICE_LABELS.included : CUSTOM_FACE_PRICE_LABELS.plus;
+
+        if (isRobert) {
+            voiceLockedNoteEl.classList.remove('visible');
+            voiceCustomEl.classList.remove('disabled');
+            if (state.face === 0) { state.face = -1; facesEl.querySelectorAll('.rc-option').forEach(function(o) { o.classList.remove('selected'); }); }
+            if (state.face !== 1) selectFace(1); // Robert is custom-only — preselect it
+            if (state.voice === 0) { state.voice = -1; voicesEl.querySelectorAll('.rc-option').forEach(function(o) { o.classList.remove('selected'); }); }
+        } else {
+            // Robert Junior: standard face and voice by default
+            if (state.face < 0) selectFace(0);
+            if (state.voice < 0) selectVoice(0);
+            voiceCustomEl.classList.toggle('disabled', !faceIsCustom);
+            voiceLockedNoteEl.classList.toggle('visible', !faceIsCustom);
+            if (!faceIsCustom && state.voice === 1) selectVoice(0);
+        }
+    }
+
+    function selectVoice(i) {
+        if (i === 1 && state.robot !== 0 && state.face !== 1) return;
+        state.voice = i;
+        var opts = voicesEl.querySelectorAll('.rc-option');
+        opts.forEach(function (opt, idx) {
+            opt.classList.toggle('selected', idx === i);
+        });
+        voiceDescribeWrapEl.classList.toggle('visible', i === 1);
+        updateSummary();
+    }
+
+    function togglePlay(i) {
+        clearTimeout(playTimer);
+        var btn = document.getElementById('rcPlay' + i);
+        var wasPlaying = state.playing === i;
+        state.playing = wasPlaying ? null : i;
+        btn.classList.toggle('playing', !wasPlaying);
+        btn.textContent = !wasPlaying ? '❚❚' : '▶';
+        if (!wasPlaying) {
+            playTimer = setTimeout(function () {
+                state.playing = null;
+                btn.classList.remove('playing');
+                btn.textContent = '▶';
+            }, 2500);
+        }
+    }
+
+    // Stripe Checkout can't carry a file through the redirect to its hosted page,
+    // so the photo is downscaled client-side and held in localStorage (which, unlike
+    // an in-memory blob: URL, survives the full-page navigation to Stripe and back)
+    // until the success page confirms payment and uploads it to the backend then.
+    function compressImageForUpload_(file, callback) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = new Image();
+            img.onload = function () {
+                var maxDim = 1600;
+                var scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+                var canvas = document.createElement('canvas');
+                canvas.width = Math.round(img.width * scale);
+                canvas.height = Math.round(img.height * scale);
+                canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+                callback(canvas.toDataURL('image/jpeg', 0.82));
+            };
+            img.onerror = function () { callback(null); };
+            img.src = e.target.result;
+        };
+        reader.onerror = function () { callback(null); };
+        reader.readAsDataURL(file);
+    }
+
+    function storePendingPhoto_(dataUrl, fileName) {
+        try {
+            localStorage.setItem(PENDING_PHOTO_KEY, JSON.stringify({ dataUrl: dataUrl, fileName: fileName }));
+        } catch (e) {
+            // Storage full or unavailable (private browsing, quota, etc.) — checkout still
+            // proceeds, the photo just won't be auto-attached to the order afterward.
+        }
+    }
+
+    function setUpload(file) {
+        if (!file || file.type.indexOf('image/') !== 0) return; // drag-and-drop bypasses the file input's accept filter, so re-check the type here
+        if (state.upload) URL.revokeObjectURL(state.upload);
+        state.upload = URL.createObjectURL(file);
+        uploadPreviewEl.innerHTML = '<img src="' + state.upload + '" alt="Uploaded face">';
+        dropMainEl.innerHTML = 'Foto hinzugefügt. Weiteres ablegen zum Ersetzen, oder <span class="rc-drop-browse">durchsuchen</span>';
+        selectFace(1);
+        compressImageForUpload_(file, function (dataUrl) {
+            if (dataUrl) storePendingPhoto_(dataUrl, file.name);
+        });
+    }
+
+    function updateSummary() {
+        if (state.robot === null) return;
+        // Custom face costs +$1,000 only for Robert Junior; for Robert it is
+        // the only option and is included in the $79,000 base price.
+        var faceCost = (state.face === 1 && state.robot === 1) ? FACES[1].cost : 0;
+        var voiceCost = state.voice >= 0 ? VOICES[state.voice].cost : 0;
+        var total = ROBOTS[state.robot].price + faceCost + voiceCost;
+        var parts = [ROBOTS[state.robot].name];
+        if (state.face >= 0) parts.push(FACES[state.face].label);
+        if (state.voice >= 0) parts.push(VOICES[state.voice].label);
+        summaryEl.textContent = parts.join(' · ');
+        totalEl.textContent = formatUSD(total);
+    }
+
+    heroSelectEl.querySelectorAll('.rc-pick-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            selectRobot(parseInt(card.getAttribute('data-robot'), 10));
+        });
+    });
+
+    facesEl.querySelectorAll('.rc-option').forEach(function (opt) {
+        opt.addEventListener('click', function () {
+            var faceIdx = parseInt(opt.getAttribute('data-face'), 10);
+            if (state.robot === 0 && state.face === faceIdx) {
+                selectFace(-1);
+            } else {
+                selectFace(faceIdx);
+            }
+        });
+    });
+
+    voicesEl.querySelectorAll('[data-voice]').forEach(function (row) {
+        row.addEventListener('click', function () {
+            var voiceIdx = parseInt(row.getAttribute('data-voice'), 10);
+            if (state.robot === 0 && state.voice === voiceIdx) {
+                selectVoice(-1);
+            } else {
+                selectVoice(voiceIdx);
+            }
+        });
+    });
+
+    document.getElementById('rcPlay0').addEventListener('click', function (e) { e.stopPropagation(); togglePlay(0); });
+
+    voiceDescribeInputEl.addEventListener('input', function () {
+        state.voiceNote = voiceDescribeInputEl.value;
+    });
+
+    checkoutBtn.addEventListener('click', function () {
+        if (state.robot === null || checkoutBtn.disabled) return;
+        checkoutErrorEl.hidden = true;
+        checkoutBtn.disabled = true;
+        checkoutBtnLabel.textContent = 'Weiterleitung…';
+
+        fetch(GAS_EXEC_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                action: 'createCheckoutSession',
+                robot: state.robot,
+                face: state.face,
+                voice: state.voice,
+                voiceNote: state.voiceNote,
+                lang: 'de'
+            })
+        })
+            .then(function (res) { return res.json(); })
+            .then(function (result) {
+                if (result.ok && result.url) {
+                    window.location.href = result.url;
+                    return;
+                }
+                checkoutBtn.disabled = false;
+                checkoutBtnLabel.textContent = 'Zur Kasse';
+                checkoutErrorEl.textContent = 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.';
+                checkoutErrorEl.hidden = false;
+            })
+            .catch(function () {
+                checkoutBtn.disabled = false;
+                checkoutBtnLabel.textContent = 'Zur Kasse';
+                checkoutErrorEl.textContent = 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.';
+                checkoutErrorEl.hidden = false;
+            });
+    });
+
+    prevBtn.addEventListener('click', function () { var c = slideCount(); goToSlide((state.slide - 1 + c) % c); });
+    nextBtn.addEventListener('click', function () { var c = slideCount(); goToSlide((state.slide + 1) % c); });
+
+    // Touch swipe on hero image
+    (function () {
+        var frame = document.querySelector('.rc-hero-frame');
+        if (!frame) return;
+        var touchX = null, touchY = null, touchLocked = false;
+
+        frame.addEventListener('touchstart', function (e) {
+            touchX = e.touches[0].clientX;
+            touchY = e.touches[0].clientY;
+            touchLocked = false;
+        }, { passive: true });
+
+        frame.addEventListener('touchmove', function (e) {
+            if (touchX === null) return;
+            var dx = e.touches[0].clientX - touchX;
+            var dy = e.touches[0].clientY - touchY;
+            if (!touchLocked) {
+                touchLocked = Math.abs(dx) > Math.abs(dy);
+            }
+            if (touchLocked) e.preventDefault();
+        }, { passive: false });
+
+        frame.addEventListener('touchend', function (e) {
+            if (touchX === null) return;
+            var dx = e.changedTouches[0].clientX - touchX;
+            touchX = null;
+            touchY = null;
+            if (Math.abs(dx) > 40) {
+                var c = slideCount();
+                if (dx > 0) {
+                    goToSlide((state.slide - 1 + c) % c);
+                } else {
+                    goToSlide((state.slide + 1) % c);
+                }
+            }
+        });
     })();
+
+    dropzoneEl.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.add('dragover');
+    });
+    dropzoneEl.addEventListener('dragleave', function () {
+        dropzoneEl.classList.remove('dragover');
+    });
+    dropzoneEl.addEventListener('drop', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.remove('dragover');
+        setUpload(e.dataTransfer.files[0]);
+    });
+    fileInputEl.addEventListener('change', function (e) {
+        setUpload(e.target.files && e.target.files[0]);
+    });
+
+    // The navbar is position:fixed and overlaps document content, so clear it with real top padding on the section instead of relying on a hardcoded value that drifts whenever the navbar's own height changes (longer translations wrapping to 2 lines, etc.)
+    function clearNavbar() {
+        var navbarEl = document.getElementById('navbar');
+        var navH = navbarEl ? navbarEl.offsetHeight : 0;
+        sectionEl.style.paddingTop = navH + 'px';
+    }
+    clearNavbar();
+    window.addEventListener('resize', clearNavbar);
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var robotParam = parseInt(urlParams.get('robot'), 10);
+    if (robotParam === 0) {
+        // Robert: nothing pre-selected
+        state.face = -1;
+        state.voice = -1;
+        applySelection(robotParam);
+    } else if (robotParam === 1) {
+        // Robert Junior: standard face and voice
+        selectFace(0);
+        selectVoice(0);
+        applySelection(robotParam);
+    } else {
+        selectFace(state.face);
+        selectVoice(state.voice);
+    }
+    if (robotParam === 0 || robotParam === 1) applySelection(robotParam);
+    if (urlParams.get('canceled') === 'true') {
+        document.getElementById('rcCanceledNote').hidden = false;
+    }
+})();
 </script>
 
 
@@ -1211,6 +1190,5 @@
             });
         })();
     </script>
-    <script src="../../robot-script.js"></script>
 </body>
 </html>

@@ -11,10 +11,10 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Сконфигурируйте и закажите собственного робота-сотрудника на базе AI от RB Labs. Стоимость от $50,000 USD.">
+    <meta name="description" content="Сконфигурируйте и закажите собственного робота-сотрудника на базе AI от RB Labs. Стоимость от $79,000 USD.">
     <meta name="keywords" content="RB Labs, робототехника, интеграция AI, автоматизация, гуманоидные роботы, корпоративный AI, робототехнические решения">
     <meta property="og:title" content="Создайте своего робота-сотрудника — RB Labs">
-    <meta property="og:description" content="Сконфигурируйте и закажите собственного робота-сотрудника на базе AI от RB Labs. Стоимость от $50,000 USD.">
+    <meta property="og:description" content="Сконфигурируйте и закажите собственного робота-сотрудника на базе AI от RB Labs. Стоимость от $79,000 USD.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.rblabs.ai/ru/robot/">
     <title>Создайте своего робота-сотрудника — RB Labs</title>
@@ -255,11 +255,16 @@
         }
     </style>
 
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" fetchpriority="high" href="/featured/robot/robert/robert-1.jpg">
+<link rel="preload" as="image" fetchpriority="high" href="/featured/robot/robertJr/robertjr-1.jpg">
+
     
 
 </head>
-<body data-page="home">
+<body>
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
@@ -273,7 +278,7 @@
                     <a href="/ru/news/" class="nav-link">Новости</a>
                     <a href="/ru/book/" class="nav-link">
                         <span class="nav-desktop-text">Book</span>
-                        <span class="nav-mobile-text">Забронировать Роберта</span>
+                        <span class="nav-mobile-text">Аренда роботов</span>
                     </a>
                     <a href="/ru/robot/" class="nav-link nav-mobile-only">Персональный Робот</a>
                     <div class="nav-lang-dropdown">
@@ -470,621 +475,595 @@
     })();
     </script>
 
-    <!-- Product Hero -->
-<section class="product-hero">
-    <div class="hero-background">
-        <video
-            id="robot-hero-video"
-            class="hero-video"
-            autoplay muted playsinline loop
-            preload="metadata"
-        ></video>
-        <script>
-            (function() {
-                var v = document.getElementById('robot-hero-video');
-                var srcMobile     = '../../featured/buy-robot-mobile.mp4';
-                var srcDesktop    = '../../featured/buy-robot.mp4';
-                var posterMobile  = '../../featured/buy-robot-mobile-poster.jpg';
-                var posterDesktop = '../../featured/buy-robot-poster.jpg';
-                var current = null;
-
-                function loadVideo() {
-                    var isMobile = window.innerWidth <= 768;
-                    var target = isMobile ? 'mobile' : 'desktop';
-                    if (target === current) return;
-                    current = target;
-                    v.poster = isMobile ? posterMobile : posterDesktop;
-                    v.src    = isMobile ? srcMobile    : srcDesktop;
-                    v.load();
-                }
-
-                loadVideo();
-
-                var resizeTimer;
-                window.addEventListener('resize', function() {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(loadVideo, 200);
-                });
-            })();
-        </script>
-    </div>
-    <div class="product-hero-content">
-        <div class="hero-title">
-            <span class="hero-welcome">Создайте своего</span>
-            <span class="hero-brand">Робота-сотрудника</span>
-        </div>
-        <p class="hero-description">
-            Сконфигурируйте своего гуманоидного робота на базе AI с индивидуальностью, навыками и знаниями, которые нужны вашему бизнесу.
-        </p>
-        <div class="hero-cta">
-            <a href="#contact-form" class="btn btn-primary btn-large btn-minimal">
-                <span>Сконфигурировать робота</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
+    <!-- Robot Configurator -->
+<section class="rc-section">
+    <div class="rc-pick" id="rcHeroSelect">
+        <p class="rc-canceled-note" id="rcCanceledNote" hidden>Оплата отменена. Вы можете снова выбрать робота в любое время.</p>
+        <header class="rc-pick-header">
+            <h1 class="rc-title">Выберите робота</h1>
+        </header>
+        <div class="rc-pick-grid">
+            <button type="button" class="rc-pick-card" data-robot="0">
+                <img src="../../featured/robot/robert/robert-1.jpg" alt="Custom Robert" fetchpriority="high" decoding="async">
+                <span class="rc-pick-badge" id="rcHeroCta0"></span>
+                <span class="rc-pick-info">
+                    <span class="rc-pick-name">Custom Robert</span>
+                    <span class="rc-pick-price">от $79,000</span>
+                </span>
+            </button>
+            <button type="button" class="rc-pick-card" data-robot="1">
+                <img src="../../featured/robot/robertJr/robertjr-1.jpg" alt="Robert Junior" fetchpriority="high" decoding="async">
+                <span class="rc-pick-badge" id="rcHeroCta1"></span>
+                <span class="rc-pick-info">
+                    <span class="rc-pick-name">Robert Junior</span>
+                    <span class="rc-pick-price">от $13,000</span>
+                </span>
+            </button>
         </div>
     </div>
-</section>
 
-<!-- Sticky Product Section -->
-<section class="product-showcase" id="personalities">
-    <div class="product-container">
-        <!-- Sticky Robot Visual -->
-        <div class="product-visual">
-            <div class="robot-display">
-                <video
-                    muted
-                    playsinline
-                    webkit-playsinline
-                    x-webkit-airplay="allow"
-                    class="robot-video"
-                    id="robotVideo"
-                    poster="../../featured/your-rb-labs-robot_mobile.webp"
-                    preload="auto"
-                >
-                    <!-- Mobile/tablet video loads for screens <= 1024px -->
-                    <source src="../../featured/your-rb-labs-robot_mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
-                    <!-- Desktop video loads for screens > 1024px -->
-                    <source src="../../featured/your-rb-labs-robot.mp4" type="video/mp4">
-                    <img src="../../featured/your-rb-labs-robot_mobile.webp" alt="Your Custom Robot Employee RB Labs">
-                </video>
-                <div class="robot-personality-badge" id="personalityBadge">
-                    <span class="badge-icon"><i class="fas fa-robot"></i></span>
-                    <span class="badge-text">РОБОТ НА БАЗЕ AI</span>
+    <div class="rc-config-wrap" id="rcConfigWrap" hidden>
+    <div class="rc-shell" id="rcConfigRef">
+        <div class="rc-main">
+            <div class="rc-gallery">
+                <div class="rc-hero-frame">
+                    <div class="rc-hero-img" id="rcHeroImg"><i class="fas fa-image"></i></div>
+                    <button type="button" class="rc-nav-btn rc-nav-prev" id="rcPrev" aria-label="Previous">‹</button>
+                    <button type="button" class="rc-nav-btn rc-nav-next" id="rcNext" aria-label="Next">›</button>
                 </div>
-                <div class="pip-controls">
-                    <button class="pip-btn" id="pipMinimize" title="Minimize">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button class="pip-btn" id="pipExpand" title="Expand">
-                        <i class="fas fa-expand"></i>
-                    </button>
-                    <button class="pip-btn" id="pipClose" title="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
+                <div class="rc-dots" id="rcDots"></div>
+                <div class="rc-thumbs" id="rcThumbs"></div>
+            </div>
+
+            <div class="rc-config">
+                <section class="rc-step">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">01</span>
+                        <h2>Выберите лицо.</h2>
+                        <span class="rc-step-sub">Сделайте его таким, каким хотите.</span>
+                    </div>
+                    <div class="rc-options" id="rcFaces">
+                        <button type="button" class="rc-option" data-face="0" id="rcFaceStandard">
+                            <span class="rc-option-photo"><img id="rcFaceStandardImg" src="../../featured/robot/robert/robert-1.jpg" alt=""></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Стандартное лицо</span>
+                                <span class="rc-option-price">Включено</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </button>
+                        <button type="button" class="rc-option" data-face="1" id="rcFaceCustom">
+                            <span class="rc-option-photo"><i class="fas fa-user-edit"></i></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Индивидуальное лицо</span>
+                                <span class="rc-option-price">+$1,000</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="rc-step rc-upload-step" id="rcUploadStep">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">02</span>
+                        <h2>Загрузите желаемое лицо.</h2>
+                    </div>
+                    <label class="rc-dropzone" id="rcDropzone">
+                        <input type="file" accept="image/*" id="rcFileInput" style="display:none">
+                        <span class="rc-drop-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M4 14v5h16v-5"></path></svg>
+                        </span>
+                        <span class="rc-drop-text">
+                            <span class="rc-drop-main" id="rcDropMain">Перетащите фото сюда или <span class="rc-drop-browse">выберите файл</span></span>
+                            <span class="rc-drop-hint">JPG или PNG, анфас, четкое освещение</span>
+                        </span>
+                        <span class="rc-drop-preview" id="rcUploadPreview"><i class="fas fa-user"></i></span>
+                    </label>
+                </section>
+
+                <section class="rc-step">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">03</span>
+                        <h2>Выберите голосового агента.</h2>
+                        <span class="rc-step-sub">Дайте роботу голос.</span>
+                    </div>
+                    <div class="rc-options" id="rcVoices">
+                        <div class="rc-option" data-voice="0" id="rcVoiceStandard">
+                            <span class="rc-option-play-wrap">
+                                <button type="button" class="rc-option-play" id="rcPlay0" aria-label="Play sample">▶</button>
+                            </span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Стандартный голос</span>
+                                <span class="rc-option-price">Включено</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </div>
+                        <div class="rc-option" data-voice="1" id="rcVoiceCustom">
+                            <span class="rc-option-icon"><i class="fas fa-microphone"></i></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Индивидуальный клон голоса</span>
+                                <span class="rc-option-price">Включено</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </div>
+                    </div>
+                    <p class="rc-voice-locked-note" id="rcVoiceLockedNote">Доступно после выбора индивидуального лица.</p>
+                    <div class="rc-voice-describe" id="rcVoiceDescribeWrap">
+                        <label class="rc-voice-describe-label" for="rcVoiceDescription">Опишите, какой голос вы хотите</label>
+                        <textarea class="rc-voice-describe-input" id="rcVoiceDescription" rows="3" maxlength="500" placeholder="например: глубокий и спокойный, тёплый и дружелюбный, определённый акцент..."></textarea>
+                    </div>
+                </section>
             </div>
         </div>
+    </div>
 
-        <!-- Scrolling Content -->
-        <div class="product-content">
-            <!-- Introduction -->
-            <div class="content-section" data-personality="intro">
-                <div class="section-inner">
-                    <span class="section-label">ЗНАКОМЬТЕСЬ С ROBERT</span>
-                    <h2>Ваш бизнес-партнёр на базе AI</h2>
-                    <p class="lead-text">
-                        Robert — это не просто робот, это полностью настраиваемый AI-сотрудник, разработанный для бесшовной интеграции в ваши бизнес-процессы.
-                    </p>
-                    <div class="feature-grid">
-                        <div class="feature-item">
-                            <i class="fas fa-palette"></i>
-                            <h4>Решение White-Label</h4>
-                            <p>Полностью брендированное под стиль и голос вашей компании</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-database"></i>
-                            <h4>Обучение на ваших данных</h4>
-                            <p>Импортируйте вашу базу знаний, документы и процессы</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-plug"></i>
-                            <h4>Бесшовная интеграция</h4>
-                            <p>Подключается к вашим существующим CRM, ERP и другим инструментам</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <h4>Полная аналитика</h4>
-                            <p>Отслеживайте производительность, ROI и удовлетворённость клиентов</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Manufacturing Robot -->
-            <div class="content-section personality-section" data-personality="manufacturing">
-                <div class="section-inner">
-                    <span class="section-label">ПРОИЗВОДСТВО</span>
-                    <h2>Производство и сборка</h2>
-                    <p class="lead-text">
-                        Разверните робота-сотрудника, который станет вашим специализированным производственным экспертом, обученным на ваших конкретных процессах, требованиях к качеству и операционных регламентах.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Оптимизация производства</h4>
-                                <p>Мониторинг производственной линии и анализ эффективности в реальном времени</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Контроль качества</h4>
-                                <p>Автоматизированная инспекция и системы обнаружения дефектов</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Соблюдение техники безопасности</h4>
-                                <p>Автоматическое соблюдение требований безопасности</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Предиктивное обслуживание</h4>
-                                <p>Предотвращение простоев с помощью мониторинга оборудования на базе AI</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stats-row">
-                        <div class="stat">
-                            <span class="stat-value">90%</span>
-                            <span class="stat-label">Точность</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">0.3s</span>
-                            <span class="stat-label">Время отклика</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">24/7</span>
-                            <span class="stat-label">Доступность</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Real Estate Agent -->
-            <div class="content-section personality-section" data-personality="realestate">
-                <div class="section-inner">
-                    <span class="section-label">НЕДВИЖИМОСТЬ</span>
-                    <h2>Недвижимость и продажи</h2>
-                    <p class="lead-text">
-                        Создайте AI-агента, обученного на вашем портфеле недвижимости, данных локального рынка и процессах продаж для обработки запросов и квалификации лидов 24/7.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Подбор объектов</h4>
-                                <p>Подбор идеальных объектов для покупателей на базе AI</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Виртуальные туры</h4>
-                                <p>Проведите клиентов по объектам с детальными описаниями</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Анализ рынка</h4>
-                                <p>Мгновенная оценка объектов и аналитика по районам</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Квалификация лидов</h4>
-                                <p>Автоматическая квалификация и работа с потенциальными покупателями</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <p>«Robert увеличил нашу конверсию лидов на 45% и автоматически обрабатывает 80% первичных запросов.»</p>
-                        <cite>— Сара Чен, брокер по недвижимости</cite>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sales Agent -->
-            <div class="content-section personality-section" data-personality="sales">
-                <div class="section-inner">
-                    <span class="section-label">ПРОДАЖИ</span>
-                    <h2>Развитие бизнеса</h2>
-                    <p class="lead-text">
-                        Создайте AI-команду продаж, которая досконально знает ваши продукты, следует вашей методологии продаж и масштабируется бесконечно в зависимости от спроса.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Генерация лидов</h4>
-                                <p>Автоматическое выявление и привлечение качественных потенциальных клиентов</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Знание продукта</h4>
-                                <p>Глубокое знание всего вашего каталога продуктов</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Работа с возражениями</h4>
-                                <p>Продуманные ответы на типичные возражения при продажах</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Интеграция с CRM</h4>
-                                <p>Бесшовная интеграция с вашими существующими инструментами продаж</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="performance-metrics">
-                        <h4>Показатели эффективности</h4>
-                        <div class="metrics-grid">
-                            <div class="metric">
-                                <span class="metric-value">3x</span>
-                                <span class="metric-label">Больше обработанных лидов</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">65%</span>
-                                <span class="metric-label">Рост конверсии</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">$2M+</span>
-                                <span class="metric-label">Сгенерированный доход</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Legal Assistant -->
-            <div class="content-section personality-section" data-personality="legal">
-                <div class="section-inner">
-                    <span class="section-label">ПРАВО</span>
-                    <h2>Юридические услуги</h2>
-                    <p class="lead-text">
-                        Разверните AI-помощника, обученного на прецедентах вашей фирмы, истории дел и правовых базах для оптимизации исследований и приёма клиентов.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Анализ документов</h4>
-                                <p>Проверка контрактов и юридических документов за считанные секунды</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Юридические исследования</h4>
-                                <p>Доступ к обширным базам данных судебной практики и прецедентов</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Приём клиентов</h4>
-                                <p>Оптимизация первичных консультаций и сбора данных</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Мониторинг соответствия</h4>
-                                <p>Следите за изменениями в законодательстве</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="security-note">
-                        <i class="fas fa-lock"></i>
-                        <p>Система безопасности корпоративного уровня обеспечивает конфиденциальность клиентов и защиту адвокатской тайны</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Teacher -->
-            <div class="content-section personality-section" data-personality="teacher">
-                <div class="section-inner">
-                    <span class="section-label">ОБРАЗОВАНИЕ</span>
-                    <h2>Обучение и тренинг</h2>
-                    <p class="lead-text">
-                        Создайте AI-репетитора, обученного на вашей учебной программе, методах преподавания и образовательном контенте, для персонализированного обучения в масштабе.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Персонализированное обучение</h4>
-                                <p>Адаптация стиля преподавания к потребностям каждого ученика</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Интерактивные уроки</h4>
-                                <p>Вовлечение учеников с помощью динамичных сессий вопросов и ответов</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Отслеживание прогресса</h4>
-                                <p>Мониторинг и отчётность по успеваемости учеников</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Мультипредметная экспертиза</h4>
-                                <p>Преподавание по различным предметам и уровням сложности</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="education-stats">
-                        <div class="edu-stat">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>10 000+ обученных учеников</span>
-                        </div>
-                        <div class="edu-stat">
-                            <i class="fas fa-star"></i>
-                            <span>Оценка учеников 4.9/5</span>
-                        </div>
-                        <div class="edu-stat">
-                            <i class="fas fa-language"></i>
-                            <span>Поддержка 50+ языков</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pricing Section -->
-            <div class="content-section" data-personality="pricing">
-                <div class="section-inner">
-                    <span class="section-label">СТОИМОСТЬ</span>
-                    <h2>Инвестиции и планы</h2>
-                    <div class="pricing-container">
-                        <div class="pricing-main">
-                            <div class="price-display">
-                                <span class="price-starting">Начиная от</span>
-                                <span class="price-amount">$50,000</span>
-                                <span class="price-period">USD</span>
-                            </div>
-                            <div class="whats-included">
-                                <h3>Что включено</h3>
-                                <ul class="included-list">
-                                    <li><i class="fas fa-check"></i> Полная настройка системы AI</li>
-                                    <li><i class="fas fa-check"></i> 5 часов автономной работы батареи</li>
-                                    <li><i class="fas fa-check"></i> 3 конфигурации личности</li>
-                                    <li><i class="fas fa-check"></i> 1 год поддержки и обновлений</li>
-                                    <li><i class="fas fa-check"></i> Обучение вашей команды</li>
-                                    <li><i class="fas fa-check"></i> Доступ к API и интеграции</li>
-                                    <li><i class="fas fa-check"></i> Индивидуальные варианты брендинга</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pricing-addons">
-                            <h3>Дополнительные опции</h3>
-                            <div class="addon-item">
-                                <span class="addon-name">Улучшенная моторика рук</span>
-                                <span class="addon-price">$20,000</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Локальное развёртывание</span>
-                                <span class="addon-price">$25,000</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Премиум-поддержка</span>
-                                <span class="addon-price">Свяжитесь для расчёта</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Ходящий робот</span>
-                                <span class="addon-price">Свяжитесь для расчёта</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form Section -->
-            <div class="content-section contact-section" id="contact-form">
-                <div class="section-inner">
-                    <span class="section-label">НАЧАТЬ</span>
-                    <h2>Запросить индивидуальное предложение</h2>
-                    <p class="lead-text">
-                        Расскажите нам о вашем бизнесе, и мы спроектируем идеального робота-сотрудника для ваших задач.
-                    </p>
-
-                    <form class="contact-form" id="robotContactForm">
-                        <div class="form-section">
-                            <h3>Информация о компании</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="company">Название компании *</label>
-                                    <input type="text" id="company" name="company" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="industry">Отрасль *</label>
-                                    <select id="industry" name="industry" required>
-                                        <option value="">Выберите отрасль</option>
-                                        <option value="manufacturing">Производство</option>
-                                        <option value="logistics">Логистика и складирование</option>
-                                        <option value="automotive">Автомобилестроение</option>
-                                        <option value="aerospace">Аэрокосмическая и оборонная промышленность</option>
-                                        <option value="healthcare">Здравоохранение</option>
-                                        <option value="retail">Розничная торговля и электронная коммерция</option>
-                                        <option value="technology">Технологии</option>
-                                        <option value="other">Другое</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="size">Размер компании</label>
-                                    <select id="size" name="size">
-                                        <option value="">Выберите размер</option>
-                                        <option value="1-10">1-10 сотрудников</option>
-                                        <option value="11-50">11-50 сотрудников</option>
-                                        <option value="51-200">51-200 сотрудников</option>
-                                        <option value="201-1000">201-1000 сотрудников</option>
-                                        <option value="1000+">1000+ сотрудников</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Контактные данные</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="name">Полное имя *</label>
-                                    <input type="text" id="name" name="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Рабочая электронная почта *</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Номер телефона</label>
-                                    <input type="tel" id="phone" name="phone">
-                                </div>
-                                <div class="form-group">
-                                    <label for="country">Страна/Регион *</label>
-                                    <input type="text" id="country" name="country" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Ваши интересы</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="usecase">Основной сценарий использования *</label>
-                                    <select id="usecase" name="usecase" required>
-                                        <option value="">Выберите сценарий использования</option>
-                                        <option value="manufacturing">Производство и сборка</option>
-                                        <option value="logistics">Логистика и фулфилмент</option>
-                                        <option value="quality">Контроль качества</option>
-                                        <option value="maintenance">Предиктивное обслуживание</option>
-                                        <option value="warehouse">Автоматизация склада</option>
-                                        <option value="customer-service">Обслуживание клиентов</option>
-                                        <option value="other">Другое (укажите ниже)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="timeline">Сроки внедрения</label>
-                                    <select id="timeline" name="timeline">
-                                        <option value="">Выберите сроки</option>
-                                        <option value="immediate">Немедленно (&lt; 1 месяца)</option>
-                                        <option value="1-3months">1-3 месяца</option>
-                                        <option value="3-6months">3-6 месяцев</option>
-                                        <option value="6-12months">6-12 месяцев</option>
-                                        <option value="planning">Только планирование</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="personalities">Необходимое количество личностей</label>
-                                    <select id="personalities" name="personalities">
-                                        <option value="">Выберите количество</option>
-                                        <option value="1">1 личность</option>
-                                        <option value="2-3">2-3 личности</option>
-                                        <option value="4-5">4-5 личностей</option>
-                                        <option value="5+">5+ личностей</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="budget">Бюджетный диапазон</label>
-                                    <select id="budget" name="budget">
-                                        <option value="">Выберите бюджет</option>
-                                        <option value="50-100k">$50K - $100K</option>
-                                        <option value="100-250k">$100K - $250K</option>
-                                        <option value="250-500k">$250K - $500K</option>
-                                        <option value="500k+">$500K+</option>
-                                        <option value="custom">Запросить индивидуальную цену</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <div class="form-group full-width">
-                                <label for="message">Расскажите нам о вашем видении</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Расскажите о ваших целях и о том, как вы представляете помощь Robert для вашего бизнеса..." maxlength="2000"></textarea>
-                                <div class="char-counter" id="messageCounter">0 / 2000</div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Предпочтительный способ связи</h3>
-                            <div class="contact-preferences">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="video-call">
-                                    <span>Назначить видеозвонок</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="phone">
-                                    <span>Телефонная консультация</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="email">
-                                    <span>Переписка по электронной почте</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="in-person">
-                                    <span>Личная встреча (Mountain View / Женева)</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-submit">
-                            <button type="submit" class="btn btn-primary btn-large">
-                                Получить индивидуальное предложение
-                            </button>
-                            <div class="form-trust">
-                                <p><i class="fas fa-lock"></i> Ваши данные зашифрованы и защищены</p>
-                                <p><i class="fas fa-clock"></i> Ответ в течение 24 часов</p>
-                                <p><i class="fas fa-shield-alt"></i> Никакого спама, никогда</p>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+    <div class="rc-orderbar">
+        <div class="rc-order-summary">
+            <span class="rc-order-label">Ваш заказ</span>
+            <span class="rc-order-text" id="rcSummary"></span>
         </div>
+        <div class="rc-total">
+            <span class="rc-total-amount" id="rcTotal"></span>
+            <span class="rc-total-currency">USD</span>
+        </div>
+        <div class="rc-checkout-wrap">
+            <button type="button" class="rc-checkout-btn" id="rcCheckout">
+                <span class="rc-checkout-btn-label">Оформить заказ</span><span>→</span>
+            </button>
+            <span class="rc-secure">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M6 10V7a6 6 0 0112 0v3h1v12H5V10zm2 0h8V7a4 4 0 00-8 0z"></path></svg>
+                Безопасная оплата
+            </span>
+            <span class="rc-checkout-error" id="rcCheckoutError" hidden></span>
+        </div>
+    </div>
     </div>
 </section>
 
 <script>
-    (function () {
-        var textarea = document.getElementById('message');
-        var counter = document.getElementById('messageCounter');
-        if (!textarea || !counter) return;
+(function () {
+    var ROBOTS = [
+        { name: 'Robert', price: 79000, photos: [
+            '../../featured/robot/robert/robert-1.jpg',
+            '../../featured/robot/robert/robert-2.jpg',
+            '../../featured/robot/robert/robert-3.jpg',
+            '../../featured/robot/robert/robert-4.jpg',
+            '../../featured/robot/robert/robert-5.jpg'
+        ] },
+        { name: 'Robert Junior', price: 13000, photos: [
+            '../../featured/robot/robertJr/robertjr-1.jpg',
+            '../../featured/robot/robertJr/robertjr-2.jpg',
+            '../../featured/robot/robertJr/robertjr-3.jpg',
+            '../../featured/robot/robertJr/robertjr-4.jpg',
+            '../../featured/robot/robertJr/robertjr-5.jpg',
+            '../../featured/robot/robertJr/robertjr-6.jpg',
+            '../../featured/robot/robertJr/robertjr-7.jpg'
+        ] }
+    ];
+    var FACES = [
+        { label: 'Стандартное лицо', cost: 0 },
+        { label: 'Индивидуальное лицо', cost: 1000 } // Junior only — for Robert custom is included in the base price
+    ];
+    var CUSTOM_FACE_PRICE_LABELS = {
+        included: 'Включено',
+        plus: '+$1,000'
+    };
+    var VOICES = [
+        { label: 'Стандартный голос', cost: 0 },
+        { label: 'Индивидуальный клон голоса', cost: 0 }
+    ];
+    var PLACEHOLDER_SLIDE_COUNT = 5;
+    var GAS_EXEC_URL = 'https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec';
+    var PENDING_PHOTO_KEY = 'rc_pending_photo';
 
-        function updateCounter() {
-            counter.textContent = textarea.value.length + ' / 2000';
+    var state = { robot: null, slide: 0, face: 0, voice: 0, upload: null, voiceNote: '', playing: null };
+    var playTimer = null;
+
+    function currentPhotos() {
+        if (state.robot === null) return [];
+        return ROBOTS[state.robot].photos || [];
+    }
+
+    function slideCount() {
+        var photos = currentPhotos();
+        return photos.length || PLACEHOLDER_SLIDE_COUNT;
+    }
+
+    var sectionEl = document.querySelector('.rc-section');
+    var heroSelectEl = document.getElementById('rcHeroSelect');
+    var configWrapEl = document.getElementById('rcConfigWrap');
+    var configRefEl = document.getElementById('rcConfigRef');
+    var heroImgEl = document.getElementById('rcHeroImg');
+    var dotsEl = document.getElementById('rcDots');
+    var thumbsEl = document.getElementById('rcThumbs');
+    var prevBtn = document.getElementById('rcPrev');
+    var nextBtn = document.getElementById('rcNext');
+    var facesEl = document.getElementById('rcFaces');
+    var uploadStepEl = document.getElementById('rcUploadStep');
+    var dropzoneEl = document.getElementById('rcDropzone');
+    var fileInputEl = document.getElementById('rcFileInput');
+    var dropMainEl = document.getElementById('rcDropMain');
+    var uploadPreviewEl = document.getElementById('rcUploadPreview');
+    var voicesEl = document.getElementById('rcVoices');
+    var voiceStandardEl = document.getElementById('rcVoiceStandard');
+    var voiceCustomEl = document.getElementById('rcVoiceCustom');
+    var voiceLockedNoteEl = document.getElementById('rcVoiceLockedNote');
+    var voiceDescribeWrapEl = document.getElementById('rcVoiceDescribeWrap');
+    var voiceDescribeInputEl = document.getElementById('rcVoiceDescription');
+    var summaryEl = document.getElementById('rcSummary');
+    var totalEl = document.getElementById('rcTotal');
+    var checkoutBtn = document.getElementById('rcCheckout');
+    var checkoutBtnLabel = checkoutBtn.querySelector('.rc-checkout-btn-label');
+    var checkoutErrorEl = document.getElementById('rcCheckoutError');
+
+    function formatUSD(n) {
+        return '$' + n.toLocaleString('en-US');
+    }
+
+    function renderHero() {
+        if (state.robot === null) return;
+        var photos = currentPhotos();
+        var src = photos[state.slide];
+        heroImgEl.classList.add('fading');
+        setTimeout(function () {
+            heroImgEl.innerHTML = src
+                ? '<img src="' + src + '" alt="' + ROBOTS[state.robot].name + '" loading="lazy" decoding="async">'
+                : '<i class="fas fa-image"></i>';
+            heroImgEl.classList.remove('fading');
+        }, 150);
+    }
+
+    function renderDots() {
+        if (state.robot === null) { dotsEl.innerHTML = ''; return; }
+        var count = slideCount();
+        dotsEl.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'rc-dot' + (i === state.slide ? ' active' : '');
+            dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+            (function (idx) {
+                dot.addEventListener('click', function () { goToSlide(idx); });
+            })(i);
+            dotsEl.appendChild(dot);
         }
+    }
 
-        textarea.addEventListener('input', updateCounter);
-        updateCounter();
+    function renderThumbs() {
+        if (state.robot === null) { thumbsEl.innerHTML = ''; return; }
+        var photos = currentPhotos();
+        var count = slideCount();
+        thumbsEl.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+            var thumb = document.createElement('button');
+            thumb.type = 'button';
+            thumb.className = 'rc-thumb' + (i === state.slide ? ' active' : '');
+            thumb.innerHTML = photos[i]
+                ? '<img src="' + photos[i] + '" alt="" loading="lazy" decoding="async">'
+                : '<i class="fas fa-image"></i>';
+            (function (idx) {
+                thumb.addEventListener('click', function () { goToSlide(idx); });
+            })(i);
+            thumbsEl.appendChild(thumb);
+        }
+    }
+
+    function goToSlide(i) {
+        state.slide = i;
+        renderHero();
+        renderDots();
+        renderThumbs();
+    }
+
+    function applySelection(i) {
+        state.robot = i;
+        state.slide = 0;
+        var cards = heroSelectEl.querySelectorAll('.rc-pick-card');
+        cards.forEach(function (card, idx) {
+            var selected = idx === i;
+            card.classList.toggle('selected', selected);
+            document.getElementById('rcHeroCta' + idx).textContent = selected ? '✓' : '';
+        });
+        configWrapEl.hidden = false;
+        /* Show the selected robot's own photo as the "Standard face" preview */
+        var stdFaceImg = document.getElementById('rcFaceStandardImg');
+        if (stdFaceImg) stdFaceImg.src = ROBOTS[i].photos[0];
+        renderHero();
+        renderDots();
+        renderThumbs();
+        updateVoiceAvailability();
+        updateSummary();
+    }
+
+    function selectRobot(i) {
+        applySelection(i);
+        requestAnimationFrame(function () {
+            configRefEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    function selectFace(i) {
+        state.face = i;
+        var opts = facesEl.querySelectorAll('.rc-option');
+        opts.forEach(function (opt, idx) {
+            opt.classList.toggle('selected', idx === i);
+        });
+        uploadStepEl.classList.toggle('inactive', i !== 1);
+        updateVoiceAvailability();
+        updateSummary();
+    }
+    function updateVoiceAvailability() {
+        // Robert (index 0): no standard face or voice — custom only
+        // Robert Junior (index 1): both standard and custom options
+        var isRobert = state.robot === 0;
+        var faceIsCustom = state.face === 1;
+
+        var faceStandardEl = document.getElementById('rcFaceStandard');
+        faceStandardEl.style.display = isRobert ? 'none' : '';
+        voiceStandardEl.style.display = isRobert ? 'none' : '';
+
+        // Price label on the custom face option: "Included" for Robert, "+$1,000" for Junior
+        var customFacePriceEl = document.querySelector('#rcFaceCustom .rc-option-price');
+        if (customFacePriceEl) customFacePriceEl.textContent = isRobert ? CUSTOM_FACE_PRICE_LABELS.included : CUSTOM_FACE_PRICE_LABELS.plus;
+
+        if (isRobert) {
+            voiceLockedNoteEl.classList.remove('visible');
+            voiceCustomEl.classList.remove('disabled');
+            if (state.face === 0) { state.face = -1; facesEl.querySelectorAll('.rc-option').forEach(function(o) { o.classList.remove('selected'); }); }
+            if (state.face !== 1) selectFace(1); // Robert is custom-only — preselect it
+            if (state.voice === 0) { state.voice = -1; voicesEl.querySelectorAll('.rc-option').forEach(function(o) { o.classList.remove('selected'); }); }
+        } else {
+            // Robert Junior: standard face and voice by default
+            if (state.face < 0) selectFace(0);
+            if (state.voice < 0) selectVoice(0);
+            voiceCustomEl.classList.toggle('disabled', !faceIsCustom);
+            voiceLockedNoteEl.classList.toggle('visible', !faceIsCustom);
+            if (!faceIsCustom && state.voice === 1) selectVoice(0);
+        }
+    }
+
+    function selectVoice(i) {
+        if (i === 1 && state.robot !== 0 && state.face !== 1) return;
+        state.voice = i;
+        var opts = voicesEl.querySelectorAll('.rc-option');
+        opts.forEach(function (opt, idx) {
+            opt.classList.toggle('selected', idx === i);
+        });
+        voiceDescribeWrapEl.classList.toggle('visible', i === 1);
+        updateSummary();
+    }
+
+    function togglePlay(i) {
+        clearTimeout(playTimer);
+        var btn = document.getElementById('rcPlay' + i);
+        var wasPlaying = state.playing === i;
+        state.playing = wasPlaying ? null : i;
+        btn.classList.toggle('playing', !wasPlaying);
+        btn.textContent = !wasPlaying ? '❚❚' : '▶';
+        if (!wasPlaying) {
+            playTimer = setTimeout(function () {
+                state.playing = null;
+                btn.classList.remove('playing');
+                btn.textContent = '▶';
+            }, 2500);
+        }
+    }
+
+    // Stripe Checkout can't carry a file through the redirect to its hosted page,
+    // so the photo is downscaled client-side and held in localStorage (which, unlike
+    // an in-memory blob: URL, survives the full-page navigation to Stripe and back)
+    // until the success page confirms payment and uploads it to the backend then.
+    function compressImageForUpload_(file, callback) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = new Image();
+            img.onload = function () {
+                var maxDim = 1600;
+                var scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+                var canvas = document.createElement('canvas');
+                canvas.width = Math.round(img.width * scale);
+                canvas.height = Math.round(img.height * scale);
+                canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+                callback(canvas.toDataURL('image/jpeg', 0.82));
+            };
+            img.onerror = function () { callback(null); };
+            img.src = e.target.result;
+        };
+        reader.onerror = function () { callback(null); };
+        reader.readAsDataURL(file);
+    }
+
+    function storePendingPhoto_(dataUrl, fileName) {
+        try {
+            localStorage.setItem(PENDING_PHOTO_KEY, JSON.stringify({ dataUrl: dataUrl, fileName: fileName }));
+        } catch (e) {
+            // Storage full or unavailable (private browsing, quota, etc.) — checkout still
+            // proceeds, the photo just won't be auto-attached to the order afterward.
+        }
+    }
+
+    function setUpload(file) {
+        if (!file || file.type.indexOf('image/') !== 0) return; // drag-and-drop bypasses the file input's accept filter, so re-check the type here
+        if (state.upload) URL.revokeObjectURL(state.upload);
+        state.upload = URL.createObjectURL(file);
+        uploadPreviewEl.innerHTML = '<img src="' + state.upload + '" alt="Uploaded face">';
+        dropMainEl.innerHTML = 'Фото добавлено. Перетащите другое, чтобы заменить, или <span class="rc-drop-browse">выберите файл</span>';
+        selectFace(1);
+        compressImageForUpload_(file, function (dataUrl) {
+            if (dataUrl) storePendingPhoto_(dataUrl, file.name);
+        });
+    }
+
+    function updateSummary() {
+        if (state.robot === null) return;
+        // Custom face costs +$1,000 only for Robert Junior; for Robert it is
+        // the only option and is included in the $79,000 base price.
+        var faceCost = (state.face === 1 && state.robot === 1) ? FACES[1].cost : 0;
+        var voiceCost = state.voice >= 0 ? VOICES[state.voice].cost : 0;
+        var total = ROBOTS[state.robot].price + faceCost + voiceCost;
+        var parts = [ROBOTS[state.robot].name];
+        if (state.face >= 0) parts.push(FACES[state.face].label);
+        if (state.voice >= 0) parts.push(VOICES[state.voice].label);
+        summaryEl.textContent = parts.join(' · ');
+        totalEl.textContent = formatUSD(total);
+    }
+
+    heroSelectEl.querySelectorAll('.rc-pick-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            selectRobot(parseInt(card.getAttribute('data-robot'), 10));
+        });
+    });
+
+    facesEl.querySelectorAll('.rc-option').forEach(function (opt) {
+        opt.addEventListener('click', function () {
+            var faceIdx = parseInt(opt.getAttribute('data-face'), 10);
+            if (state.robot === 0 && state.face === faceIdx) {
+                selectFace(-1);
+            } else {
+                selectFace(faceIdx);
+            }
+        });
+    });
+
+    voicesEl.querySelectorAll('[data-voice]').forEach(function (row) {
+        row.addEventListener('click', function () {
+            var voiceIdx = parseInt(row.getAttribute('data-voice'), 10);
+            if (state.robot === 0 && state.voice === voiceIdx) {
+                selectVoice(-1);
+            } else {
+                selectVoice(voiceIdx);
+            }
+        });
+    });
+
+    document.getElementById('rcPlay0').addEventListener('click', function (e) { e.stopPropagation(); togglePlay(0); });
+
+    voiceDescribeInputEl.addEventListener('input', function () {
+        state.voiceNote = voiceDescribeInputEl.value;
+    });
+
+    checkoutBtn.addEventListener('click', function () {
+        if (state.robot === null || checkoutBtn.disabled) return;
+        checkoutErrorEl.hidden = true;
+        checkoutBtn.disabled = true;
+        checkoutBtnLabel.textContent = 'Перенаправление…';
+
+        fetch(GAS_EXEC_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                action: 'createCheckoutSession',
+                robot: state.robot,
+                face: state.face,
+                voice: state.voice,
+                voiceNote: state.voiceNote,
+                lang: 'ru'
+            })
+        })
+            .then(function (res) { return res.json(); })
+            .then(function (result) {
+                if (result.ok && result.url) {
+                    window.location.href = result.url;
+                    return;
+                }
+                checkoutBtn.disabled = false;
+                checkoutBtnLabel.textContent = 'Оформить заказ';
+                checkoutErrorEl.textContent = 'Что-то пошло не так. Попробуйте снова.';
+                checkoutErrorEl.hidden = false;
+            })
+            .catch(function () {
+                checkoutBtn.disabled = false;
+                checkoutBtnLabel.textContent = 'Оформить заказ';
+                checkoutErrorEl.textContent = 'Что-то пошло не так. Попробуйте снова.';
+                checkoutErrorEl.hidden = false;
+            });
+    });
+
+    prevBtn.addEventListener('click', function () { var c = slideCount(); goToSlide((state.slide - 1 + c) % c); });
+    nextBtn.addEventListener('click', function () { var c = slideCount(); goToSlide((state.slide + 1) % c); });
+
+    // Touch swipe on hero image
+    (function () {
+        var frame = document.querySelector('.rc-hero-frame');
+        if (!frame) return;
+        var touchX = null, touchY = null, touchLocked = false;
+
+        frame.addEventListener('touchstart', function (e) {
+            touchX = e.touches[0].clientX;
+            touchY = e.touches[0].clientY;
+            touchLocked = false;
+        }, { passive: true });
+
+        frame.addEventListener('touchmove', function (e) {
+            if (touchX === null) return;
+            var dx = e.touches[0].clientX - touchX;
+            var dy = e.touches[0].clientY - touchY;
+            if (!touchLocked) {
+                touchLocked = Math.abs(dx) > Math.abs(dy);
+            }
+            if (touchLocked) e.preventDefault();
+        }, { passive: false });
+
+        frame.addEventListener('touchend', function (e) {
+            if (touchX === null) return;
+            var dx = e.changedTouches[0].clientX - touchX;
+            touchX = null;
+            touchY = null;
+            if (Math.abs(dx) > 40) {
+                var c = slideCount();
+                if (dx > 0) {
+                    goToSlide((state.slide - 1 + c) % c);
+                } else {
+                    goToSlide((state.slide + 1) % c);
+                }
+            }
+        });
     })();
+
+    dropzoneEl.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.add('dragover');
+    });
+    dropzoneEl.addEventListener('dragleave', function () {
+        dropzoneEl.classList.remove('dragover');
+    });
+    dropzoneEl.addEventListener('drop', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.remove('dragover');
+        setUpload(e.dataTransfer.files[0]);
+    });
+    fileInputEl.addEventListener('change', function (e) {
+        setUpload(e.target.files && e.target.files[0]);
+    });
+
+    // The navbar is position:fixed and overlaps document content, so clear it with real top padding on the section instead of relying on a hardcoded value that drifts whenever the navbar's own height changes (longer translations wrapping to 2 lines, etc.)
+    function clearNavbar() {
+        var navbarEl = document.getElementById('navbar');
+        var navH = navbarEl ? navbarEl.offsetHeight : 0;
+        sectionEl.style.paddingTop = navH + 'px';
+    }
+    clearNavbar();
+    window.addEventListener('resize', clearNavbar);
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var robotParam = parseInt(urlParams.get('robot'), 10);
+    if (robotParam === 0) {
+        // Robert: nothing pre-selected
+        state.face = -1;
+        state.voice = -1;
+        applySelection(robotParam);
+    } else if (robotParam === 1) {
+        // Robert Junior: standard face and voice
+        selectFace(0);
+        selectVoice(0);
+        applySelection(robotParam);
+    } else {
+        selectFace(state.face);
+        selectVoice(state.voice);
+    }
+    if (robotParam === 0 || robotParam === 1) applySelection(robotParam);
+    if (urlParams.get('canceled') === 'true') {
+        document.getElementById('rcCanceledNote').hidden = false;
+    }
+})();
 </script>
 
 
@@ -1211,6 +1190,5 @@
             });
         })();
     </script>
-    <script src="../../robot-script.js"></script>
 </body>
 </html>

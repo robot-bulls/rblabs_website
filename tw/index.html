@@ -255,7 +255,9 @@
         }
     </style>
 
-    
+    <link rel="preload" as="image" fetchpriority="high" href="/featured/rblabs2.jpg" media="(min-width: 769px)">
+<link rel="preload" as="image" fetchpriority="high" href="/featured/rblabs-mobile.jpg" media="(max-width: 768px)">
+
     
 
     <script type="application/ld+json">
@@ -300,7 +302,7 @@
                     <a href="/tw/news/" class="nav-link">新聞</a>
                     <a href="/tw/book/" class="nav-link">
                         <span class="nav-desktop-text">Book</span>
-                        <span class="nav-mobile-text">預訂羅伯特</span>
+                        <span class="nav-mobile-text">機器人租賃</span>
                     </a>
                     <a href="/tw/robot/" class="nav-link nav-mobile-only">客製化機器人</a>
                     <div class="nav-lang-dropdown">
@@ -504,38 +506,65 @@
             <video
               id="hero-video"
               class="hero-sphere"
-              autoplay muted playsinline loop
-              preload="metadata"
+              muted playsinline loop
+              preload="none"
             ></video>
             <script>
+                // Shared across this page: skip autoplaying heavy video on slow/metered connections or reduced-motion - show the static poster instead.
+                function rbShouldAutoplayVideo() {
+                    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+                    var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                    if (conn) {
+                        if (conn.saveData) return false;
+                        if (conn.effectiveType && /2g/.test(conn.effectiveType)) return false;
+                    }
+                    return true;
+                }
+
                 (function() {
                     var v = document.getElementById('hero-video');
-                    var srcMobile = '../featured/rblabs-mobile.mp4';
-                    var srcDesktop = '../featured/rblabs.mp4';
+                    var srcMobile = '../featured/rblabs-mobile2.mp4';
+                    var srcDesktop = '../featured/rblabs2.mp4';
                     var posterMobile = '../featured/rblabs-mobile.jpg';
-                    var posterDesktop = '../featured/rblabs.jpg';
+                    var posterDesktop = '../featured/rblabs2.jpg';
                     var current = null;
+                    var allowVideo = rbShouldAutoplayVideo();
+                    var started = false;
 
-                    function loadVideo() {
+                    function updatePoster() {
                         var isMobile = window.innerWidth <= 768;
                         var target = isMobile ? 'mobile' : 'desktop';
                         if (target === current) return;
                         current = target;
-                        v.poster = isMobile ? posterMobile : posterDesktop;
+                        v.poster = isMobile ? posterMobile : posterDesktop; // reuses the matching <link rel=preload> fetch in <head>, never a second download
+                        if (started) loadVideo(true);
+                    }
+
+                    function loadVideo(forceReload) {
+                        if (!allowVideo) return; // stay on the static poster, never fetch the video
+                        if (started && !forceReload) return;
+                        started = true;
+                        var isMobile = window.innerWidth <= 768;
                         v.src = isMobile ? srcMobile : srcDesktop;
+                        v.autoplay = true;
                         v.load();
                     }
 
-                    loadVideo();
+                    updatePoster();
+
+                    // navigator.connection doesn't exist in Safari/iOS or Firefox (rbShouldAutoplayVideo() always falls through to true there), so defer the multi-MB video fetch to window 'load' regardless, to never compete with critical resources.
+                    if (allowVideo) {
+                        window.addEventListener('load', function () { loadVideo(); });
+                    }
 
                     var resizeTimer;
                     window.addEventListener('resize', function() {
                         clearTimeout(resizeTimer);
-                        resizeTimer = setTimeout(loadVideo, 200);
+                        resizeTimer = setTimeout(updatePoster, 200);
                     });
 
                     document.addEventListener('visibilitychange', function() {
-                        if (!document.hidden) {
+                        if (!document.hidden && allowVideo) {
                             v.play().catch(function() {});
                         }
                     });
@@ -568,83 +597,475 @@
     </section>
 </div>
 
-<!-- LLMs Section -->
-<section class="llms-section" id="llms">
-    <div class="container">
-        <div class="llms-wrapper">
-            <div class="llms-content">
-                <h2 class="section-title">認識 Robert，智慧機器人<span style="position: absolute; left: -9999px;"> by RB Labs</span></h2>
-                <p class="llms-description">當 AI 遇上機器人技術。RB Labs 將先進人工智慧與人形機器人融為一體，將自動化的未來帶入現實。</p>
-                <div class="llms-features">
-                    <div class="llm-feature">
-                        <div class="feature-icon"><i class="fas fa-brain"></i></div>
-                        <h4>先進 AI</h4>
-                        <p>採用前沿人工智慧技術，執行複雜的自動化任務</p>
-                    </div>
-                    <div class="llm-feature">
-                        <div class="feature-icon"><i class="fas fa-industry"></i></div>
-                        <h4>流程專家</h4>
-                        <p>深入理解工作流程、營運及商業流程</p>
-                    </div>
-                    <div class="llm-feature">
-                        <div class="feature-icon"><i class="fas fa-robot"></i></div>
-                        <h4>人形介面</h4>
-                        <p>透過先進的機器人技術與對話式 AI 實現自然互動</p>
-                    </div>
-                    <div class="llm-feature">
-                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h4>企業級安全</h4>
-                        <p>企業級安全協議確保您的營運資料受到完善保護</p>
-                    </div>
-                </div>
-                <a href="/tw/book/" class="btn btn-primary">認識 Robert</a>
-            </div>
-            <div class="llms-visual">
-                <video loop muted playsinline class="llms-video">
-                    <source src="../featured/robert-finance.mp4" type="video/mp4">
-                    <img src="../featured/robert.jpg" alt="Robert the Robot" class="llms-img">
-                </video>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Book Robert Banner -->
-<section class="speaker-banner" style="padding: 80px 0;">
-    <div class="container">
-        <div class="speaker-banner-card" style="background: #1d1d1f; border-radius: 20px; padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; gap: 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);">
-            <div style="flex: 1;">
-                <h2 style="font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 16px 0; line-height: 1.3;">購買您的客製化機器人</h2>
-                <p style="font-size: 17px; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0;">獲取一個完全可客製化的AI驅動人形機器人，根據您的品牌和業務需求量身打造。</p>
-            </div>
-            <div style="flex-shrink: 0;">
-                <a href="/tw/robot/" class="btn btn-primary" style="padding: 14px 32px; font-size: 16px; font-weight: 600; background: #fff; color: #1d1d1f; border: none; border-radius: 999px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-                    <i class="fas fa-robot"></i>
-                    配置您的機器人
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
+<!-- Robot Family Section -->
 <style>
-    .speaker-banner-card a.btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+    .family-section { padding: 100px 0; background: #fff; overflow: hidden; }
+    .family-header { text-align: center; max-width: 700px; margin: 0 auto 50px; }
+    .family-carousel { position: relative; height: 425px; max-width: 1040px; margin: 0 auto; overflow: hidden; }
+    .family-card {
+        position: absolute; top: 50%; left: 50%; border-radius: 24px; overflow: hidden;
+        width: 340px; aspect-ratio: 4 / 5; background: #dce3ea; box-shadow: var(--shadow-lg); z-index: 1;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.8s ease, opacity 0.8s ease;
+        display: block; text-decoration: none;
     }
-    @media (max-width: 768px) {
-        .speaker-banner-card {
-            flex-direction: column !important;
-            text-align: center;
-            gap: 30px !important;
-            padding: 40px 30px !important;
+    .family-card.pos-left { transform: translate(calc(-50% - 334px), -50%) scale(0.824); }
+    .family-card.pos-center { transform: translate(-50%, -50%) scale(1); z-index: 2; box-shadow: none; }
+    .family-card.pos-right { transform: translate(calc(-50% + 334px), -50%) scale(0.824); }
+    .family-card.pos-exit-left { transform: translate(calc(-50% - 450px), -50%) scale(0.7); opacity: 0; z-index: 0; }
+    .family-card.pos-exit-right { transform: translate(calc(-50% + 450px), -50%) scale(0.7); opacity: 0; z-index: 0; }
+    .family-card img {
+        width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; display: block;
+        -webkit-user-drag: none; user-select: none; pointer-events: none;
+    }
+    .family-name {
+        position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%);
+        background: rgba(20, 20, 20, 0.72); color: #fff; padding: 10px 22px; border-radius: 999px;
+        font-weight: 600; font-size: 15px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+        text-align: center; white-space: normal; line-height: 1.35;
+    }
+    .family-controls {
+        display: flex; align-items: center; justify-content: center;
+        max-width: 1040px; margin: 36px auto 0; padding: 0 20px;
+    }
+    .family-dots { display: flex; gap: 10px; margin: 0 auto; }
+    .family-dot {
+        width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; cursor: pointer;
+        background: rgba(0, 0, 0, 0.18); transition: var(--transition);
+    }
+    .family-dot.active { background: var(--primary-color); width: 24px; border-radius: 5px; }
+    .family-carousel.cursor-prev {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='rgba(255,255,255,0.9)' stroke='rgba(0,0,0,0.08)'/%3E%3Cpath d='M19 10l-6 6 6 6' fill='none' stroke='%231d1d1f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 16 16, w-resize;
+    }
+    .family-carousel.cursor-next {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='rgba(255,255,255,0.9)' stroke='rgba(0,0,0,0.08)'/%3E%3Cpath d='M13 10l6 6-6 6' fill='none' stroke='%231d1d1f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 16 16, e-resize;
+    }
+    /* Temporary static 2-up layout while Luna's card is commented out below - see that comment to restore the carousel. */
+    .family-carousel.is-static {
+        position: static; height: auto; width: 100%; max-width: none; margin: 0 auto; overflow: visible;
+        display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap;
+    }
+    .family-carousel.is-static .family-card {
+        position: relative; top: auto; left: auto; transform: none;
+        /* Middle ground between the original 340px cards and full width:
+           440px each, shrinking fluidly on smaller screens. */
+        width: min(440px, calc(50% - 12px));
+    }
+    @media (max-width: 900px) {
+        .family-section { padding: 70px 0; }
+        .family-carousel { height: 240px; }
+        .family-card { width: 190px; border-radius: 20px; }
+        .family-card.pos-left { transform: translate(calc(-50% - 165px), -50%) scale(0.632); }
+        .family-card.pos-right { transform: translate(calc(-50% + 165px), -50%) scale(0.632); }
+        .family-card.pos-center { transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+        .family-card.pos-exit-left { transform: translate(calc(-50% - 220px), -50%) scale(0.5); opacity: 0; }
+        .family-card.pos-exit-right { transform: translate(calc(-50% + 220px), -50%) scale(0.5); opacity: 0; }
+        .family-name { font-size: 11px; padding: 6px 13px; bottom: 10px; }
+        .family-controls { margin-top: 26px; }
+    }
+    @media (max-width: 560px) {
+        .family-carousel.is-static {
+            flex-direction: column;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
         }
-        .speaker-banner-card h2 { font-size: 24px !important; }
-        .speaker-banner-card p { font-size: 16px !important; }
+        .family-carousel.is-static .family-card {
+            width: 100%;
+            border-radius: 28px;
+        }
+        .family-name { font-size: 15px; padding: 8px 18px; bottom: 14px; }
+</style>
+<section class="family-section" id="family">
+    <div class="container">
+        <div class="family-header">
+            <span class="section-label">我們的機器人</span>
+            <h2 class="section-title">認識 Robert 家族</h2>
+            <p class="section-subtitle">每個機器人都為不同角色量身打造，從高階主管形象到溫暖款待。</p>
+        </div>
+        <div class="family-carousel is-static" id="familyCarousel">
+            <a class="family-card" data-index="0" href="/tw/book/#rentForm">
+                <img src="../featured/Robert.jpg" alt="Robert" draggable="false" loading="lazy" decoding="async">
+                <span class="family-name">預約<br>Robert the Robot</span>
+            </a>
+            <a class="family-card" data-index="1" href="/tw/book/#rentForm">
+                <img src="../featured/RobertJr.jpg" alt="Robert Junior" draggable="false" loading="lazy" decoding="async">
+                <span class="family-name">預約<br>Robert Junior</span>
+            </a>
+            <!-- Luna commented out until her image is updated - uncomment this, remove is-static above, and uncomment the dots + script below to restore the carousel
+            <div class="family-card" data-index="2">
+                <img src="../featured/Luna.jpg" alt="Luna" draggable="false" loading="lazy" decoding="async">
+                <span class="family-name">Luna</span>
+            </div>
+            -->
+        </div>
+        <!--
+        <div class="family-controls">
+            <div class="family-dots" id="familyDots">
+                <button type="button" class="family-dot" data-goto="0" aria-label="Show Robert"></button>
+                <button type="button" class="family-dot" data-goto="1" aria-label="Show Robert Junior"></button>
+                <button type="button" class="family-dot" data-goto="2" aria-label="Show Luna"></button>
+            </div>
+        </div>
+        -->
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="/tw/robot/" class="btn btn-primary">
+                <i class="fas fa-robot"></i>
+                購買機器人
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Carousel script disabled while running the static 2-up layout above - uncomment to restore sliding
+<script>
+(function () {
+    var carousel = document.getElementById('familyCarousel');
+    var cards = Array.prototype.slice.call(carousel.querySelectorAll('.family-card'));
+    var dots = Array.prototype.slice.call(document.querySelectorAll('#familyDots .family-dot'));
+    var total = cards.length;
+    var centerIdx = 1;
+    var isWrapping = false;
+
+    // With only 3 cards, left and right are both always-visible slots on opposite sides of
+    // center. Going directly left->right (or right->left) would otherwise animate straight
+    // across the carousel. Instead: fade/slide out past the current side, jump instantly
+    // (invisible) to the equivalent spot on the other side, then fade/slide in from there -
+    // same idea as the far-slot staging used on the What We Do carousel, just sequenced in
+    // two real phases since there's no already-idle hidden slot to piggyback on here.
+    function animateWrap(card, fromSide, newClass) {
+        isWrapping = true;
+        var exitClass = fromSide === 'left' ? 'pos-exit-left' : 'pos-exit-right';
+        var enterFromClass = fromSide === 'left' ? 'pos-exit-right' : 'pos-exit-left';
+
+        card.classList.remove('pos-left', 'pos-center', 'pos-right', 'pos-exit-left', 'pos-exit-right');
+        card.style.transitionDuration = '0.4s';
+        card.classList.add(exitClass);
+
+        card.addEventListener('transitionend', function onExit(e) {
+            if (e.propertyName !== 'transform') return;
+            card.removeEventListener('transitionend', onExit);
+
+            card.style.transition = 'none';
+            card.classList.remove(exitClass);
+            card.classList.add(enterFromClass);
+            card.offsetHeight; // commit the instant, invisible jump to the other side
+            card.style.transition = '';
+            card.style.transitionDuration = '0.4s';
+            card.classList.remove(enterFromClass);
+            card.classList.add(newClass);
+
+            card.addEventListener('transitionend', function onEnter(e2) {
+                if (e2.propertyName !== 'transform') return;
+                card.removeEventListener('transitionend', onEnter);
+                card.style.transitionDuration = '';
+                isWrapping = false;
+            });
+        });
+    }
+
+    function render() {
+        cards.forEach(function (card) {
+            var idx = parseInt(card.getAttribute('data-index'), 10);
+            var diff = (idx - centerIdx + total) % total;
+            var newClass = diff === 0 ? 'pos-center' : (diff === 1 ? 'pos-right' : 'pos-left');
+            var wasLeft = card.classList.contains('pos-left');
+            var wasRight = card.classList.contains('pos-right');
+            var isWrap = (wasLeft && newClass === 'pos-right') || (wasRight && newClass === 'pos-left');
+
+            if (isWrap) {
+                animateWrap(card, wasLeft ? 'left' : 'right', newClass);
+            } else {
+                card.classList.remove('pos-left', 'pos-center', 'pos-right', 'pos-exit-left', 'pos-exit-right');
+                card.classList.add(newClass);
+            }
+        });
+        dots.forEach(function (dot, i) {
+            dot.classList.toggle('active', i === centerIdx);
+        });
+    }
+
+    function next() { if (isWrapping) return; centerIdx = (centerIdx + 1) % total; render(); }
+    function prev() { if (isWrapping) return; centerIdx = (centerIdx - 1 + total) % total; render(); }
+
+    carousel.addEventListener('mousemove', function (e) {
+        var r = carousel.getBoundingClientRect();
+        var isLeft = e.clientX < r.left + r.width / 2;
+        carousel.classList.toggle('cursor-prev', isLeft);
+        carousel.classList.toggle('cursor-next', !isLeft);
+    });
+    carousel.addEventListener('mouseleave', function () {
+        carousel.classList.remove('cursor-prev', 'cursor-next');
+    });
+    carousel.addEventListener('click', function (e) {
+        if (e.detail === 0) return; // synthesized click from a touch tap, not a real mouse click
+        var r = carousel.getBoundingClientRect();
+        if (e.clientX < r.left + r.width / 2) prev(); else next();
+    });
+
+    dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+            if (isWrapping) return;
+            centerIdx = parseInt(dot.getAttribute('data-goto'), 10);
+            render();
+        });
+    });
+
+    var touchX = null;
+    var touchY = null;
+    var touchLocked = false; // becomes true once a gesture is confirmed horizontal, so we can claim it from page scroll
+
+    carousel.addEventListener('touchstart', function (e) {
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+        touchLocked = false;
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', function (e) {
+        if (touchX === null) return;
+        var dx = e.touches[0].clientX - touchX;
+        var dy = e.touches[0].clientY - touchY;
+        if (!touchLocked) {
+            if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return; // not enough movement yet to tell direction
+            touchLocked = Math.abs(dx) > Math.abs(dy);
+        }
+        if (touchLocked) e.preventDefault(); // this is our horizontal swipe, not a page scroll
+    }, { passive: false });
+
+    carousel.addEventListener('touchend', function (e) {
+        if (touchX === null) return;
+        var dx = e.changedTouches[0].clientX - touchX;
+        touchX = null;
+        touchY = null;
+        if (Math.abs(dx) > 40) (dx < 0 ? next : prev)();
+    });
+
+    render();
+})();
+</script>
+-->
+
+<!-- Meet Our Robots (video banner) Section -->
+<style>
+    .meet-robots-section { padding: 20px 0 50px; background: #fff; }
+    .what-we-do-section { padding-top: 50px; }
+    /* No .section-title override here: all home sections share the base
+       .section-title size for consistency. */
+    .meet-robots-media {
+        position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 40px; overflow: hidden;
+        background: #cfd3d6; margin-bottom: 60px; box-shadow: var(--shadow-lg);
+    }
+    .meet-robots-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meet-robots-play {
+        position: absolute; left: 50%; bottom: 32px; transform: translateX(-50%);
+        display: inline-flex; align-items: center; gap: 10px;
+        background: rgba(50, 50, 50, 0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        color: #fff; border: none; padding: 8px 22px 8px 8px; border-radius: 999px;
+        font-size: 15px; font-weight: 500; font-family: inherit; cursor: pointer; transition: var(--transition);
+    }
+    .meet-robots-play:hover { background: rgba(30, 30, 30, 0.7); transform: translateX(-50%) translateY(-2px); }
+    .meet-robots-play-icon {
+        width: 30px; height: 30px; border-radius: 50%; background: #fff; color: #1d1d1f;
+        display: flex; align-items: center; justify-content: center; font-size: 11px; flex: 0 0 auto;
+    }
+    .meet-robots-info { text-align: center; max-width: 800px; margin: 0 auto; }
+    .meet-robots-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; margin-top: 50px; text-align: center; }
+    .mr-feature-icon { font-size: 30px; color: var(--primary-color); margin-bottom: 16px; }
+    .mr-feature h4 { font-size: 17px; font-weight: 600; color: var(--text-dark); margin: 0 0 8px; }
+    .mr-feature p { font-size: 14px; color: var(--text-gray); line-height: 1.6; margin: 0; }
+    @media (max-width: 900px) {
+        .meet-robots-section { padding: 10px 0 35px; }
+        .meet-robots-media { aspect-ratio: 4 / 5; border-radius: 28px; margin-bottom: 40px; }
+        .meet-robots-features { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
+    }
+    @media (max-width: 480px) {
+        .meet-robots-play { font-size: 13px; padding: 7px 18px 7px 7px; bottom: 20px; }
+        .meet-robots-play-icon { width: 26px; height: 26px; font-size: 10px; }
     }
 </style>
+<section class="meet-robots-section" id="meet-robots">
+    <div class="container">
+        <div class="meet-robots-media" id="meetRobotsMedia">
+            <video id="meetRobotsVideo" muted loop playsinline preload="none" poster="../featured/meetOurRobot.jpg">
+                <source id="meetRobotsSource" src="" type="video/mp4">
+            </video>
+            <button type="button" class="meet-robots-play" id="meetRobotsPlay" aria-label="Fullscreen video">
+                <span class="meet-robots-play-icon"><i class="fas fa-expand"></i></span>
+                認識我們的機器人
+            </button>
+        </div>
+        <div class="meet-robots-info">
+            <h2 class="section-title">認識 Robert，智慧機器人<span style="position: absolute; left: -9999px;"> by RB Labs</span></h2>
+            <p class="section-subtitle">當 AI 遇上機器人技術。RB Labs 將先進人工智慧與人形機器人融為一體，將自動化的未來帶入現實。</p>
+            <div class="meet-robots-features">
+                <div class="mr-feature">
+                    <div class="mr-feature-icon"><i class="fas fa-brain"></i></div>
+                    <h4>先進 AI</h4>
+                    <p>採用前沿人工智慧技術，執行複雜的自動化任務</p>
+                </div>
+                <div class="mr-feature">
+                    <div class="mr-feature-icon"><i class="fas fa-industry"></i></div>
+                    <h4>流程專家</h4>
+                    <p>深入理解工作流程、營運及商業流程</p>
+                </div>
+                <div class="mr-feature">
+                    <div class="mr-feature-icon"><i class="fas fa-robot"></i></div>
+                    <h4>人形介面</h4>
+                    <p>透過先進的機器人技術與對話式 AI 實現自然互動</p>
+                </div>
+                <div class="mr-feature">
+                    <div class="mr-feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>企業級安全</h4>
+                    <p>企業級安全協議確保您的營運資料受到完善保護</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+(function () {
+    var video = document.getElementById('meetRobotsVideo');
+    var sourceEl = document.getElementById('meetRobotsSource');
+    var playBtn = document.getElementById('meetRobotsPlay');
+    var mediaWrap = document.getElementById('meetRobotsMedia');
+    var srcDesktop = '../featured/meetOurRobots.mp4';
+    var srcMobile = '../featured/meetOurRobot-mobile.mp4';
+    var posterDesktop = '../featured/meetOurRobot.jpg';
+    var posterMobile = '../featured/meetOurRobot-mobile.jpg';
+    var current = null;
+    var loaded = false;
+    var allowVideo = typeof rbShouldAutoplayVideo === 'function' ? rbShouldAutoplayVideo() : true;
+
+    function updatePoster() {
+        var isMobile = window.innerWidth <= 768;
+        var target = isMobile ? 'mobile' : 'desktop';
+        if (target === current) return;
+        current = target;
+        video.poster = isMobile ? posterMobile : posterDesktop;
+        if (loaded) loadAndPlay(true);
+    }
+
+    function loadAndPlay(forceReload) {
+        var isMobile = window.innerWidth <= 768;
+        if (loaded && !forceReload) return;
+        loaded = true;
+        sourceEl.src = isMobile ? srcMobile : srcDesktop;
+        video.load();
+        video.play().catch(function () {});
+    }
+
+    updatePoster();
+
+    // This section sits below the fold, so on a connection fast enough to autoplay at all, still wait until it's about to scroll into view rather than fetching it immediately on load.
+    if (allowVideo && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    loadAndPlay();
+                    observer.disconnect();
+                }
+            });
+        }, { rootMargin: '200px' });
+        observer.observe(mediaWrap);
+    } else if (allowVideo) {
+        loadAndPlay();
+    }
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updatePoster, 200);
+    });
+
+    function syncMuteToFullscreen() {
+        var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+        var entering = fsEl === video;
+        video.muted = !entering;
+        if (entering) video.currentTime = 0;
+    }
+    document.addEventListener('fullscreenchange', syncMuteToFullscreen);
+    document.addEventListener('webkitfullscreenchange', syncMuteToFullscreen);
+    video.addEventListener('webkitbeginfullscreen', function () { video.muted = false; video.currentTime = 0; }); // iOS Safari native fullscreen
+    video.addEventListener('webkitendfullscreen', function () { video.muted = true; }); // iOS Safari native fullscreen
+
+    playBtn.addEventListener('click', function () {
+        loadAndPlay(); // in case it never autoloaded (slow connection, or hasn't scrolled into view yet)
+        if (video.requestFullscreen) video.requestFullscreen();
+        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+        else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen(); // iOS Safari
+        else video.muted = false; // no fullscreen API at all, fall back to just unmuting
+    });
+})();
+</script>
+
 
 <!-- What We Do Section -->
+<style>
+    .wwd-carousel {
+        position: relative; height: 37.5vw; width: 100vw; overflow: hidden;
+        margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+    }
+    .wwd-card {
+        position: absolute; top: 50%; left: 50%; border-radius: 32px; overflow: hidden; text-decoration: none;
+        display: block; width: 37.5vw; aspect-ratio: 1 / 1; background: #dce3ea; box-shadow: var(--shadow-lg); z-index: 1;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.8s ease, opacity 0.8s ease;
+    }
+    .wwd-card.pos-left { transform: translate(calc(-50% - 33.2vw), -50%) scale(0.658); }
+    .wwd-card.pos-center { transform: translate(-50%, -50%) scale(0.94); z-index: 2; box-shadow: none; border-radius: 40px; }
+    .wwd-card.pos-right { transform: translate(calc(-50% + 33.2vw), -50%) scale(0.658); }
+    .wwd-card.pos-hidden-right { transform: translate(calc(-50% + 60vw), -50%) scale(0.658); z-index: 0; }
+    .wwd-card.pos-hidden-left { transform: translate(calc(-50% - 60vw), -50%) scale(0.658); z-index: 0; }
+    .wwd-card.pos-far-right { transform: translate(calc(-50% + 80vw), -50%) scale(0.658); opacity: 0; z-index: -1; }
+    .wwd-card.pos-far-left { transform: translate(calc(-50% - 80vw), -50%) scale(0.658); opacity: 0; z-index: -1; }
+    .wwd-card img {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+        -webkit-user-drag: none; user-select: none; pointer-events: none;
+    }
+    .wwd-name {
+        position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%);
+        background: rgba(20, 20, 20, 0.72); color: #fff; padding: 10px 18px; border-radius: 18px;
+        font-weight: 600; font-size: 18px; line-height: 1.3; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+        max-width: calc(100% - 32px); text-align: center;
+    }
+    .wwd-controls {
+        display: flex; align-items: center; justify-content: center;
+        max-width: 1040px; margin: 36px auto 0; padding: 0 20px;
+    }
+    .wwd-dots { display: flex; gap: 10px; margin: 0 auto; }
+    .wwd-dot {
+        width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; cursor: pointer;
+        background: rgba(0, 0, 0, 0.18); transition: var(--transition);
+    }
+    .wwd-dot.active { background: var(--primary-color); width: 24px; border-radius: 5px; }
+    .wwd-carousel.cursor-prev {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='rgba(255,255,255,0.9)' stroke='rgba(0,0,0,0.08)'/%3E%3Cpath d='M19 10l-6 6 6 6' fill='none' stroke='%231d1d1f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 16 16, w-resize;
+    }
+    .wwd-carousel.cursor-next {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='rgba(255,255,255,0.9)' stroke='rgba(0,0,0,0.08)'/%3E%3Cpath d='M13 10l6 6-6 6' fill='none' stroke='%231d1d1f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 16 16, e-resize;
+    }
+    @media (max-width: 900px) {
+        .wwd-carousel { height: 240px; }
+        .wwd-card { width: 190px; aspect-ratio: 4 / 5; border-radius: 28px; }
+        .wwd-card.pos-left { transform: translate(calc(-50% - 165px), -50%) scale(0.632); }
+        .wwd-card.pos-center { transform: translate(-50%, -50%) scale(0.94); box-shadow: none; border-radius: 34px; }
+        .wwd-card.pos-right { transform: translate(calc(-50% + 165px), -50%) scale(0.632); }
+        .wwd-card.pos-hidden-right { transform: translate(calc(-50% + 330px), -50%) scale(0.632); opacity: 0; }
+        .wwd-card.pos-hidden-left { transform: translate(calc(-50% - 330px), -50%) scale(0.632); opacity: 0; }
+        .wwd-card.pos-far-right { transform: translate(calc(-50% + 500px), -50%) scale(0.632); opacity: 0; }
+        .wwd-card.pos-far-left { transform: translate(calc(-50% - 500px), -50%) scale(0.632); opacity: 0; }
+        .wwd-name { font-size: 11px; padding: 6px 12px; bottom: 10px; border-radius: 14px; max-width: calc(100% - 20px); }
+        .wwd-controls { margin-top: 26px; }
+    }
+    @media (max-width: 560px) {
+        .wwd-carousel { height: 87.5vw; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); }
+        .wwd-card { width: 70vw; aspect-ratio: 4 / 5; border-radius: 28px; }
+        .wwd-card.pos-left { transform: translate(calc(-50% - 65vw), -50%) scale(0.8); }
+        .wwd-card.pos-center { transform: translate(-50%, -50%) scale(0.94); box-shadow: none; border-radius: 34px; }
+        .wwd-card.pos-right { transform: translate(calc(-50% + 65vw), -50%) scale(0.8); }
+        .wwd-card.pos-hidden-right { transform: translate(calc(-50% + 126vw), -50%) scale(0.8); opacity: 0; }
+        .wwd-card.pos-hidden-left { transform: translate(calc(-50% - 126vw), -50%) scale(0.8); opacity: 0; }
+        .wwd-card.pos-far-right { transform: translate(calc(-50% + 200vw), -50%) scale(0.8); opacity: 0; }
+        .wwd-card.pos-far-left { transform: translate(calc(-50% - 200vw), -50%) scale(0.8); opacity: 0; }
+    }
+</style>
 <section class="what-we-do-section" id="what-we-do">
     <div class="container">
         <div class="section-header">
@@ -652,87 +1073,182 @@
             <h2 class="section-title"><span style="position: absolute; left: -9999px;">RB Labs</span> 以 AI 與機器人技術革新商業</h2>
             <p class="section-subtitle">我們開發前沿的 AI 與機器人解決方案，革新企業營運方式，使其更高效、更自動化、更永續。</p>
         </div>
-        <div class="innovation-grid">
-            <div class="innovation-card">
-                <div class="innovation-card-image">
-                    <img src="../featured/robert-in-davos.png" alt="Robert the Robot at Davos World Economic Forum">
-                </div>
-                <div class="innovation-card-content">
-                    <h4>羅伯特在達沃斯</h4>
-                    <p>RB Labs將機器人羅伯特帶到達沃斯世界經濟論壇，與全球領袖及政策制定者探討人工智慧和機器人技術的未來。</p>
-                    <a href="/tw/news/robert-in-davos/" class="innovation-link">了解更多</a>
-                </div>
-            </div>
-            <div class="innovation-card">
-                <div class="innovation-card-image">
-                    <img src="../featured/RB-Labs-Ben-Bandari-Damac.jpg" alt="Robert the Robot - Dubai Real Estate Viral Success">
-                </div>
-                <div class="innovation-card-content">
-                    <h4>Robert 房地產經紀人</h4>
-                    <p>Robert 成為全球最多人觀看的房產介紹人之一，與杜拜房地產專家 Ben Bendari 合作，取得了病毒式傳播的成功。</p>
-                    <a href="https://dubai.news/artificial-intelligence/robot-gets-over-100-million-views-and-your-job-might-be-next/" target="_blank" class="innovation-link">了解更多</a>
-                </div>
-            </div>
-            <div class="innovation-card">
-                <div class="innovation-card-image">
-                    <img src="../news/robert-the-policeman/robot-police-team.jpg" alt="Robert the Policeman">
-                </div>
-                <div class="innovation-card-content">
-                    <h4>Robert 機器人警察</h4>
-                    <p>AI 驅動的執法機器人於 2025 年警察日亮相。公共安全技術的未來。</p>
-                    <a href="/tw/news/robert-the-policeman/" class="innovation-link">了解更多</a>
-                </div>
-            </div>
-            <div class="innovation-card">
-                <div class="innovation-card-image">
-                    <img src="https://robert.finance/assets/robert_swiss_tv.jpeg" alt="Robert on Parlons Économie - Carac TV">
-                </div>
-                <div class="innovation-card-content">
-                    <h4>Robert上Parlons Économie節目 — Carac TV</h4>
-                    <p>Robert在瑞士電視台討論AI在機器人領域的未來，展示革命性的自動化能力。</p>
-                    <a href="https://carac.tv/replay/parlons-economie/3021" target="_blank" class="innovation-link">了解更多</a>
-                </div>
+        <div class="wwd-carousel" id="wwdCarousel">
+            <a href="/tw/news/robert-in-davos/" class="wwd-card" data-index="0">
+                <picture>
+                    <source media="(max-width: 560px)" type="image/webp" srcset="../featured/robert-in-davos-mobile.webp">
+                    <source media="(max-width: 560px)" srcset="../featured/robert-in-davos-mobile.jpg">
+                    <source type="image/webp" srcset="../featured/robert-in-davos.webp">
+                    <img src="../featured/robert-in-davos.jpg" alt="Robert the Robot at Davos World Economic Forum" loading="lazy" decoding="async">
+                </picture>
+                <span class="wwd-name">羅伯特在達沃斯</span>
+            </a>
+            <a href="https://dubai.news/artificial-intelligence/robot-gets-over-100-million-views-and-your-job-might-be-next/" target="_blank" class="wwd-card" data-index="1">
+                <picture>
+                    <source media="(max-width: 560px)" type="image/webp" srcset="../featured/RB-Labs-Ben-Bandari-Damac-mobile.webp">
+                    <source media="(max-width: 560px)" srcset="../featured/RB-Labs-Ben-Bandari-Damac-mobile.jpg">
+                    <source type="image/webp" srcset="../featured/RB-Labs-Ben-Bandari-Damac.webp">
+                    <img src="../featured/RB-Labs-Ben-Bandari-Damac.jpg" alt="Robert the Robot - Dubai Real Estate Viral Success" loading="lazy" decoding="async">
+                </picture>
+                <span class="wwd-name">Robert 房地產經紀人</span>
+            </a>
+            <a href="/tw/news/robert-the-policeman/" class="wwd-card" data-index="2">
+                <picture>
+                    <source media="(max-width: 560px)" type="image/webp" srcset="../news/robert-the-policeman/robot-police-team-mobile.webp">
+                    <source media="(max-width: 560px)" srcset="../news/robert-the-policeman/robot-police-team-mobile.jpg">
+                    <source type="image/webp" srcset="../news/robert-the-policeman/robot-police-team.webp">
+                    <img src="../news/robert-the-policeman/robot-police-team.jpg" alt="Robert the Policeman" loading="lazy" decoding="async">
+                </picture>
+                <span class="wwd-name">Robert 機器人警察</span>
+            </a>
+            <a href="https://carac.tv/replay/parlons-economie/3021" target="_blank" class="wwd-card" data-index="3">
+                <picture>
+                    <source media="(max-width: 560px)" type="image/webp" srcset="../featured/robert-carac-tv-mobile.webp">
+                    <source media="(max-width: 560px)" srcset="../featured/robert-carac-tv-mobile.jpg">
+                    <source type="image/webp" srcset="../featured/robert-carac-tv.webp">
+                    <img src="../featured/robert-carac-tv.jpg" alt="Robert on Parlons Économie - Carac TV" loading="lazy" decoding="async">
+                </picture>
+                <span class="wwd-name">Robert上Parlons Économie節目 — Carac TV</span>
+            </a>
+            <a href="https://www.entrepreneur.com/en-ae/technology/meet-robert-the-robot-by-rb-labs-the-man-who-stole/494517" target="_blank" class="wwd-card" data-index="4">
+                <picture>
+                    <source media="(max-width: 560px)" type="image/webp" srcset="../featured/robert-entrepreneur-magazine-mobile.webp">
+                    <source media="(max-width: 560px)" srcset="../featured/robert-entrepreneur-magazine-mobile.jpg">
+                    <source type="image/webp" srcset="../featured/robert-entrepreneur-magazine.webp">
+                    <img src="../featured/robert-entrepreneur-magazine.jpg" alt="Meet Robert the Robot - Entrepreneur Magazine" loading="lazy" decoding="async">
+                </picture>
+                <span class="wwd-name">Robert登上Entrepreneur雜誌</span>
+            </a>
+            <a href="https://www.ledauphine.com/science-et-technologie/2025/07/08/robots-humanoides-et-ia-jusqu-a-vendredi-a-geneve-au-salon-ai-for-good" target="_blank" class="wwd-card" data-index="5">
+                <picture>
+                    <source media="(max-width: 560px)" type="image/webp" srcset="../featured/robert-le-dauphine-mobile.webp">
+                    <source media="(max-width: 560px)" srcset="../featured/robert-le-dauphine-mobile.jpg">
+                    <source type="image/webp" srcset="../featured/robert-le-dauphine.webp">
+                    <img src="../featured/robert-le-dauphine.jpg" alt="Robots humanoïdes et intelligence artificielle" loading="lazy" decoding="async">
+                </picture>
+                <span class="wwd-name">Robert登上Le Dauphiné</span>
+            </a>
+        </div>
+        <div class="wwd-controls">
+            <div class="wwd-dots" id="wwdDots">
+                <button type="button" class="wwd-dot" data-goto="0" aria-label="Show slide 1"></button>
+                <button type="button" class="wwd-dot" data-goto="1" aria-label="Show slide 2"></button>
+                <button type="button" class="wwd-dot" data-goto="2" aria-label="Show slide 3"></button>
+                <button type="button" class="wwd-dot" data-goto="3" aria-label="Show slide 4"></button>
+                <button type="button" class="wwd-dot" data-goto="4" aria-label="Show slide 5"></button>
+                <button type="button" class="wwd-dot" data-goto="5" aria-label="Show slide 6"></button>
             </div>
         </div>
     </div>
 </section>
+<script>
+(function () {
+    var carousel = document.getElementById('wwdCarousel');
+    var cards = Array.prototype.slice.call(carousel.querySelectorAll('.wwd-card'));
+    var dots = Array.prototype.slice.call(document.querySelectorAll('#wwdDots .wwd-dot'));
+    var total = cards.length;
+    var centerIdx = 0;
 
-<!-- About Us / Conversational AI Section -->
-<section class="about-section" id="about">
-    <div class="container">
-        <div class="about-wrapper">
-            <div class="about-content">
-                <span class="section-label">對話式 AI</span>
-                <h2 class="section-title"><span style="position: absolute; left: -9999px;">RB Labs</span> 專為真實對話打造的 LLM</h2>
-                <p class="about-lead">我們的語言模型不僅處理文字，更能理解脈絡、細微差異與意圖。從零開始打造，提供自然、有意義、真正像人類的互動體驗。</p>
-                <p class="about-text">我們開發的對話式 AI 超越了簡單的問答模式。我們的模型能夠進行動態對話、記住上下文，並以前所未有的準確性與速度提供回應。</p>
-                <div class="about-stats">
-                    <div class="about-stat">
-                        <span class="stat-value">5M+</span>
-                        <span class="stat-label">API 呼叫次數</span>
-                    </div>
-                    <div class="about-stat">
-                        <span class="stat-value">99.9%</span>
-                        <span class="stat-label">正常運行時間</span>
-                    </div>
-                    <div class="about-stat">
-                        <span class="stat-value">22+</span>
-                        <span class="stat-label">AI 模型</span>
-                    </div>
-                    <div class="about-stat">
-                        <span class="stat-value">12+</span>
-                        <span class="stat-label">區塊鏈網路</span>
-                    </div>
-                </div>
-            </div>
-            <div class="about-images">
-                <video autoplay loop muted playsinline style="width: 100%; aspect-ratio: 1/1; border-radius: 12px; object-fit: cover;">
-                    <source src="../featured/llm.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-    </div>
-</section>
+    function render() {
+        cards.forEach(function (card) {
+            var idx = parseInt(card.getAttribute('data-index'), 10);
+            var diff = (idx - centerIdx + total) % total;
+            var newClass;
+            if (diff === 0) newClass = 'pos-center';
+            else if (diff === 1) newClass = 'pos-right';
+            else if (diff === total - 1) newClass = 'pos-left';
+            else if (diff === 2) newClass = 'pos-hidden-right';
+            else if (diff === total - 2) newClass = 'pos-hidden-left';
+            else {
+                // Still in the fully-hidden zone: keep sliding in whichever direction this
+                // card was already heading, so leaving a hidden slot continues as one smooth
+                // slide+fade instead of jumping to a fixed spot on the opposite side.
+                var cameFromLeftSide = card.classList.contains('pos-hidden-left') || card.classList.contains('pos-far-left') || card.classList.contains('pos-left');
+                newClass = cameFromLeftSide ? 'pos-far-left' : 'pos-far-right';
+            }
+
+            // A card can only be entering pos-hidden-right/-left smoothly (as a short slide+fade
+            // in from that edge) if it's already parked on the matching far side. If it's parked
+            // on the opposite side, jump it to the matching far-side spot first - invisibly,
+            // since opacity is 0 there throughout - then let the real move animate as normal.
+            var needsSideSwap =
+                (newClass === 'pos-hidden-right' && card.classList.contains('pos-far-left')) ||
+                (newClass === 'pos-hidden-left' && card.classList.contains('pos-far-right'));
+
+            card.classList.remove('pos-left', 'pos-center', 'pos-right', 'pos-hidden-left', 'pos-hidden-right', 'pos-far-left', 'pos-far-right');
+            if (needsSideSwap) {
+                var stagingClass = newClass === 'pos-hidden-right' ? 'pos-far-right' : 'pos-far-left';
+                card.style.transition = 'none';
+                card.classList.add(stagingClass);
+                card.offsetHeight; // force reflow so the staging position is committed before the real move
+                card.style.transition = '';
+                card.classList.remove(stagingClass);
+            }
+            card.classList.add(newClass);
+        });
+        dots.forEach(function (dot, i) {
+            dot.classList.toggle('active', i === centerIdx);
+        });
+    }
+
+    function next() { centerIdx = (centerIdx + 1) % total; render(); }
+    function prev() { centerIdx = (centerIdx - 1 + total) % total; render(); }
+
+    carousel.addEventListener('mousemove', function (e) {
+        var r = carousel.getBoundingClientRect();
+        var isLeft = e.clientX < r.left + r.width / 2;
+        carousel.classList.toggle('cursor-prev', isLeft);
+        carousel.classList.toggle('cursor-next', !isLeft);
+    });
+    carousel.addEventListener('mouseleave', function () {
+        carousel.classList.remove('cursor-prev', 'cursor-next');
+    });
+    carousel.addEventListener('click', function (e) {
+        if (e.detail === 0) return; // synthesized click from a touch tap, not a real mouse click
+        if (e.target.closest('.wwd-card.pos-center')) return; // let the center card's own link work
+        var r = carousel.getBoundingClientRect();
+        if (e.clientX < r.left + r.width / 2) prev(); else next();
+    });
+
+    dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+            centerIdx = parseInt(dot.getAttribute('data-goto'), 10);
+            render();
+        });
+    });
+
+    var touchX = null;
+    var touchY = null;
+    var touchLocked = false; // becomes true once a gesture is confirmed horizontal, so we can claim it from page scroll
+
+    carousel.addEventListener('touchstart', function (e) {
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+        touchLocked = false;
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', function (e) {
+        if (touchX === null) return;
+        var dx = e.touches[0].clientX - touchX;
+        var dy = e.touches[0].clientY - touchY;
+        if (!touchLocked) {
+            if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return; // not enough movement yet to tell direction
+            touchLocked = Math.abs(dx) > Math.abs(dy);
+        }
+        if (touchLocked) e.preventDefault(); // this is our horizontal swipe, not a page scroll
+    }, { passive: false });
+
+    carousel.addEventListener('touchend', function (e) {
+        if (touchX === null) return;
+        var dx = e.changedTouches[0].clientX - touchX;
+        touchX = null;
+        touchY = null;
+        if (Math.abs(dx) > 40) (dx < 0 ? next : prev)();
+    });
+
+    render();
+})();
+</script>
 
 <!-- Career Section -->
 <section class="career-section" style="padding: 60px 0; background: #f8f8f8; border-top: 1px solid #e5e7eb;">
@@ -758,22 +1274,6 @@
         }
     }
 </style>
-<script>
-    (function () {
-        var video = document.querySelector('.llms-video');
-        if (!video) return;
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-            });
-        }, { threshold: 0.25 });
-        observer.observe(video);
-    })();
-</script>
 
 
     <footer class="footer">

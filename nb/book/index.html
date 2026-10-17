@@ -255,8 +255,11 @@
         }
     </style>
 
-    <link rel="preload" as="image" href="/featured/robert-booking-poster.jpg" media="(min-width: 769px)">
-<link rel="preload" as="image" href="/featured/robert-booking-mobile-poster.jpg" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="/featured/robert-booking-hero-2.jpg" media="(min-width: 769px)">
+<link rel="preload" as="image" href="/featured/robert-booking-hero-mobile.jpg" media="(max-width: 768px)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     
 
@@ -275,7 +278,7 @@
                     <a href="/nb/news/" class="nav-link">Nyheter</a>
                     <a href="/nb/book/" class="nav-link">
                         <span class="nav-desktop-text">Book</span>
-                        <span class="nav-mobile-text">Bestill Robert</span>
+                        <span class="nav-mobile-text">Robotleie</span>
                     </a>
                     <a href="/nb/robot/" class="nav-link nav-mobile-only">Egendefinert Robot</a>
                     <div class="nav-lang-dropdown">
@@ -479,6 +482,7 @@
     .rent-hero {
         position: relative;
         min-height: 100vh;
+        min-height: 100svh; /* small-viewport height: never taller than the visible screen on mobile */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -486,7 +490,7 @@
         background: #0a0a0a;
     }
 
-    .rent-hero-video {
+    .rent-hero-media {
         position: absolute;
         top: 0;
         left: 0;
@@ -495,23 +499,13 @@
         object-fit: cover;
     }
 
-    .rent-hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, rgb(22 32 60 / 25%) 0%, rgba(0, 0, 0, 0.25) 100%);
-        z-index: 1;
-    }
-
     .rent-hero-content {
         position: relative;
         z-index: 2;
         text-align: center;
         max-width: 800px;
         margin: 0 auto;
-        padding: 140px 20px 80px;
+        padding: 250px 20px 80px;
     }
 
     .rent-badge {
@@ -528,320 +522,23 @@
         margin-bottom: 2rem;
     }
 
+    /* Matched to the home hero typography (.hero-title / .hero-description
+       incl. typography.css) for a consistent look across pages. */
     .rent-title {
-        font-size: 3.5rem;
-        font-weight: 700;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 600;
         color: #ffffff;
         margin-bottom: 1.5rem;
-        line-height: 1.15;
-        letter-spacing: -0.02em;
+        line-height: 1.08;
+        letter-spacing: -0.03em;
     }
 
     .rent-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.1875rem;
         color: rgba(255,255,255,0.85);
-        line-height: 1.7;
+        line-height: 1.6;
         max-width: 600px;
         margin: 0 auto 2.5rem;
-    }
-
-
-    /* Showcase / Robert in Action Carousel */
-    .rent-showcase {
-        padding: 100px 0;
-        background: white;
-        overflow: hidden;
-    }
-
-    .rent-carousel-wrapper {
-        position: relative;
-        margin-top: 60px;
-    }
-
-    .rent-carousel {
-        display: flex;
-        gap: 20px;
-        padding: 10px 0 20px;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .rent-carousel::-webkit-scrollbar {
-        display: none;
-    }
-
-    .rent-showcase-card {
-        position: relative;
-        border-radius: 16px;
-        overflow: hidden;
-        background: #000;
-        aspect-ratio: 9/16;
-        flex: 0 0 calc((100% - 60px) / 4);
-        min-width: 0;
-        scroll-snap-align: start;
-        cursor: pointer;
-    }
-
-    .rent-showcase-card video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.5s ease;
-    }
-
-    .rent-showcase-card:hover video {
-        transform: scale(1.03);
-    }
-
-    .rent-showcase-caption {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 40px 20px 20px;
-        background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
-        color: white;
-    }
-
-    .rent-showcase-caption h3 {
-        font-size: 1.05rem;
-        font-weight: 600;
-        margin-bottom: 4px;
-    }
-
-    .rent-showcase-caption p {
-        font-size: 0.8rem;
-        opacity: 0.85;
-        line-height: 1.4;
-    }
-
-    .rent-showcase-play {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 56px;
-        height: 56px;
-        background: rgba(255,255,255,0.2);
-        backdrop-filter: blur(10px);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 18px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        z-index: 2;
-    }
-
-    .rent-showcase-card:hover .rent-showcase-play {
-        background: var(--primary-color);
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    .rent-carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 48px;
-        height: 48px;
-        background: white;
-        border: 1px solid #e5e7eb;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #1f2937;
-        font-size: 18px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 3;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .rent-carousel-btn:hover {
-        background: var(--primary-color);
-        color: white;
-        border-color: var(--primary-color);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
-    }
-
-    .rent-carousel-prev {
-        left: -24px;
-    }
-
-    .rent-carousel-next {
-        right: -24px;
-    }
-
-    /* Carousel dots */
-    .rent-carousel-dots {
-        display: none;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 20px;
-    }
-
-    .rent-carousel-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #d1d5db;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .rent-carousel-dot.active {
-        background: var(--primary-color);
-        width: 24px;
-        border-radius: 4px;
-    }
-
-    @media (max-width: 768px) {
-        .rent-carousel {
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            margin: 0 -20px;
-            padding: 10px 20px 20px;
-        }
-
-        .rent-showcase-card {
-            flex: 0 0 72vw;
-            scroll-snap-align: center;
-        }
-
-        .rent-carousel-btn {
-            display: none;
-        }
-
-        .rent-carousel-dots {
-            display: flex;
-        }
-    }
-
-    /* Video Lightbox Modal */
-    .video-modal-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.92);
-        z-index: 9999;
-        align-items: center;
-        justify-content: center;
-        padding: 40px;
-    }
-
-    .video-modal-overlay.active {
-        display: flex;
-    }
-
-    .video-modal-close {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        width: 44px;
-        height: 44px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 10000;
-    }
-
-    .video-modal-close:hover {
-        background: rgba(255, 255, 255, 0.25);
-        transform: scale(1.1);
-    }
-
-    .video-modal-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-width: 90vw;
-        max-height: 85vh;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    }
-
-    .video-modal-content video {
-        max-width: 90vw;
-        max-height: 85vh;
-        display: block;
-        border-radius: 12px;
-    }
-
-    @media (max-width: 768px) {
-        .video-modal-overlay {
-            padding: 20px;
-        }
-
-        .video-modal-close {
-            top: 12px;
-            right: 16px;
-        }
-    }
-
-    /* How It Works Section */
-    .rent-how {
-        padding: 100px 0;
-        background: #fafbfc;
-        border-top: 1px solid #e5e7eb;
-    }
-
-    .rent-how-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-        margin-top: 60px;
-    }
-
-    .rent-how-card {
-        text-align: center;
-        position: relative;
-    }
-
-    .rent-how-number {
-        width: 60px;
-        height: 60px;
-        background: var(--primary-color);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 20px;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: white;
-    }
-
-    .rent-how-card h3 {
-        font-size: 1.25rem;
-        color: #1f2937;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-
-    .rent-how-card p {
-        color: #6b7280;
-        line-height: 1.6;
-        font-size: 0.95rem;
     }
 
     /* Rental Form Section */
@@ -1137,12 +834,34 @@
         .rent-info-sidebar {
             position: static;
         }
-
     }
 
     @media (max-width: 768px) {
         .rent-hero {
             min-height: 100vh;
+            min-height: 100svh;
+            /* Top-align the content box; the padding below places the text
+               over the dark suits, clear of the robots' faces (~40% height). */
+            align-items: flex-start;
+        }
+
+    .rent-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgb(22 32 60 / 25%) 0%, rgba(0, 0, 0, 0.25) 100%);
+        z-index: 1;
+    }
+
+        .rent-hero-content {
+            padding: 48svh 20px 60px;
+        }
+
+        .rent-hero-overlay {
+            /* Slightly darker toward the bottom for text contrast */
+            background: linear-gradient(180deg, rgb(22 32 60 / 25%) 0%, rgba(0, 0, 0, 0.45) 100%);
         }
 
         .rent-title {
@@ -1150,12 +869,7 @@
         }
 
         .rent-subtitle {
-            font-size: 1.05rem;
-        }
-
-        .rent-how-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
+            font-size: 1rem;
         }
 
         .rent-form-wrapper {
@@ -1193,7 +907,6 @@
             width: 80px;
             padding: 14px 8px;
         }
-
     }
 
     @media (max-width: 480px) {
@@ -1216,49 +929,24 @@
         .submit-btn {
             padding: 16px 24px;
         }
-
     }
 </style>
 
-<!-- Hero Section with Video Background -->
+<!-- Hero Section with Image Background -->
 <section class="rent-hero">
-    <video
-        id="rent-hero-video"
-        class="rent-hero-video"
-        autoplay muted playsinline loop
-        preload="metadata"
-    ></video>
-    <script>
-        (function() {
-            var v = document.getElementById('rent-hero-video');
-            var srcMobile = '../../featured/robert-booking-mobile.mp4';
-            var srcDesktop = '../../featured/robert-booking.mp4';
-            var posterMobile = '../../featured/robert-booking-mobile-poster.jpg';
-            var posterDesktop = '../../featured/robert-booking-poster.jpg';
-            var current = null;
-
-            function loadVideo() {
-                var isMobile = window.innerWidth <= 768;
-                var target = isMobile ? 'mobile' : 'desktop';
-                if (target === current) return;
-                current = target;
-                v.poster = isMobile ? posterMobile : posterDesktop;
-                v.src = isMobile ? srcMobile : srcDesktop;
-                v.load();
-            }
-
-            loadVideo();
-
-            var resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(loadVideo, 200);
-            });
-        })();
-    </script>
+    <picture>
+        <source media="(max-width: 768px)" srcset="../../featured/robert-booking-hero-mobile.jpg">
+        <img
+            id="rent-hero-image"
+            class="rent-hero-media"
+            src="../../featured/robert-booking-hero-2.jpg"
+            alt="Ta med Robert til ditt arrangement"
+            fetchpriority="high"
+            decoding="async"
+        >
+    </picture>
     <div class="rent-hero-overlay"></div>
     <div class="rent-hero-content">
-        <div class="rent-badge">BESTILL ROBERT</div>
         <h1 class="visuallyhidden">Bestill Robert Roboten</h1>
         <div class="rent-title">Ta med Robert til ditt arrangement</div>
         <p class="rent-subtitle">Gjør ditt neste arrangement uforglemmelig med Robert, vår AI-drevne humanoide robot. Fra bedriftssamlinger til produktlanseringer leverer Robert en unik opplevelse som fenger publikum.</p>
@@ -1267,95 +955,6 @@
                 <span>Be om tilbud</span>
                 <i class="fas fa-arrow-right"></i>
             </a>
-        </div>
-    </div>
-</section>
-
-<!-- Robert in Action — Showcase Section -->
-<section class="rent-showcase">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-label">ROBERT I AKSJON</span>
-            <h2 class="section-title">Sett på arrangementer verden over</h2>
-        </div>
-        <div class="rent-carousel-wrapper">
-            <button class="rent-carousel-btn rent-carousel-prev" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
-            <div class="rent-carousel" id="rentCarousel">
-                <div class="rent-showcase-card">
-                    <video muted playsinline preload="metadata" poster="../../news/robert-the-policeman/robot_police.jpg">
-                        <source src="../../featured/Robot-Police-RB-Labs.mp4" type="video/mp4">
-                    </video>
-                    <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
-                    <div class="rent-showcase-caption">
-                        <h3>Politiets dag 2025</h3>
-                        <p>Robert ble avduket som AI-drevet politiassistent på Politiets dag.</p>
-                    </div>
-                </div>
-                <div class="rent-showcase-card">
-                    <video muted playsinline preload="metadata" poster="../../featured/robert-in-davos.png">
-                        <source src="../../featured/robert_in_davos.mp4" type="video/mp4">
-                    </video>
-                    <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
-                    <div class="rent-showcase-caption">
-                        <h3>Davos-konferansen</h3>
-                        <p>Robert deltok på det prestisjetunge World Innovation Forum i Davos, Sveits.</p>
-                    </div>
-                </div>
-                <div class="rent-showcase-card">
-                    <video muted playsinline preload="metadata" poster="../../featured/robert-the-robot-poster.jpg">
-                        <source src="../../featured/robert-the-robot.mp4" type="video/mp4">
-                    </video>
-                    <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
-                    <div class="rent-showcase-caption">
-                        <h3>Robert Roboten</h3>
-                        <p>Robert viser fremtiden for humanoid robotikk med livaktige bevegelser og AI-drevne interaksjoner.</p>
-                    </div>
-                </div>
-                <div class="rent-showcase-card">
-                    <video muted playsinline preload="metadata" poster="../../featured/robert-real-estate-broker-poster.jpg">
-                        <source src="../../featured/robert_real_estate_broker.mp4" type="video/mp4">
-                    </video>
-                    <div class="rent-showcase-play"><i class="fas fa-play"></i></div>
-                    <div class="rent-showcase-caption">
-                        <h3>Eiendomsmegler</h3>
-                        <p>Robert gikk viralt da han presenterte luksuseiendommer som AI-drevet eiendomsmegler.</p>
-                    </div>
-                </div>
-            </div>
-            <button class="rent-carousel-btn rent-carousel-next" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
-            <div class="rent-carousel-dots" id="carouselDots">
-                <button class="rent-carousel-dot active" data-index="0"></button>
-                <button class="rent-carousel-dot" data-index="1"></button>
-                <button class="rent-carousel-dot" data-index="2"></button>
-                <button class="rent-carousel-dot" data-index="3"></button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- How It Works Section -->
-<section class="rent-how">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-label">SLIK FUNGERER DET</span>
-            <h2 class="section-title">Tre enkle trinn</h2>
-        </div>
-        <div class="rent-how-grid">
-            <div class="rent-how-card">
-                <div class="rent-how-number">1</div>
-                <h3>Forespørsel</h3>
-                <p>Fortell oss om arrangementet ditt, inkludert dato, sted og hva du ønsker at Robert skal gjøre.</p>
-            </div>
-            <div class="rent-how-card">
-                <div class="rent-how-number">2</div>
-                <h3>Tilpasning</h3>
-                <p>Vi tilpasser Roberts personlighet, manus og merkevare til arrangementets tema og mål.</p>
-            </div>
-            <div class="rent-how-card">
-                <div class="rent-how-number">3</div>
-                <h3>Arrangementsdagen</h3>
-                <p>Teamet vårt leverer Robert til stedet ditt, håndterer oppsettet og gir støtte på stedet gjennom hele arrangementet.</p>
-            </div>
         </div>
     </div>
 </section>
@@ -1381,13 +980,12 @@
                         <p>Halvdags- eller heldagspakker tilgjengelig</p>
                     </div>
                 </div>
-
             </div>
 
             <!-- Rental Form -->
             <div class="rent-form-wrapper" id="rent-form-section">
                 <div class="rent-form-header">
-                    <h2>Be om bestillingstilbud</h2>
+                    <h2>Bestill roboten din</h2>
                     <p>Fyll ut skjemaet nedenfor, så kontakter arrangementsteamet vårt deg innen 24 timer.</p>
                 </div>
 
@@ -1395,18 +993,18 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="rentFirstName">Fornavn <span class="required">*</span></label>
-                            <input type="text" id="rentFirstName" name="firstName" required>
+                            <input type="text" id="rentFirstName" name="firstName" placeholder="Skriv inn fornavnet ditt" required>
                         </div>
                         <div class="form-group">
                             <label for="rentLastName">Etternavn <span class="required">*</span></label>
-                            <input type="text" id="rentLastName" name="lastName" required>
+                            <input type="text" id="rentLastName" name="lastName" placeholder="Skriv inn etternavnet ditt" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="rentEmail">E-postadresse <span class="required">*</span></label>
-                            <input type="email" id="rentEmail" name="email" required>
+                            <input type="email" id="rentEmail" name="email" placeholder="you@company.com" required>
                         </div>
                         <div class="form-group">
                             <label for="rentPhone">Telefonnummer</label>
@@ -1415,14 +1013,14 @@
                                     <span class="country-flag" id="rentCountryFlag" aria-hidden="true">🇺🇸</span>
                                     <input type="text" id="rentCountryCode" name="countryCode" value="+1" inputmode="tel" maxlength="5" autocomplete="off" aria-label="Country code">
                                 </div>
-                                <input type="tel" id="rentPhone" name="phone">
+                                <input type="tel" id="rentPhone" name="phone" placeholder="(555) 123-4567">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="rentCompany">Selskap / Organisasjon <span class="required">*</span></label>
-                        <input type="text" id="rentCompany" name="company" required>
+                        <input type="text" id="rentCompany" name="company" placeholder="Din bedrift eller organisasjon" required>
                     </div>
 
                     <div class="form-row">
@@ -1432,7 +1030,7 @@
                         </div>
                         <div class="form-group">
                             <label for="rentLocation">Arrangementssted</label>
-                            <input type="text" id="rentLocation" name="eventLocation">
+                            <input type="text" id="rentLocation" name="eventLocation" placeholder="By, fylke eller sted">
                         </div>
                     </div>
 
@@ -1441,16 +1039,16 @@
                             <label for="rentDuration">Arrangementsvarighet</label>
                             <select id="rentDuration" name="duration">
                                 <option value="">Velg varighet</option>
-                                <option value="half-day">Halv dag (opptil 4 timer)</option>
-                                <option value="full-day">Hel dag (opptil 8 timer)</option>
-                                <option value="2-days">2 dager</option>
-                                <option value="3-days">3 dager</option>
-                                <option value="4-days">4 dager</option>
-                                <option value="5-days">5 dager</option>
-                                <option value="6-days">6 dager</option>
-                                <option value="7-days">7 dager</option>
-                                <option value="2-weeks">2 uker</option>
-                                <option value="custom">Tilpasset varighet</option>
+                                <option value="half-day">Halv dag (4 t)</option>
+                                <option value="full-day">Hel dag (8 t)</option>
+                                <option value="2-days">2 days</option>
+                                <option value="3-days">3 days</option>
+                                <option value="4-days">4 days</option>
+                                <option value="5-days">5 days</option>
+                                <option value="6-days">6 days</option>
+                                <option value="7-days">7 days</option>
+                                <option value="2-weeks">2 weeks</option>
+                                <option value="custom">Custom duration</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1461,8 +1059,8 @@
                                 <option value="50-100">50 – 100</option>
                                 <option value="100-300">100 – 300</option>
                                 <option value="300-500">300 – 500</option>
-                                <option value="500-1000">500 – 1 000</option>
-                                <option value="1000+">1 000+</option>
+                                <option value="500-1000">500 – 1,000</option>
+                                <option value="1000+">1,000+</option>
                             </select>
                         </div>
                     </div>
@@ -1487,92 +1085,6 @@
         </div>
     </div>
 </section>
-
-<!-- Video Lightbox Modal -->
-<div class="video-modal-overlay" id="videoModal">
-    <button class="video-modal-close" id="videoModalClose"><i class="fas fa-times"></i></button>
-    <div class="video-modal-content">
-        <video id="videoModalPlayer" controls playsinline preload="metadata"></video>
-    </div>
-</div>
-
-<script>
-    // Video lightbox
-    (function() {
-        var modal = document.getElementById('videoModal');
-        var player = document.getElementById('videoModalPlayer');
-        var closeBtn = document.getElementById('videoModalClose');
-
-        function openModal(videoSrc) {
-            player.src = videoSrc;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            player.play();
-        }
-
-        function closeModal() {
-            player.pause();
-            player.src = '';
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        document.querySelectorAll('.rent-showcase-card').forEach(function(card) {
-            var video = card.querySelector('video');
-            if (!video) return;
-            var source = video.querySelector('source');
-            var src = source ? source.getAttribute('src') : '';
-
-            card.addEventListener('click', function() {
-                openModal(src);
-            });
-        });
-
-        closeBtn.addEventListener('click', closeModal);
-
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) closeModal();
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
-    })();
-
-    // Carousel navigation + dots
-    (function() {
-        var carousel = document.getElementById('rentCarousel');
-        var dots = document.querySelectorAll('.rent-carousel-dot');
-        var cards = carousel.querySelectorAll('.rent-showcase-card');
-        var scrollTimer;
-
-        function updateDots() {
-            var scrollLeft = carousel.scrollLeft;
-            var cardWidth = cards[0].offsetWidth;
-            var gap = 24;
-            var index = Math.round(scrollLeft / (cardWidth + gap));
-            index = Math.max(0, Math.min(index, dots.length - 1));
-            dots.forEach(function(dot, i) {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-
-        carousel.addEventListener('scroll', function() {
-            clearTimeout(scrollTimer);
-            scrollTimer = setTimeout(updateDots, 50);
-        });
-
-        dots.forEach(function(dot) {
-            dot.addEventListener('click', function() {
-                var index = parseInt(this.getAttribute('data-index'));
-                var card = cards[index];
-                if (card) {
-                    carousel.scrollTo({ left: card.offsetLeft - 20, behavior: 'smooth' });
-                }
-            });
-        });
-    })();
-</script>
 
 <script>
     (function() {
@@ -1734,7 +1246,6 @@
             spinner.style.display = 'none';
         }
     });
-
 </script>
 
 

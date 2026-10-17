@@ -11,10 +11,10 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Konfigurer og bestill din tilpassede AI-drevne robotansatte fra RB Labs. Fra $50,000 USD.">
+    <meta name="description" content="Konfigurer og bestill din tilpassede AI-drevne robotansatte fra RB Labs. Fra $79,000 USD.">
     <meta name="keywords" content="RB Labs, Robotikk, AI-integrasjon, Automatisering, Humanoide roboter, Bedrifts-AI, Robotikkløsninger">
     <meta property="og:title" content="Bygg din egen robotansatt - RB Labs">
-    <meta property="og:description" content="Konfigurer og bestill din tilpassede AI-drevne robotansatte fra RB Labs. Fra $50,000 USD.">
+    <meta property="og:description" content="Konfigurer og bestill din tilpassede AI-drevne robotansatte fra RB Labs. Fra $79,000 USD.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.rblabs.ai/nb/robot/">
     <title>Bygg din egen robotansatt - RB Labs</title>
@@ -255,11 +255,16 @@
         }
     </style>
 
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" fetchpriority="high" href="/featured/robot/robert/robert-1.jpg">
+<link rel="preload" as="image" fetchpriority="high" href="/featured/robot/robertJr/robertjr-1.jpg">
+
     
 
 </head>
-<body data-page="home">
+<body>
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
@@ -273,7 +278,7 @@
                     <a href="/nb/news/" class="nav-link">Nyheter</a>
                     <a href="/nb/book/" class="nav-link">
                         <span class="nav-desktop-text">Book</span>
-                        <span class="nav-mobile-text">Bestill Robert</span>
+                        <span class="nav-mobile-text">Robotleie</span>
                     </a>
                     <a href="/nb/robot/" class="nav-link nav-mobile-only">Egendefinert Robot</a>
                     <div class="nav-lang-dropdown">
@@ -470,621 +475,595 @@
     })();
     </script>
 
-    <!-- Product Hero -->
-<section class="product-hero">
-    <div class="hero-background">
-        <video
-            id="robot-hero-video"
-            class="hero-video"
-            autoplay muted playsinline loop
-            preload="metadata"
-        ></video>
-        <script>
-            (function() {
-                var v = document.getElementById('robot-hero-video');
-                var srcMobile     = '../../featured/buy-robot-mobile.mp4';
-                var srcDesktop    = '../../featured/buy-robot.mp4';
-                var posterMobile  = '../../featured/buy-robot-mobile-poster.jpg';
-                var posterDesktop = '../../featured/buy-robot-poster.jpg';
-                var current = null;
-
-                function loadVideo() {
-                    var isMobile = window.innerWidth <= 768;
-                    var target = isMobile ? 'mobile' : 'desktop';
-                    if (target === current) return;
-                    current = target;
-                    v.poster = isMobile ? posterMobile : posterDesktop;
-                    v.src    = isMobile ? srcMobile    : srcDesktop;
-                    v.load();
-                }
-
-                loadVideo();
-
-                var resizeTimer;
-                window.addEventListener('resize', function() {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(loadVideo, 200);
-                });
-            })();
-        </script>
-    </div>
-    <div class="product-hero-content">
-        <div class="hero-title">
-            <span class="hero-welcome">Bygg din egen</span>
-            <span class="hero-brand">Robotansatt</span>
-        </div>
-        <p class="hero-description">
-            Konfigurer din tilpassede AI-drevne humanoide robot med personligheten, ferdighetene og kunnskapen bedriften din trenger.
-        </p>
-        <div class="hero-cta">
-            <a href="#contact-form" class="btn btn-primary btn-large btn-minimal">
-                <span>Konfigurer din robot</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
+    <!-- Robot Configurator -->
+<section class="rc-section">
+    <div class="rc-pick" id="rcHeroSelect">
+        <p class="rc-canceled-note" id="rcCanceledNote" hidden>Betaling avbrutt. Du kan velge roboten din igjen når som helst.</p>
+        <header class="rc-pick-header">
+            <h1 class="rc-title">Velg roboten din</h1>
+        </header>
+        <div class="rc-pick-grid">
+            <button type="button" class="rc-pick-card" data-robot="0">
+                <img src="../../featured/robot/robert/robert-1.jpg" alt="Custom Robert" fetchpriority="high" decoding="async">
+                <span class="rc-pick-badge" id="rcHeroCta0"></span>
+                <span class="rc-pick-info">
+                    <span class="rc-pick-name">Custom Robert</span>
+                    <span class="rc-pick-price">fra $79 000</span>
+                </span>
+            </button>
+            <button type="button" class="rc-pick-card" data-robot="1">
+                <img src="../../featured/robot/robertJr/robertjr-1.jpg" alt="Robert Junior" fetchpriority="high" decoding="async">
+                <span class="rc-pick-badge" id="rcHeroCta1"></span>
+                <span class="rc-pick-info">
+                    <span class="rc-pick-name">Robert Junior</span>
+                    <span class="rc-pick-price">fra $13 000</span>
+                </span>
+            </button>
         </div>
     </div>
-</section>
 
-<!-- Sticky Product Section -->
-<section class="product-showcase" id="personalities">
-    <div class="product-container">
-        <!-- Sticky Robot Visual -->
-        <div class="product-visual">
-            <div class="robot-display">
-                <video
-                    muted
-                    playsinline
-                    webkit-playsinline
-                    x-webkit-airplay="allow"
-                    class="robot-video"
-                    id="robotVideo"
-                    poster="../../featured/your-rb-labs-robot_mobile.webp"
-                    preload="auto"
-                >
-                    <!-- Mobile/tablet video loads for screens <= 1024px -->
-                    <source src="../../featured/your-rb-labs-robot_mobile.mp4" type="video/mp4" media="(max-width: 1024px)">
-                    <!-- Desktop video loads for screens > 1024px -->
-                    <source src="../../featured/your-rb-labs-robot.mp4" type="video/mp4">
-                    <img src="../../featured/your-rb-labs-robot_mobile.webp" alt="Your Custom Robot Employee RB Labs">
-                </video>
-                <div class="robot-personality-badge" id="personalityBadge">
-                    <span class="badge-icon"><i class="fas fa-robot"></i></span>
-                    <span class="badge-text">AI-DREVET ROBOT</span>
+    <div class="rc-config-wrap" id="rcConfigWrap" hidden>
+    <div class="rc-shell" id="rcConfigRef">
+        <div class="rc-main">
+            <div class="rc-gallery">
+                <div class="rc-hero-frame">
+                    <div class="rc-hero-img" id="rcHeroImg"><i class="fas fa-image"></i></div>
+                    <button type="button" class="rc-nav-btn rc-nav-prev" id="rcPrev" aria-label="Previous">‹</button>
+                    <button type="button" class="rc-nav-btn rc-nav-next" id="rcNext" aria-label="Next">›</button>
                 </div>
-                <div class="pip-controls">
-                    <button class="pip-btn" id="pipMinimize" title="Minimize">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button class="pip-btn" id="pipExpand" title="Expand">
-                        <i class="fas fa-expand"></i>
-                    </button>
-                    <button class="pip-btn" id="pipClose" title="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
+                <div class="rc-dots" id="rcDots"></div>
+                <div class="rc-thumbs" id="rcThumbs"></div>
+            </div>
+
+            <div class="rc-config">
+                <section class="rc-step">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">01</span>
+                        <h2>Velg ansikt.</h2>
+                        <span class="rc-step-sub">Gjør det slik du vil ha det.</span>
+                    </div>
+                    <div class="rc-options" id="rcFaces">
+                        <button type="button" class="rc-option" data-face="0" id="rcFaceStandard">
+                            <span class="rc-option-photo"><img id="rcFaceStandardImg" src="../../featured/robot/robert/robert-1.jpg" alt=""></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Standardansikt</span>
+                                <span class="rc-option-price">Inkludert</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </button>
+                        <button type="button" class="rc-option" data-face="1" id="rcFaceCustom">
+                            <span class="rc-option-photo"><i class="fas fa-user-edit"></i></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Tilpasset ansikt</span>
+                                <span class="rc-option-price">+$1 000</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="rc-step rc-upload-step" id="rcUploadStep">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">02</span>
+                        <h2>Last opp ansiktet du vil ha.</h2>
+                    </div>
+                    <label class="rc-dropzone" id="rcDropzone">
+                        <input type="file" accept="image/*" id="rcFileInput" style="display:none">
+                        <span class="rc-drop-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M4 14v5h16v-5"></path></svg>
+                        </span>
+                        <span class="rc-drop-text">
+                            <span class="rc-drop-main" id="rcDropMain">Dra og slipp et bilde her, eller <span class="rc-drop-browse">bla gjennom</span></span>
+                            <span class="rc-drop-hint">JPG eller PNG, forfra, godt lys</span>
+                        </span>
+                        <span class="rc-drop-preview" id="rcUploadPreview"><i class="fas fa-user"></i></span>
+                    </label>
+                </section>
+
+                <section class="rc-step">
+                    <div class="rc-step-head">
+                        <span class="rc-step-num">03</span>
+                        <h2>Velg stemmeagent.</h2>
+                        <span class="rc-step-sub">Gi roboten din en stemme.</span>
+                    </div>
+                    <div class="rc-options" id="rcVoices">
+                        <div class="rc-option" data-voice="0" id="rcVoiceStandard">
+                            <span class="rc-option-play-wrap">
+                                <button type="button" class="rc-option-play" id="rcPlay0" aria-label="Play sample">▶</button>
+                            </span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Standardstemme</span>
+                                <span class="rc-option-price">Inkludert</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </div>
+                        <div class="rc-option" data-voice="1" id="rcVoiceCustom">
+                            <span class="rc-option-icon"><i class="fas fa-microphone"></i></span>
+                            <span class="rc-option-body">
+                                <span class="rc-option-label">Tilpasset stemmeklon</span>
+                                <span class="rc-option-price">Inkludert</span>
+                            </span>
+                            <span class="rc-radio"></span>
+                        </div>
+                    </div>
+                    <p class="rc-voice-locked-note" id="rcVoiceLockedNote">Tilgjengelig når du velger et tilpasset ansikt.</p>
+                    <div class="rc-voice-describe" id="rcVoiceDescribeWrap">
+                        <label class="rc-voice-describe-label" for="rcVoiceDescription">Beskriv stemmen du ønsker</label>
+                        <textarea class="rc-voice-describe-input" id="rcVoiceDescription" rows="3" maxlength="500" placeholder="f.eks. dyp og rolig, varm og vennlig, en bestemt aksent..."></textarea>
+                    </div>
+                </section>
             </div>
         </div>
+    </div>
 
-        <!-- Scrolling Content -->
-        <div class="product-content">
-            <!-- Introduction -->
-            <div class="content-section" data-personality="intro">
-                <div class="section-inner">
-                    <span class="section-label">MØT ROBERT</span>
-                    <h2>Din AI-drevne forretningspartner</h2>
-                    <p class="lead-text">
-                        Robert er ikke bare en robot – han er en fullt tilpassbar AI-ansatt designet for sømløs integrering i din forretningsdrift.
-                    </p>
-                    <div class="feature-grid">
-                        <div class="feature-item">
-                            <i class="fas fa-palette"></i>
-                            <h4>White-label-løsning</h4>
-                            <p>Fullstendig merkevaretilpasset med din bedrifts identitet og stemme</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-database"></i>
-                            <h4>Tren på dine data</h4>
-                            <p>Importer din kunnskapsbase, dokumenter og prosesser</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-plug"></i>
-                            <h4>Sømløs integrasjon</h4>
-                            <p>Kobles til ditt eksisterende CRM, ERP og verktøy</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <h4>Full analyse</h4>
-                            <p>Spor ytelse, ROI og kundetilfredshet</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Manufacturing Robot -->
-            <div class="content-section personality-section" data-personality="manufacturing">
-                <div class="section-inner">
-                    <span class="section-label">PRODUKSJON</span>
-                    <h2>Produksjon og montering</h2>
-                    <p class="lead-text">
-                        Distribuer en robotansatt som blir din fasilitetens dedikerte produksjonsekspert, trent på dine spesifikke prosesser, kvalitetskrav og operasjonelle arbeidsflyter.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Produksjonsoptimalisering</h4>
-                                <p>Sanntidsovervåking av produksjonslinjen og effektivitetsanalyse</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Kvalitetskontroll</h4>
-                                <p>Automatisert inspeksjon og feildeteksjonssystemer</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Sikkerhetsetterlevelse</h4>
-                                <p>Hold deg i samsvar med sikkerhetsforskrifter automatisk</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Prediktivt vedlikehold</h4>
-                                <p>Forhindre nedetid med AI-drevet utstyrsovervåking</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stats-row">
-                        <div class="stat">
-                            <span class="stat-value">90%</span>
-                            <span class="stat-label">Nøyaktighetsgrad</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">0.3s</span>
-                            <span class="stat-label">Responstid</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-value">24/7</span>
-                            <span class="stat-label">Tilgjengelighet</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Real Estate Agent -->
-            <div class="content-section personality-section" data-personality="realestate">
-                <div class="section-inner">
-                    <span class="section-label">EIENDOM</span>
-                    <h2>Eiendom og salg</h2>
-                    <p class="lead-text">
-                        Opprett en AI-agent trent på din eiendomsportefølje, lokale markedsdata og salgsprosesser for å håndtere henvendelser og kvalifisere potensielle kunder døgnet rundt.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Eiendomsmatching</h4>
-                                <p>AI-drevet matching av kjøpere med perfekte eiendommer</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Virtuelle omvisninger</h4>
-                                <p>Veiled kunder gjennom eiendommer med detaljerte beskrivelser</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Markedsanalyse</h4>
-                                <p>Umiddelbare eiendomsvurderinger og nabolagsinnsikt</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Leadkvalifisering</h4>
-                                <p>Kvalifiser og bearbeid potensielle kjøpere automatisk</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <p>&quot;Robert økte vår leadkonvertering med 45 % og håndterer 80 % av innledende henvendelser automatisk.&quot;</p>
-                        <cite>- Sarah Chen, eiendomsmegler</cite>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sales Agent -->
-            <div class="content-section personality-section" data-personality="sales">
-                <div class="section-inner">
-                    <span class="section-label">SALG</span>
-                    <h2>Forretningsutvikling</h2>
-                    <p class="lead-text">
-                        Bygg en AI-salgsstyrke som kjenner produktene dine ut og inn, følger din salgsmetodikk og skalerer ubegrenset med etterspørselen.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Leadgenerering</h4>
-                                <p>Identifiser og engasjer potensielle kunder av høy kvalitet automatisk</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Produktkunnskap</h4>
-                                <p>Dyp forståelse av hele produktkatalogen din</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Innvendingshåndtering</h4>
-                                <p>Sofistikerte svar på vanlige salgsinnvendinger</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>CRM-integrasjon</h4>
-                                <p>Sømløs integrasjon med dine eksisterende salgsverktøy</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="performance-metrics">
-                        <h4>Ytelsesmålinger</h4>
-                        <div class="metrics-grid">
-                            <div class="metric">
-                                <span class="metric-value">3x</span>
-                                <span class="metric-label">Flere leads håndtert</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">65%</span>
-                                <span class="metric-label">Økning i konvertering</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">$2M+</span>
-                                <span class="metric-label">Generert omsetning</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Legal Assistant -->
-            <div class="content-section personality-section" data-personality="legal">
-                <div class="section-inner">
-                    <span class="section-label">JURIDISK</span>
-                    <h2>Juridiske tjenester</h2>
-                    <p class="lead-text">
-                        Distribuer en AI-assistent trent på firmaets presedens, sakshistorikk og juridiske rammeverk for å effektivisere forskning og klientmottak.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Dokumentanalyse</h4>
-                                <p>Gjennomgå kontrakter og juridiske dokumenter på sekunder</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Juridisk forskning</h4>
-                                <p>Tilgang til omfattende databaser med rettspraksis og presedens</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Klientmottak</h4>
-                                <p>Effektiviser innledende konsultasjoner og datainnsamling</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Samsvarsovervåking</h4>
-                                <p>Hold deg oppdatert med endringer i regelverket</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="security-note">
-                        <i class="fas fa-lock"></i>
-                        <p>Sikkerhet på bedriftsnivå sikrer klientkonfidensialitet og beskyttelse av advokat-klient-privilegiet</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Teacher -->
-            <div class="content-section personality-section" data-personality="teacher">
-                <div class="section-inner">
-                    <span class="section-label">UTDANNING</span>
-                    <h2>Undervisning og opplæring</h2>
-                    <p class="lead-text">
-                        Opprett en AI-veileder trent på din læreplan, undervisningsmetoder og pedagogisk innhold for å tilby personalisert læring i stor skala.
-                    </p>
-                    <div class="capability-list">
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Personalisert læring</h4>
-                                <p>Tilpass undervisningsstilen til hver enkelts behov</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Interaktive leksjoner</h4>
-                                <p>Engasjer elever med dynamiske spørsmål-og-svar-økter</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Fremdriftssporing</h4>
-                                <p>Overvåk og rapporter om elevprestasjoner</p>
-                            </div>
-                        </div>
-                        <div class="capability">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <h4>Flerfaglig ekspertise</h4>
-                                <p>Undervis på tvers av ulike fag og ferdighetsnivåer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="education-stats">
-                        <div class="edu-stat">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>10 000+ elever undervist</span>
-                        </div>
-                        <div class="edu-stat">
-                            <i class="fas fa-star"></i>
-                            <span>4,9/5 elevvurdering</span>
-                        </div>
-                        <div class="edu-stat">
-                            <i class="fas fa-language"></i>
-                            <span>50+ språk støttet</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pricing Section -->
-            <div class="content-section" data-personality="pricing">
-                <div class="section-inner">
-                    <span class="section-label">PRISER</span>
-                    <h2>Investering og planer</h2>
-                    <div class="pricing-container">
-                        <div class="pricing-main">
-                            <div class="price-display">
-                                <span class="price-starting">Fra</span>
-                                <span class="price-amount">$50,000</span>
-                                <span class="price-period">USD</span>
-                            </div>
-                            <div class="whats-included">
-                                <h3>Hva som er inkludert</h3>
-                                <ul class="included-list">
-                                    <li><i class="fas fa-check"></i> Komplett AI-systemoppsett</li>
-                                    <li><i class="fas fa-check"></i> 5 timers batteritid</li>
-                                    <li><i class="fas fa-check"></i> 3 personlighetskonfigurasjoner</li>
-                                    <li><i class="fas fa-check"></i> 1 års støtte og oppdateringer</li>
-                                    <li><i class="fas fa-check"></i> Opplæring for teamet ditt</li>
-                                    <li><i class="fas fa-check"></i> API-tilgang og integrasjoner</li>
-                                    <li><i class="fas fa-check"></i> Tilpassede merkevarevalg</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pricing-addons">
-                            <h3>Tilleggsalternativer</h3>
-                            <div class="addon-item">
-                                <span class="addon-name">Ekstra håndbehendighet</span>
-                                <span class="addon-price">$20,000</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Lokal installasjon</span>
-                                <span class="addon-price">$25,000</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Premiumstøtte</span>
-                                <span class="addon-price">Ta kontakt for tilbud</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Gående robot</span>
-                                <span class="addon-price">Ta kontakt for tilbud</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form Section -->
-            <div class="content-section contact-section" id="contact-form">
-                <div class="section-inner">
-                    <span class="section-label">KOM I GANG</span>
-                    <h2>Be om et tilpasset tilbud</h2>
-                    <p class="lead-text">
-                        Fortell oss om din bedrift, så designer vi den perfekte robotansatte for dine behov.
-                    </p>
-
-                    <form class="contact-form" id="robotContactForm">
-                        <div class="form-section">
-                            <h3>Bedriftsinformasjon</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="company">Bedriftsnavn *</label>
-                                    <input type="text" id="company" name="company" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="industry">Bransje *</label>
-                                    <select id="industry" name="industry" required>
-                                        <option value="">Velg bransje</option>
-                                        <option value="manufacturing">Produksjon</option>
-                                        <option value="logistics">Logistikk og lager</option>
-                                        <option value="automotive">Bilindustri</option>
-                                        <option value="aerospace">Luftfart og forsvar</option>
-                                        <option value="healthcare">Helsevesen</option>
-                                        <option value="retail">Detaljhandel og netthandel</option>
-                                        <option value="technology">Teknologi</option>
-                                        <option value="other">Annet</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="size">Bedriftsstørrelse</label>
-                                    <select id="size" name="size">
-                                        <option value="">Velg størrelse</option>
-                                        <option value="1-10">1-10 ansatte</option>
-                                        <option value="11-50">11-50 ansatte</option>
-                                        <option value="51-200">51-200 ansatte</option>
-                                        <option value="201-1000">201-1000 ansatte</option>
-                                        <option value="1000+">1000+ ansatte</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Kontaktinformasjon</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="name">Fullt navn *</label>
-                                    <input type="text" id="name" name="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Jobb-e-post *</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Telefonnummer</label>
-                                    <input type="tel" id="phone" name="phone">
-                                </div>
-                                <div class="form-group">
-                                    <label for="country">Land/region *</label>
-                                    <input type="text" id="country" name="country" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Din interesse</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="usecase">Primært bruksområde *</label>
-                                    <select id="usecase" name="usecase" required>
-                                        <option value="">Velg bruksområde</option>
-                                        <option value="manufacturing">Produksjon og montering</option>
-                                        <option value="logistics">Logistikk og distribusjon</option>
-                                        <option value="quality">Kvalitetskontroll</option>
-                                        <option value="maintenance">Prediktivt vedlikehold</option>
-                                        <option value="warehouse">Lagerautomatisering</option>
-                                        <option value="customer-service">Kundeservice</option>
-                                        <option value="other">Annet (spesifiser nedenfor)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="timeline">Implementeringstidslinje</label>
-                                    <select id="timeline" name="timeline">
-                                        <option value="">Velg tidslinje</option>
-                                        <option value="immediate">Umiddelbart (&lt; 1 måned)</option>
-                                        <option value="1-3months">1-3 måneder</option>
-                                        <option value="3-6months">3-6 måneder</option>
-                                        <option value="6-12months">6-12 måneder</option>
-                                        <option value="planning">Kun planlegging</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="personalities">Antall personligheter som trengs</label>
-                                    <select id="personalities" name="personalities">
-                                        <option value="">Velg antall</option>
-                                        <option value="1">1 personlighet</option>
-                                        <option value="2-3">2-3 personligheter</option>
-                                        <option value="4-5">4-5 personligheter</option>
-                                        <option value="5+">5+ personligheter</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="budget">Budsjettramme</label>
-                                    <select id="budget" name="budget">
-                                        <option value="">Velg budsjett</option>
-                                        <option value="50-100k">$50K - $100K</option>
-                                        <option value="100-250k">$100K - $250K</option>
-                                        <option value="250-500k">$250K - $500K</option>
-                                        <option value="500k+">$500K+</option>
-                                        <option value="custom">Be om tilpasset tilbud</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <div class="form-group full-width">
-                                <label for="message">Fortell oss om din visjon</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Del dine mål og hvordan du ser for deg at Robert kan hjelpe din bedrift..." maxlength="2000"></textarea>
-                                <div class="char-counter" id="messageCounter">0 / 2000</div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Foretrukket kontaktmetode</h3>
-                            <div class="contact-preferences">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="video-call">
-                                    <span>Avtal et videomøte</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="phone">
-                                    <span>Telefonkonsultasjon</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="email">
-                                    <span>E-postkorrespondanse</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="contact-method" value="in-person">
-                                    <span>Personlig møte (Mountain View / Genève)</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-submit">
-                            <button type="submit" class="btn btn-primary btn-large">
-                                Få ditt tilpassede tilbud
-                            </button>
-                            <div class="form-trust">
-                                <p><i class="fas fa-lock"></i> Informasjonen din er kryptert og sikker</p>
-                                <p><i class="fas fa-clock"></i> Svar innen 24 timer</p>
-                                <p><i class="fas fa-shield-alt"></i> Aldri spam</p>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+    <div class="rc-orderbar">
+        <div class="rc-order-summary">
+            <span class="rc-order-label">Din bestilling</span>
+            <span class="rc-order-text" id="rcSummary"></span>
         </div>
+        <div class="rc-total">
+            <span class="rc-total-amount" id="rcTotal"></span>
+            <span class="rc-total-currency">USD</span>
+        </div>
+        <div class="rc-checkout-wrap">
+            <button type="button" class="rc-checkout-btn" id="rcCheckout">
+                <span class="rc-checkout-btn-label">Betal</span><span>→</span>
+            </button>
+            <span class="rc-secure">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M6 10V7a6 6 0 0112 0v3h1v12H5V10zm2 0h8V7a4 4 0 00-8 0z"></path></svg>
+                Sikker betaling
+            </span>
+            <span class="rc-checkout-error" id="rcCheckoutError" hidden></span>
+        </div>
+    </div>
     </div>
 </section>
 
 <script>
-    (function () {
-        var textarea = document.getElementById('message');
-        var counter = document.getElementById('messageCounter');
-        if (!textarea || !counter) return;
+(function () {
+    var ROBOTS = [
+        { name: 'Robert', price: 79000, photos: [
+            '../../featured/robot/robert/robert-1.jpg',
+            '../../featured/robot/robert/robert-2.jpg',
+            '../../featured/robot/robert/robert-3.jpg',
+            '../../featured/robot/robert/robert-4.jpg',
+            '../../featured/robot/robert/robert-5.jpg'
+        ] },
+        { name: 'Robert Junior', price: 13000, photos: [
+            '../../featured/robot/robertJr/robertjr-1.jpg',
+            '../../featured/robot/robertJr/robertjr-2.jpg',
+            '../../featured/robot/robertJr/robertjr-3.jpg',
+            '../../featured/robot/robertJr/robertjr-4.jpg',
+            '../../featured/robot/robertJr/robertjr-5.jpg',
+            '../../featured/robot/robertJr/robertjr-6.jpg',
+            '../../featured/robot/robertJr/robertjr-7.jpg'
+        ] }
+    ];
+    var FACES = [
+        { label: 'Standardansikt', cost: 0 },
+        { label: 'Tilpasset ansikt', cost: 1000 } // Junior only — for Robert custom is included in the base price
+    ];
+    var CUSTOM_FACE_PRICE_LABELS = {
+        included: 'Inkludert',
+        plus: '+$1 000'
+    };
+    var VOICES = [
+        { label: 'Standardstemme', cost: 0 },
+        { label: 'Tilpasset stemmeklon', cost: 0 }
+    ];
+    var PLACEHOLDER_SLIDE_COUNT = 5;
+    var GAS_EXEC_URL = 'https://script.google.com/macros/s/AKfycbw5_Gpm1aSfX0CiPd5JrU7p6D9mleMSUnNADkl2I6vRY3LrNrukNQ4qEtMxvUDZ57YuAQ/exec';
+    var PENDING_PHOTO_KEY = 'rc_pending_photo';
 
-        function updateCounter() {
-            counter.textContent = textarea.value.length + ' / 2000';
+    var state = { robot: null, slide: 0, face: 0, voice: 0, upload: null, voiceNote: '', playing: null };
+    var playTimer = null;
+
+    function currentPhotos() {
+        if (state.robot === null) return [];
+        return ROBOTS[state.robot].photos || [];
+    }
+
+    function slideCount() {
+        var photos = currentPhotos();
+        return photos.length || PLACEHOLDER_SLIDE_COUNT;
+    }
+
+    var sectionEl = document.querySelector('.rc-section');
+    var heroSelectEl = document.getElementById('rcHeroSelect');
+    var configWrapEl = document.getElementById('rcConfigWrap');
+    var configRefEl = document.getElementById('rcConfigRef');
+    var heroImgEl = document.getElementById('rcHeroImg');
+    var dotsEl = document.getElementById('rcDots');
+    var thumbsEl = document.getElementById('rcThumbs');
+    var prevBtn = document.getElementById('rcPrev');
+    var nextBtn = document.getElementById('rcNext');
+    var facesEl = document.getElementById('rcFaces');
+    var uploadStepEl = document.getElementById('rcUploadStep');
+    var dropzoneEl = document.getElementById('rcDropzone');
+    var fileInputEl = document.getElementById('rcFileInput');
+    var dropMainEl = document.getElementById('rcDropMain');
+    var uploadPreviewEl = document.getElementById('rcUploadPreview');
+    var voicesEl = document.getElementById('rcVoices');
+    var voiceStandardEl = document.getElementById('rcVoiceStandard');
+    var voiceCustomEl = document.getElementById('rcVoiceCustom');
+    var voiceLockedNoteEl = document.getElementById('rcVoiceLockedNote');
+    var voiceDescribeWrapEl = document.getElementById('rcVoiceDescribeWrap');
+    var voiceDescribeInputEl = document.getElementById('rcVoiceDescription');
+    var summaryEl = document.getElementById('rcSummary');
+    var totalEl = document.getElementById('rcTotal');
+    var checkoutBtn = document.getElementById('rcCheckout');
+    var checkoutBtnLabel = checkoutBtn.querySelector('.rc-checkout-btn-label');
+    var checkoutErrorEl = document.getElementById('rcCheckoutError');
+
+    function formatUSD(n) {
+        return '$' + n.toLocaleString('en-US');
+    }
+
+    function renderHero() {
+        if (state.robot === null) return;
+        var photos = currentPhotos();
+        var src = photos[state.slide];
+        heroImgEl.classList.add('fading');
+        setTimeout(function () {
+            heroImgEl.innerHTML = src
+                ? '<img src="' + src + '" alt="' + ROBOTS[state.robot].name + '" loading="lazy" decoding="async">'
+                : '<i class="fas fa-image"></i>';
+            heroImgEl.classList.remove('fading');
+        }, 150);
+    }
+
+    function renderDots() {
+        if (state.robot === null) { dotsEl.innerHTML = ''; return; }
+        var count = slideCount();
+        dotsEl.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'rc-dot' + (i === state.slide ? ' active' : '');
+            dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+            (function (idx) {
+                dot.addEventListener('click', function () { goToSlide(idx); });
+            })(i);
+            dotsEl.appendChild(dot);
         }
+    }
 
-        textarea.addEventListener('input', updateCounter);
-        updateCounter();
+    function renderThumbs() {
+        if (state.robot === null) { thumbsEl.innerHTML = ''; return; }
+        var photos = currentPhotos();
+        var count = slideCount();
+        thumbsEl.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+            var thumb = document.createElement('button');
+            thumb.type = 'button';
+            thumb.className = 'rc-thumb' + (i === state.slide ? ' active' : '');
+            thumb.innerHTML = photos[i]
+                ? '<img src="' + photos[i] + '" alt="" loading="lazy" decoding="async">'
+                : '<i class="fas fa-image"></i>';
+            (function (idx) {
+                thumb.addEventListener('click', function () { goToSlide(idx); });
+            })(i);
+            thumbsEl.appendChild(thumb);
+        }
+    }
+
+    function goToSlide(i) {
+        state.slide = i;
+        renderHero();
+        renderDots();
+        renderThumbs();
+    }
+
+    function applySelection(i) {
+        state.robot = i;
+        state.slide = 0;
+        var cards = heroSelectEl.querySelectorAll('.rc-pick-card');
+        cards.forEach(function (card, idx) {
+            var selected = idx === i;
+            card.classList.toggle('selected', selected);
+            document.getElementById('rcHeroCta' + idx).textContent = selected ? '✓' : '';
+        });
+        configWrapEl.hidden = false;
+        /* Show the selected robot's own photo as the "Standard face" preview */
+        var stdFaceImg = document.getElementById('rcFaceStandardImg');
+        if (stdFaceImg) stdFaceImg.src = ROBOTS[i].photos[0];
+        renderHero();
+        renderDots();
+        renderThumbs();
+        updateVoiceAvailability();
+        updateSummary();
+    }
+
+    function selectRobot(i) {
+        applySelection(i);
+        requestAnimationFrame(function () {
+            configRefEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    function selectFace(i) {
+        state.face = i;
+        var opts = facesEl.querySelectorAll('.rc-option');
+        opts.forEach(function (opt, idx) {
+            opt.classList.toggle('selected', idx === i);
+        });
+        uploadStepEl.classList.toggle('inactive', i !== 1);
+        updateVoiceAvailability();
+        updateSummary();
+    }
+    function updateVoiceAvailability() {
+        // Robert (index 0): no standard face or voice — custom only
+        // Robert Junior (index 1): both standard and custom options
+        var isRobert = state.robot === 0;
+        var faceIsCustom = state.face === 1;
+
+        var faceStandardEl = document.getElementById('rcFaceStandard');
+        faceStandardEl.style.display = isRobert ? 'none' : '';
+        voiceStandardEl.style.display = isRobert ? 'none' : '';
+
+        // Price label on the custom face option: "Included" for Robert, "+$1,000" for Junior
+        var customFacePriceEl = document.querySelector('#rcFaceCustom .rc-option-price');
+        if (customFacePriceEl) customFacePriceEl.textContent = isRobert ? CUSTOM_FACE_PRICE_LABELS.included : CUSTOM_FACE_PRICE_LABELS.plus;
+
+        if (isRobert) {
+            voiceLockedNoteEl.classList.remove('visible');
+            voiceCustomEl.classList.remove('disabled');
+            if (state.face === 0) { state.face = -1; facesEl.querySelectorAll('.rc-option').forEach(function(o) { o.classList.remove('selected'); }); }
+            if (state.face !== 1) selectFace(1); // Robert is custom-only — preselect it
+            if (state.voice === 0) { state.voice = -1; voicesEl.querySelectorAll('.rc-option').forEach(function(o) { o.classList.remove('selected'); }); }
+        } else {
+            // Robert Junior: standard face and voice by default
+            if (state.face < 0) selectFace(0);
+            if (state.voice < 0) selectVoice(0);
+            voiceCustomEl.classList.toggle('disabled', !faceIsCustom);
+            voiceLockedNoteEl.classList.toggle('visible', !faceIsCustom);
+            if (!faceIsCustom && state.voice === 1) selectVoice(0);
+        }
+    }
+
+    function selectVoice(i) {
+        if (i === 1 && state.robot !== 0 && state.face !== 1) return;
+        state.voice = i;
+        var opts = voicesEl.querySelectorAll('.rc-option');
+        opts.forEach(function (opt, idx) {
+            opt.classList.toggle('selected', idx === i);
+        });
+        voiceDescribeWrapEl.classList.toggle('visible', i === 1);
+        updateSummary();
+    }
+
+    function togglePlay(i) {
+        clearTimeout(playTimer);
+        var btn = document.getElementById('rcPlay' + i);
+        var wasPlaying = state.playing === i;
+        state.playing = wasPlaying ? null : i;
+        btn.classList.toggle('playing', !wasPlaying);
+        btn.textContent = !wasPlaying ? '❚❚' : '▶';
+        if (!wasPlaying) {
+            playTimer = setTimeout(function () {
+                state.playing = null;
+                btn.classList.remove('playing');
+                btn.textContent = '▶';
+            }, 2500);
+        }
+    }
+
+    // Stripe Checkout can't carry a file through the redirect to its hosted page,
+    // so the photo is downscaled client-side and held in localStorage (which, unlike
+    // an in-memory blob: URL, survives the full-page navigation to Stripe and back)
+    // until the success page confirms payment and uploads it to the backend then.
+    function compressImageForUpload_(file, callback) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = new Image();
+            img.onload = function () {
+                var maxDim = 1600;
+                var scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+                var canvas = document.createElement('canvas');
+                canvas.width = Math.round(img.width * scale);
+                canvas.height = Math.round(img.height * scale);
+                canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+                callback(canvas.toDataURL('image/jpeg', 0.82));
+            };
+            img.onerror = function () { callback(null); };
+            img.src = e.target.result;
+        };
+        reader.onerror = function () { callback(null); };
+        reader.readAsDataURL(file);
+    }
+
+    function storePendingPhoto_(dataUrl, fileName) {
+        try {
+            localStorage.setItem(PENDING_PHOTO_KEY, JSON.stringify({ dataUrl: dataUrl, fileName: fileName }));
+        } catch (e) {
+            // Storage full or unavailable (private browsing, quota, etc.) — checkout still
+            // proceeds, the photo just won't be auto-attached to the order afterward.
+        }
+    }
+
+    function setUpload(file) {
+        if (!file || file.type.indexOf('image/') !== 0) return; // drag-and-drop bypasses the file input's accept filter, so re-check the type here
+        if (state.upload) URL.revokeObjectURL(state.upload);
+        state.upload = URL.createObjectURL(file);
+        uploadPreviewEl.innerHTML = '<img src="' + state.upload + '" alt="Uploaded face">';
+        dropMainEl.innerHTML = 'Bilde lagt til. Slipp et annet for å erstatte, eller <span class="rc-drop-browse">bla gjennom</span>';
+        selectFace(1);
+        compressImageForUpload_(file, function (dataUrl) {
+            if (dataUrl) storePendingPhoto_(dataUrl, file.name);
+        });
+    }
+
+    function updateSummary() {
+        if (state.robot === null) return;
+        // Custom face costs +$1,000 only for Robert Junior; for Robert it is
+        // the only option and is included in the $79,000 base price.
+        var faceCost = (state.face === 1 && state.robot === 1) ? FACES[1].cost : 0;
+        var voiceCost = state.voice >= 0 ? VOICES[state.voice].cost : 0;
+        var total = ROBOTS[state.robot].price + faceCost + voiceCost;
+        var parts = [ROBOTS[state.robot].name];
+        if (state.face >= 0) parts.push(FACES[state.face].label);
+        if (state.voice >= 0) parts.push(VOICES[state.voice].label);
+        summaryEl.textContent = parts.join(' · ');
+        totalEl.textContent = formatUSD(total);
+    }
+
+    heroSelectEl.querySelectorAll('.rc-pick-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            selectRobot(parseInt(card.getAttribute('data-robot'), 10));
+        });
+    });
+
+    facesEl.querySelectorAll('.rc-option').forEach(function (opt) {
+        opt.addEventListener('click', function () {
+            var faceIdx = parseInt(opt.getAttribute('data-face'), 10);
+            if (state.robot === 0 && state.face === faceIdx) {
+                selectFace(-1);
+            } else {
+                selectFace(faceIdx);
+            }
+        });
+    });
+
+    voicesEl.querySelectorAll('[data-voice]').forEach(function (row) {
+        row.addEventListener('click', function () {
+            var voiceIdx = parseInt(row.getAttribute('data-voice'), 10);
+            if (state.robot === 0 && state.voice === voiceIdx) {
+                selectVoice(-1);
+            } else {
+                selectVoice(voiceIdx);
+            }
+        });
+    });
+
+    document.getElementById('rcPlay0').addEventListener('click', function (e) { e.stopPropagation(); togglePlay(0); });
+
+    voiceDescribeInputEl.addEventListener('input', function () {
+        state.voiceNote = voiceDescribeInputEl.value;
+    });
+
+    checkoutBtn.addEventListener('click', function () {
+        if (state.robot === null || checkoutBtn.disabled) return;
+        checkoutErrorEl.hidden = true;
+        checkoutBtn.disabled = true;
+        checkoutBtnLabel.textContent = 'Omdirigerer…';
+
+        fetch(GAS_EXEC_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                action: 'createCheckoutSession',
+                robot: state.robot,
+                face: state.face,
+                voice: state.voice,
+                voiceNote: state.voiceNote,
+                lang: 'nb'
+            })
+        })
+            .then(function (res) { return res.json(); })
+            .then(function (result) {
+                if (result.ok && result.url) {
+                    window.location.href = result.url;
+                    return;
+                }
+                checkoutBtn.disabled = false;
+                checkoutBtnLabel.textContent = 'Betal';
+                checkoutErrorEl.textContent = 'Noe gikk galt. Prøv igjen.';
+                checkoutErrorEl.hidden = false;
+            })
+            .catch(function () {
+                checkoutBtn.disabled = false;
+                checkoutBtnLabel.textContent = 'Betal';
+                checkoutErrorEl.textContent = 'Noe gikk galt. Prøv igjen.';
+                checkoutErrorEl.hidden = false;
+            });
+    });
+
+    prevBtn.addEventListener('click', function () { var c = slideCount(); goToSlide((state.slide - 1 + c) % c); });
+    nextBtn.addEventListener('click', function () { var c = slideCount(); goToSlide((state.slide + 1) % c); });
+
+    // Touch swipe on hero image
+    (function () {
+        var frame = document.querySelector('.rc-hero-frame');
+        if (!frame) return;
+        var touchX = null, touchY = null, touchLocked = false;
+
+        frame.addEventListener('touchstart', function (e) {
+            touchX = e.touches[0].clientX;
+            touchY = e.touches[0].clientY;
+            touchLocked = false;
+        }, { passive: true });
+
+        frame.addEventListener('touchmove', function (e) {
+            if (touchX === null) return;
+            var dx = e.touches[0].clientX - touchX;
+            var dy = e.touches[0].clientY - touchY;
+            if (!touchLocked) {
+                touchLocked = Math.abs(dx) > Math.abs(dy);
+            }
+            if (touchLocked) e.preventDefault();
+        }, { passive: false });
+
+        frame.addEventListener('touchend', function (e) {
+            if (touchX === null) return;
+            var dx = e.changedTouches[0].clientX - touchX;
+            touchX = null;
+            touchY = null;
+            if (Math.abs(dx) > 40) {
+                var c = slideCount();
+                if (dx > 0) {
+                    goToSlide((state.slide - 1 + c) % c);
+                } else {
+                    goToSlide((state.slide + 1) % c);
+                }
+            }
+        });
     })();
+
+    dropzoneEl.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.add('dragover');
+    });
+    dropzoneEl.addEventListener('dragleave', function () {
+        dropzoneEl.classList.remove('dragover');
+    });
+    dropzoneEl.addEventListener('drop', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.remove('dragover');
+        setUpload(e.dataTransfer.files[0]);
+    });
+    fileInputEl.addEventListener('change', function (e) {
+        setUpload(e.target.files && e.target.files[0]);
+    });
+
+    // The navbar is position:fixed and overlaps document content, so clear it with real top padding on the section instead of relying on a hardcoded value that drifts whenever the navbar's own height changes (longer translations wrapping to 2 lines, etc.)
+    function clearNavbar() {
+        var navbarEl = document.getElementById('navbar');
+        var navH = navbarEl ? navbarEl.offsetHeight : 0;
+        sectionEl.style.paddingTop = navH + 'px';
+    }
+    clearNavbar();
+    window.addEventListener('resize', clearNavbar);
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var robotParam = parseInt(urlParams.get('robot'), 10);
+    if (robotParam === 0) {
+        // Robert: nothing pre-selected
+        state.face = -1;
+        state.voice = -1;
+        applySelection(robotParam);
+    } else if (robotParam === 1) {
+        // Robert Junior: standard face and voice
+        selectFace(0);
+        selectVoice(0);
+        applySelection(robotParam);
+    } else {
+        selectFace(state.face);
+        selectVoice(state.voice);
+    }
+    if (robotParam === 0 || robotParam === 1) applySelection(robotParam);
+    if (urlParams.get('canceled') === 'true') {
+        document.getElementById('rcCanceledNote').hidden = false;
+    }
+})();
 </script>
 
 
@@ -1211,6 +1190,5 @@
             });
         })();
     </script>
-    <script src="../../robot-script.js"></script>
 </body>
 </html>
