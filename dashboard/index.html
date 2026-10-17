@@ -632,6 +632,12 @@
         font-weight: 600;
         white-space: nowrap;
       }
+      .sale-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        width: 100%;
+      }
 
       /* ===================== Toolbar (Requests view) ===================== */
       .toolbar {
@@ -1920,18 +1926,37 @@ document.querySelectorAll(".nav-item").forEach(function (btn) {
 });
 document.getElementById("salesRefreshBtn").addEventListener("click", loadSales);
 
-// ---------- Sales view (robot orders, read-only) ----------
+// ---------- Sales view (robot orders) ----------
+var SALES_ORDERS = [];
+
 function loadSales() {
   document.getElementById("salesList").innerHTML =
     '<div class="empty">Loading…</div>';
   callApi("getOrders", { token: TOKEN })
     .then(function (data) {
-      renderSales(data.orders || []);
+      SALES_ORDERS = data.orders || [];
+      renderSales(SALES_ORDERS);
     })
     .catch(function (err) {
       document.getElementById("salesList").innerHTML =
         '<div class="empty">' + escapeHtml(err.message) + "</div>";
     });
+}
+
+function saleStatusActions(status) {
+  if (status === "new") {
+    return [
+      { label: "In progress", to: "in-progress" },
+      { label: "Mark delivered", to: "delivered" },
+    ];
+  }
+  if (status === "in-progress") {
+    return [
+      { label: "Move back to new", to: "new" },
+      { label: "Mark delivered", to: "delivered" },
+    ];
+  }
+  return [{ label: "Move back to in progress", to: "in-progress" }]; // delivered
 }
 
 function renderSales(orders) {
@@ -1951,6 +1976,29 @@ function renderSales(orders) {
       var meta = [o.email, o.voiceNote ? 'voice: "' + o.voiceNote + '"' : ""]
         .filter(Boolean)
         .join(" · ");
+      var statusBadge =
+        '<span class="badge status-' +
+        (o.status === "delivered"
+          ? "treated"
+          : o.status === "in-progress"
+            ? "in-progress"
+            : "new") +
+        '">' +
+        escapeHtml(o.status) +
+        "</span>";
+      var actions = saleStatusActions(o.status)
+        .map(function (a) {
+          return (
+            '<button type="button" class="btn-ghost btn-sm" data-sale-session="' +
+            escapeHtml(o.sessionId) +
+            '" data-sale-status="' +
+            escapeHtml(a.to) +
+            '">' +
+            escapeHtml(a.label) +
+            "</button>"
+          );
+        })
+        .join("");
       return (
         '<div class="user-row sale-row">' +
         '<div class="sale-main">' +
@@ -1966,6 +2014,7 @@ function renderSales(orders) {
         '">' +
         escapeHtml(o.paymentStatus || "unknown") +
         "</span>" +
+        statusBadge +
         '<span class="sale-amount">' +
         escapeHtml(amount) +
         "</span>" +
@@ -1977,10 +2026,48 @@ function renderSales(orders) {
         '<span class="row-date">' +
         escapeHtml(formatDate(o.date)) +
         "</span>" +
+        '<div class="sale-actions">' +
+        actions +
+        "</div>" +
         "</div>"
       );
     })
     .join("");
+
+  listEl.querySelectorAll("[data-sale-session]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      setSaleStatus(
+        btn.getAttribute("data-sale-session"),
+        btn.getAttribute("data-sale-status"),
+      );
+    });
+  });
+}
+
+// Optimistic status change with rollback, same pattern as the Requests view.
+function setSaleStatus(sessionId, status) {
+  var order = null;
+  for (var i = 0; i < SALES_ORDERS.length; i++) {
+    if (SALES_ORDERS[i].sessionId === sessionId) {
+      order = SALES_ORDERS[i];
+      break;
+    }
+  }
+  if (!order) return;
+  var previous = order.status;
+  order.status = status;
+  renderSales(SALES_ORDERS);
+  queueApiCall_(function () {
+    return callApi("updateOrderStatus", {
+      token: TOKEN,
+      sessionId: sessionId,
+      status: status,
+    });
+  }).catch(function (err) {
+    order.status = previous;
+    renderSales(SALES_ORDERS);
+    alert(err.message || "Failed to update — change was undone.");
+  });
 }
 
       // ---------- Login ----------
