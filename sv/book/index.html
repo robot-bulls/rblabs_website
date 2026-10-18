@@ -277,10 +277,13 @@
                     <a href="/sv/career/" class="nav-link">Karriär</a>
                     <a href="/sv/news/" class="nav-link">Nyheter</a>
                     <a href="/sv/book/" class="nav-link">
-                        <span class="nav-desktop-text">Book</span>
+                        <span class="nav-desktop-text">Uthyrning</span>
                         <span class="nav-mobile-text">Robotuthyrning</span>
                     </a>
-                    <a href="/sv/robot/" class="nav-link nav-mobile-only">Anpassad Robot</a>
+                    <a href="/sv/robot/" class="nav-link">
+                        <span class="nav-desktop-text">Robotar</span>
+                        <span class="nav-mobile-text">Anpassad Robot</span>
+                    </a>
                     <div class="nav-lang-dropdown">
                         <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
                             <i class="fas fa-globe"></i>
@@ -1007,13 +1010,13 @@
                             <input type="email" id="rentEmail" name="email" placeholder="you@company.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="rentPhone">Telefonnummer</label>
+                            <label for="rentPhone">Telefonnummer <span class="required">*</span></label>
                             <div class="phone-input-group">
                                 <div class="country-code-field">
                                     <span class="country-flag" id="rentCountryFlag" aria-hidden="true">🇺🇸</span>
                                     <input type="text" id="rentCountryCode" name="countryCode" value="+1" inputmode="tel" maxlength="5" autocomplete="off" aria-label="Country code">
                                 </div>
-                                <input type="tel" id="rentPhone" name="phone" placeholder="(555) 123-4567">
+                                <input type="tel" id="rentPhone" name="phone" placeholder="(555) 123-4567" required>
                             </div>
                         </div>
                     </div>

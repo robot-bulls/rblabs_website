@@ -280,7 +280,10 @@
                         <span class="nav-desktop-text">Rentals</span>
                         <span class="nav-mobile-text">Robot Rentals</span>
                     </a>
-                    <a href="/robot/" class="nav-link nav-mobile-only">Custom Robot</a>
+                    <a href="/robot/" class="nav-link">
+                        <span class="nav-desktop-text">Robots</span>
+                        <span class="nav-mobile-text">Custom Robot</span>
+                    </a>
                     <a href="/book-a-call/?scrollTo=calendly-section" class="btn btn-primary">Book a Call</a>
                     <div class="nav-lang-dropdown">
                         <button class="nav-link nav-lang-trigger" id="langDropdownTrigger" aria-expanded="false" aria-haspopup="true">
@@ -1008,13 +1011,13 @@
                             <input type="email" id="rentEmail" name="email" placeholder="you@company.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="rentPhone">Phone Number</label>
+                            <label for="rentPhone">Phone Number <span class="required">*</span></label>
                             <div class="phone-input-group">
                                 <div class="country-code-field">
                                     <span class="country-flag" id="rentCountryFlag" aria-hidden="true">🇺🇸</span>
                                     <input type="text" id="rentCountryCode" name="countryCode" value="+1" inputmode="tel" maxlength="5" autocomplete="off" aria-label="Country code">
                                 </div>
-                                <input type="tel" id="rentPhone" name="phone" placeholder="(555) 123-4567">
+                                <input type="tel" id="rentPhone" name="phone" placeholder="(555) 123-4567" required>
                             </div>
                         </div>
                     </div>
