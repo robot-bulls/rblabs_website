@@ -3,6 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1856573978672425');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1856573978672425&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 <title>RB Labs | Bring Robert to your next event</title>
 <meta name="description" content="Make your next event impossible to ignore with Robert, the AI-powered humanoid robot by RB Labs.">
 <link rel="icon" type="image/png" href="/inquiries/assets/favicon.png">
@@ -1010,6 +1027,19 @@
   }
 
   const form = document.getElementById('leadForm');
+  var formStartTracked = false;
+  form.addEventListener('focusin', function () {
+    if (formStartTracked) return;
+    formStartTracked = true;
+    if (window.fbq) fbq('trackCustom', 'FormStart');
+  });
+
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.event === 'calendly.event_scheduled' && window.fbq) {
+      fbq('track', 'Schedule');
+    }
+  });
+
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     let ok = true;
@@ -1073,6 +1103,8 @@
     } catch (error) {
       // Fire-and-forget, same as the rest of this site's forms: show the confirmation either way rather than block the visitor on a network hiccup.
     }
+
+    if (window.fbq) fbq('track', 'Lead');
 
     document.getElementById('formStep').style.display = 'none';
     var after = document.getElementById('afterStep');
