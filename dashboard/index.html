@@ -732,6 +732,21 @@
       .dropdown-menu[hidden] {
         display: none;
       }
+      .dropdown-search {
+        position: sticky;
+        top: -4px;
+        margin: -4px -4px 4px -4px;
+        width: calc(100% + 8px);
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        border: none;
+        border-bottom: 1px solid var(--border);
+        background: var(--card);
+        z-index: 1;
+      }
+      .dropdown-search:focus {
+        outline: none;
+      }
       .dropdown-option {
         display: block;
         width: 100%;
@@ -1470,7 +1485,16 @@
                   <span class="sources-label" id="countryFilterLabel">All countries</span>
                   <span class="dropdown-caret"></span>
                 </button>
-                <div class="dropdown-menu" id="countryFilterMenu" hidden></div>
+                <div class="dropdown-menu" id="countryFilterMenu" hidden>
+                  <input
+                    type="search"
+                    class="dropdown-search"
+                    id="countryFilterSearch"
+                    placeholder="Search country..."
+                    autocomplete="off"
+                  />
+                  <div id="countryFilterOptionsList"></div>
+                </div>
               </div>
               <input
                 type="search"
@@ -2672,6 +2696,7 @@ function setSaleStatus(sessionId, status) {
         var countries = [];
         ALL_ROWS.forEach(function (r) {
           if (!sourceInScope(r.source)) return;
+          if (r.status === "deleted") return;
           var c = normalizeCountry(r.country);
           if (countries.indexOf(c) === -1) countries.push(c);
         });
@@ -2682,8 +2707,8 @@ function setSaleStatus(sessionId, status) {
           return countries.indexOf(v) !== -1;
         });
 
-        var menu = document.getElementById("countryFilterMenu");
-        menu.innerHTML = countries
+        var optionsList = document.getElementById("countryFilterOptionsList");
+        optionsList.innerHTML = countries
           .map(function (c) {
             return (
               '<label class="source-option">' +
@@ -2698,7 +2723,9 @@ function setSaleStatus(sessionId, status) {
           })
           .join("");
 
-        menu
+        filterCountryOptionsList();
+
+        optionsList
           .querySelectorAll('input[type="checkbox"]')
           .forEach(function (checkbox) {
             checkbox.addEventListener("change", function () {
@@ -2729,6 +2756,22 @@ function setSaleStatus(sessionId, status) {
           label.textContent = countryFilterValues.length + " countries";
         }
       }
+
+      function filterCountryOptionsList() {
+        var query = document
+          .getElementById("countryFilterSearch")
+          .value.trim()
+          .toLowerCase();
+        document
+          .querySelectorAll("#countryFilterOptionsList .source-option")
+          .forEach(function (opt) {
+            var text = opt.textContent.trim().toLowerCase();
+            opt.style.display = text.indexOf(query) !== -1 ? "" : "none";
+          });
+      }
+      document
+        .getElementById("countryFilterSearch")
+        .addEventListener("input", filterCountryOptionsList);
 
       // Keeps a dropdown menu fully on-screen. Rather than flipping to a
       // CSS class anchored on the trigger's own edge (which assumes the
@@ -2798,6 +2841,8 @@ function setSaleStatus(sessionId, status) {
         closeSourceFilterMenu();
         var dropdown = document.getElementById("countryFilterDropdown");
         var menu = document.getElementById("countryFilterMenu");
+        document.getElementById("countryFilterSearch").value = "";
+        filterCountryOptionsList();
         menu.hidden = false;
         dropdown.classList.add("open");
         positionDropdownMenu(menu);
