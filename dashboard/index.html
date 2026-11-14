@@ -1210,11 +1210,13 @@
           padding-right: 8px;
           font-size: 0.76rem;
         }
-        #sourceFilterDropdown {
+        #sourceFilterDropdown,
+        #countryFilterDropdown {
           flex: 1;
           min-width: 0;
         }
-        #sourceFilterDropdown .dropdown-trigger {
+        #sourceFilterDropdown .dropdown-trigger,
+        #countryFilterDropdown .dropdown-trigger {
           width: 100%;
           justify-content: space-between;
         }
@@ -1459,6 +1461,17 @@
                 </button>
                 <div class="dropdown-menu" id="sourceFilterMenu" hidden></div>
               </div>
+              <div class="dropdown" id="countryFilterDropdown">
+                <button
+                  type="button"
+                  class="dropdown-trigger sources-trigger btn-ghost btn-sm"
+                  id="countryFilterBtn"
+                >
+                  <span class="sources-label" id="countryFilterLabel">All countries</span>
+                  <span class="dropdown-caret"></span>
+                </button>
+                <div class="dropdown-menu" id="countryFilterMenu" hidden></div>
+              </div>
               <input
                 type="search"
                 id="searchBox"
@@ -1683,6 +1696,12 @@
       var currentStatusTab = "new";
       var sourceFilterValues = []; // checked sources; checkboxes default to checked
       var sourceFilterKnownSources = []; // sources ever seen, so only genuinely new ones auto-check
+      var countryFilterValues = []; // checked countries; empty means no filter (show all)
+
+      // Blank/never-collected and the geo-IP lookup's own "Unknown" fallback are treated as one bucket.
+      function normalizeCountry(c) {
+        return c ? c : "Unknown";
+      }
 
       // Must match KNOWN_SOURCES in Code.gs exactly (values), with short
       // display labels for the Team page's source-access editor.
@@ -1916,6 +1935,7 @@
           visibleCount = VISIBLE_STEP;
           exitSelectionMode();
           updateSourceFilterOptions();
+          updateCountryFilterOptions();
           render();
         }
       }
@@ -2548,6 +2568,7 @@ function setSaleStatus(sessionId, status) {
             visibleCount = VISIBLE_STEP;
             exitSelectionMode();
             updateSourceFilterOptions();
+            updateCountryFilterOptions();
             render();
             cacheRows_(ALL_ROWS);
           })
@@ -2646,6 +2667,69 @@ function setSaleStatus(sessionId, status) {
         }
       }
 
+      // Unlike sources, nothing checked means no filter (show all) — countries are discovered dynamically and can run into the dozens, so "all checked by default" would make narrowing to one country mean unchecking everything else.
+      function updateCountryFilterOptions() {
+        var countries = [];
+        ALL_ROWS.forEach(function (r) {
+          if (!sourceInScope(r.source)) return;
+          var c = normalizeCountry(r.country);
+          if (countries.indexOf(c) === -1) countries.push(c);
+        });
+        countries.sort();
+
+        // Drop a selection only if the country no longer exists anywhere in this view's data.
+        countryFilterValues = countryFilterValues.filter(function (v) {
+          return countries.indexOf(v) !== -1;
+        });
+
+        var menu = document.getElementById("countryFilterMenu");
+        menu.innerHTML = countries
+          .map(function (c) {
+            return (
+              '<label class="source-option">' +
+              '<input type="checkbox" value="' +
+              escapeHtml(c) +
+              '"' +
+              (countryFilterValues.indexOf(c) !== -1 ? " checked" : "") +
+              " />" +
+              escapeHtml(c) +
+              "</label>"
+            );
+          })
+          .join("");
+
+        menu
+          .querySelectorAll('input[type="checkbox"]')
+          .forEach(function (checkbox) {
+            checkbox.addEventListener("change", function () {
+              var value = checkbox.value;
+              var idx = countryFilterValues.indexOf(value);
+              if (checkbox.checked && idx === -1) {
+                countryFilterValues.push(value);
+              } else if (!checkbox.checked && idx !== -1) {
+                countryFilterValues.splice(idx, 1);
+              }
+              updateCountryFilterLabel();
+              visibleCount = VISIBLE_STEP;
+              exitSelectionMode();
+              render();
+            });
+          });
+
+        updateCountryFilterLabel();
+      }
+
+      function updateCountryFilterLabel() {
+        var label = document.getElementById("countryFilterLabel");
+        if (countryFilterValues.length === 0) {
+          label.textContent = "All countries";
+        } else if (countryFilterValues.length === 1) {
+          label.textContent = countryFilterValues[0];
+        } else {
+          label.textContent = countryFilterValues.length + " countries";
+        }
+      }
+
       // Keeps a dropdown menu fully on-screen. Rather than flipping to a
       // CSS class anchored on the trigger's own edge (which assumes the
       // trigger itself is positioned in a way that makes that edge safe —
@@ -2677,6 +2761,7 @@ function setSaleStatus(sessionId, status) {
           .classList.remove("open");
       }
       function openSourceFilterMenu() {
+        closeCountryFilterMenu();
         var dropdown = document.getElementById("sourceFilterDropdown");
         var menu = document.getElementById("sourceFilterMenu");
         menu.hidden = false;
@@ -2700,6 +2785,40 @@ function setSaleStatus(sessionId, status) {
       });
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") closeSourceFilterMenu();
+      });
+
+      // ---------- Country filter dropdown (same pattern as source) ----------
+      function closeCountryFilterMenu() {
+        document.getElementById("countryFilterMenu").hidden = true;
+        document
+          .getElementById("countryFilterDropdown")
+          .classList.remove("open");
+      }
+      function openCountryFilterMenu() {
+        closeSourceFilterMenu();
+        var dropdown = document.getElementById("countryFilterDropdown");
+        var menu = document.getElementById("countryFilterMenu");
+        menu.hidden = false;
+        dropdown.classList.add("open");
+        positionDropdownMenu(menu);
+      }
+      document
+        .getElementById("countryFilterBtn")
+        .addEventListener("click", function (e) {
+          e.stopPropagation();
+          var menu = document.getElementById("countryFilterMenu");
+          if (menu.hidden) {
+            openCountryFilterMenu();
+          } else {
+            closeCountryFilterMenu();
+          }
+        });
+      document.addEventListener("click", function (e) {
+        var dropdown = document.getElementById("countryFilterDropdown");
+        if (!dropdown.contains(e.target)) closeCountryFilterMenu();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeCountryFilterMenu();
       });
 
       document
@@ -2904,6 +3023,12 @@ function setSaleStatus(sessionId, status) {
         });
         rows = rows.filter(function (r) {
           return sourceFilterValues.indexOf(r.source) !== -1;
+        });
+        rows = rows.filter(function (r) {
+          return (
+            countryFilterValues.length === 0 ||
+            countryFilterValues.indexOf(normalizeCountry(r.country)) !== -1
+          );
         });
         if (search) {
           rows = rows.filter(function (r) {
